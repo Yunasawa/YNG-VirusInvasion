@@ -1,0 +1,10 @@
+using UnityEngine;
+using YNL.Patterns.Singletons;
+
+public class PlayerManager : Singleton<PlayerManager>
+{
+    public CharacterController Character;
+    public Animator Animator;
+
+    public PlayerMovementManager Movement;
+}
