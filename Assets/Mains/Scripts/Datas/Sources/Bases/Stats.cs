@@ -11,3 +11,8 @@ public class Stats
     public uint Gen3;
     public uint Gen4;
 }
+
+public enum ResourceType
+{
+    Food1, Energy1, Energy2, Energy3, Material1, Gen1, Gen2, Gen3, Gen4
+}

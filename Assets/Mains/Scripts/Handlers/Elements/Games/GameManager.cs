@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
         get
         {
             if (Application.platform == RuntimePlatform.Android) return true;
-            else return false;
+            else return true;
         }
     }
 

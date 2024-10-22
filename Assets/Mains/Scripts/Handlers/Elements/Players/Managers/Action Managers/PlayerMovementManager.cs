@@ -4,9 +4,6 @@ using YNL.Extensions.Methods;
 
 public class PlayerMovementManager : MonoBehaviour
 {
-    //private Transform _cameraSpot => FLTG.Camera.Movement.transform;
-
-
     private Vector3 _playerStartRotation;
     private float _cameraRotation;
     private Vector2 _axisDirection;
@@ -58,8 +55,6 @@ public class PlayerMovementManager : MonoBehaviour
     {
         if (!Game.Manager.IsMobileDevice) _axisDirection = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         else _axisDirection = new(Game.Input.MovementJoystick.Horizontal, Game.Input.MovementJoystick.Vertical);
-
-        MDebug.Log(Game.Manager.IsMobileDevice);
 
         if (_axisDirection.magnitude > 0.1f)
         {
