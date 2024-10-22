@@ -59,6 +59,8 @@ public class PlayerMovementManager : MonoBehaviour
         if (!Game.Manager.IsMobileDevice) _axisDirection = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         else _axisDirection = new(Game.Input.MovementJoystick.Horizontal, Game.Input.MovementJoystick.Vertical);
 
+        MDebug.Log(Game.Manager.IsMobileDevice);
+
         if (_axisDirection.magnitude > 0.1f)
         {
             Player.Character.Move(Player.Transform.forward * speed);
