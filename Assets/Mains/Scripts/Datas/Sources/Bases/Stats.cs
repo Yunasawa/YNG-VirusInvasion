@@ -1,18 +1,36 @@
-[System.Serializable]
-public class Stats
+namespace YNL.Bases
 {
-    public uint Food1;
-    public uint Energy1;
-    public uint Energy2;
-    public uint Energy3;
-    public uint Material1;
-    public uint Gen1;
-    public uint Gen2;
-    public uint Gen3;
-    public uint Gen4;
-}
+    [System.Serializable]
+    public class Stats
+    {
+        public uint Protein;
+        public uint Plasma;
+        public uint Antigen;
+        public uint StemCell;
+        public uint Enzyme;
+        public uint DNA1;
+        public uint DNA2;
+        public uint DNA3;
+        public uint DNA4;
 
-public enum ResourceType
-{
-    Food1, Energy1, Energy2, Energy3, Material1, Gen1, Gen2, Gen3, Gen4
+        public uint DPSLevel;
+        public uint MSLevel;
+        public uint CapacityLevel;
+        public uint RadiusLevel;
+        public uint TentacleLevel;
+
+    }
+
+    public enum ResourceType
+    {
+        Protein, 
+        Plasma, 
+        Antigen, 
+        StemCell, 
+        Enzyme, 
+        DNA1, 
+        DNA2, 
+        DNA3, 
+        DNA4
+    }
 }

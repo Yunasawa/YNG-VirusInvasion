@@ -4,6 +4,7 @@ using YNL.Patterns.Singletons;
 public class GameManager : Singleton<GameManager>
 {
     public GameInput Input;
+    public GameData Data;
 
     public bool IsMobileDevice
     {
