@@ -18,6 +18,7 @@ namespace YNL.Bases
         public uint CapacityLevel;
         public uint RadiusLevel;
         public uint TentacleLevel;
+        public uint HPLevel;
 
     }
 

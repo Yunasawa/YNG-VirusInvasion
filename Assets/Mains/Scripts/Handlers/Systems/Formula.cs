@@ -166,5 +166,35 @@ public static class Formula
 
             return requirements;
         }
+        public static List<(ResourceType, uint)> GetHPRequirement()
+        {
+            List<(ResourceType, uint)> requirements = new();
+            requirements.Add(new(ResourceType.Protein, (uint)Mathf.CeilToInt(80 * Mathf.Pow(1 + 0.15f, _stats.HPLevel))));
+
+            if (_stats.HPLevel >= 30 && _stats.HPLevel < 50)
+            {
+                uint lowLevel = _stats.HPLevel - 30;
+                requirements.Add(new(ResourceType.DNA1, (lowLevel / 5 * 2) + 2));
+            }
+            else if (_stats.HPLevel >= 50 && _stats.HPLevel < 70)
+            {
+                uint lowLevel = _stats.HPLevel - 50;
+                if (lowLevel % 2 != 0)
+                {
+                    requirements.Add(new(ResourceType.DNA1, lowLevel / 2 + 2));
+                    requirements.Add(new(ResourceType.DNA4, lowLevel / 2 + 2));
+                }
+            }
+            else if (_stats.HPLevel > 70)
+            {
+                uint lowLevel = _stats.HPLevel - 70;
+                if (lowLevel % 2 != 0)
+                {
+                    requirements.Add(new(ResourceType.DNA2, (uint)Mathf.Min(6, lowLevel / 2 + 3)));
+                    requirements.Add(new(ResourceType.DNA4, (uint)Mathf.Min(10, lowLevel / 2 + 3)));
+                }
+            }
+            return requirements;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using YNL.Bases;
 
 public class GameData : MonoBehaviour
 {
