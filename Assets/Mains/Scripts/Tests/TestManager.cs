@@ -21,6 +21,10 @@ public class TestManager : MonoBehaviour
 
     private void Update()
     {
-        for (byte i = 0; i < _characters.Count; i++) _characters[i].Movement.MonoUpdate();
+        for (byte i = 0; i < _characters.Count; i++)
+        {
+            _characters[i].Movement?.MonoUpdate();
+            _characters[i].UI?.MonoUpdate();
+        }
     }
 }

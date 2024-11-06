@@ -12,6 +12,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Lam_nhat.001
+    second: {fileID: 2100000, guid: 1f7d5897448b33649ad30aa2b78ec5d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: White
     second: {fileID: 2100000, guid: 4cb68817a3af904468f60e82565ec1b8, type: 2}
   - first:

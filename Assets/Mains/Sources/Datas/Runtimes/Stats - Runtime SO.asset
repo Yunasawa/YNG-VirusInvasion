@@ -12,3 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6bf4e587a85ab478910cb8ee2e437f, type: 3}
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
+  Stats:
+    Protein: 0
+    Plasma: 0
+    Antigen: 0
+    StemCell: 0
+    Enzyme: 0
+    DNA1: 0
+    DNA2: 0
+    DNA3: 0
+    DNA4: 0
+    DPSLevel: 1
+    MSLevel: 1
+    CapacityLevel: 1
+    RadiusLevel: 1
+    TentacleLevel: 1
+    HPLevel: 1

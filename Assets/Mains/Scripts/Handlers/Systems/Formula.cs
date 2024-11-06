@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using BaseStats = YNL.Bases.Stats;
 
 public static class Formula
 {
+    private static BaseStats _stats => Game.Data.Stats;
+
     public static class Stats
     {
-        private static BaseStats _stats => Game.Data.Stats;
-
         public static List<(ResourceType, uint)> GetDPSRequirement()
         {
             List<(ResourceType, uint)> requirements = new();
@@ -195,6 +196,58 @@ public static class Formula
                 }
             }
             return requirements;
+        }
+
+        public static float GetDPS()
+        {
+            return 16 + _stats.DPSLevel * 0.05f;
+        }
+        public static float GetMS()
+        {
+            float baseValue = 16;
+
+            if (_stats.DPSLevel <= 20) return baseValue + _stats.DPSLevel;
+            else
+            {
+                uint extraLevels = _stats.DPSLevel - 20;
+                return baseValue + 20 + extraLevels * 0.5f;
+            }
+        }
+        public static float GetCapacity()
+        {
+            float baseValue = 4;
+
+            if (_stats.CapacityLevel <= 25) return baseValue + _stats.CapacityLevel * 0.075f;
+            else if (_stats.CapacityLevel > 25 && _stats.CapacityLevel <= 50)
+            {
+                uint extraLevels = _stats.CapacityLevel - 25;
+                return baseValue = 25 * 0.075f + (extraLevels) * 0.055f;
+            }
+            else
+            {
+                uint extraLevels = _stats.CapacityLevel - 50;
+                return baseValue = 25 * (0.075f + 0.055f) + (extraLevels) * 0.035f;
+            }
+        }
+        public static float GetRadius()
+        {
+            float baseValue = 15.5f;
+
+            if (_stats.RadiusLevel <= 20) return baseValue + _stats.RadiusLevel * 0.5f;
+            else
+            {
+                uint extraLevels = _stats.RadiusLevel - 20;
+                return baseValue + 20 * 0.5f + (extraLevels / 2) * 0.2f + ((extraLevels + 1) / 2) * 0.3f;
+            }
+        }
+        public static float GetTentacle()
+        {
+            return 1 + _stats.TentacleLevel;
+        }
+        public static float GetHP()
+        {
+            float baseValue = 22;
+            return baseValue + (_stats.HPLevel / 2) * 0.2f + ((_stats.HPLevel + 1) / 2) * 0.3f;
         }
     }
 }

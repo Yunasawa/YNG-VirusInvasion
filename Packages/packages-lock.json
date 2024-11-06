@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
+    },
     "com.unity.animation.rigging": {
       "version": "1.2.1",
       "depth": 0,
@@ -239,7 +246,7 @@
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       },
-      "hash": "640d8ced5e6d81b7396a588766fdc85e90e0ed94"
+      "hash": "88839a6d45a8ce0dcb66d9b2c9f3dbc6d0c4399f"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

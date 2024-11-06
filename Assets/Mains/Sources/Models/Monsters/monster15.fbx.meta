@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: xanhlama
     second: {fileID: 2100000, guid: 1d2bd00ca8934cd4d8a95e0701e369ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanhlama.002
+    second: {fileID: 2100000, guid: 1d2bd00ca8934cd4d8a95e0701e369ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

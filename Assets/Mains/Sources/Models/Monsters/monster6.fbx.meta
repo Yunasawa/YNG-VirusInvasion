@@ -12,8 +12,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: xanhlacaydam.001
+    second: {fileID: 2100000, guid: 85c93ed2b745cb644a7462a09d84af2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: xanhlama
     second: {fileID: 2100000, guid: a3dea5ad08d0a774eac5e6bb91795db0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanhlama.001
+    second: {fileID: 2100000, guid: 03961d0a32bb293478703da8b11dbef4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

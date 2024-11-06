@@ -4,10 +4,12 @@ using YNL.Extensions.Methods;
 
 public class Tentacle : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
+    public Transform Target;
 
-    [SerializeField] private Transform _targetRig;
+    public Transform TargetRig;
     private TailAnimator2 _tailAnimator;
+
+    [SerializeField] private bool _hasTarget = false;
 
     private void Start()
     {
@@ -16,16 +18,21 @@ public class Tentacle : MonoBehaviour
 
     private void Update()
     {
-        if (!_target.IsNullOrDestroyed())
-        {
-            _targetRig.position = _target.position;
-        }
+        if (_hasTarget) TargetRig.position = Target.position;
     }
 
     public void SetTarget(Transform target)
     {
-        _target = target;
+        Target = target;
+        _hasTarget = true;
         _tailAnimator.TailAnimatorAmount = 0.5f;
         _tailAnimator.Slithery = 0.3f;
+    }
+    public void RemoveTarget()
+    {
+        Target = null;
+        _hasTarget = false;
+        _tailAnimator.TailAnimatorAmount = 1;
+        _tailAnimator.Slithery = 1;
     }
 }

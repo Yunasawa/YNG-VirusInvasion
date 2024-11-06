@@ -616,7 +616,7 @@ MonoBehaviour:
   FixedCycle: 0
   WavingSpeed: 3
   WavingRange: 0.8
-  WavingAxis: {x: 1, y: 1, z: 1}
+  WavingAxis: {x: 0, y: 1, z: 1}
   WavingType: 1
   AlternateWave: 1
   UseWind: 0
@@ -736,7 +736,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   DeflectOnlyCollisions: 1
-  _Editor_Category: 0
+  _Editor_Category: 2
   _Editor_FeaturesCategory: 0
   DrawGizmos: 1
   StartBone: {fileID: 876227276166607040}
@@ -802,8 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27015b56755219d4ca28428c28060c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _targetRig: {fileID: 7226134416146526777}
+  Target: {fileID: 0}
+  TargetRig: {fileID: 7226134416146526777}
 --- !u!1 &8826068038909196585
 GameObject:
   m_ObjectHideFlags: 0

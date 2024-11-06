@@ -16,24 +16,39 @@ public class PlayerEnemyManager : MonoBehaviour
             CharacterManager monster = other.GetComponent<CharacterManager>();
             if (monster.IsCaught) return;
 
-            //foreach (var tentacle in _tentacleSpaces)
-            //{
-            //    if (!tentacle.Value)
-            //    {
-            //        monster.transform.SetParent(tentacle.Key);
-            //        monster.Movement.Enabled = false;
-            //        monster.IsCaught = true;
-            //        _tentacleSpaces[tentacle.Key] = true;
-            //    }
-            //}
-
             KeyValuePair<Tentacle, bool> pair = _tentacleSpaces.FirstOrDefault(i => !i.Value);
             if (!pair.Key.IsNull())
             {
-                monster.Movement.Enabled = false;
+                monster.Movement.Slowdown(true);
                 monster.IsCaught = true;
                 _tentacleSpaces[pair.Key] = true;
                 pair.Key.SetTarget(monster.transform);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Monster")
+        {
+            CharacterManager monster = other.GetComponent<CharacterManager>();
+            if (!monster.IsCaught) return;
+
+            KeyValuePair<Tentacle, bool> pair = new();
+
+            foreach (var tentacle in _tentacleSpaces)
+            {
+                if (tentacle.Key.Target.IsNullOrDestroyed()) continue;
+                if (tentacle.Key.Target.gameObject == monster.gameObject) pair = tentacle;
+            }
+
+            if (!pair.Key.IsNull())
+            {
+                monster.Movement.Slowdown(false);
+                monster.IsCaught = false;
+                _tentacleSpaces[pair.Key] = false;
+                pair.Key.RemoveTarget();
+                pair.Key.TargetRig.localPosition = new(0, 0, -3.65f);
             }
         }
     }

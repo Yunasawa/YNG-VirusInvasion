@@ -1,8 +1,11 @@
+using Sirenix.OdinInspector;
+
 namespace YNL.Bases
 {
     [System.Serializable]
     public class Stats
     {
+        [Title("Resources")]
         public uint Protein;
         public uint Plasma;
         public uint Antigen;
@@ -13,6 +16,7 @@ namespace YNL.Bases
         public uint DNA3;
         public uint DNA4;
 
+        [Title("Levels")]
         public uint DPSLevel;
         public uint MSLevel;
         public uint CapacityLevel;
