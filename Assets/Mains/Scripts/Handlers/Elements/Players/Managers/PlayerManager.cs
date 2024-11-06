@@ -7,4 +7,5 @@ public class PlayerManager : Singleton<PlayerManager>
     public Animator Animator;
 
     public PlayerMovementManager Movement;
+    public PlayerStatsManager Stats;
 }

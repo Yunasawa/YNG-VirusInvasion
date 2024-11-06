@@ -1,4 +1,5 @@
 using UnityEngine;
+using YNL.Bases;
 
 public static class Player
 {
@@ -9,4 +10,5 @@ public static class Player
 
 
     public static PlayerMovementManager Movement => Manager.Movement;
+    public static PlayerStatsManager Stats => Manager.Stats;
 }

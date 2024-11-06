@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class PlayerEnemyManager : MonoBehaviour
         {
             CharacterManager monster = other.GetComponent<CharacterManager>();
             if (monster.IsCaught) return;
+
+            monster.Stats.StartDamage(true);
 
             KeyValuePair<Tentacle, bool> pair = _tentacleSpaces.FirstOrDefault(i => !i.Value);
             if (!pair.Key.IsNull())
@@ -34,12 +37,13 @@ public class PlayerEnemyManager : MonoBehaviour
             CharacterManager monster = other.GetComponent<CharacterManager>();
             if (!monster.IsCaught) return;
 
-            KeyValuePair<Tentacle, bool> pair = new();
+            monster.Stats.StartDamage(false);
 
+            KeyValuePair<Tentacle, bool> pair = new();
             foreach (var tentacle in _tentacleSpaces)
             {
                 if (tentacle.Key.Target.IsNullOrDestroyed()) continue;
-                if (tentacle.Key.Target.gameObject == monster.gameObject) pair = tentacle;
+                if (tentacle.Key.Target.gameObject == monster.gameObject) pair = new(tentacle.Key, tentacle.Value);
             }
 
             if (!pair.Key.IsNull())
@@ -50,6 +54,13 @@ public class PlayerEnemyManager : MonoBehaviour
                 pair.Key.RemoveTarget();
             }
         }
+    }
+
+    [Button]
+    public void AddTentacles(Transform parent)
+    {
+        _tentacleSpaces.Clear();
+        foreach (Transform child in parent) _tentacleSpaces.Add(child.GetComponent<Tentacle>(), false);
     }
 }
 

@@ -7,6 +7,7 @@ public class CharacterUI : MonoBehaviour
 
     [SerializeField] private Transform _billboardCanvas;
     [SerializeField] private Image _healthBar;
+    public Image HealthBar => _healthBar;
 
     private void Awake()
     {
@@ -15,12 +16,10 @@ public class CharacterUI : MonoBehaviour
 
     public void MonoUpdate()
     {
-        Vector3 direction = (Camera.main.transform.position - transform.position).normalized;
+        Vector3 direction = Camera.main.transform.forward;
         Quaternion rotation = Quaternion.LookRotation(direction);
 
         _billboardCanvas.transform.rotation = rotation;
-
-        //_billboardCanvas.LookAt(Camera.main.transform);
     }
 
     public void UpdateHealthBar(uint current, uint max)

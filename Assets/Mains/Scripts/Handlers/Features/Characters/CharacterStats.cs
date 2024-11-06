@@ -1,28 +1,44 @@
+using DG.Tweening;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class CharacterStats : MonoBehaviour
 {
-    [HideInInspector] public CharacterManager Manager;
+    private CharacterManager _manager;
 
     public MonsterStats Stats;
+    public uint CurrentHealth;
 
-    public (uint Current, uint Max) Health;
+    private Tweener _healthBarTween;
 
     private void Awake()
     {
-        Manager = GetComponent<CharacterManager>();
+        _manager = GetComponent<CharacterManager>();
     }
 
     private void Start()
     {
-        Health.Max = Stats.HP;
+        CurrentHealth = Stats.HP;
     }
 
-    public void StartDamage(float dps)
+    public void StartDamage(bool start)
     {
+        if (start)
+        {
+            float time = CurrentHealth / Game.Data.Stats.DPS;
+            _healthBarTween = _manager.UI.HealthBar.DOFillAmount(0, time).SetEase(Ease.Linear);
+        }
+        else
+        {
+            float remainFillAmount = _manager.UI.HealthBar.fillAmount;
+            CurrentHealth = (uint)Mathf.FloorToInt(Stats.HP * remainFillAmount);
 
+            if (_healthBarTween.IsNull()) return;
+            _healthBarTween.Kill();
+            _healthBarTween = null;
+        }
     }
 }
 

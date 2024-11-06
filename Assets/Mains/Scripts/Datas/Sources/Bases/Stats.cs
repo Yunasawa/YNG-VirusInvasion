@@ -24,6 +24,13 @@ namespace YNL.Bases
         public uint TentacleLevel;
         public uint HPLevel;
 
+        [Title("Attributes")]
+        public float DPS;
+        public float MS;
+        public float Capacity;
+        public float Radius;
+        public float Tentacle;
+        public float HP;
     }
 
     public enum ResourceType
@@ -38,4 +45,6 @@ namespace YNL.Bases
         DNA3, 
         DNA4
     }
+
+    public enum AttributeType : byte { DPS, MS, Capacity, Radius, Tentacle, HP }
 }

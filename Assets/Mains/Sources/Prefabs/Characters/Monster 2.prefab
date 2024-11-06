@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 6501282900648560465}
   Movement: {fileID: 6998566953870665433}
+  UI: {fileID: 0}
   IsCaught: 0
 --- !u!114 &6501282900648560465
 MonoBehaviour:
@@ -85,7 +86,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcbb5cb079ca7449857578378aa8576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _experimentMultiplier: 1
+  Manager: {fileID: 0}
+  Stats:
+    Exp: 0
+    Capacity: 0
+    HP: 0
+    MS: 0
+    MaxInstancePerArea: 0
+    SpawningTime: 0
+    Drops:
+      _keys: 
+      _values: 
+    AttackDamage: 0
+    ExperimentMultiplier: 0
 --- !u!114 &6998566953870665433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +125,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5096303004181005416}
     m_Modifications:
+    - target: {fileID: 2828500201647823146, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4675806765533292234, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_Name
       value: Character UIs
@@ -182,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

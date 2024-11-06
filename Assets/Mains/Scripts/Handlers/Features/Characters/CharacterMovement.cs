@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [HideInInspector] public CharacterManager Manager;
-
     [SerializeField] private float _moveSpeed = 1.5f;
     [SerializeField] private float _changeInterval = 2.0f;
     [SerializeField] private float _range = 5.0f;
@@ -12,11 +10,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private float _directionChangeCounter = 0;
 
     [HideInInspector] public bool Enabled = true;
-
-    private void Awake()
-    {
-        Manager = GetComponent<CharacterManager>();
-    }
 
     private void Start()
     {
