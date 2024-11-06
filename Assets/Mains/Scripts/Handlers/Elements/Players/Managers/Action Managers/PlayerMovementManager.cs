@@ -4,6 +4,8 @@ using YNL.Extensions.Methods;
 
 public class PlayerMovementManager : MonoBehaviour
 {
+    [SerializeField] private Transform _playerStack;
+
     private Vector3 _playerStartRotation;
     private float _cameraRotation;
     private Vector2 _axisDirection;
@@ -29,6 +31,8 @@ public class PlayerMovementManager : MonoBehaviour
         MovementInputControl(CurrentMovingSpeed * 60 * Time.deltaTime);
 
         ApplyGravity(EnableGravity);
+
+        SyncStackTransform();
     }
 
     private void ApplyGravity(bool applied)
@@ -84,5 +88,11 @@ public class PlayerMovementManager : MonoBehaviour
         if (Player.Manager.IsNull()) return;
 
         Player.Transform.rotation = Quaternion.Lerp(Player.Transform.rotation, Quaternion.Euler(0, _playerStartRotation.y + degree, 0), speed);
+    }
+
+    public void SyncStackTransform()
+    {
+        _playerStack.position = Player.Transform.position.SetY(0.5f);
+        Player.Transform.localPosition = Vector3.zero;
     }
 }

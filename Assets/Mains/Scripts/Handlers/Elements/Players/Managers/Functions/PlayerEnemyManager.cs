@@ -48,7 +48,6 @@ public class PlayerEnemyManager : MonoBehaviour
                 monster.IsCaught = false;
                 _tentacleSpaces[pair.Key] = false;
                 pair.Key.RemoveTarget();
-                pair.Key.TargetRig.localPosition = new(0, 0, -3.65f);
             }
         }
     }
