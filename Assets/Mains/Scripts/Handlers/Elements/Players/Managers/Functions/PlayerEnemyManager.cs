@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,24 +9,25 @@ using YNL.Utilities.Addons;
 public class PlayerEnemyManager : MonoBehaviour
 {
     public int MaxCatchingAmount = 1;
-    public SerializableDictionary<Tentacle, bool> _tentacleSpaces = new();
+    //public SerializableDictionary<Tentacle, Enemy> _tentacleSpaces = new();
+    public List<Tentacle> Tentacles = new();
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
-            CharacterManager monster = other.GetComponent<CharacterManager>();
+            Enemy monster = other.GetComponent<Enemy>();
             if (monster.IsCaught) return;
 
-            monster.Stats.StartDamage(true);
-
-            KeyValuePair<Tentacle, bool> pair = _tentacleSpaces.FirstOrDefault(i => !i.Value);
-            if (!pair.Key.IsNull())
+            foreach (var tentacle in Tentacles)
             {
+                if (tentacle.HasTarget) continue;
+
+                tentacle.SetTarget(monster);
+
                 monster.Movement.Slowdown(true);
                 monster.IsCaught = true;
-                _tentacleSpaces[pair.Key] = true;
-                pair.Key.SetTarget(monster.transform);
+                monster.Stats.StartDamage(true);
             }
         }
     }
@@ -34,24 +36,18 @@ public class PlayerEnemyManager : MonoBehaviour
     {
         if (other.tag == "Monster")
         {
-            CharacterManager monster = other.GetComponent<CharacterManager>();
+            Enemy monster = other.GetComponent<Enemy>();
             if (!monster.IsCaught) return;
 
-            monster.Stats.StartDamage(false);
-
-            KeyValuePair<Tentacle, bool> pair = new();
-            foreach (var tentacle in _tentacleSpaces)
+            foreach (var tentacle in Tentacles)
             {
-                if (tentacle.Key.Target.IsNullOrDestroyed()) continue;
-                if (tentacle.Key.Target.gameObject == monster.gameObject) pair = new(tentacle.Key, tentacle.Value);
-            }
+                if (!tentacle.HasTarget || tentacle.Target != monster) continue;
 
-            if (!pair.Key.IsNull())
-            {
+                tentacle.RemoveTarget();
+
                 monster.Movement.Slowdown(false);
                 monster.IsCaught = false;
-                _tentacleSpaces[pair.Key] = false;
-                pair.Key.RemoveTarget();
+                monster.Stats.StartDamage(false);
             }
         }
     }
@@ -59,8 +55,7 @@ public class PlayerEnemyManager : MonoBehaviour
     [Button]
     public void AddTentacles(Transform parent)
     {
-        _tentacleSpaces.Clear();
-        foreach (Transform child in parent) _tentacleSpaces.Add(child.GetComponent<Tentacle>(), false);
+        Tentacles.Clear();
+        foreach (Transform child in parent) Tentacles.Add(child.GetComponent<Tentacle>());
     }
 }
-

@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 namespace YNL.Bases
 {
     [System.Serializable]
-    public class Stats
+    public class PlayerStats
     {
         [Title("Resources")]
         public uint Protein;
@@ -17,12 +17,12 @@ namespace YNL.Bases
         public uint DNA4;
 
         [Title("Levels")]
-        public uint DPSLevel;
-        public uint MSLevel;
-        public uint CapacityLevel;
-        public uint RadiusLevel;
-        public uint TentacleLevel;
-        public uint HPLevel;
+        public uint DPSLevel = 1;
+        public uint MSLevel = 1;
+        public uint CapacityLevel = 1;
+        public uint RadiusLevel = 1;
+        public uint TentacleLevel = 1;
+        public uint HPLevel = 1;
 
         [Title("Attributes")]
         public float DPS;

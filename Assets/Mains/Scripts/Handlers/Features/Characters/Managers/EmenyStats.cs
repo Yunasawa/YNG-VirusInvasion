@@ -1,12 +1,15 @@
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
-public class CharacterStats : MonoBehaviour
+public class EmenyStats : MonoBehaviour
 {
-    private CharacterManager _manager;
+    private Enemy _manager;
+
+    public uint ID;
 
     public MonsterStats Stats;
     public uint CurrentHealth;
@@ -15,7 +18,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Awake()
     {
-        _manager = GetComponent<CharacterManager>();
+        _manager = GetComponent<Enemy>();
     }
 
     private void Start()
@@ -28,7 +31,7 @@ public class CharacterStats : MonoBehaviour
         if (start)
         {
             float time = CurrentHealth / Game.Data.Stats.DPS;
-            _healthBarTween = _manager.UI.HealthBar.DOFillAmount(0, time).SetEase(Ease.Linear);
+            _healthBarTween = _manager.UI.HealthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
         }
         else
         {
@@ -40,18 +43,9 @@ public class CharacterStats : MonoBehaviour
             _healthBarTween = null;
         }
     }
-}
-
-[System.Serializable]
-public struct MonsterStats
-{
-    public float Exp;
-    public uint Capacity;
-    public uint HP;
-    public uint MS;
-    public uint MaxInstancePerArea;
-    public float SpawningTime;
-    public SerializableDictionary<ResourceType, uint> Drops;
-    public float AttackDamage;
-    public float ExperimentMultiplier;
+    public void OnKilled()
+    {
+        _manager.OnEnemyKilled?.Invoke();
+        _manager.OnEnemyKilled = null;
+    }
 }

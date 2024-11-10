@@ -5,23 +5,28 @@ using YNL.Extensions.Methods;
 public class Tentacle : MonoBehaviour
 {
     [SerializeField] private Transform _targetPivot;
-    public Transform Target;
+    public Enemy Target;
 
-    [SerializeField] private bool _hasTarget = false;
+    public bool HasTarget = false;
 
     private void LateUpdate()
     {
-        if (_hasTarget) _targetPivot.position = Target.position;
+        if (HasTarget) _targetPivot.position = Target.transform.position;
     }
 
-    public void SetTarget(Transform target)
+    public void SetTarget(Enemy target)
     {
         Target = target;
-        _hasTarget = true;
+        HasTarget = true;
+        target.OnEnemyKilled = OnEnemyKilled;
     }
     public void RemoveTarget()
     {
-        _hasTarget = false;
+        HasTarget = false;
         _targetPivot.localPosition = new Vector3(0.75f, 0, 0);
+    }
+    public void OnEnemyKilled()
+    {
+        RemoveTarget();
     }
 }

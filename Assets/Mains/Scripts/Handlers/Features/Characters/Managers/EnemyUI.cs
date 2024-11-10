@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterUI : MonoBehaviour
+public class EnemyUI : MonoBehaviour
 {
-    [HideInInspector] public CharacterManager Manager;
+    private Enemy _manager;
 
     [SerializeField] private Transform _billboardCanvas;
     [SerializeField] private Image _healthBar;
@@ -11,7 +11,7 @@ public class CharacterUI : MonoBehaviour
 
     private void Awake()
     {
-        Manager = GetComponent<CharacterManager>();
+        _manager = GetComponent<Enemy>();
     }
 
     public void MonoUpdate()

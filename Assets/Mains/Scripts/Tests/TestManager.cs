@@ -3,10 +3,10 @@ using Unity.Jobs;
 using System.Collections.Generic;
 public class TestManager : MonoBehaviour
 {
-    [SerializeField] private CharacterManager _monster;
+    [SerializeField] private Enemy _monster;
     [SerializeField] private int _amount = 10;
 
-    private List<CharacterManager> _characters = new();
+    private List<Enemy> _characters = new();
 
     private void Start()
     {
@@ -14,7 +14,7 @@ public class TestManager : MonoBehaviour
 
         for (byte i = 0; i < _amount; i++)
         {
-            CharacterManager character = Instantiate(_monster, transform);
+            Enemy character = Instantiate(_monster, transform);
             _characters.Add(character);
         }
     }

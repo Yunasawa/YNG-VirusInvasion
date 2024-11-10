@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcbb5cb079ca7449857578378aa8576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
+  ID: 2
   Stats:
     Exp: 0
     Capacity: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
       _values: 
     AttackDamage: 0
     ExperimentMultiplier: 0
+  CurrentHealth: 0
 --- !u!114 &6998566953870665433
 MonoBehaviour:
   m_ObjectHideFlags: 0

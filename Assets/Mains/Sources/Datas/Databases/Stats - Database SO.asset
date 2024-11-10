@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc5f367a61d9d540a9a376d57140ded, type: 3}
+  m_Name: Stats - Database SO
+  m_EditorClassIdentifier: 
+  Stats:
+    Stats:
+      _keys: 000000000100000002000000030000000400000005000000
+      _values:
+      - Exp: 1
+        Capacity: 1
+        HP: 48
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0
+      - Exp: 2
+        Capacity: 1
+        HP: 55
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0
+      - Exp: 3
+        Capacity: 1
+        HP: 60
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0
+      - Exp: 4
+        Capacity: 1
+        HP: 70
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0
+      - Exp: 5
+        Capacity: 1
+        HP: 80
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0
+      - Exp: 6
+        Capacity: 1
+        HP: 85
+        MS: 5
+        MaxInstancePerArea: 0
+        SpawningTime: 0
+        Drops:
+          _keys: 
+          _values: 
+        AttackDamage: 0
+        ExperimentMultiplier: 0

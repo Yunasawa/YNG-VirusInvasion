@@ -8,16 +8,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Enemy;
     public int Amount;
 
-    public Button SpawnButton;
-    public Button DestroyButton;
-    public TMP_InputField InputField;
-
     private void Start()
     {
-        SpawnButton.onClick.AddListener(Spawn);
-        DestroyButton.onClick.AddListener(Destroy);
-        InputField.onValueChanged.AddListener(OnValueChanged);
-        InputField.text = Amount.ToString();
+        
     }
 
     public void Spawn()
@@ -30,6 +23,4 @@ public class EnemySpawner : MonoBehaviour
     {
         this.transform.DestroyAllChildren();
     }
-
-    public void OnValueChanged(string input) => int.TryParse(input, out Amount);
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
-using BaseStats = YNL.Bases.Stats;
+using BaseStats = YNL.Bases.PlayerStats;
 
 public static class Formula
 {
