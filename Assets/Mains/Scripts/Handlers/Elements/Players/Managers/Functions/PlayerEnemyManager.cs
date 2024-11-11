@@ -1,15 +1,10 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using YNL.Extensions.Methods;
-using YNL.Utilities.Addons;
 
 public class PlayerEnemyManager : MonoBehaviour
 {
     public int MaxCatchingAmount = 1;
-    //public SerializableDictionary<Tentacle, Enemy> _tentacleSpaces = new();
     public List<Tentacle> Tentacles = new();
 
     private void OnTriggerEnter(Collider other)

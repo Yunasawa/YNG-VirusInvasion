@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Linq;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
@@ -32,7 +33,7 @@ public class EmenyStats : MonoBehaviour
     {
         if (start)
         {
-            float time = CurrentHealth / Game.Data.Stats.DPS;
+            float time = CurrentHealth / Game.Data.PlayerStats.DPS;
             _healthBarTween = _manager.UI.HealthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
         }
         else
@@ -49,5 +50,6 @@ public class EmenyStats : MonoBehaviour
     {
         _manager.OnEnemyKilled?.Invoke();
         _manager.OnEnemyKilled = null;
+        Player.OnCollectEnemyDrops?.Invoke(Stats.Drops.Select(pair => (pair.Key, pair.Value)).ToArray());
     }
 }

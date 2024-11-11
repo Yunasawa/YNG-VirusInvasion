@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 
 namespace YNL.Bases
 {
@@ -31,20 +32,35 @@ namespace YNL.Bases
         public float Radius;
         public float Tentacle;
         public float HP;
+
+        private void AdjustPositiveValue(ref uint value, int addition)
+        {
+            if (addition >= 0) value += (uint)addition;
+            else
+            {
+                if (addition > value) value = 0;
+                value -= (uint)addition;
+            }
+        }
+        public void AdjustResources(ResourceType type, int amount)
+        {
+            switch (type)
+            {
+                case ResourceType.Protein: AdjustPositiveValue(ref Protein, amount); break;
+                case ResourceType.Plasma: AdjustPositiveValue(ref Plasma, amount); break;
+                case ResourceType.Antigen: AdjustPositiveValue(ref Antigen, amount); break;
+                case ResourceType.StemCell: AdjustPositiveValue(ref StemCell, amount); break;
+                case ResourceType.Enzyme: AdjustPositiveValue(ref Enzyme, amount); break;
+                case ResourceType.DNA1: AdjustPositiveValue(ref DNA1, amount); break;
+                case ResourceType.DNA2: AdjustPositiveValue(ref DNA2, amount); break;
+                case ResourceType.DNA3: AdjustPositiveValue(ref DNA3, amount); break;
+                case ResourceType.DNA4: AdjustPositiveValue(ref DNA4, amount); break;
+                default: throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
+
     }
 
-    public enum ResourceType
-    {
-        Protein, 
-        Plasma, 
-        Antigen, 
-        StemCell, 
-        Enzyme, 
-        DNA1, 
-        DNA2, 
-        DNA3, 
-        DNA4
-    }
-
+    public enum ResourceType : byte { Protein, Plasma, Antigen, StemCell, Enzyme, DNA1, DNA2, DNA3, DNA4 }
     public enum AttributeType : byte { DPS, MS, Capacity, Radius, Tentacle, HP }
 }

@@ -96,8 +96,8 @@ MonoBehaviour:
     MaxInstancePerArea: 0
     SpawningTime: 0
     Drops:
-      _keys: 
-      _values: 
+      _keys: 0001
+      _values: 1400000001000000
     AttackDamage: 0
     ExperimentMultiplier: 0
   CurrentHealth: 0
@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0dedd38eb73977428d1b42d6daaeb94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
   _billboardCanvas: {fileID: 4251909644108366137}
   _healthBar: {fileID: 1108141891448989555}
 --- !u!1001 &7573038739509785516

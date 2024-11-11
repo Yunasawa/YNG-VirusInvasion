@@ -6,7 +6,7 @@ using BaseStats = YNL.Bases.PlayerStats;
 
 public static class Formula
 {
-    private static BaseStats _stats => Game.Data.Stats;
+    private static BaseStats _stats => Game.Data.PlayerStats;
 
     public static class Stats
     {

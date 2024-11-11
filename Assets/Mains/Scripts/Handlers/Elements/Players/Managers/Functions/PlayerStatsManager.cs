@@ -3,6 +3,18 @@ using YNL.Bases;
 
 public class PlayerStatsManager : MonoBehaviour
 {
+    private PlayerStats _stats => Game.Data.PlayerStats;
+
+    private void Awake()
+    {
+        Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnCollectEnemyDrops -= OnCollectEnemyDrops;
+    }
+
     private void Start()
     {
         for (byte i = 0; i < 6; i++) UpdateAttributeValues((AttributeType)i);
@@ -12,12 +24,17 @@ public class PlayerStatsManager : MonoBehaviour
     {
         switch (type)
         {
-            case AttributeType.DPS: Game.Data.Stats.DPS = Formula.Stats.GetDPS(); break;
-            case AttributeType.MS: Game.Data.Stats.MS = Formula.Stats.GetMS(); break;
-            case AttributeType.Capacity: Game.Data.Stats.Capacity = Formula.Stats.GetCapacity(); break;
-            case AttributeType.Radius: Game.Data.Stats.Radius = Formula.Stats.GetRadius(); break;
-            case AttributeType.Tentacle: Game.Data.Stats.Tentacle = Formula.Stats.GetTentacle(); break;
-            case AttributeType.HP: Game.Data.Stats.HP = Formula.Stats.GetHP(); break;
+            case AttributeType.DPS: Game.Data.PlayerStats.DPS = Formula.Stats.GetDPS(); break;
+            case AttributeType.MS: Game.Data.PlayerStats.MS = Formula.Stats.GetMS(); break;
+            case AttributeType.Capacity: Game.Data.PlayerStats.Capacity = Formula.Stats.GetCapacity(); break;
+            case AttributeType.Radius: Game.Data.PlayerStats.Radius = Formula.Stats.GetRadius(); break;
+            case AttributeType.Tentacle: Game.Data.PlayerStats.Tentacle = Formula.Stats.GetTentacle(); break;
+            case AttributeType.HP: Game.Data.PlayerStats.HP = Formula.Stats.GetHP(); break;
         }
+    }
+
+    public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
+    {
+        foreach (var drop in drops) _stats.AdjustResources(drop.type, (int)drop.amount);
     }
 }

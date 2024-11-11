@@ -1,7 +1,7 @@
 using UnityEngine;
 using YNL.Bases;
 
-public static class Player
+public static partial class Player
 {
     public static Transform Transform => Manager.transform;
     public static PlayerManager Manager => PlayerManager.Instance;
