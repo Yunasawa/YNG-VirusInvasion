@@ -8,8 +8,6 @@ public class CameraMovementManager : MonoBehaviour
 
     [SerializeField] private float _followingSpeed = 0.05f;
 
-    [SerializeField] private bool _enableMovement = true;
-    [SerializeField] private bool _isLockRotateLimit = true;
     [SerializeField] private bool _isSmoothMovement = true;
 
     private void Update()

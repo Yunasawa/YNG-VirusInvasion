@@ -11,7 +11,7 @@ public class EnemyPool : MonoBehaviour
     public SerializableDictionary<Transform, Enemy> Enemies = new();
     public List<ObjectPool<Enemy>> EnemyPools = new();
 
-    public Boundary Boundary = new();
+    public Boundary Boundary;
 
     public uint Amount;
 
@@ -44,7 +44,7 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
-    private async UniTaskVoid SpawnEnemyEvery1Second()
+    private async UniTaskVoid SpawnEnemyEvery1Second()  
     {
     }
 }

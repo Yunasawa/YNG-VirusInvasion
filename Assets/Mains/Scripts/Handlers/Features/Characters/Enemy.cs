@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     public void Initialize(Action<Enemy> returnAction)
     {
         this.returnToPool = returnAction;
+        Stats.Initialization();
+        UI.Initialization();
     }
 
     public void MonoUpdate()

@@ -1,9 +1,6 @@
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
-using YNL.Bases;
 using YNL.Extensions.Methods;
-using YNL.Utilities.Addons;
 
 public class EmenyStats : MonoBehaviour
 {
@@ -22,6 +19,11 @@ public class EmenyStats : MonoBehaviour
     }
 
     private void Start()
+    {
+        Initialization();
+    }
+
+    public void Initialization()
     {
         CurrentHealth = Stats.HP;
     }

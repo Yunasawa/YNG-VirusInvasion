@@ -28,6 +28,8 @@ public class PlayerEnemyManager : MonoBehaviour
                 monster.Movement.Slowdown(true);
                 monster.IsCaught = true;
                 monster.Stats.StartDamage(true);
+
+                break;
             }
         }
     }
@@ -48,6 +50,8 @@ public class PlayerEnemyManager : MonoBehaviour
                 monster.Movement.Slowdown(false);
                 monster.IsCaught = false;
                 monster.Stats.StartDamage(false);
+
+                break;
             }
         }
     }

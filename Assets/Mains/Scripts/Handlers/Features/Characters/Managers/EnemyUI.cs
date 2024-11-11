@@ -14,6 +14,16 @@ public class EnemyUI : MonoBehaviour
         _manager = GetComponent<Enemy>();
     }
 
+    private void Start()
+    {
+        Initialization();
+    }
+
+    public void Initialization()
+    {
+        _healthBar.fillAmount = 1;
+    }
+
     public void MonoUpdate()
     {
         Vector3 direction = Camera.main.transform.forward;

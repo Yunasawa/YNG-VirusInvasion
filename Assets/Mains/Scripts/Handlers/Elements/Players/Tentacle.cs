@@ -22,6 +22,7 @@ public class Tentacle : MonoBehaviour
     }
     public void RemoveTarget()
     {
+        Target = null;
         HasTarget = false;
         _targetPivot.localPosition = new Vector3(0.75f, 0, 0);
     }
