@@ -147,6 +147,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.device-simulator.devices": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
@@ -357,6 +364,24 @@
       "source": "git",
       "dependencies": {},
       "hash": "2590c6a14a7230b8571383c379124c32d0712090"
+    },
+    "com.yunasawa.ynl.editor": {
+      "version": "https://github.com/Yunasawa-Studio/YNL-Editor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "2d7c072b66dabe235fa26a48307aaf25e50c4107"
+    },
+    "com.yunasawa.ynl.general-toolbox": {
+      "version": "https://github.com/Yunasawa-Studio/YNL-General-Toolbox.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "14c546b2684aaee0a4b6fade7a838d8ba61f6c2f"
     },
     "com.yunasawa.ynl.utilities": {
       "version": "https://github.com/Yunasawa/YNL-Utilities.git",
