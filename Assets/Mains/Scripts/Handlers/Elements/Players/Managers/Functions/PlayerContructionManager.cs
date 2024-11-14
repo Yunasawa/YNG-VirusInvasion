@@ -26,6 +26,6 @@ public class PlayerConstructionManager : MonoBehaviour
 
     public void InteractWith(bool isEnter, ConstructType type)
     {
-
+        Player.OnInteractWithConstruct?.Invoke(isEnter, type);
     }
 }

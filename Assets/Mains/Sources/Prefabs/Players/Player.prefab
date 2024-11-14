@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 6703271704862199050}
   - component: {fileID: 63828339575866334}
   - component: {fileID: 583426851045947125}
+  - component: {fileID: 130196519419221919}
+  - component: {fileID: 4235690980476676915}
+  - component: {fileID: 4102798334988856503}
   m_Layer: 0
   m_Name: Functions
   m_TagString: Untagged
@@ -95,9 +98,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCatchingAmount: 1
-  _tentacleSpaces:
-    _keys: []
-    _values: 
+  Tentacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &130196519419221919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117385077590781884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d42b880bd106ab44b771b50ec21d72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4235690980476676915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117385077590781884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451a6b1054729cb4f97e21ce8591ebda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4102798334988856503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117385077590781884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c441e32c022ab4d9bc8e1e17eadbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2089213395651182443
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +312,11 @@ MonoBehaviour:
   _dontDestroyOnLoad: 1
   Character: {fileID: 1892525100229381960}
   Animator: {fileID: 0}
-  Movement: {fileID: 0}
+  Movement: {fileID: 5733791778078465674}
+  Stats: {fileID: 130196519419221919}
+  Enemy: {fileID: 583426851045947125}
+  Interacting: {fileID: 4235690980476676915}
+  Construction: {fileID: 4102798334988856503}
 --- !u!143 &1892525100229381960
 CharacterController:
   m_ObjectHideFlags: 0
@@ -327,6 +372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1732453793295156751}
     m_Modifications:
+    - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
+      propertyPath: Curling
+      value: 0.671
+      objectReference: {fileID: 0}
     - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
       propertyPath: WavingAxis.x
       value: 0
@@ -414,6 +463,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1732453793295156751}
     m_Modifications:
     - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
+      propertyPath: Curling
+      value: 0.671
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
       propertyPath: _Editor_Category
       value: 1
       objectReference: {fileID: 0}
@@ -480,12 +533,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1732453793295156751}
     m_Modifications:
     - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
+      propertyPath: Curling
+      value: 0.671
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
       propertyPath: WavingAxis.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2051647567750276830, guid: 820559554038fc04db5f21dab690795f, type: 3}
       propertyPath: _Editor_Category
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5668447388419421293, guid: 820559554038fc04db5f21dab690795f, type: 3}
       propertyPath: m_LocalScale.x

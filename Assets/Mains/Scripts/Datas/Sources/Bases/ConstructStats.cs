@@ -1,6 +1,3 @@
-using Sirenix.OdinInspector;
-using YNL.Extensions.Methods;
-
 namespace YNL.Bases
 {
     [System.Serializable]

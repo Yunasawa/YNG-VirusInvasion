@@ -1,4 +1,7 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
@@ -15,6 +18,9 @@ public class EnemyMovement : MonoBehaviour
 
     [HideInInspector] public bool Enabled = true;
 
+    private bool _isPulling = false;
+    private float _pullingSpeed;
+
     private void Start()
     {
         _manager = GetComponent<Enemy>();
@@ -27,22 +33,31 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!Enabled) return;
 
-        _directionChangeCounter += Time.deltaTime;
-
-        if (_directionChangeCounter >= _changeInterval)
+        if (_isPulling)
         {
-            _targetPosition = GetRandomPosition();
-            _directionChangeCounter = 0.0f;
+            _pullingSpeed = Player.Movement.CurrentMovingSpeed * Formula.Value.GetEnemyPullingSpeedMultiplier(transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, Player.Transform.position, _pullingSpeed);
+            if (Vector3.Distance(transform.position, Player.Transform.position) <= 0.1f) OnPullingDone();
         }
+        else
+        {
+            _directionChangeCounter += Time.deltaTime;
 
-        Vector3 direction = (_targetPosition - transform.localPosition).normalized;
-        if (direction != Vector3.zero)
-        { 
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _moveSpeed * Time.deltaTime);
+            if (_directionChangeCounter >= _changeInterval)
+            {
+                _targetPosition = GetRandomPosition();
+                _directionChangeCounter = 0.0f;
+            }
+
+            Vector3 direction = (_targetPosition - transform.localPosition).normalized;
+            if (direction != Vector3.zero)
+            {
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, _moveSpeed * Time.deltaTime);
+            }
+
+            transform.localPosition += transform.forward * _moveSpeed * Time.deltaTime;
         }
-
-        transform.localPosition += transform.forward * _moveSpeed * Time.deltaTime;
     }
 
     public Vector3 GetRandomPosition()
@@ -54,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
 
         do
         {
-            newPosition = new Vector3(Random.Range(-_range, _range), 0, Random.Range(-_range, _range)) + transform.localPosition;
+            newPosition = new Vector3(UnityEngine.Random.Range(-_range, _range), 0, UnityEngine.Random.Range(-_range, _range)) + transform.localPosition;
             distance = Vector3.Distance(transform.localPosition, newPosition);
             attempts++;
         }
@@ -73,7 +88,12 @@ public class EnemyMovement : MonoBehaviour
 
     public void MoveTowardPlayer()
     {
-        this.transform.DOMove(Player.Transform.position.SetY(1.5f), 0.4f).SetEase(Ease.OutExpo).OnComplete(MoveDown);
+        if (!_manager.IsCaught) return;
+
+        _isPulling = true;
+
+        //this.transform.DOMove(Player.Transform.position.SetY(1.5f), 0.4f).SetEase(Ease.OutExpo).OnComplete(MoveDown);
+        //this.transform.DOMove(Player.Transform.position.SetY(0), 0.4f).SetEase(Ease.OutExpo).OnComplete(Disable);
 
         void MoveDown()
         {
@@ -85,5 +105,11 @@ public class EnemyMovement : MonoBehaviour
             this.gameObject.SetActive(false);
             _manager.Stats.OnKilled();
         }
+    }
+    public void OnPullingDone()
+    {
+        _isPulling = false;
+        this.gameObject.SetActive(false);
+        _manager.Stats.OnKilled();
     }
 }

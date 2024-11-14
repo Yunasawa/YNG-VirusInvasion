@@ -1,4 +1,5 @@
 using UnityEngine;
+using YNL.Extensions.Methods;
 
 public class PlayerInteractingManager : MonoBehaviour
 {

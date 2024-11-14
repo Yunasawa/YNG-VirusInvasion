@@ -250,4 +250,14 @@ public static class Formula
             return baseValue + (_stats.HPLevel / 2) * 0.2f + ((_stats.HPLevel + 1) / 2) * 0.3f;
         }
     }
+
+    public static class Value
+    {
+        public static float GetEnemyPullingSpeedMultiplier(Vector3 enemyPosition)
+        {
+            float distance = Vector3.Distance(enemyPosition, Player.Transform.position);
+            if (distance >= 5) return distance / 3.33f;
+            else return 1.5f;
+        }
+    }
 }
