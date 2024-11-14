@@ -12,73 +12,146 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc5f367a61d9d540a9a376d57140ded, type: 3}
   m_Name: Stats - Database SO
   m_EditorClassIdentifier: 
-  Stats:
+  EnemyStats:
     Stats:
-      _keys: 000000000100000002000000030000000400000005000000
+      _keys: 00000000
       _values:
-      - Exp: 1
-        Capacity: 1
-        HP: 48
-        MS: 5
+      - Exp: 0
+        Capacity: 10
+        HP: 100
+        MS: 1
         MaxInstancePerArea: 0
-        SpawningTime: 0
+        SpawningTime: 1
         Drops:
-          _keys: 
-          _values: 
+          _keys: 0005
+          _values: 0a00000001000000
         AttackDamage: 0
         ExperimentMultiplier: 0
-      - Exp: 2
-        Capacity: 1
-        HP: 55
-        MS: 5
-        MaxInstancePerArea: 0
-        SpawningTime: 0
-        Drops:
-          _keys: 
-          _values: 
-        AttackDamage: 0
-        ExperimentMultiplier: 0
-      - Exp: 3
-        Capacity: 1
-        HP: 60
-        MS: 5
-        MaxInstancePerArea: 0
-        SpawningTime: 0
-        Drops:
-          _keys: 
-          _values: 
-        AttackDamage: 0
-        ExperimentMultiplier: 0
-      - Exp: 4
-        Capacity: 1
-        HP: 70
-        MS: 5
-        MaxInstancePerArea: 0
-        SpawningTime: 0
-        Drops:
-          _keys: 
-          _values: 
-        AttackDamage: 0
-        ExperimentMultiplier: 0
-      - Exp: 5
-        Capacity: 1
-        HP: 80
-        MS: 5
-        MaxInstancePerArea: 0
-        SpawningTime: 0
-        Drops:
-          _keys: 
-          _values: 
-        AttackDamage: 0
-        ExperimentMultiplier: 0
-      - Exp: 6
-        Capacity: 1
-        HP: 85
-        MS: 5
-        MaxInstancePerArea: 0
-        SpawningTime: 0
-        Drops:
-          _keys: 
-          _values: 
-        AttackDamage: 0
-        ExperimentMultiplier: 0
+  ConstructStats:
+    Markets:
+    - Name: Market1
+      Nodes:
+      - Name: Move
+        PercentValue: 0
+        Value: 0.4
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: Capacity
+        PercentValue: 0
+        Value: 5
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: HP
+        PercentValue: 0
+        Value: 1
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: Power
+        PercentValue: 0
+        Value: 5
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: Food
+        PercentValue: 1
+        Value: 2
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: Defence
+        PercentValue: 0
+        Value: 0.5
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+      - Name: Slow
+        PercentValue: 1
+        Value: 0.65
+        PercentCost: 0
+        BaseCost:
+          Type: 1
+          Amount: 3
+        StepCost: 1
+    - Name: Market2
+      Nodes:
+      - Name: Catcher
+        PercentValue: 0
+        Value: 1
+        PercentCost: 0
+        BaseCost:
+          Type: 9
+          Amount: 150
+        StepCost: 0
+      - Name: Hunter
+        PercentValue: 0
+        Value: 0.4
+        PercentCost: 1
+        BaseCost:
+          Type: 0
+          Amount: 23
+        StepCost: 10
+      - Name: Capacity
+        PercentValue: 0
+        Value: 5
+        PercentCost: 1
+        BaseCost:
+          Type: 0
+          Amount: 25
+        StepCost: 25
+      - Name: Shipper
+        PercentValue: 0
+        Value: 1
+        PercentCost: 0
+        BaseCost:
+          Type: 9
+          Amount: 150
+        StepCost: 0
+      - Name: Bring
+        PercentValue: 0
+        Value: 5
+        PercentCost: 1
+        BaseCost:
+          Type: 0
+          Amount: 25
+        StepCost: 5
+    - Name: Market3
+      Nodes:
+      - Name: Power
+        PercentValue: 0
+        Value: 800
+        PercentCost: 0
+        BaseCost:
+          Type: 3
+          Amount: 3
+        StepCost: 1
+      - Name: HP
+        PercentValue: 0
+        Value: 10
+        PercentCost: 0
+        BaseCost:
+          Type: 3
+          Amount: 3
+        StepCost: 1
+      - Name: Regen
+        PercentValue: 0
+        Value: 0.1
+        PercentCost: 0
+        BaseCost:
+          Type: 3
+          Amount: 3
+        StepCost: 1

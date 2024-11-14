@@ -5,5 +5,5 @@ using YNL.Bases;
 [CreateAssetMenu(fileName = "Stats - Runtime SO", menuName = "Virus Invasion/💫 Sources/🚧 Runtime/🎬 Stats SO", order = 0)]
 public class RuntimeStatsSO : ScriptableObject
 {
-    public PlayerStats Stats = new();
+    public PlayerStats PlayerStats = new();
 }

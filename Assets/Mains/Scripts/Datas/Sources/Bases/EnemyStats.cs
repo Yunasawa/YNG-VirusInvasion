@@ -7,7 +7,7 @@ namespace YNL.Bases
     [System.Serializable]
     public class EnemyStats
     {
-        public SerializableDictionary<uint, MonsterStats> Stats = new();
+        public SerializableDictionary<uint, MonsterStatsNode> Stats = new();
 
         [Button]
         public void AddNewStats() => Stats.Add((uint)Stats.Count, new());
@@ -15,7 +15,7 @@ namespace YNL.Bases
 }
 
 [System.Serializable]
-public struct MonsterStats
+public class MonsterStatsNode
 {
     public float Exp;
     public uint Capacity;

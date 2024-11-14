@@ -7,6 +7,11 @@ TagManager:
   - Monster
   - Wall
   - Door
+  - Base
+  - Market
+  - Exchanger
+  - Farm
+  - Quest
   layers:
   - Default
   - TransparentFX

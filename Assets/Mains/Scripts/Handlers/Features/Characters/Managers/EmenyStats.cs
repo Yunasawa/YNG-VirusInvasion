@@ -9,7 +9,7 @@ public class EmenyStats : MonoBehaviour
 
     public uint ID;
 
-    public MonsterStats Stats;
+    public MonsterStatsNode Stats;
     public uint CurrentHealth;
 
     private Tweener _healthBarTween;

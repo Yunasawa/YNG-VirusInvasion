@@ -6,5 +6,5 @@ using YNL.Utilities.Addons;
 public class GameData : MonoBehaviour
 {
     [SerializeField] private RuntimeStatsSO _runtimeStats;
-    public PlayerStats PlayerStats => _runtimeStats.Stats;
+    public PlayerStats PlayerStats => _runtimeStats.PlayerStats;
 }
