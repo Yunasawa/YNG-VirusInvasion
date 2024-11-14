@@ -155,3 +155,125 @@ MonoBehaviour:
           Type: 3
           Amount: 3
         StepCost: 1
+    Exchangers:
+    - Name: Exchanger1
+      Nodes:
+      - From:
+          Type: 1
+          Amount: 1
+        To:
+          Type: 0
+          Amount: 100
+    - Name: Exchanger2
+      Nodes:
+      - From:
+          Type: 4
+          Amount: 8
+        To:
+          Type: 1
+          Amount: 1
+    - Name: Exchanger3
+      Nodes:
+      - From:
+          Type: 6
+          Amount: 1
+        To:
+          Type: 5
+          Amount: 1
+      - From:
+          Type: 7
+          Amount: 1
+        To:
+          Type: 5
+          Amount: 1
+      - From:
+          Type: 8
+          Amount: 1
+        To:
+          Type: 5
+          Amount: 1
+      - From:
+          Type: 1
+          Amount: 1
+        To:
+          Type: 5
+          Amount: 1
+      - From:
+          Type: 0
+          Amount: 1
+        To:
+          Type: 5
+          Amount: 1
+      - From:
+          Type: 5
+          Amount: 1
+        To:
+          Type: 6
+          Amount: 1
+      - From:
+          Type: 5
+          Amount: 1
+        To:
+          Type: 7
+          Amount: 1
+      - From:
+          Type: 5
+          Amount: 1
+        To:
+          Type: 8
+          Amount: 1
+    - Name: Exchanger4
+      Nodes:
+      - From:
+          Type: 4
+          Amount: 75
+        To:
+          Type: 1
+          Amount: 10
+    - Name: Exchanger5
+      Nodes:
+      - From:
+          Type: 9
+          Amount: 100
+        To:
+          Type: 2
+          Amount: 30
+      - From:
+          Type: 9
+          Amount: 100
+        To:
+          Type: 3
+          Amount: 30
+    Farms:
+    - Name: Farm1
+      Nodes:
+      - Name: Income
+        Value: 10
+        PercentCost: 1
+        BaseCost:
+          Type: 0
+          Amount: 20
+        StepCost: 25
+      - Name: Capacity
+        Value: 20
+        PercentCost: 1
+        BaseCost:
+          Type: 0
+          Amount: 20
+        StepCost: 25
+    - Name: Farm2
+      Nodes:
+      - Name: Income
+        Value: 0.2
+        PercentCost: 0
+        BaseCost:
+          Type: 5
+          Amount: 30
+        StepCost: 10
+      - Name: Capacity
+        Value: 10
+        PercentCost: 0
+        BaseCost:
+          Type: 5
+          Amount: 30
+        StepCost: 10

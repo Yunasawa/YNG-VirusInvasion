@@ -52,15 +52,15 @@ namespace YNL.Bases
         {
             switch (type)
             {
-                case ResourceType.Protein: AdjustPositiveValue(ref Protein, amount); break;
-                case ResourceType.Plasma: AdjustPositiveValue(ref Plasma, amount); break;
-                case ResourceType.Antigen: AdjustPositiveValue(ref Antigen, amount); break;
-                case ResourceType.StemCell: AdjustPositiveValue(ref StemCell, amount); break;
-                case ResourceType.Enzyme: AdjustPositiveValue(ref Enzyme, amount); break;
-                case ResourceType.DNA1: AdjustPositiveValue(ref DNA1, amount); break;
-                case ResourceType.DNA2: AdjustPositiveValue(ref DNA2, amount); break;
-                case ResourceType.DNA3: AdjustPositiveValue(ref DNA3, amount); break;
-                case ResourceType.DNA4: AdjustPositiveValue(ref DNA4, amount); break;
+                case ResourceType.Food1: AdjustPositiveValue(ref Protein, amount); break;
+                case ResourceType.Energy1: AdjustPositiveValue(ref Plasma, amount); break;
+                case ResourceType.Energy2: AdjustPositiveValue(ref Antigen, amount); break;
+                case ResourceType.Energy3: AdjustPositiveValue(ref StemCell, amount); break;
+                case ResourceType.Material1: AdjustPositiveValue(ref Enzyme, amount); break;
+                case ResourceType.Gen1: AdjustPositiveValue(ref DNA1, amount); break;
+                case ResourceType.Gen2: AdjustPositiveValue(ref DNA2, amount); break;
+                case ResourceType.Gen3: AdjustPositiveValue(ref DNA3, amount); break;
+                case ResourceType.Gen4: AdjustPositiveValue(ref DNA4, amount); break;
                 case ResourceType.Currency3: AdjustPositiveValue(ref Currency3, amount); break;
                 default: throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -75,6 +75,6 @@ namespace YNL.Bases
         public uint Amount;
     }
 
-    public enum ResourceType : byte { Protein, Plasma, Antigen, StemCell, Enzyme, DNA1, DNA2, DNA3, DNA4, Currency3 }
+    public enum ResourceType : byte { Food1, Energy1, Energy2, Energy3, Material1, Gen1, Gen2, Gen3, Gen4, Currency3 }
     public enum AttributeType : byte { DPS, MS, Capacity, Radius, Tentacle, HP }
 }

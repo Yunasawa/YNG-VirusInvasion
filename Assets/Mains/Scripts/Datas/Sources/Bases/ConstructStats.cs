@@ -8,6 +8,7 @@ namespace YNL.Bases
     {
         public MarketStats[] Markets = new MarketStats[0];
         public ExchangerStats[] Exchangers = new ExchangerStats[0];
+        public FarmStats[] Farms = new FarmStats[0];
     }
 
     [System.Serializable]
@@ -40,5 +41,22 @@ namespace YNL.Bases
     {
         public ResourcesInfo From;
         public ResourcesInfo To;
+    }
+
+    [System.Serializable]
+    public class FarmStats
+    {
+        public string Name;
+        public FarmStatsNode[] Nodes = new FarmStatsNode[0];
+    }
+
+    [System.Serializable]
+    public class FarmStatsNode
+    {
+        public string Name;
+        public float Value;
+        public bool PercentCost;
+        public ResourcesInfo BaseCost;
+        public float StepCost;
     }
 }
