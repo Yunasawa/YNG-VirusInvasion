@@ -7,7 +7,7 @@ public class PlayerEnemyManager : MonoBehaviour
     public int MaxCatchingAmount = 1;
     public List<Tentacle> Tentacles = new();
 
-    private void OnTriggerEnter(Collider other)
+    public void OnInteractionEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
@@ -29,7 +29,7 @@ public class PlayerEnemyManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnInteractionExit(Collider other)
     {
         if (other.tag == "Monster")
         {

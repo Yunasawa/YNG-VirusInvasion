@@ -11,4 +11,7 @@ public static partial class Player
 
     public static PlayerMovementManager Movement => Manager.Movement;
     public static PlayerStatsManager Stats => Manager.Stats;
+    public static PlayerEnemyManager Enemy => Manager.Enemy;
+    public static PlayerInteractingManager Interacting => Manager.Interacting;
+    public static PlayerConstructionManager Construction => Manager.Construction;
 }

@@ -25,7 +25,6 @@ public class EnemyPool : MonoBehaviour
 
     private void Update()
     {
-        MDebug.Log($"{EnemyPools[0].activeObjects.Count} - {EnemyPools[0].pooledObjects.Count}");
         foreach (var enemy in EnemyPools[0].activeObjects) enemy.MonoUpdate();
 
         if (EnemyPools[0].activeObjects.Count < Amount)
