@@ -2,12 +2,12 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEnemyManager : MonoBehaviour
+public class PlayerEnemyManager : ColliderTriggerListener
 {
     public int MaxCatchingAmount = 1;
     public List<Tentacle> Tentacles = new();
 
-    public void OnInteractionEnter(Collider other)
+    public void OnColliderTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
@@ -29,7 +29,12 @@ public class PlayerEnemyManager : MonoBehaviour
         }
     }
 
-    public void OnInteractionExit(Collider other)
+    public override void OnColliderTriggerStay(Collider other)
+    {
+        OnColliderTriggerEnter(other);
+    }
+
+    public override void OnColliderTriggerExit(Collider other)
     {
         if (other.tag == "Monster")
         {

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc7c6997692ac14fa5cf7efd8f71dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Market 1
   Type: 1
 --- !u!135 &-215192607356552170
 SphereCollider:

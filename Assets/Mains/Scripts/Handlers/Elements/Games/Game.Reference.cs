@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public static class Game
+public static partial class Game
 {
     public static GameManager Manager => GameManager.Instance;
     public static GameInput Input => Manager.Input;
