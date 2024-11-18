@@ -19,6 +19,8 @@ namespace YNL.Bases
     public class MarketStatsNode
     {
         public string Name;
+        public string Key;
+        public string Description;
         public bool PercentValue;
         public float Value;
         public bool PercentCost;
@@ -51,6 +53,7 @@ namespace YNL.Bases
     public class FarmStatsNode
     {
         public string Name;
+        public string Description;
         public float Value;
         public bool PercentCost;
         public ResourcesInfo BaseCost;

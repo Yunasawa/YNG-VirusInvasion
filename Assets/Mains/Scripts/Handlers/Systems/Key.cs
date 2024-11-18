@@ -1,0 +1,23 @@
+public static class Key
+{
+    public static class Stats
+    {
+        public const string ExtraSpeed = "ExtraSpeed";
+        public const string ExtraCapacity = "ExtraCapacity";
+        public const string ExtraHP = "ExtraHP";
+        public const string ExtraDPS = "ExtraDPS";
+        public const string ExtraResources = "ExtraResources";
+        public const string ExtraDefence = "ExtraDefence";
+        public const string ExtraSlowdown = "ExtraSlowdown";
+
+        public const string HunterCellAmount = "HunterCellAmount";
+        public const string HunterCellDPS = "HunterCellDPS";
+        public const string HunterCellCapacity = "HunterCellCapacity";
+        public const string DeliveryCellAmount = "DeliveryCellAmount";
+        public const string DeliveryCellCapacity = "DeliveryCellCapacity";
+
+        public const string ExtraDPSBoost = "ExtraDPSBoost";
+        public const string ExtraHPBoost = "ExtraHPBoost";
+        public const string ExtraRegenBoost = "ExtraRegenBoost";
+    }
+}

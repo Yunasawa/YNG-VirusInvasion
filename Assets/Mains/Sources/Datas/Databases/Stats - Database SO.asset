@@ -29,9 +29,11 @@ MonoBehaviour:
         ExperimentMultiplier: 0
   ConstructStats:
     Markets:
-    - Name: Market1
+    - Name: Market 1
       Nodes:
       - Name: Move
+        Key: ExtraSpeed
+        Description: Extra speed from $1 to $2
         PercentValue: 0
         Value: 0.4
         PercentCost: 0
@@ -40,6 +42,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Capacity
+        Key: ExtraCapacity
+        Description: Extra capacity from $1 to $2
         PercentValue: 0
         Value: 5
         PercentCost: 0
@@ -48,6 +52,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: HP
+        Key: ExtraHP
+        Description: Extra HP from $1 to $2
         PercentValue: 0
         Value: 1
         PercentCost: 0
@@ -56,6 +62,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Power
+        Key: ExtraDPS
+        Description: Extra DPS from $1 to $2
         PercentValue: 0
         Value: 5
         PercentCost: 0
@@ -64,6 +72,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Food
+        Key: ExtraResources
+        Description: All resources collected increase from $1% to $2%
         PercentValue: 1
         Value: 2
         PercentCost: 0
@@ -72,6 +82,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Defence
+        Key: ExtraDefence
+        Description: Decrease enemy damage by from $1 to $2
         PercentValue: 0
         Value: 0.5
         PercentCost: 0
@@ -80,6 +92,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Slow
+        Key: ExtraSlowdown
+        Description: Decrease enemy attacking speed from $1% to $2%
         PercentValue: 1
         Value: 0.65
         PercentCost: 0
@@ -87,9 +101,11 @@ MonoBehaviour:
           Type: 1
           Amount: 3
         StepCost: 1
-    - Name: Market2
+    - Name: Market 2
       Nodes:
       - Name: Catcher
+        Key: HunterCellAmount
+        Description: Increase number of hunter cell from $1 to $2
         PercentValue: 0
         Value: 1
         PercentCost: 0
@@ -98,6 +114,8 @@ MonoBehaviour:
           Amount: 150
         StepCost: 0
       - Name: Hunter
+        Key: HunterCellDPS
+        Description: Increase DPS of hunter cell from $1 to $2
         PercentValue: 0
         Value: 0.4
         PercentCost: 1
@@ -106,6 +124,8 @@ MonoBehaviour:
           Amount: 23
         StepCost: 10
       - Name: Capacity
+        Key: HunterCellCapacity
+        Description: Increase capacity of hunter cell from $1 to $2
         PercentValue: 0
         Value: 5
         PercentCost: 1
@@ -114,6 +134,8 @@ MonoBehaviour:
           Amount: 25
         StepCost: 25
       - Name: Shipper
+        Key: DeliveryCellAmount
+        Description: Increase number of delivery cell from $1 to $2
         PercentValue: 0
         Value: 1
         PercentCost: 0
@@ -122,6 +144,8 @@ MonoBehaviour:
           Amount: 150
         StepCost: 0
       - Name: Bring
+        Key: DeliveryCellCapacity
+        Description: Increasecapacity of delivery cell from $1 to $2
         PercentValue: 0
         Value: 5
         PercentCost: 1
@@ -129,9 +153,11 @@ MonoBehaviour:
           Type: 0
           Amount: 25
         StepCost: 5
-    - Name: Market3
+    - Name: Market 3
       Nodes:
       - Name: Power
+        Key: ExtraDPSBoost
+        Description: Extra DPS from $1 to $2
         PercentValue: 0
         Value: 800
         PercentCost: 0
@@ -140,6 +166,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: HP
+        Key: ExtraHPBoost
+        Description: Increate HP from $1 to $2
         PercentValue: 0
         Value: 10
         PercentCost: 0
@@ -148,6 +176,8 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
       - Name: Regen
+        Key: ExtraRegenBoost
+        Description: Increase health regenerating point from $1 to $2
         PercentValue: 0
         Value: 0.1
         PercentCost: 0
@@ -156,7 +186,7 @@ MonoBehaviour:
           Amount: 3
         StepCost: 1
     Exchangers:
-    - Name: Exchanger1
+    - Name: Exchanger 1
       Nodes:
       - From:
           Type: 1
@@ -164,7 +194,7 @@ MonoBehaviour:
         To:
           Type: 0
           Amount: 100
-    - Name: Exchanger2
+    - Name: Exchanger 2
       Nodes:
       - From:
           Type: 4
@@ -172,7 +202,7 @@ MonoBehaviour:
         To:
           Type: 1
           Amount: 1
-    - Name: Exchanger3
+    - Name: Exchanger 3
       Nodes:
       - From:
           Type: 6
@@ -222,7 +252,7 @@ MonoBehaviour:
         To:
           Type: 8
           Amount: 1
-    - Name: Exchanger4
+    - Name: Exchanger 4
       Nodes:
       - From:
           Type: 4
@@ -230,7 +260,7 @@ MonoBehaviour:
         To:
           Type: 1
           Amount: 10
-    - Name: Exchanger5
+    - Name: Exchanger 5
       Nodes:
       - From:
           Type: 9
@@ -248,6 +278,7 @@ MonoBehaviour:
     - Name: Farm1
       Nodes:
       - Name: Income
+        Description: Increase income per minute fro $1 to $2
         Value: 10
         PercentCost: 1
         BaseCost:
@@ -255,6 +286,7 @@ MonoBehaviour:
           Amount: 20
         StepCost: 25
       - Name: Capacity
+        Description: Increase aximum capacity from $1 to $2
         Value: 20
         PercentCost: 1
         BaseCost:
@@ -264,6 +296,7 @@ MonoBehaviour:
     - Name: Farm2
       Nodes:
       - Name: Income
+        Description: Increase income per minute fro $1 to $2
         Value: 0.2
         PercentCost: 0
         BaseCost:
@@ -271,6 +304,7 @@ MonoBehaviour:
           Amount: 30
         StepCost: 10
       - Name: Capacity
+        Description: Increase aximum capacity from $1 to $2
         Value: 10
         PercentCost: 0
         BaseCost:

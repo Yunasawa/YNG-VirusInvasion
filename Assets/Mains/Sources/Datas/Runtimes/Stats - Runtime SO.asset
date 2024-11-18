@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6bf4e587a85ab478910cb8ee2e437f, type: 3}
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
-  Stats:
+  PlayerStats:
     Protein: 0
     Plasma: 0
     Antigen: 0
@@ -22,9 +22,64 @@ MonoBehaviour:
     DNA2: 0
     DNA3: 0
     DNA4: 0
+    Currency3: 0
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1
     RadiusLevel: 1
     TentacleLevel: 1
     HPLevel: 1
+    DPS: 0
+    MS: 0
+    Capacity: 0
+    Radius: 0
+    Tentacle: 0
+    HP: 0
+    ExtraStatsLevel:
+      _keys:
+      - ExtraSpeed
+      - ExtraCapacity
+      - ExtraHP
+      - ExtraDPS
+      - ExtraResources
+      - ExtraDefence
+      - ExtraSlowdown
+      - HunterCellAmount
+      - HunterCellDPS
+      - HunterCellCapacity
+      - DeliveryCellAmount
+      - DeliveryCellCapacity
+      - ExtraDPSBoost
+      - ExtraHPBoost
+      - ExtraRegenBoost
+      _values:
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0
+      - Level: 0
+        Step: 0

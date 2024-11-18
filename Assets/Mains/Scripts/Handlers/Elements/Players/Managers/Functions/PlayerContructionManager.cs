@@ -4,35 +4,32 @@ using YNL.Extensions.Methods;
 
 public class PlayerConstructionManager : ColliderTriggerListener
 {
+    public ConstructManager Construct;
+
     public override void OnColliderTriggerEnter(Collider other)
     {
-        if (other.tag.IsStringEqualToEnum<ConstructType>(out ConstructType type))
+        if (other.tag.IsStringEqualToEnum(out ConstructType type))
         {
             if (Vector3.Distance(other.transform.position, Player.Transform.position) > 7) return;
 
             ConstructManager manager = other.GetComponent<ConstructManager>();
-            InteractWith(true, ConstructType.Base, manager);
+            InteractWith(true, manager.Type, manager);
         }
-    }
-
-    public override void OnColliderTriggerStay(Collider other)
-    {
-        OnColliderTriggerEnter(other);
     }
 
     public override void OnColliderTriggerExit(Collider other)
     {
-        if (other.tag.IsStringEqualToEnum<ConstructType>(out ConstructType type))
+        if (other.tag.IsStringEqualToEnum(out ConstructType type))
         {
             ConstructManager manager = other.GetComponent<ConstructManager>();
-            InteractWith(false, ConstructType.Base, manager);
+            InteractWith(false, manager.Type, manager);
         }
     }
 
     public void InteractWith(bool isEnter, ConstructType type, ConstructManager manager)
     {
+        Construct = isEnter ? manager : null;
         Player.OnInteractWithConstruct?.Invoke(isEnter, type);
-        MDebug.Log(manager.Name);
     }
 }
 

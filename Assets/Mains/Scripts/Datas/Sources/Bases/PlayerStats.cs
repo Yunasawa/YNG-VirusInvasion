@@ -1,11 +1,21 @@
 using Sirenix.OdinInspector;
 using System;
+using YNL.Utilities.Addons;
 
 namespace YNL.Bases
 {
     [System.Serializable]
     public class PlayerStats
     {
+        [System.Serializable] public class ExtraStats
+        {
+            public uint Level;
+            public float Step;
+
+            public float Value => Step * Level;
+            public float NextValue => Step * (Level + 1);
+        }
+
         [FoldoutGroup("Resources")] public uint Protein;
         [FoldoutGroup("Resources")] public uint Plasma;
         [FoldoutGroup("Resources")] public uint Antigen;
@@ -31,13 +41,13 @@ namespace YNL.Bases
         [FoldoutGroup("Attributes")] public float Tentacle;
         [FoldoutGroup("Attributes")] public float HP;
 
-        [FoldoutGroup("Extras")] public float ExtraDPS;
-        [FoldoutGroup("Extras")] public float ExtraMS;
-        [FoldoutGroup("Extras")] public float ExtraCapacity;
-        [FoldoutGroup("Extras")] public float ExtraHP;
-        [FoldoutGroup("Extras")] public float ExtraResources;
-        [FoldoutGroup("Extras")] public float ExtraDefense;
-        [FoldoutGroup("Extras")] public float ExtraSlow;
+        public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
+
+        [Button]
+        public void Assign()
+        {
+            ExtraStatsLevel.Add(Key.Stats.ExtraSpeed, new()); ExtraStatsLevel.Add(Key.Stats.ExtraCapacity, new()); ExtraStatsLevel.Add(Key.Stats.ExtraHP, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDPS, new()); ExtraStatsLevel.Add(Key.Stats.ExtraResources, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDefence, new()); ExtraStatsLevel.Add(Key.Stats.ExtraSlowdown, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellAmount, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellDPS, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellCapacity, new()); ExtraStatsLevel.Add(Key.Stats.DeliveryCellAmount, new()); ExtraStatsLevel.Add(Key.Stats.DeliveryCellCapacity, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDPSBoost, new()); ExtraStatsLevel.Add(Key.Stats.ExtraHPBoost, new()); ExtraStatsLevel.Add(Key.Stats.ExtraRegenBoost, new());
+        }
 
         private void AdjustPositiveValue(ref uint value, int addition)
         {
