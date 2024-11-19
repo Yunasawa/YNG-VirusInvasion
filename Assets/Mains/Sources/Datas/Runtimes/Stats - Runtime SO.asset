@@ -13,16 +13,9 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    Protein: 0
-    Plasma: 0
-    Antigen: 0
-    StemCell: 0
-    Enzyme: 0
-    DNA1: 0
-    DNA2: 0
-    DNA3: 0
-    DNA4: 0
-    Currency3: 0
+    Resources:
+      _keys: 00010203040506070809
+      _values: 480300002a0000000000000000000000000000000000000000000000000000000000000000000000
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1

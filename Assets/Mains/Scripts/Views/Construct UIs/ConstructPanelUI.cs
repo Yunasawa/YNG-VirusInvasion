@@ -21,7 +21,7 @@ public class ConstructPanelUI : MonoBehaviour
 
     private void Start()
     {
-        foreach (var window in Windows) window.Value.gameObject.SetActive(false);
+        foreach (var window in Windows) window.Value?.gameObject.SetActive(false);
         Panel.SetActive(false);
 
         _closeButton.onClick.AddListener(CloseCurrentWindow);
@@ -37,6 +37,7 @@ public class ConstructPanelUI : MonoBehaviour
         if (Windows.ContainsKey(type))
         {
             Windows[type].gameObject.SetActive(isOpen);
+            if (isOpen) Windows[type].OnOpenWindow();
             Panel.SetActive(isOpen);
         }
         if (isOpen) CurrentWindow = type;

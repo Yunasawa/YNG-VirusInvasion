@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class ConstructWindowUI : MonoBehaviour
+public abstract class ConstructWindowUI : MonoBehaviour
 {
     public ConstructType Type;
+
+    public abstract void OnOpenWindow();
 }

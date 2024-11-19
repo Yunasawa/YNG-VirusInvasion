@@ -4,7 +4,7 @@ using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 
-public class MarketWindowUI : MonoBehaviour
+public class MarketWindowUI : ConstructWindowUI
 {
     private MarketStats _stats;
 
@@ -23,10 +23,15 @@ public class MarketWindowUI : MonoBehaviour
         Player.OnExtraStatsUpdate -= OnExtraStatsUpdate;
     }
 
-    private void Start()
-    {
-        if (Player.Construction.Construct.Type != ConstructType.Market) return;
+    //private void Start()
+    //{
+    //    if (Player.Construction.Construct.Type != ConstructType.Market) return;
 
+    //    Initialize();
+    //}
+
+    public override void OnOpenWindow()
+    {
         Initialize();
     }
 
