@@ -33,6 +33,7 @@ MonoBehaviour:
       Nodes:
       - Name: Move
         Key: ExtraSpeed
+        Evolution: 1
         Description: Extra speed from $1 to $2
         PercentValue: 0
         Value: 0.4
@@ -43,6 +44,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Capacity
         Key: ExtraCapacity
+        Evolution: 1
         Description: Extra capacity from $1 to $2
         PercentValue: 0
         Value: 5
@@ -53,6 +55,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: HP
         Key: ExtraHP
+        Evolution: 1
         Description: Extra HP from $1 to $2
         PercentValue: 0
         Value: 1
@@ -63,6 +66,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Power
         Key: ExtraDPS
+        Evolution: 1
         Description: Extra DPS from $1 to $2
         PercentValue: 0
         Value: 5
@@ -73,6 +77,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Food
         Key: ExtraResources
+        Evolution: 1
         Description: All resources collected increase from $1% to $2%
         PercentValue: 1
         Value: 2
@@ -83,6 +88,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Defence
         Key: ExtraDefence
+        Evolution: 2
         Description: Decrease enemy damage by from $1 to $2
         PercentValue: 0
         Value: 0.5
@@ -93,6 +99,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Slow
         Key: ExtraSlowdown
+        Evolution: 2
         Description: Decrease enemy attacking speed from $1% to $2%
         PercentValue: 1
         Value: 0.65
@@ -105,6 +112,7 @@ MonoBehaviour:
       Nodes:
       - Name: Catcher
         Key: HunterCellAmount
+        Evolution: 1
         Description: Increase number of hunter cell from $1 to $2
         PercentValue: 0
         Value: 1
@@ -115,6 +123,7 @@ MonoBehaviour:
         StepCost: 0
       - Name: Hunter
         Key: HunterCellDPS
+        Evolution: 1
         Description: Increase DPS of hunter cell from $1 to $2
         PercentValue: 0
         Value: 0.4
@@ -125,6 +134,7 @@ MonoBehaviour:
         StepCost: 10
       - Name: Capacity
         Key: HunterCellCapacity
+        Evolution: 1
         Description: Increase capacity of hunter cell from $1 to $2
         PercentValue: 0
         Value: 5
@@ -135,6 +145,7 @@ MonoBehaviour:
         StepCost: 25
       - Name: Shipper
         Key: DeliveryCellAmount
+        Evolution: 1
         Description: Increase number of delivery cell from $1 to $2
         PercentValue: 0
         Value: 1
@@ -145,6 +156,7 @@ MonoBehaviour:
         StepCost: 0
       - Name: Bring
         Key: DeliveryCellCapacity
+        Evolution: 1
         Description: Increasecapacity of delivery cell from $1 to $2
         PercentValue: 0
         Value: 5
@@ -157,6 +169,7 @@ MonoBehaviour:
       Nodes:
       - Name: Power
         Key: ExtraDPSBoost
+        Evolution: 1
         Description: Extra DPS from $1 to $2
         PercentValue: 0
         Value: 800
@@ -167,6 +180,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: HP
         Key: ExtraHPBoost
+        Evolution: 1
         Description: Increate HP from $1 to $2
         PercentValue: 0
         Value: 10
@@ -177,6 +191,7 @@ MonoBehaviour:
         StepCost: 1
       - Name: Regen
         Key: ExtraRegenBoost
+        Evolution: 1
         Description: Increase health regenerating point from $1 to $2
         PercentValue: 0
         Value: 0.1

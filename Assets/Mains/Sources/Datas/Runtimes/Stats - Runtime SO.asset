@@ -29,12 +29,12 @@ MonoBehaviour:
     RadiusLevel: 1
     TentacleLevel: 1
     HPLevel: 1
-    DPS: 0
-    MS: 0
-    Capacity: 0
-    Radius: 0
-    Tentacle: 0
-    HP: 0
+    DPS: 16.05
+    MS: 17
+    Capacity: 4.075
+    Radius: 16
+    Tentacle: 2
+    HP: 22.3
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
@@ -54,32 +54,32 @@ MonoBehaviour:
       - ExtraRegenBoost
       _values:
       - Level: 0
-        Step: 0
+        Step: 0.4
       - Level: 0
-        Step: 0
+        Step: 5
       - Level: 0
-        Step: 0
+        Step: 1
       - Level: 0
-        Step: 0
+        Step: 5
       - Level: 0
-        Step: 0
+        Step: 2
       - Level: 0
-        Step: 0
+        Step: 0.5
       - Level: 0
-        Step: 0
+        Step: 0.65
       - Level: 0
-        Step: 0
+        Step: 1
       - Level: 0
-        Step: 0
+        Step: 0.4
       - Level: 0
-        Step: 0
+        Step: 5
       - Level: 0
-        Step: 0
+        Step: 1
       - Level: 0
-        Step: 0
+        Step: 5
       - Level: 0
-        Step: 0
+        Step: 800
       - Level: 0
-        Step: 0
+        Step: 10
       - Level: 0
-        Step: 0
+        Step: 0.1

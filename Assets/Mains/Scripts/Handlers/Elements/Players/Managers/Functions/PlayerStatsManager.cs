@@ -8,11 +8,13 @@ public class PlayerStatsManager : MonoBehaviour
     private void Awake()
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
+        Construct.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
     }
 
     private void OnDestroy()
     {
         Player.OnCollectEnemyDrops -= OnCollectEnemyDrops;
+        Construct.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
     }
 
     private void Start()
@@ -36,5 +38,11 @@ public class PlayerStatsManager : MonoBehaviour
     public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
     {
         foreach (var drop in drops) _stats.AdjustResources(drop.type, (int)drop.amount);
+    }
+
+    private void OnExtraStatsLevelUp(string key)
+    {
+        _stats.ExtraStatsLevel[key].Level++;
+        Player.OnExtraStatsUpdate?.Invoke(key);
     }
 }

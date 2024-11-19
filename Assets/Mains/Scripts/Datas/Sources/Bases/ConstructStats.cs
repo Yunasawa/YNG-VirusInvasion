@@ -20,6 +20,7 @@ namespace YNL.Bases
     {
         public string Name;
         public string Key;
+        public byte Evolution = 1;
         public string Description;
         public bool PercentValue;
         public float Value;

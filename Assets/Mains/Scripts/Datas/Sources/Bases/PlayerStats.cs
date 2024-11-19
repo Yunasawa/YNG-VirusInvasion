@@ -43,12 +43,6 @@ namespace YNL.Bases
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
 
-        [Button]
-        public void Assign()
-        {
-            ExtraStatsLevel.Add(Key.Stats.ExtraSpeed, new()); ExtraStatsLevel.Add(Key.Stats.ExtraCapacity, new()); ExtraStatsLevel.Add(Key.Stats.ExtraHP, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDPS, new()); ExtraStatsLevel.Add(Key.Stats.ExtraResources, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDefence, new()); ExtraStatsLevel.Add(Key.Stats.ExtraSlowdown, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellAmount, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellDPS, new()); ExtraStatsLevel.Add(Key.Stats.HunterCellCapacity, new()); ExtraStatsLevel.Add(Key.Stats.DeliveryCellAmount, new()); ExtraStatsLevel.Add(Key.Stats.DeliveryCellCapacity, new()); ExtraStatsLevel.Add(Key.Stats.ExtraDPSBoost, new()); ExtraStatsLevel.Add(Key.Stats.ExtraHPBoost, new()); ExtraStatsLevel.Add(Key.Stats.ExtraRegenBoost, new());
-        }
-
         private void AdjustPositiveValue(ref uint value, int addition)
         {
             if (addition >= 0) value += (uint)addition;

@@ -4,4 +4,5 @@ public class ConstructManager : MonoBehaviour
 {
     public string Name;
     public ConstructType Type;
+    public byte Evolution = 1;
 }

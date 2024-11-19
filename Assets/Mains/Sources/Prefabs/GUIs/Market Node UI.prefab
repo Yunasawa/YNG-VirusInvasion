@@ -417,9 +417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name
-
-    Bonus Info
+  m_text: 'Extra capacity from $1 to $2
 
     Level'
   m_isRightToLeft: 0

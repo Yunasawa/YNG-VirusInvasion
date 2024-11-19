@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
@@ -7,20 +8,34 @@ public class MarketNodeUI : MonoBehaviour
 {
     private PlayerStats _playerStats => Game.Data.PlayerStats;
     private ConstructStats _constructionStat => Game.Data.ConstructStats;
+    private MarketStatsNode _node;
 
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private TextMeshProUGUI _buttonLabel;
     [SerializeField] private Button _button;
 
+    private void Start()
+    {
+        _button.onClick.AddListener(OnButtonClicked);
+    }
+
     public void Initialize(MarketStatsNode node)
     {
-        (float from, float to) stats = new(_playerStats.ExtraStatsLevel[node.Key].Value, _playerStats.ExtraStatsLevel[node.Key].NextValue);
-        _text.text = $"{node.Name}\n{node.Description.ReplaceStats(stats.from, stats.to)}\nLevel: {_playerStats.ExtraStatsLevel[node.Key].Level}";
+        _node = node;
+        UpdateNode();
+    } 
+
+    public void UpdateNode()
+    {
+        PlayerStats.ExtraStats extraStats = _playerStats.ExtraStatsLevel[_node.Key];
+        (float from, float to) stats = new(extraStats.Value, extraStats.NextValue);
+        (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");
+        _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
     }
 
     private void OnButtonClicked()
     {
-        
+        Construct.OnExtraStatsLevelUp?.Invoke(_node.Key);
     }
 }

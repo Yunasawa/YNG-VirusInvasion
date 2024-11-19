@@ -7,7 +7,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
     public int MaxCatchingAmount = 1;
     public List<Tentacle> Tentacles = new();
 
-    public void OnColliderTriggerEnter(Collider other)
+    public override void OnColliderTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
