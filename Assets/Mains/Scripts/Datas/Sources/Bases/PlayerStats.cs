@@ -16,16 +16,7 @@ namespace YNL.Bases
             public float NextValue => Step * (Level + 1);
         }
 
-        [FoldoutGroup("Resources")] public uint Protein;
-        [FoldoutGroup("Resources")] public uint Plasma;
-        [FoldoutGroup("Resources")] public uint Antigen;
-        [FoldoutGroup("Resources")] public uint StemCell;
-        [FoldoutGroup("Resources")] public uint Enzyme;
-        [FoldoutGroup("Resources")] public uint DNA1;
-        [FoldoutGroup("Resources")] public uint DNA2;
-        [FoldoutGroup("Resources")] public uint DNA3;
-        [FoldoutGroup("Resources")] public uint DNA4;
-        [FoldoutGroup("Resources")] public uint Currency3;
+        public SerializableDictionary<ResourceType, uint> Resources = new();
 
         [FoldoutGroup("Levels")] public uint DPSLevel = 1;
         [FoldoutGroup("Levels")] public uint MSLevel = 1;
@@ -43,30 +34,13 @@ namespace YNL.Bases
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
 
-        private void AdjustPositiveValue(ref uint value, int addition)
-        {
-            if (addition >= 0) value += (uint)addition;
-            else
-            {
-                if (addition > value) value = 0;
-                value -= (uint)addition;
-            }
-        }
         public void AdjustResources(ResourceType type, int amount)
         {
-            switch (type)
+            if(amount >= 0) Resources[type] += (uint)amount;
+            else
             {
-                case ResourceType.Food1: AdjustPositiveValue(ref Protein, amount); break;
-                case ResourceType.Energy1: AdjustPositiveValue(ref Plasma, amount); break;
-                case ResourceType.Energy2: AdjustPositiveValue(ref Antigen, amount); break;
-                case ResourceType.Energy3: AdjustPositiveValue(ref StemCell, amount); break;
-                case ResourceType.Material1: AdjustPositiveValue(ref Enzyme, amount); break;
-                case ResourceType.Gen1: AdjustPositiveValue(ref DNA1, amount); break;
-                case ResourceType.Gen2: AdjustPositiveValue(ref DNA2, amount); break;
-                case ResourceType.Gen3: AdjustPositiveValue(ref DNA3, amount); break;
-                case ResourceType.Gen4: AdjustPositiveValue(ref DNA4, amount); break;
-                case ResourceType.Currency3: AdjustPositiveValue(ref Currency3, amount); break;
-                default: throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                if (amount > Resources[type]) Resources[type] = 0;
+                Resources[type] -= (uint)amount;
             }
         }
 

@@ -22,7 +22,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 monster.Movement.Slowdown(true);
                 monster.IsCaught = true;
-                monster.Stats.StartDamage(true);
+                monster.UI.UpdateHealthBar(true);
 
                 break;
             }
@@ -49,7 +49,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 monster.Movement.Slowdown(false);
                 monster.IsCaught = false;
-                monster.Stats.StartDamage(false);
+                monster.UI.UpdateHealthBar(false);
 
                 break;
             }
