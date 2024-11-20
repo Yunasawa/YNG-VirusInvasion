@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 
 public class ExchangerWindowUI : ConstructWindowUI
 {
@@ -10,16 +11,22 @@ public class ExchangerWindowUI : ConstructWindowUI
     [SerializeField] private ExchangerNodeUI _nodePrefab;
     [SerializeField] private Transform _nodeContainer;
 
-    //private void Start()
-    //{
-    //    if (Player.Construction.Construct.Type != ConstructType.Exchanger) return;
+    [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
 
-    //    Initialize();
-    //}
+    private void Awake()
+    {
+        View.OnUpdateResourceNodes += UpdateResourceNodes;
+    }
+
+    private void OnDestroy()
+    {
+        View.OnUpdateResourceNodes -= UpdateResourceNodes;
+    }
 
     public override void OnOpenWindow()
     {
         Initialize();
+        UpdateResourceNodes();
     }
 
     private void Initialize()
@@ -32,6 +39,14 @@ public class ExchangerWindowUI : ConstructWindowUI
         {
             var node = Instantiate(_nodePrefab, _nodeContainer);
             node.Initialize(stat);
+        }
+    }
+
+    private void UpdateResourceNodes()
+    {
+        foreach (var pair in _resourceNodes)
+        {
+            pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
         }
     }
 }

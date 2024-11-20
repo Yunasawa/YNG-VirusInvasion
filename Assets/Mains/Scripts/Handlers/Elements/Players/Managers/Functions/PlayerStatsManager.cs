@@ -8,12 +8,14 @@ public class PlayerStatsManager : MonoBehaviour
     private void Awake()
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
+        Player.OnExchangeResources += OnExchangeResources;
         Construct.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
     }
 
     private void OnDestroy()
     {
         Player.OnCollectEnemyDrops -= OnCollectEnemyDrops;
+        Player.OnExchangeResources -= OnExchangeResources;
         Construct.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
     }
 
@@ -44,5 +46,12 @@ public class PlayerStatsManager : MonoBehaviour
     {
         _stats.ExtraStatsLevel[key].Level++;
         Player.OnExtraStatsUpdate?.Invoke(key);
+    }
+
+    private void OnExchangeResources(ResourcesInfo from, ResourcesInfo to)
+    {
+        Game.Data.PlayerStats.Resources[from.Type] -= from.Amount;
+        Game.Data.PlayerStats.Resources[to.Type] += to.Amount;
+        View.OnUpdateResourceNodes?.Invoke();
     }
 }

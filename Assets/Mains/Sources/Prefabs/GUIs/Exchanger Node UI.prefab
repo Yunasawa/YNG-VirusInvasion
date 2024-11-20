@@ -748,6 +748,7 @@ MonoBehaviour:
   _cost2: {fileID: 4320419388209243013}
   _icon2: {fileID: 1892746430608199417}
   _button: {fileID: 3454225839647926930}
+  _buttonText: {fileID: 8220659497306199995}
 --- !u!1 &8385163644157053862
 GameObject:
   m_ObjectHideFlags: 0

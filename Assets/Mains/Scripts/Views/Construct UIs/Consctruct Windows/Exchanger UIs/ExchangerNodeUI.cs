@@ -14,6 +14,7 @@ public class ExchangerNodeUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _cost2;
     [SerializeField] private Image _icon2;
     [SerializeField] private Button _button;
+    [SerializeField] private TextMeshProUGUI _buttonText;
 
     public void Initialize(ExchangerStatsNode node)
     {
@@ -22,10 +23,20 @@ public class ExchangerNodeUI : MonoBehaviour
         _cost1.text = node.From.Amount.ToString();
         _cost2.text = node.To.Amount.ToString();
         _button.onClick.AddListener(OnButtonClicked);
+        if (Game.Data.PlayerStats.Resources[node.From.Type] >= node.From.Amount)
+        {
+            _button.interactable = true;
+            _buttonText.color = Color.white;
+        }
+        else
+        {
+            _button.interactable = false;
+            _buttonText.color = Color.red;
+        }
     }
 
     private void OnButtonClicked()
     {
-
+        Player.OnExchangeResources?.Invoke(_node.From, _node.To);
     }
 }
