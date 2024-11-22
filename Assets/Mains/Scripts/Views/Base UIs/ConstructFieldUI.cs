@@ -9,6 +9,7 @@ public class ConstructFieldUI : MonoBehaviour
     public TextMeshProUGUI ConstructTitle;
 
     private ConstructType _currentConstructType;
+    private ConstructManager _currentConstructManager;
 
     private void Awake()
     {
@@ -26,7 +27,7 @@ public class ConstructFieldUI : MonoBehaviour
         ConstructButton.onClick.AddListener(OnOpenConstructWindow);
     }
 
-    private void OnInteractWithConstruct(bool isEnter, ConstructType type)
+    private void OnInteractWithConstruct(bool isEnter, ConstructType type, ConstructManager manager)
     {
         if (type == ConstructType.Base) return;
         if (type == ConstructType.Quest) return;
@@ -34,6 +35,7 @@ public class ConstructFieldUI : MonoBehaviour
         if (isEnter)
         {
             _currentConstructType = type;
+            _currentConstructManager = manager;
             ConstructButton.gameObject.SetActive(true);
             ConstructTitle.text = type.ToString();
         }
@@ -41,12 +43,12 @@ public class ConstructFieldUI : MonoBehaviour
         {
             ConstructButton.gameObject.SetActive(false);
 
-            View.OnOpenConstructWindow?.Invoke(_currentConstructType, false);
+            View.OnOpenConstructWindow?.Invoke(_currentConstructType, false, _currentConstructManager);
         }
     }
 
     private void OnOpenConstructWindow()
     {
-        View.OnOpenConstructWindow?.Invoke(_currentConstructType, true);
+        View.OnOpenConstructWindow?.Invoke(_currentConstructType, true, _currentConstructManager);
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Utilities.Addons;
@@ -8,6 +9,7 @@ public class ConstructPanelUI : MonoBehaviour
     public SerializableDictionary<ConstructType, ConstructWindowUI> Windows = new();
     public ConstructType CurrentWindow;
     [SerializeField] private Button _closeButton;
+    [SerializeField] private TextMeshProUGUI _panelTitle;
 
     private void Awake()
     {
@@ -29,10 +31,10 @@ public class ConstructPanelUI : MonoBehaviour
 
     private void CloseCurrentWindow()
     {
-        View.OnOpenConstructWindow(CurrentWindow, false);
+        View.OnOpenConstructWindow?.Invoke(CurrentWindow, false, null);
     }
 
-    public void OnOpenConstructWindow(ConstructType type, bool isOpen)
+    public void OnOpenConstructWindow(ConstructType type, bool isOpen, ConstructManager manager)
     {
         if (Windows.ContainsKey(type))
         {
@@ -40,6 +42,10 @@ public class ConstructPanelUI : MonoBehaviour
             if (isOpen) Windows[type].OnOpenWindow();
             Panel.SetActive(isOpen);
         }
-        if (isOpen) CurrentWindow = type;
+        if (isOpen)
+        {
+            CurrentWindow = type;
+            _panelTitle.text = manager.Name;
+        }
     }
 }

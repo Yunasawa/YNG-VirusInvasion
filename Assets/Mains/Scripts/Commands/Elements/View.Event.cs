@@ -2,7 +2,7 @@ using System;
 
 public static partial class View
 {
-    public static Action<ConstructType, bool> OnOpenConstructWindow { get; set; }
+    public static Action<ConstructType, bool, ConstructManager> OnOpenConstructWindow { get; set; }
     public static Action OnUpdateResourceNodes { get; set; }
 }
 

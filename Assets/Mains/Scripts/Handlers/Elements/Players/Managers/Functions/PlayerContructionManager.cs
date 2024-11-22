@@ -29,7 +29,7 @@ public class PlayerConstructionManager : ColliderTriggerListener
     public void InteractWith(bool isEnter, ConstructType type, ConstructManager manager)
     {
         Construct = isEnter ? manager : null;
-        Player.OnInteractWithConstruct?.Invoke(isEnter, type);
+        Player.OnInteractWithConstruct?.Invoke(isEnter, type, manager);
     }
 }
 
