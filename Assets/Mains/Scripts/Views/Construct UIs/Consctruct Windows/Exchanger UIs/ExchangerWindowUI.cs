@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -12,6 +13,10 @@ public class ExchangerWindowUI : ConstructWindowUI
     [SerializeField] private Transform _nodeContainer;
 
     [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
+    [SerializeField] private ResourceNodeUI _resourceNode;
+    [SerializeField] private Transform _resourceContainer;
+    private List<ResourceType> _resourceTypes = new();
+    private bool _isCreate = false;
 
     private void Awake()
     {
@@ -25,21 +30,38 @@ public class ExchangerWindowUI : ConstructWindowUI
 
     public override void OnOpenWindow()
     {
-        Initialize();
-        UpdateResourceNodes();
+        CreateNodes();
     }
 
-    private void Initialize()
+    private void CreateNodes()
     {
         _stats = Array.Find(Game.Data.ConstructStats.Exchangers, x => x.Name == Player.Construction.Construct.Name);
 
+        _resourceTypes.Clear();
         _nodeContainer.DestroyAllChildren();
 
         foreach (var stat in _stats.Nodes)
         {
             var node = Instantiate(_nodePrefab, _nodeContainer);
             node.Initialize(stat);
+
+            if (!_resourceTypes.Contains(stat.From.Type)) _resourceTypes.Add(stat.From.Type);
+            if (!_resourceTypes.Contains(stat.To.Type)) _resourceTypes.Add(stat.To.Type);
         }
+
+        if (!_isCreate)
+        {
+            _resourceNodes.Clear();
+            _resourceContainer.DestroyAllChildren();
+
+            foreach (var type in _resourceTypes)
+            {
+                var node = Instantiate(_resourceNode, _resourceContainer);
+                node.UpdateNode(Game.Data.PlayerStats.Resources[type]);
+                _resourceNodes.Add(type, node);
+            }
+        }
+        else UpdateResourceNodes();
     }
 
     private void UpdateResourceNodes()
