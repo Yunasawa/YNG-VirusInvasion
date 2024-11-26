@@ -47,6 +47,7 @@ namespace YNL.Bases
     public class FarmStats
     {
         public string Name;
+        public ResourceType Resource;
         public FarmStatsNode[] Nodes = new FarmStatsNode[0];
     }
 

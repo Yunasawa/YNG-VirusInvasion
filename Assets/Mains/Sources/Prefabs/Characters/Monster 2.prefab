@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5498635478872922736}
   - component: {fileID: 6501282900648560465}
   - component: {fileID: 6998566953870665433}
+  - component: {fileID: 2501895713393097378}
   m_Layer: 0
   m_Name: Monster 2
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +58,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.35, z: 0}
 --- !u!114 &5498635478872922736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats: {fileID: 6501282900648560465}
   Movement: {fileID: 6998566953870665433}
-  UI: {fileID: 0}
+  UI: {fileID: 2501895713393097378}
   IsCaught: 0
 --- !u!114 &6501282900648560465
 MonoBehaviour:
@@ -90,13 +91,13 @@ MonoBehaviour:
   Stats:
     Exp: 0
     Capacity: 0
-    HP: 0
+    HP: 48
     MS: 0
     MaxInstancePerArea: 0
     SpawningTime: 0
     Drops:
-      _keys: 
-      _values: 
+      _keys: 00
+      _values: 0a000000
     AttackDamage: 0
     ExperimentMultiplier: 0
   CurrentHealth: 0
@@ -118,6 +119,20 @@ MonoBehaviour:
   _targetPosition: {x: 0, y: 0, z: 0}
   _directionChangeCounter: 0
   Enabled: 1
+--- !u!114 &2501895713393097378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289936246817221057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0dedd38eb73977428d1b42d6daaeb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _billboardCanvas: {fileID: 6484505477348360188}
+  _healthBar: {fileID: 7898380291029637558}
 --- !u!1001 &687477234416107954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.75
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -224,6 +239,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
   m_PrefabInstance: {fileID: 687477234416107954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7898380291029637558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7212171618289637380, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 687477234416107954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3240857934584239453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f3755cf2ee24e44fa414d092a88ab06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1f3755cf2ee24e44fa414d092a88ab06, type: 3}
       propertyPath: m_LocalPosition.z

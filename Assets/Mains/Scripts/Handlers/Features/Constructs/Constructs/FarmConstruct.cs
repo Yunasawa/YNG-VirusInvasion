@@ -1,0 +1,49 @@
+using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
+using UnityEngine;
+
+public class FarmConstruct : MonoBehaviour
+{
+    private DateTime _previousTime;
+    private DateTime _currentTime;
+
+    [SerializeField] private Transform _canvas;
+    public GameObject ResourcePing; 
+
+    private void Start()
+    {
+        _previousTime = DateTime.Now;
+    }
+
+    private void Update()
+    {
+        Vector3 direction = Camera.main.transform.forward;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        _canvas.transform.rotation = rotation;
+    }
+
+    public int DeltaSecond()
+    {
+        _currentTime = DateTime.Now;
+        TimeSpan delta = _currentTime - _previousTime;
+        return (int)delta.TotalSeconds;
+    }
+
+    public void OnWindowClose()
+    {
+        _previousTime = DateTime.Now;
+    }
+
+    public void StartCountToPing(int second)
+    {
+        CountToPingTask(second).Forget();
+    }
+
+    private async UniTask CountToPingTask(int second)
+    {
+        await UniTask.WaitForSeconds(second);
+        ResourcePing.SetActive(true);
+    }
+}

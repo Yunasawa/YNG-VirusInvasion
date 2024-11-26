@@ -31,6 +31,7 @@ public class ConstructPanelUI : MonoBehaviour
 
     private void CloseCurrentWindow()
     {
+        Windows[CurrentWindow].OnCloseWindow();
         View.OnOpenConstructWindow?.Invoke(CurrentWindow, false, null);
     }
 

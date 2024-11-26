@@ -33,6 +33,7 @@ namespace YNL.Bases
         [FoldoutGroup("Attributes")] public float HP;
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
+        public SerializableDictionary<string, ExtraStats> FarmStatsLevel = new();
 
         public void AdjustResources(ResourceType type, int amount)
         {

@@ -9,14 +9,16 @@ public class PlayerStatsManager : MonoBehaviour
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
         Player.OnExchangeResources += OnExchangeResources;
-        Construct.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
+        Player.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
+        Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
     }
 
     private void OnDestroy()
     {
         Player.OnCollectEnemyDrops -= OnCollectEnemyDrops;
         Player.OnExchangeResources -= OnExchangeResources;
-        Construct.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
+        Player.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
+        Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
     }
 
     private void Start()
@@ -46,6 +48,12 @@ public class PlayerStatsManager : MonoBehaviour
     {
         _stats.ExtraStatsLevel[key].Level++;
         Player.OnExtraStatsUpdate?.Invoke(key);
+    }
+
+    private void OnFarmStatsLevelUp(string key)
+    {
+        _stats.FarmStatsLevel[key].Level++;
+        Player.OnFarmStatsUpdate?.Invoke(key);
     }
 
     private void OnExchangeResources(ResourcesInfo from, ResourcesInfo to)

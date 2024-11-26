@@ -35,6 +35,6 @@ public class MarketNodeUI : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        Construct.OnExtraStatsLevelUp?.Invoke(_node.Key);
+        Player.OnExtraStatsLevelUp?.Invoke(_node.Key);
     }
 }

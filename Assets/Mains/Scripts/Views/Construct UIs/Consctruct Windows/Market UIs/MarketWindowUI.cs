@@ -23,13 +23,6 @@ public class MarketWindowUI : ConstructWindowUI
         Player.OnExtraStatsUpdate -= OnExtraStatsUpdate;
     }
 
-    //private void Start()
-    //{
-    //    if (Player.Construction.Construct.Type != ConstructType.Market) return;
-
-    //    Initialize();
-    //}
-
     public override void OnOpenWindow()
     {
         Initialize();
