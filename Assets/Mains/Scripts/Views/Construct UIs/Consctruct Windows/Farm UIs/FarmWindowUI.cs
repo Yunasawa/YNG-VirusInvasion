@@ -1,14 +1,13 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using TMPro;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 
 public class FarmWindowUI : ConstructWindowUI
 {
@@ -22,6 +21,8 @@ public class FarmWindowUI : ConstructWindowUI
     [SerializeField] private TextMeshProUGUI _capacityText;
     [SerializeField] private Image _capacityBar;
     [SerializeField] private Button _collectButton;
+
+    [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
 
     private Dictionary<string, FarmNodeUI> _nodes = new();
 
@@ -40,11 +41,13 @@ public class FarmWindowUI : ConstructWindowUI
     private void Awake()
     {
         Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
+        View.OnUpdateResourceNodes += UpdateResourceNodes;
     }
 
     private void OnDestroy()
     {
         Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
+        View.OnUpdateResourceNodes -= UpdateResourceNodes;
     }
 
     private void Start()
@@ -63,6 +66,8 @@ public class FarmWindowUI : ConstructWindowUI
         GenerateResource(_resourceDelta.ResourceAmount);
         _timeCounter -= _resourceDelta.RemainTime;
         StartCountingDown(true);
+
+        UpdateResourceNodes();
     }
 
     public override void OnCloseWindow()
@@ -148,5 +153,10 @@ public class FarmWindowUI : ConstructWindowUI
     private void CollectResouce()
     {
         if (true) _farm.ResourcePing.SetActive(false);
+    }
+
+    private void UpdateResourceNodes()
+    {
+        foreach (var pair in _resourceNodes) pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
     }
 }

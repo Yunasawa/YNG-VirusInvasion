@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 
 public class MarketWindowUI : ConstructWindowUI
 {
@@ -11,21 +12,27 @@ public class MarketWindowUI : ConstructWindowUI
     [SerializeField] private MarketNodeUI _nodePrefab;
     [SerializeField] private Transform _nodeContainer;
 
+    [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
+
     private Dictionary<string, MarketNodeUI> _nodes = new();
 
     private void Awake()
     {
         Player.OnExtraStatsUpdate += OnExtraStatsUpdate;
+        View.OnUpdateResourceNodes += UpdateResourceNodes;
     }
 
     private void OnDestroy()
     {
         Player.OnExtraStatsUpdate -= OnExtraStatsUpdate;
+        View.OnUpdateResourceNodes -= UpdateResourceNodes;
     }
 
     public override void OnOpenWindow()
     {
         Initialize();
+
+        UpdateResourceNodes();
     }
 
     private void Initialize()
@@ -48,5 +55,10 @@ public class MarketWindowUI : ConstructWindowUI
     private void OnExtraStatsUpdate(string key)
     {
         if (_nodes.ContainsKey(key)) _nodes[key].UpdateNode();
+    }
+
+    private void UpdateResourceNodes()
+    {
+        foreach (var pair in _resourceNodes) pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
     }
 }
