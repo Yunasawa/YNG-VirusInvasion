@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -250,7 +251,6 @@ public static class Formula
             return baseValue + (_stats.HPLevel / 2) * 0.2f + ((_stats.HPLevel + 1) / 2) * 0.3f;
         }
     }
-
     public static class Value
     {
         public static float GetEnemyPullingSpeedMultiplier(Vector3 enemyPosition)
@@ -258,6 +258,32 @@ public static class Formula
             float distance = Vector3.Distance(enemyPosition, Player.Transform.position);
             if (distance >= 5) return distance / 3.33f;
             else return 1.5f;
+        }
+    }
+    public static class Upgrade
+    {
+        public static (ResourceType, int) GetMarketUpgradeCost(MarketStatsNode node, int level)
+        {
+            (ResourceType Type, int Amount) cost = new();
+
+            cost.Type = node.BaseCost.Type;
+            if (node.PercentCost) cost.Amount = Mathf.RoundToInt(node.BaseCost.Amount * Mathf.Pow(1 + node.StepCost.Percent(), level - 1));
+            else cost.Amount = Mathf.RoundToInt(node.BaseCost.Amount + node.StepCost * level);
+
+            return cost;
+        }
+        public static (ResourceType, int)[] GetMarketEvoluteCost(int evolution)
+        {
+            return new (ResourceType, int)[] { new(ResourceType.Gen1, 100) };
+        }
+        public static (ResourceType, int) GetFarmUpgradeCost(FarmStatsNode node, int level)
+        {
+            (ResourceType Type, int Amount) cost = new();
+
+            cost.Type = node.BaseCost.Type;
+            cost.Amount = Mathf.RoundToInt(node.BaseCost.Amount * Mathf.Pow(1 + node.StepCost.Percent(), level));
+
+            return cost;
         }
     }
 }

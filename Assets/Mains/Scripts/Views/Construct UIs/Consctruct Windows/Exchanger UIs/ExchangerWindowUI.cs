@@ -20,12 +20,14 @@ public class ExchangerWindowUI : ConstructWindowUI
 
     private void Awake()
     {
-        View.OnUpdateResourceNodes += UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
     }
 
     private void OnDestroy()
     {
-        View.OnUpdateResourceNodes -= UpdateResourceNodes;
+        Player.OnChangeResources -= UpdateResourceNodes;
+        Player.OnChangeResources -= UpdateResourceNodes;
     }
 
     public override void OnOpenWindow()

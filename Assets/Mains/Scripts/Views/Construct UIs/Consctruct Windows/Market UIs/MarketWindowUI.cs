@@ -19,13 +19,15 @@ public class MarketWindowUI : ConstructWindowUI
     private void Awake()
     {
         Player.OnExtraStatsUpdate += OnExtraStatsUpdate;
-        View.OnUpdateResourceNodes += UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
     }
 
     private void OnDestroy()
     {
         Player.OnExtraStatsUpdate -= OnExtraStatsUpdate;
-        View.OnUpdateResourceNodes -= UpdateResourceNodes;
+        Player.OnChangeResources -= UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
     }
 
     public override void OnOpenWindow()

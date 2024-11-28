@@ -41,13 +41,13 @@ public class FarmWindowUI : ConstructWindowUI
     private void Awake()
     {
         Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
-        View.OnUpdateResourceNodes += UpdateResourceNodes;
+        Player.OnChangeResources += UpdateResourceNodes;
     }
 
     private void OnDestroy()
     {
         Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
-        View.OnUpdateResourceNodes -= UpdateResourceNodes;
+        Player.OnChangeResources -= UpdateResourceNodes;
     }
 
     private void Start()
@@ -68,6 +68,7 @@ public class FarmWindowUI : ConstructWindowUI
         StartCountingDown(true);
 
         UpdateResourceNodes();
+        UpdateCapacityStatus();
     }
 
     public override void OnCloseWindow()
@@ -76,7 +77,6 @@ public class FarmWindowUI : ConstructWindowUI
         _farm.StartCountToPing(_timeCounter);
         StartCountingDown(false);
     }
-
     private void CreateNodes()
     {
         _stats = Array.Find(Game.Data.ConstructStats.Farms, x => x.Name == Construct.CurrentConstruct.Substring(0, 5));
@@ -91,12 +91,10 @@ public class FarmWindowUI : ConstructWindowUI
             if (!_nodes.ContainsKey(stat.Name)) _nodes.Add(stat.Name, node);
         }
     }
-
     private void OnFarmStatsUpdate(string key)
     {
         if (_nodes.ContainsKey(key)) _nodes[key].UpdateNode();
     }
-
     private void StartCountingDown(bool isStart)
     {
         _isWindowStillOpen = isStart;
@@ -111,7 +109,6 @@ public class FarmWindowUI : ConstructWindowUI
             }
         }
     }
-
     private async UniTaskVoid CountDownTask()
     {
         while (true)
@@ -136,7 +133,6 @@ public class FarmWindowUI : ConstructWindowUI
             catch (OperationCanceledException) { break; }
         }
     }
-
     private (float, int) CalculateResourceDelta()
     {
         int deltaSecond = _farm.DeltaSecond();
@@ -144,19 +140,35 @@ public class FarmWindowUI : ConstructWindowUI
         int remainSecond = deltaSecond % _timePoint;
         return new(resourceAmount, remainSecond);
     }
-
     private void GenerateResource(float amount)
     {
-        float resources = amount * _statsValue;
-    }
+        if (_farm.CurrentResources >= _farm.Capacity) return;
 
+        _farm.CurrentResources += Mathf.RoundToInt(amount * _statsValue);
+        _farm.CurrentResources.Limit(0, _farm.Capacity);
+
+        UpdateCapacityStatus();
+    }
     private void CollectResouce()
     {
-        if (true) _farm.ResourcePing.SetActive(false);
-    }
+        if (_farm.CurrentResources > 0) _farm.ResourcePing.SetActive(false);
 
+        Player.OnCollectFarmResources?.Invoke(_farm.GeneratedResource, _farm.CurrentResources);
+
+        _farm.CurrentResources = 0;
+
+        UpdateCapacityStatus();
+    }
     private void UpdateResourceNodes()
     {
         foreach (var pair in _resourceNodes) pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
+    }
+    private void UpdateCapacityStatus()
+    {
+        if (_farm.Capacity != 0)
+        {
+            _capacityBar.fillAmount = (float)_farm.CurrentResources / _farm.Capacity;
+            _capacityText.text = $"{_farm.CurrentResources}/{_farm.Capacity}";
+        }
     }
 }

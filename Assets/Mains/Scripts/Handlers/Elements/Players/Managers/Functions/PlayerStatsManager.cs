@@ -1,5 +1,6 @@
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnExchangeResources += OnExchangeResources;
         Player.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
         Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
+        Player.OnCollectFarmResources += OnCollectFarmResources;
+        Player.OnConsumeResources += OnConsumeResources;
     }
 
     private void OnDestroy()
@@ -19,6 +22,8 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnExchangeResources -= OnExchangeResources;
         Player.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
         Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
+        Player.OnCollectFarmResources -= OnCollectFarmResources;
+        Player.OnConsumeResources -= OnConsumeResources;
     }
 
     private void Start()
@@ -42,6 +47,7 @@ public class PlayerStatsManager : MonoBehaviour
     public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
     {
         foreach (var drop in drops) _stats.AdjustResources(drop.type, (int)drop.amount);
+        Player.OnChangeResources?.Invoke();
     }
 
     private void OnExtraStatsLevelUp(string key)
@@ -60,6 +66,19 @@ public class PlayerStatsManager : MonoBehaviour
     {
         Game.Data.PlayerStats.Resources[from.Type] -= from.Amount;
         Game.Data.PlayerStats.Resources[to.Type] += to.Amount;
-        View.OnUpdateResourceNodes?.Invoke();
+        Player.OnChangeResources?.Invoke();
+        Player.OnChangeResources?.Invoke();
+    }
+
+    private void OnCollectFarmResources(ResourceType type, int amount)
+    {
+        Game.Data.PlayerStats.Resources[type] += (uint)amount;
+        Player.OnChangeResources?.Invoke();
+    }
+
+    private void OnConsumeResources(ResourceType type, int amount)
+    {
+        Game.Data.PlayerStats.Resources[type] -= (uint)amount;
+        Player.OnChangeResources?.Invoke();
     }
 }

@@ -2,14 +2,27 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 using UnityEngine;
+using YNL.Bases;
 
 public class FarmConstruct : MonoBehaviour
 {
     private DateTime _previousTime;
     private DateTime _currentTime;
 
+    private ConstructManager _manager;
+
     [SerializeField] private Transform _canvas;
-    public GameObject ResourcePing; 
+    public GameObject ResourcePing;
+
+    public int CurrentResources;
+    public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[_manager.Name]["Capacity"].Value);
+
+    public ResourceType GeneratedResource;
+
+    private void Awake()
+    {
+        _manager = GetComponent<ConstructManager>();
+    }
 
     private void Start()
     {

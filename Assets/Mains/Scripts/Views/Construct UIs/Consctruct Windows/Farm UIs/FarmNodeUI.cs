@@ -14,6 +14,19 @@ public class FarmNodeUI : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _buttonLabel;
 
+    private (ResourceType Type, int Amount) _upgradeCost = new();
+    private bool _enoughResource = false;
+
+    private void Awake()
+    {
+        Player.OnChangeResources += UpdateNode;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnChangeResources -= UpdateNode;
+    }
+
     private void Start()
     {
         _button.onClick.AddListener(OnButtonClicked);
@@ -31,10 +44,19 @@ public class FarmNodeUI : MonoBehaviour
         (float from, float to) stats = new(extraStats.Value, extraStats.NextValue);
         (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");
         _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
+
+        _upgradeCost = Formula.Upgrade.GetFarmUpgradeCost(_node, (int)extraStats.Level);
+
+        _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
+
+        _buttonLabel.text = $"{_upgradeCost.Amount}\n{_upgradeCost.Type}";
+        _buttonLabel.color = _enoughResource ? Color.white : Color.red;
+        _button.interactable = _enoughResource;
     }
 
     private void OnButtonClicked()
     {
+        Player.OnConsumeResources?.Invoke(_upgradeCost.Type, _upgradeCost.Amount);
         Player.OnFarmStatsLevelUp?.Invoke(_node.Name);
     }
 }

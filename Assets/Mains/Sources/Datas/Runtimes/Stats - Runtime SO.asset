@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerStats:
     Resources:
       _keys: 00010203040506070809
-      _values: 19d112008b0000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
+      _values: 38040000600000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1
@@ -121,9 +121,9 @@ MonoBehaviour:
         - Capacity
         - Income
         _values:
-        - Level: 0
+        - Level: 1
           Step: 20
-        - Level: 0
+        - Level: 1
           Step: 10
       - _keys:
         - Capacity
