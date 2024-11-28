@@ -290,10 +290,10 @@ MonoBehaviour:
           Type: 3
           Amount: 30
     Farms:
-    - Name: Farm 1
+    - Name: Farm1
       Resource: 0
       Nodes:
-      - Name: Farm1Income
+      - Name: Income
         Description: Increase income per minute from $1 to $2
         Value: 10
         PercentCost: 1
@@ -301,7 +301,7 @@ MonoBehaviour:
           Type: 0
           Amount: 20
         StepCost: 25
-      - Name: Farm1Capacity
+      - Name: Capacity
         Description: Increase aximum capacity from $1 to $2
         Value: 20
         PercentCost: 1
@@ -309,10 +309,10 @@ MonoBehaviour:
           Type: 0
           Amount: 20
         StepCost: 25
-    - Name: Farm 2
+    - Name: Farm2
       Resource: 5
       Nodes:
-      - Name: Farm2Income
+      - Name: Income
         Description: Increase income per minute from $1 to $2
         Value: 0.2
         PercentCost: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
           Type: 5
           Amount: 30
         StepCost: 10
-      - Name: Farm2Capacity
+      - Name: Capacity
         Description: Increase aximum capacity from $1 to $2
         Value: 10
         PercentCost: 0

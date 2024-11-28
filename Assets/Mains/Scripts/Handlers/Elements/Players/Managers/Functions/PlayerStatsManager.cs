@@ -52,7 +52,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void OnFarmStatsLevelUp(string key)
     {
-        _stats.FarmStatsLevel[key].Level++;
+        _stats.FarmStats[Construct.CurrentConstruct][key].Level++;
         Player.OnFarmStatsUpdate?.Invoke(key);
     }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerStats:
     Resources:
       _keys: 00010203040506070809
-      _values: c9d01200730000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
+      _values: 19d112008b0000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1
@@ -76,18 +76,60 @@ MonoBehaviour:
         Step: 10
       - Level: 0
         Step: 0.1
-    FarmStatsLevel:
+    FarmStats:
       _keys:
-      - Farm1Income
-      - Farm1Capacity
-      - Farm2Capacity
-      - Farm2Income
+      - Farm1.1
+      - Farm1.2
+      - Farm2.3
+      - Farm2.4
+      - Farm1.5
+      - Farm2.6
       _values:
-      - Level: 1
-        Step: 10
-      - Level: 1
-        Step: 20
-      - Level: 1
-        Step: 10
-      - Level: 1
-        Step: 0.2
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 20
+        - Level: 0
+          Step: 10
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 20
+        - Level: 0
+          Step: 10
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 10
+        - Level: 0
+          Step: 0.2
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 10
+        - Level: 0
+          Step: 0.2
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 20
+        - Level: 0
+          Step: 10
+      - _keys:
+        - Capacity
+        - Income
+        _values:
+        - Level: 0
+          Step: 10
+        - Level: 0
+          Step: 0.2

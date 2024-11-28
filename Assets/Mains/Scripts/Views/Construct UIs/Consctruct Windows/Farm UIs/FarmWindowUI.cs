@@ -57,7 +57,7 @@ public class FarmWindowUI : ConstructWindowUI
 
     public override void OnOpenWindow()
     {
-        _statsValue = Game.Data.PlayerStats.FarmStatsLevel[$"{Player.Construction.Construct.Name.RemoveAll(" ")}Income"].Value;
+        _statsValue = Game.Data.PlayerStats.FarmStats[Construct.CurrentConstruct]["Income"].Value;
 
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
         CreateNodes();
@@ -79,7 +79,7 @@ public class FarmWindowUI : ConstructWindowUI
 
     private void CreateNodes()
     {
-        _stats = Array.Find(Game.Data.ConstructStats.Farms, x => x.Name == Player.Construction.Construct.Name);
+        _stats = Array.Find(Game.Data.ConstructStats.Farms, x => x.Name == Construct.CurrentConstruct.Substring(0, 5));
 
         _nodeContainer.DestroyAllChildren();
 

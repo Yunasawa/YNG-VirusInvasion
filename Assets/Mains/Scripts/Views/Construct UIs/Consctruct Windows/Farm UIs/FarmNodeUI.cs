@@ -27,7 +27,7 @@ public class FarmNodeUI : MonoBehaviour
 
     public void UpdateNode()
     {
-        PlayerStats.ExtraStats extraStats = _playerStats.FarmStatsLevel[_node.Name];
+        PlayerStats.ExtraStats extraStats = _playerStats.FarmStats[Construct.CurrentConstruct][_node.Name];
         (float from, float to) stats = new(extraStats.Value, extraStats.NextValue);
         (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");
         _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";

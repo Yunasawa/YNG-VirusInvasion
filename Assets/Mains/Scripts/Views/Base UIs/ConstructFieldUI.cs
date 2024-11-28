@@ -38,10 +38,14 @@ public class ConstructFieldUI : MonoBehaviour
             _currentConstructManager = manager;
             ConstructButton.gameObject.SetActive(true);
             ConstructTitle.text = type.ToString();
+
+            Construct.CurrentConstruct = manager.Name;
         }
         else
         {
             ConstructButton.gameObject.SetActive(false);
+
+            Construct.CurrentConstruct = "";
 
             View.OnOpenConstructWindow?.Invoke(_currentConstructType, false, _currentConstructManager);
         }
