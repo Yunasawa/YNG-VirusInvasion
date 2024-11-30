@@ -26,7 +26,7 @@ public class FarmWindowUI : ConstructWindowUI
 
     private Dictionary<string, FarmNodeUI> _nodes = new();
 
-    private float _statsValue;
+    private float _statsValue => Game.Data.PlayerStats.FarmStats[Construct.CurrentConstruct]["Income"].Value;
 
     private int _timeCounter = 10;
     private bool _isWindowStillOpen = false;
@@ -42,12 +42,14 @@ public class FarmWindowUI : ConstructWindowUI
     {
         Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
         Player.OnChangeResources += UpdateResourceNodes;
+        Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
     }
 
     private void OnDestroy()
     {
         Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
         Player.OnChangeResources -= UpdateResourceNodes;
+        Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
     }
 
     private void Start()
@@ -57,8 +59,6 @@ public class FarmWindowUI : ConstructWindowUI
 
     public override void OnOpenWindow()
     {
-        _statsValue = Game.Data.PlayerStats.FarmStats[Construct.CurrentConstruct]["Income"].Value;
-
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
         CreateNodes();
 
@@ -94,6 +94,13 @@ public class FarmWindowUI : ConstructWindowUI
     private void OnFarmStatsUpdate(string key)
     {
         if (_nodes.ContainsKey(key)) _nodes[key].UpdateNode();
+    }
+    private void OnFarmStatsLevelUp(string key)
+    {
+        if (_nodes.ContainsKey(key))
+        {
+            UpdateCapacityStatus();
+        }
     }
     private void StartCountingDown(bool isStart)
     {

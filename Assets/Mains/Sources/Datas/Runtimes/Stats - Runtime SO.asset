@@ -15,7 +15,7 @@ MonoBehaviour:
   PlayerStats:
     Resources:
       _keys: 00010203040506070809
-      _values: 38040000600000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
+      _values: 00050000000000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1
@@ -46,13 +46,13 @@ MonoBehaviour:
       - ExtraHPBoost
       - ExtraRegenBoost
       _values:
-      - Level: 0
+      - Level: 10
         Step: 0.4
-      - Level: 0
+      - Level: 5
         Step: 5
-      - Level: 0
+      - Level: 1
         Step: 1
-      - Level: 0
+      - Level: 1
         Step: 5
       - Level: 0
         Step: 2
