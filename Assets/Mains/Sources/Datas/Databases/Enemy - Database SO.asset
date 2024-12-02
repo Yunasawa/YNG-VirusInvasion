@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Enemy - Database SO
   m_EditorClassIdentifier: 
   EnemySources:
-    _keys: 00000000
+    _keys: 0b0000000c000000
     _values:
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 0}
     - MaxEnemyInAnArea:
         Min: 8
         Max: 20

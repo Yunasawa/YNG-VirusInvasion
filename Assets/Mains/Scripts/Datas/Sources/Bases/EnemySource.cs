@@ -7,5 +7,10 @@ namespace YNL.Bases
     {
         public MRange MaxEnemyInAnArea = new(8, 20);
         public Enemy Enemy;
+
+        public EnemySources(Enemy enemy)
+        {
+            Enemy = enemy;
+        }
     }
 }

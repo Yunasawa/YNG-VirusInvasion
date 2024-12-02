@@ -25,8 +25,6 @@ public class EnemyPool : MonoBehaviour
 
     private void Update()
     {
-        //foreach (var enemy in EnemyPools[0].activeObjects) enemy.MonoUpdate();
-
         for (int i = 0; i < EnemyPools[0].activeObjects.Count; i++) EnemyPools[0].activeObjects[i].MonoUpdate();
 
         if (EnemyPools[0].activeObjects.Count < Amount)
@@ -43,10 +41,6 @@ public class EnemyPool : MonoBehaviour
             Vector3 position = Boundary.GetRandomPositionInRandomBoundary();//new Vector3(Random.Range(-20f, 20f), 0.5f, Random.Range(-20f, 20f));
             EnemyPools[0].PullGameObject(position, Quaternion.identity);
         }
-    }
-
-    private async UniTaskVoid SpawnEnemyEvery1Second()  
-    {
     }
 }
 

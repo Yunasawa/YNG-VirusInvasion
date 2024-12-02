@@ -1,10 +1,34 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEditor;
+using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Addons;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 [CreateAssetMenu(fileName = "Enemy - Database SO", menuName = "Virus Invasion/💫 Sources/🚧 Database/🎬 Enemy SO", order = 1)]
 public class DatabaseEnemySO : ScriptableObject
 {
-    public SerializableDictionary<uint, EnemySources> EnemySources = new();
+    public SerializableDictionary<string, EnemySources> EnemySources = new();
+
+    public DefaultAsset _folder;
+
+#if false
+    [Button]
+    public void GetAllEnemy()
+    {
+        EnemySources.Clear();
+
+        string path = AssetDatabase.GetAssetPath(_folder);
+
+        string[] guids = AssetDatabase.FindAssets("t:prefab", new[] { path });
+        foreach (string guid in guids)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+
+            EnemySources.Add(prefab.name.RemoveWord("Monster "), new EnemySources(prefab.GetComponent<Enemy>()));
+        }
+    }
+#endif
 }
