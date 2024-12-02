@@ -13,13 +13,196 @@ MonoBehaviour:
   m_Name: Enemy - Database SO
   m_EditorClassIdentifier: 
   EnemySources:
-    _keys: 0b0000000c000000
+    _keys:
+    - 1.1
+    - 1.2
+    - 2.1
+    - 2.2
+    - 2.3
+    - 3.1
+    - 3.2
+    - 3.3
+    - 3.4
+    - 3.5
+    - 4.1
+    - 4.2
+    - 4.3
+    - 4.4
+    - 4.5
+    - 4.6
+    - 4.7
+    - 5.1
+    - 5.2
+    - 5.3
+    - 5.4
+    - 5.5
+    - 6.1
+    - 6.2
+    - 6.3
+    - 6.4
+    - 6.5
+    - 6.6
+    - 6.7
+    - 6.8
+    - 7.1
+    - 7.2
+    - 7.3
+    - 7.4
+    - 7.5
+    - 7.6
+    - 7.7
+    - 7.8
     _values:
     - MaxEnemyInAnArea:
         Min: 8
         Max: 20
-      Enemy: {fileID: 0}
+      Enemy: {fileID: 5163663866331831904, guid: f90ba971bceba33469f3e09f6f745f69, type: 3}
     - MaxEnemyInAnArea:
         Min: 8
         Max: 20
-      Enemy: {fileID: 0}
+      Enemy: {fileID: 4758558177196294860, guid: 4c2c71873ee73ac46a87ffa58a936ab8, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 9155034543960756367, guid: 115c3eee0f7bc214e943120d8791a6b7, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1764052030875925221, guid: 76f2abae87944fd43b207c5308d1302d, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1883257540288213257, guid: ce459f683f88a414492b2c1be227bec7, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 488256630277288392, guid: ed607443c9014654cbf142f90865031a, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 783425567564231835, guid: 86adef2ce4ffea44a8a972535c3a9219, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 2362532024088412432, guid: 536be5b4d8dfc4f45b24486a79cbd58b, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1794604370137732506, guid: afe3af8c47cb6bb4fb9f413c3affebab, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 2564994270448957986, guid: 0ec828e4fbbecf742933396d901a608d, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 4758558177196294860, guid: 1377562386f06b046b5f48ee6fd07499, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5808613509095558134, guid: 5dad260893ea5564e9c4e91e3ee4c502, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 6882111770048336054, guid: 3c54343a2e0d3cf43bc2d44671980254, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 2718400319846952156, guid: fec1f76de13c00b438942083b4b5c060, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1965726411929751786, guid: 13e5498e591a11848b4fc0c14310a2ea, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 8260301479492178723, guid: 98f2a245c1befcb43a5b6b83a83a2fe0, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 2013049700419611087, guid: 04b6abf0695a8a24881b48e0f65a7a61, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5434381001778839887, guid: f03815666b64b5041b60cf10c49a8da0, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5826538606663706560, guid: f7ecad15af4a090459cfc36898b014a4, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5184402322275723620, guid: 67c8e6d0e1728fe4ca2623b8b62113c4, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 4133709558877009187, guid: f54c53581bc8b7f4e81c1602d719a0df, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 4259605689577157431, guid: b3eb9a8fcf846fa45bdd73e97c3d662d, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 527614400251700455, guid: eb6d51738f355fd4bb242535c40c312f, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5462455911971707334, guid: 95d3d67b48a6bf546a5954b6f34dabc1, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1182410275117943714, guid: 8e244dbb07e528943b436c19acb7f4aa, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5085148707084039927, guid: 597e56bdf2e46594c84e9bc38bd76280, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 5871339100654224433, guid: 2383f19b403bda04491b99321ce2c9d6, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 7072004227273696462, guid: cbc3a7b589f084a4998fd229e0a569ec, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1540429576224886009, guid: 0eb08894a08f53d4585ddf1aea3d690b, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 2973494880819082110, guid: e659d2e9703dbed4c9a2ecfae9a91373, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 3840062996632054218, guid: cdddd543d70765d4784ffbb7d9412f9b, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 8560245007069787627, guid: 3616121842c8fd64786f619729529962, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1833505095041689357, guid: 67ef3f7a48785bf4290f4e55adbd460c, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 3322750886651859564, guid: 74891b4dce5a3194aa2b68c10bc5aae6, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 1502496351122396452, guid: 1b1672f3fac3aca458dc430edc56d2cb, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 8550466542100645101, guid: 6c5a67a3bae7e224d9df8aabe5bf8c6e, type: 3}
+    - MaxEnemyInAnArea:
+        Min: 8
+        Max: 20
+      Enemy: {fileID: 91338785442218451, guid: 4a60f109e6da27249ac17d545b77883c, type: 3}
+  _folder: {fileID: 102900000, guid: f38e8b5070f7cb148a176ec9b63b0ded, type: 3}
