@@ -2,8 +2,6 @@ using Cysharp.Threading.Tasks;
 using OWS.ObjectPooling;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class EnemyPool : MonoBehaviour

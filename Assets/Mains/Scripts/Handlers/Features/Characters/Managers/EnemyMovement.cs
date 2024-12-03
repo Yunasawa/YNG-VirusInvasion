@@ -1,9 +1,4 @@
-using Cysharp.Threading.Tasks;
-using DG.Tweening;
-using System;
-using System.Security.Cryptography;
 using UnityEngine;
-using YNL.Extensions.Methods;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -91,20 +86,6 @@ public class EnemyMovement : MonoBehaviour
         if (!_manager.IsCaught) return;
 
         _isPulling = true;
-
-        //this.transform.DOMove(Player.Transform.position.SetY(1.5f), 0.4f).SetEase(Ease.OutExpo).OnComplete(MoveDown);
-        //this.transform.DOMove(Player.Transform.position.SetY(0), 0.4f).SetEase(Ease.OutExpo).OnComplete(Disable);
-
-        void MoveDown()
-        {
-            this.transform.DOMove(Player.Transform.position.SetY(0), 0.15f).SetEase(Ease.Linear).OnComplete(Disable);
-        }
-
-        void Disable()
-        {
-            this.gameObject.SetActive(false);
-            _manager.Stats.OnKilled();
-        }
     }
     public void OnPullingDone()
     {
