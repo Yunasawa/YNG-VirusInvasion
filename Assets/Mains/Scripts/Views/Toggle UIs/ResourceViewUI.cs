@@ -2,7 +2,7 @@ using UnityEngine;
 using YNL.Bases;
 using YNL.Utilities.Addons;
 
-public class ResourceViewUI : MonoBehaviour
+public class ResourceViewUI : ToggleViewUI
 {
     [SerializeField] private SerializableDictionary<ResourceType, ResourceBarUI> _resourceBars = new();
 

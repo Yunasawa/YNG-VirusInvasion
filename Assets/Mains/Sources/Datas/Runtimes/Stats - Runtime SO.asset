@@ -23,7 +23,7 @@ MonoBehaviour:
     TentacleLevel: 1
     HPLevel: 1
     DPS: 16.05
-    MS: 17
+    MS: 76
     Capacity: 4.075
     Radius: 16
     Tentacle: 2

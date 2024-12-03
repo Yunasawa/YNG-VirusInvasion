@@ -12,7 +12,7 @@ public class PlayerMovementManager : MonoBehaviour
 
     [SerializeField] private bool _enableRotation = true;
 
-    public float CurrentMovingSpeed = 0.1f;
+    public float CurrentMovingSpeed => 0.1f * (Game.Data.PlayerStats.MS / 16);
     [SerializeField] private float _currentRotatingSpeed = 0.5f;
 
     public bool EnableGravity = false;

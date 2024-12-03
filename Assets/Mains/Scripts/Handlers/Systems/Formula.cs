@@ -207,10 +207,10 @@ public static class Formula
         {
             float baseValue = 16;
 
-            if (_stats.DPSLevel <= 20) return baseValue + _stats.DPSLevel;
+            if (_stats.MSLevel <= 20) return baseValue + _stats.MSLevel;
             else
             {
-                uint extraLevels = _stats.DPSLevel - 20;
+                uint extraLevels = _stats.MSLevel - 20;
                 return baseValue + 20 + extraLevels * 0.5f;
             }
         }
