@@ -90,6 +90,21 @@ namespace OWS.ObjectPooling
             return go;
         }
 
+        public T PullObject(Vector3 position, Quaternion rotation)
+        {
+            T pullObject = Pull(position, rotation);
+            activeObjects.Add(pullObject);
+            return pullObject;
+        }
+        public T PullLocalObject(Vector3 position, Quaternion rotation)
+        {
+            T pullObject = Pull();
+            activeObjects.Add(pullObject);
+            pullObject.transform.localPosition = position;
+            pullObject.transform.localRotation = rotation;
+            return pullObject;
+        }
+
         public void Push(T t)
         {
             pooledObjects.Push(t);

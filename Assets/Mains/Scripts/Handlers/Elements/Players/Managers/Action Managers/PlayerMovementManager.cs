@@ -28,7 +28,7 @@ public class PlayerMovementManager : MonoBehaviour
     private void Update()
     {
         if (_enableRotation) RotationInputControl(true, true, _currentRotatingSpeed.Oscillate());
-        MovementInputControl(CurrentMovingSpeed * 60 * Time.deltaTime);
+        MovementInputControl(CurrentMovingSpeed.Oscillate());
 
         ApplyGravity(EnableGravity);
 
