@@ -1,3 +1,8 @@
+using Cysharp.Threading.Tasks;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -13,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     [HideInInspector] public bool Enabled = true;
 
-    private bool _isPulling = false;
+    public bool IsPulling = false;
     private float _pullingSpeed;
 
     private void Start()
@@ -28,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!Enabled) return;
 
-        if (_isPulling)
+        if (IsPulling)
         {
             _pullingSpeed = Player.Movement.CurrentMovingSpeed * Formula.Value.GetEnemyPullingSpeedMultiplier(transform.position);
             transform.position = Vector3.MoveTowards(transform.position, Player.Transform.position, _pullingSpeed);
@@ -85,11 +90,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!_manager.IsCaught) return;
 
-        _isPulling = true;
+        IsPulling = true;
     }
     public void OnPullingDone()
     {
-        _isPulling = false;
+        IsPulling = false;
         this.gameObject.SetActive(false);
         _manager.Stats.OnKilled();
     }
