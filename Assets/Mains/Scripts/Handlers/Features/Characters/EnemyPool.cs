@@ -64,10 +64,10 @@ public class EnemyPool : MonoBehaviour
 
         for (int i = 0; i < _enemyPool.activeObjects.Count; i++) _enemyPool.activeObjects[i].MonoUpdate();
 
-        if (_enemyPool.activeObjects.Count < _enemyCount)
-        {
-            _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
-        }
+        //if (_enemyPool.activeObjects.Count < _enemyCount)
+        //{
+        //    _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
+        //}
     }
 
     private void OnDestroy()
@@ -76,6 +76,8 @@ public class EnemyPool : MonoBehaviour
         _enemyTransforms.Dispose();
         _isPulling.Dispose();
     }
+
+    public void PullObject() => _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
 
     private float3 GetRandomPositionInsideCircle()
     {
