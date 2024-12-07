@@ -48,38 +48,38 @@ MonoBehaviour:
       RespawnTime: 10
       Enemy: {fileID: 9155034543960756367, guid: 115c3eee0f7bc214e943120d8791a6b7, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 120
       Enemy: {fileID: 1764052030875925221, guid: 76f2abae87944fd43b207c5308d1302d, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 1883257540288213257, guid: ce459f683f88a414492b2c1be227bec7, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 488256630277288392, guid: ed607443c9014654cbf142f90865031a, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 783425567564231835, guid: 86adef2ce4ffea44a8a972535c3a9219, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 2362532024088412432, guid: 536be5b4d8dfc4f45b24486a79cbd58b, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 1794604370137732506, guid: afe3af8c47cb6bb4fb9f413c3affebab, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 2
+        Max: 4
       RespawnTime: 240
       Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
   BoundaryStages:

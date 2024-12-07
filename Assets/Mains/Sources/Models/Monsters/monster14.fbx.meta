@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Do.003
-    second: {fileID: 2100000, guid: f7e68a1fab339a74fa3b97a8e0b8cee5, type: 2}
+    second: {fileID: 2100000, guid: 6cb99295e13d80f44be1357cbb1976c5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

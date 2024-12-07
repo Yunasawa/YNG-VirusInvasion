@@ -1,0 +1,314 @@
+fileFormatVersion: 2
+guid: 27e7dfd21cb3dfd439ea0828d3d20684
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.002
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.003
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.004
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.005
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.006
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.007
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam.008
+    second: {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam_nhat.001
+    second: {fileID: 2100000, guid: cdc1a0fcef3c97648b694d942ef8724b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam_nhat.002
+    second: {fileID: 2100000, guid: cdc1a0fcef3c97648b694d942ef8724b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cam_nhat.003
+    second: {fileID: 2100000, guid: cdc1a0fcef3c97648b694d942ef8724b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Do
+    second: {fileID: 2100000, guid: f4509930d7fce324d84c6f667f9f5350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Do.001
+    second: {fileID: 2100000, guid: f4509930d7fce324d84c6f667f9f5350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Do.002
+    second: {fileID: 2100000, guid: f4509930d7fce324d84c6f667f9f5350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Do.003
+    second: {fileID: 2100000, guid: f4509930d7fce324d84c6f667f9f5350, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lam.001
+    second: {fileID: 2100000, guid: bef77c34c5b26e7458080c3dd0fe8623, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lam_nhat
+    second: {fileID: 2100000, guid: 982493ccf3a8bed498b8bc5235ce77ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.001
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.006
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.007
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.008
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.009
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang_dam.002
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang_dam.003
+    second: {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: do_dam.001
+    second: {fileID: 2100000, guid: 22a903e8d28bd1a4e81b7db7ff647b63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: do_dam.002
+    second: {fileID: 2100000, guid: 22a903e8d28bd1a4e81b7db7ff647b63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: do_nhat.001
+    second: {fileID: 2100000, guid: c289481143755e84eaffc01dc4aa18ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: do_nhat.002
+    second: {fileID: 2100000, guid: 7f27148500e8fef44a272e4642c951ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: do_nhat.003
+    second: {fileID: 2100000, guid: c289481143755e84eaffc01dc4aa18ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nau.001
+    second: {fileID: 2100000, guid: 17158024aee4468439c8c929d8831da1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nau.002
+    second: {fileID: 2100000, guid: 17158024aee4468439c8c929d8831da1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: nau_dam.001
+    second: {fileID: 2100000, guid: 10cdb095ad5c067459c8cea3df6c622d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tim
+    second: {fileID: 2100000, guid: c9089684efcd8aa46888ace6c5147961, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tim_dam.001
+    second: {fileID: 2100000, guid: 01c438336b4453a44b2a8823068ed57f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tim_dam.002
+    second: {fileID: 2100000, guid: 01c438336b4453a44b2a8823068ed57f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tim_nhat.001
+    second: {fileID: 2100000, guid: 1361d8c58a3b92644a2004f50ed73315, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trang.001
+    second: {fileID: 2100000, guid: 90345e4027e1f5c45afbe746fad0832b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanh.001
+    second: {fileID: 2100000, guid: 193bf2ed95a2bac4db1ac1bd070cbac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanh.002
+    second: {fileID: 2100000, guid: 193bf2ed95a2bac4db1ac1bd070cbac4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanhlama
+    second: {fileID: 2100000, guid: 81edc6d38d31cf744a64aa637ac81a46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: xanhlama_nhat.001
+    second: {fileID: 2100000, guid: 205695aebfc13f546995e8605983d397, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
