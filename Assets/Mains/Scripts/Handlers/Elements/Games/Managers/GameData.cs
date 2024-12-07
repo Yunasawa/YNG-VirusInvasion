@@ -12,5 +12,6 @@ public class GameData : MonoBehaviour
     public PlayerStats PlayerStats => _runtimeStats.PlayerStats;
     public ConstructStats ConstructStats => _databaseStats.ConstructStats;
     public SerializableDictionary<string, EnemySources> EnemySources => _databaseEnemy.EnemySources;
+    public SerializableDictionary<StageType, string> EnemyStages => _databaseEnemy.EnemyStages;
 
 }

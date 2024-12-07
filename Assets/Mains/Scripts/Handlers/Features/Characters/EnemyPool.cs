@@ -1,4 +1,6 @@
 using OWS.ObjectPooling;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
@@ -10,12 +12,13 @@ using YNL.Extensions.Methods;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] private EnemySources _emenySource;
+    [SerializeField] private StageType _stageType;
+    [SerializeField] private Dictionary<string, EnemySources> _enemySources;
     [SerializeField] private float _boundaryRadius = 10;
     private int _enemyCount = 0;
 
     private Enemy[] _enemies;
-    private ObjectPool<Enemy> _enemyPool;
+    private Dictionary<string, ObjectPool<Enemy>> _enemyPools = new();
 
     private TransformAccessArray _enemyTransforms;
     private NativeArray<float3> _targetPositions;
@@ -23,10 +26,18 @@ public class EnemyPool : MonoBehaviour
 
     private void Start()
     {
-        _enemyCount = _emenySource.EnemyAmount;
+        _enemyCount = 15;
+
+        if (Game.Data.EnemyStages.TryGetValue(_stageType, out string sources))
+        {
+            _enemySources = sources.Split(new[] { ", " }, System.StringSplitOptions.RemoveEmptyEntries)
+                .Where(name => Game.Data.EnemySources.TryGetValue(name, out _))
+                .ToDictionary(name => name, name => Game.Data.EnemySources[name]);
+        }
+
+        foreach (var pair in _enemySources) _enemyPools.Add(pair.Key, new(pair.Value.Enemy.gameObject, this.transform));
 
         _enemies = new Enemy[_enemyCount];
-        _enemyPool = new(_emenySource.Enemy.gameObject, this.transform);
 
         _enemyTransforms = new TransformAccessArray(_enemyCount);
         _targetPositions = new NativeArray<float3>(_enemyCount, Allocator.Persistent);
@@ -35,7 +46,7 @@ public class EnemyPool : MonoBehaviour
         for (int i = 0; i < _enemyCount; i++)
         {
             Vector3 spawnPosition = GetRandomPositionInsideCircle();
-            _enemies[i] = _enemyPool.PullLocalObject(spawnPosition, Quaternion.identity);//Instantiate(_emenySource.Enemy, spawnPosition, Quaternion.identity, transform);
+            _enemies[i] = _enemyPools[GetRandomEnemySource()].PullLocalObject(spawnPosition, Quaternion.identity);
             _enemyTransforms.Add(_enemies[i].transform);
             _targetPositions[i] = GetRandomPositionInsideCircle();
 
@@ -62,12 +73,10 @@ public class EnemyPool : MonoBehaviour
 
         UpdateEnemyMovements();
 
-        for (int i = 0; i < _enemyPool.activeObjects.Count; i++) _enemyPool.activeObjects[i].MonoUpdate();
-
-        //if (_enemyPool.activeObjects.Count < _enemyCount)
-        //{
-        //    _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
-        //}
+        foreach (var pool in _enemyPools)
+        {
+            for (int i = 0; i < pool.Value.activeObjects.Count; i++) pool.Value.activeObjects[i].MonoUpdate();
+        }
     }
 
     private void OnDestroy()
@@ -77,7 +86,22 @@ public class EnemyPool : MonoBehaviour
         _isPulling.Dispose();
     }
 
-    public void PullObject() => _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
+    private string GetRandomEnemySource()
+    {
+        var totalWeight = _enemySources.Sum(s => s.Value.RespawnTime);
+        var randomValue = UnityEngine.Random.Range(0, totalWeight);
+
+        long cumulativeWeight = 0;
+
+        foreach (var source in _enemySources)
+        {
+            cumulativeWeight += source.Value.RespawnTime;
+            if (randomValue < cumulativeWeight) return source.Key;
+        }
+        return null;
+    }
+
+    public void PullObject() => _enemyPools[GetRandomEnemySource()].PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
 
     private float3 GetRandomPositionInsideCircle()
     {

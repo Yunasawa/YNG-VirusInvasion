@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1fec4f1c33a6e4490ae5d5f4560657, type: 3}
   m_Name: Enemy - Database SO
   m_EditorClassIdentifier: 
+  EnemyStages:
+    _keys: 00010203
+    _values:
+    - Virus 1
+    - Virus 1, Virus 2
+    - Virus 3, Virus 4, Virus 5
+    - Virus 6, Virus 7, Virus 8, Virus 9, Virus 10
   EnemySources:
     _keys:
     - Virus 1
@@ -75,4 +82,3 @@ MonoBehaviour:
         Max: 20
       RespawnTime: 240
       Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
-  _folder: {fileID: 102900000, guid: f38e8b5070f7cb148a176ec9b63b0ded, type: 3}
