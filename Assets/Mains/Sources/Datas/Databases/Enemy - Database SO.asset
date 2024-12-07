@@ -33,18 +33,18 @@ MonoBehaviour:
     - Virus 10
     _values:
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 5163663866331831904, guid: f90ba971bceba33469f3e09f6f745f69, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 2
+        Max: 4
       RespawnTime: 120
       Enemy: {fileID: 4758558177196294860, guid: 4c2c71873ee73ac46a87ffa58a936ab8, type: 3}
     - MaxEnemyInAnArea:
-        Min: 8
-        Max: 20
+        Min: 5
+        Max: 8
       RespawnTime: 10
       Enemy: {fileID: 9155034543960756367, guid: 115c3eee0f7bc214e943120d8791a6b7, type: 3}
     - MaxEnemyInAnArea:
@@ -82,3 +82,10 @@ MonoBehaviour:
         Max: 20
       RespawnTime: 240
       Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
+  BoundaryStages:
+    _keys: 00010203
+    _values:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

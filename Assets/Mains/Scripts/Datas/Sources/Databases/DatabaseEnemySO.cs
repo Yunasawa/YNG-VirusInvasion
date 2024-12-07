@@ -12,6 +12,7 @@ public class DatabaseEnemySO : ScriptableObject
 {
     public SerializableDictionary<StageType, string> EnemyStages = new();
     public SerializableDictionary<string, EnemySources> EnemySources = new();
+    public SerializableDictionary<StageType, Boundary> BoundaryStages = new();
 
 #if false
     public DefaultAsset _folder;

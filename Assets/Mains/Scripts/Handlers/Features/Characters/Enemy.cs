@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPoolable<Enemy>
 {
+    [HideInInspector] public EnemyPool Pool;
+
     public EmenyStats Stats;
     public EnemyMovement Movement;
     public EnemyUI UI;
@@ -36,5 +38,6 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     public void ReturnToPool()
     {
         returnToPool?.Invoke(this);
+        Pool.NotifyOnRespawn();
     }
 }
