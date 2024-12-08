@@ -15,6 +15,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
         Player.OnCollectFarmResources += OnCollectFarmResources;
         Player.OnConsumeResources += OnConsumeResources;
+        Player.OnEnterHomeBase += OnEnterHomeBase;
     }
 
     private void OnDestroy()
@@ -25,6 +26,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
         Player.OnCollectFarmResources -= OnCollectFarmResources;
         Player.OnConsumeResources -= OnConsumeResources;
+        Player.OnEnterHomeBase -= OnEnterHomeBase;
     }
 
     private void Start()
@@ -71,7 +73,6 @@ public class PlayerStatsManager : MonoBehaviour
         Game.Data.PlayerStats.Resources[from.Type] -= from.Amount;
         Game.Data.PlayerStats.Resources[to.Type] += to.Amount;
         Player.OnChangeResources?.Invoke();
-        Player.OnChangeResources?.Invoke();
     }
 
     private void OnCollectFarmResources(ResourceType type, float amount)
@@ -84,5 +85,19 @@ public class PlayerStatsManager : MonoBehaviour
     {
         Game.Data.PlayerStats.Resources[type] -= amount;
         Player.OnChangeResources?.Invoke();
+    }
+
+    private void OnEnterHomeBase()
+    {
+        foreach (var resource in Game.Data.CapacityStats.Resources)
+        {
+            if (resource.Value > 0)
+            {
+                Game.Data.PlayerStats.AdjustResources(resource.Key, (int)resource.Value);
+            }
+        }
+        Game.Data.CapacityStats.ClearCapacity();
+        Player.OnChangeResources?.Invoke();
+        Player.OnChangeCapacity?.Invoke();
     }
 }

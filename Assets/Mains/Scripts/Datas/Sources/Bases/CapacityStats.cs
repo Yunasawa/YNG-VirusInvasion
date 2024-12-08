@@ -39,7 +39,7 @@ namespace YNL.Bases
         public void ClearCapacity()
         {
             CurrentCapacity = 0;
-            foreach (var pair in Resources) Resources[pair.Key] = 0;
+            for (int i = 0; i < 10; i++) Resources[(ResourceType)i] = 0;
         }
     }
 }

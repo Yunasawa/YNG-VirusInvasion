@@ -17,5 +17,7 @@ public static partial class Player
     public static Action<string> OnExtraStatsLevelUp { get; set; }
     public static Action<string> OnFarmStatsLevelUp { get; set; }
 
+    public static Action OnEnterHomeBase { get; set; }
+
     public static Action<StageType, StageType> OnEnterStage { get; set; }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 500
+      - 508
       - 0
       - 0
       - 0
@@ -144,7 +144,7 @@ MonoBehaviour:
         - Level: 14
           Step: 0.2
   CapacityStats:
-    CurrentCapacity: 0
+    CurrentCapacity: 4
     Resources:
       _keys: 00010203040506070809
-      _values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _values: 02000000020000000000000000000000000000000000000000000000000000000000000000000000

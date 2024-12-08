@@ -10,9 +10,13 @@ public class PlayerConstructionManager : ColliderTriggerListener
     {
         if (other.tag.IsStringEqualToEnum(out ConstructType type))
         {
-            if (Vector3.Distance(other.transform.position, Player.Transform.position) > 7) return;
-
             ConstructManager manager = other.GetComponent<ConstructManager>();
+
+            if (manager.Type == ConstructType.Base)
+            {
+                Player.OnEnterHomeBase?.Invoke();
+            }
+
             InteractWith(true, manager.Type, manager);
         }
     }
