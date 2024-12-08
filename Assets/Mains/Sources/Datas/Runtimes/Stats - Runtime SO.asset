@@ -15,7 +15,17 @@ MonoBehaviour:
   PlayerStats:
     Resources:
       _keys: 00010203040506070809
-      _values: 00050000000000005a0000005a000000000000001f0000000b0000000a0000000700000090010000
+      _values:
+      - 500
+      - 0
+      - 0
+      - 0
+      - 0
+      - 60
+      - 0
+      - 0
+      - 0
+      - 0
     DPSLevel: 1
     MSLevel: 1
     CapacityLevel: 1
@@ -23,7 +33,7 @@ MonoBehaviour:
     TentacleLevel: 1
     HPLevel: 1
     DPS: 16.05
-    MS: 76
+    MS: 17
     Capacity: 4.075
     Radius: 16
     Tentacle: 2
@@ -121,15 +131,20 @@ MonoBehaviour:
         - Capacity
         - Income
         _values:
-        - Level: 1
+        - Level: 0
           Step: 20
-        - Level: 1
+        - Level: 0
           Step: 10
       - _keys:
         - Capacity
         - Income
         _values:
-        - Level: 0
+        - Level: 4
           Step: 10
-        - Level: 0
+        - Level: 14
           Step: 0.2
+  CapacityStats:
+    CurrentCapacity: 0
+    Resources:
+      _keys: 00010203040506070809
+      _values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000

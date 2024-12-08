@@ -4,7 +4,8 @@ using YNL.Extensions.Methods;
 
 public class PlayerStatsManager : MonoBehaviour
 {
-    private PlayerStats _stats => Game.Data.PlayerStats;
+    private PlayerStats _playerStats => Game.Data.PlayerStats;
+    private CapacityStats _capacityStats => Game.Data.CapacityStats;
 
     private void Awake()
     {
@@ -46,19 +47,22 @@ public class PlayerStatsManager : MonoBehaviour
 
     public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
     {
-        foreach (var drop in drops) _stats.AdjustResources(drop.type, (int)drop.amount);
-        Player.OnChangeResources?.Invoke();
+        foreach (var drop in drops)
+        {
+            _capacityStats.AdjustResources(drop.type, (int)drop.amount);
+        }
+        Player.OnChangeCapacity?.Invoke();
     }
 
     private void OnExtraStatsLevelUp(string key)
     {
-        _stats.ExtraStatsLevel[key].Level++;
+        _playerStats.ExtraStatsLevel[key].Level++;
         Player.OnExtraStatsUpdate?.Invoke(key);
     }
 
     private void OnFarmStatsLevelUp(string key)
     {
-        _stats.FarmStats[Construct.CurrentConstruct][key].Level++;
+        _playerStats.FarmStats[Construct.CurrentConstruct][key].Level++;
         Player.OnFarmStatsUpdate?.Invoke(key);
     }
 

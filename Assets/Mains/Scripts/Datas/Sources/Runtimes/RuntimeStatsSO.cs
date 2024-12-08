@@ -6,4 +6,5 @@ using YNL.Bases;
 public class RuntimeStatsSO : ScriptableObject
 {
     public PlayerStats PlayerStats = new();
+    public CapacityStats CapacityStats = new();
 }
