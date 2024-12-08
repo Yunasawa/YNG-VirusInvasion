@@ -9,11 +9,11 @@ public class GameData : MonoBehaviour
     [SerializeField] private DatabaseStatsSO _databaseStats;
     [SerializeField] private DatabaseEnemySO _databaseEnemy;
 
+    public SerializableDictionary<StageType, Boundary> BoundaryStages = new();
+
     public PlayerStats PlayerStats => _runtimeStats.PlayerStats;
     public ConstructStats ConstructStats => _databaseStats.ConstructStats;
 
     public SerializableDictionary<string, EnemySources> EnemySources => _databaseEnemy.EnemySources;
     public SerializableDictionary<StageType, string> EnemyStages => _databaseEnemy.EnemyStages;
-    public SerializableDictionary<StageType, Boundary> BoundaryStages => _databaseEnemy.BoundaryStages;
-
 }

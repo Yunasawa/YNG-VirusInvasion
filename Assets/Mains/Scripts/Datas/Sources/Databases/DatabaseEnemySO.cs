@@ -12,7 +12,6 @@ public class DatabaseEnemySO : ScriptableObject
 {
     public SerializableDictionary<StageType, string> EnemyStages = new();
     public SerializableDictionary<string, EnemySources> EnemySources = new();
-    public SerializableDictionary<StageType, Boundary> BoundaryStages = new();
 
 #if false
     public DefaultAsset _folder;
@@ -36,4 +35,4 @@ public class DatabaseEnemySO : ScriptableObject
 #endif
 }
 
-public enum StageType : byte { StageTutorial, Stage1, Stage2, Stage3 }
+public enum StageType : byte { StageTutorial, Stage1, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7 }

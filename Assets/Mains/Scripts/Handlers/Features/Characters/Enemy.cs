@@ -15,9 +15,11 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     private Action<Enemy> returnToPool;
     public Action OnEnemyKilled;
 
-    private void OnDisable()
+    public void OnKilled()
     {
         ReturnToPool();
+        Pool.NotifyOnRespawn();
+        this.gameObject.SetActive(false);
     }
 
     public void Initialize(Action<Enemy> returnAction)
@@ -38,6 +40,5 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     public void ReturnToPool()
     {
         returnToPool?.Invoke(this);
-        Pool.NotifyOnRespawn();
     }
 }

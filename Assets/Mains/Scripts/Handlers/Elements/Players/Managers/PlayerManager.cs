@@ -10,4 +10,5 @@ public class PlayerManager : Singleton<PlayerManager>
     public PlayerStatsManager Stats;
     public PlayerEnemyManager Enemy;
     public PlayerConstructionManager Construction;
+    public PlayerStageManager Stage;
 }

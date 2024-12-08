@@ -39,7 +39,8 @@ public class EnemyMovement : MonoBehaviour
     public void OnPullingDone()
     {
         IsPulling = false;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        _manager.OnKilled();
         _manager.Stats.OnKilled();
     }
 }
