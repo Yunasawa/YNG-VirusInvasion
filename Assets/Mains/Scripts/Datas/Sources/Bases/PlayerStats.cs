@@ -16,7 +16,7 @@ namespace YNL.Bases
             public float NextValue => Step * (Level + 1);
         }
 
-        public SerializableDictionary<ResourceType, uint> Resources = new();
+        public SerializableDictionary<ResourceType, float> Resources = new();
 
         [FoldoutGroup("Levels")] public uint DPSLevel = 1;
         [FoldoutGroup("Levels")] public uint MSLevel = 1;

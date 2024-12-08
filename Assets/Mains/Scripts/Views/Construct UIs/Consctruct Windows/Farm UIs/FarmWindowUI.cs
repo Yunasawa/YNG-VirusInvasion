@@ -151,8 +151,8 @@ public class FarmWindowUI : ConstructWindowUI
     {
         if (_farm.CurrentResources >= _farm.Capacity) return;
 
-        _farm.CurrentResources += Mathf.RoundToInt(amount * _statsValue);
-        _farm.CurrentResources.Limit(0, _farm.Capacity);
+        _farm.CurrentResources += amount * _statsValue;
+        _farm.CurrentResources.RefLimit(0, _farm.Capacity);
 
         UpdateCapacityStatus();
     }
@@ -174,8 +174,8 @@ public class FarmWindowUI : ConstructWindowUI
     {
         if (_farm.Capacity != 0)
         {
-            _capacityBar.fillAmount = (float)_farm.CurrentResources / _farm.Capacity;
-            _capacityText.text = $"{_farm.CurrentResources}/{_farm.Capacity}";
+            _capacityBar.fillAmount = _farm.CurrentResources / _farm.Capacity;
+            _capacityText.text = $"{_farm.CurrentResources.RoundToDigit(1)}/{_farm.Capacity}";
         }
     }
 }

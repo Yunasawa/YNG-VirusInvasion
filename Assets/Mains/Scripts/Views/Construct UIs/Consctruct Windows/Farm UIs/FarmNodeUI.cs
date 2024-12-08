@@ -52,11 +52,13 @@ public class FarmNodeUI : MonoBehaviour
 
         _buttonLabel.text = $"{_upgradeCost.Amount}\n{_upgradeCost.Type}";
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
-        _button.interactable = _enoughResource;
+        //_button.interactable = _enoughResource;
     }
 
     private void OnButtonClicked()
     {
+        if (!_enoughResource) return;
+
         Player.OnConsumeResources?.Invoke(_upgradeCost.Type, _upgradeCost.Amount);
         Player.OnFarmStatsLevelUp?.Invoke(_node.Name);
     }

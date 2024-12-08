@@ -70,15 +70,15 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnChangeResources?.Invoke();
     }
 
-    private void OnCollectFarmResources(ResourceType type, int amount)
+    private void OnCollectFarmResources(ResourceType type, float amount)
     {
-        Game.Data.PlayerStats.Resources[type] += (uint)amount;
+        Game.Data.PlayerStats.Resources[type] += amount;
         Player.OnChangeResources?.Invoke();
     }
 
-    private void OnConsumeResources(ResourceType type, int amount)
+    private void OnConsumeResources(ResourceType type, float amount)
     {
-        Game.Data.PlayerStats.Resources[type] -= (uint)amount;
+        Game.Data.PlayerStats.Resources[type] -= amount;
         Player.OnChangeResources?.Invoke();
     }
 }

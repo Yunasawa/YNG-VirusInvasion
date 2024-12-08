@@ -9,7 +9,7 @@ public static class Builder
         return description.Replace("$1", stat1).Replace("$2", stat2);
     }
 
-    public static string RoundValue(this uint number)
+    public static string RoundValue(this int number)
     {
         if (number < 1000) return number.ToString(CultureInfo.InvariantCulture);
 

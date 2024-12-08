@@ -11,5 +11,5 @@ public class ResourceBarUI : MonoBehaviour
 
     public ResourceType Type;
 
-    public void UpdateResource(uint amount) => _text.text = amount.RoundValue();
+    public void UpdateResource(float amount) => _text.text = Mathf.FloorToInt(amount).RoundValue();
 }

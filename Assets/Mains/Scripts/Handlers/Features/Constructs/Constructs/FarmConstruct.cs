@@ -14,7 +14,7 @@ public class FarmConstruct : MonoBehaviour
     [SerializeField] private Transform _canvas;
     public GameObject ResourcePing;
 
-    public int CurrentResources;
+    public float CurrentResources;
     public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[_manager.Name]["Capacity"].Value);
 
     public ResourceType GeneratedResource;
