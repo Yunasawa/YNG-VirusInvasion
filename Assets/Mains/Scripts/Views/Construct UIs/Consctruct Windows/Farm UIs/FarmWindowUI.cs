@@ -158,7 +158,7 @@ public class FarmWindowUI : ConstructWindowUI
     }
     private void CollectResouce()
     {
-        if (_farm.CurrentResources > 0) _farm.ResourcePing.SetActive(false);
+        //if (_farm.CurrentResources > 0) _farm.ResourcePing.SetActive(false);
 
         Player.OnCollectFarmResources?.Invoke(_farm.GeneratedResource, _farm.CurrentResources);
 
@@ -176,6 +176,11 @@ public class FarmWindowUI : ConstructWindowUI
         {
             _capacityBar.fillAmount = _farm.CurrentResources / _farm.Capacity;
             _capacityText.text = $"{_farm.CurrentResources.RoundToDigit(1)}/{_farm.Capacity}";
+        }
+        else
+        {
+            _capacityBar.fillAmount = 0;
+            _capacityText.text = $"No capacity";
         }
     }
 }

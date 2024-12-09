@@ -11,8 +11,8 @@ public class FarmConstruct : MonoBehaviour
 
     private ConstructManager _manager;
 
-    [SerializeField] private Transform _canvas;
-    public GameObject ResourcePing;
+    //[SerializeField] private Transform _canvas;
+    //public GameObject ResourcePing;
 
     public float CurrentResources;
     public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[_manager.Name]["Capacity"].Value);
@@ -34,7 +34,7 @@ public class FarmConstruct : MonoBehaviour
         Vector3 direction = Camera.main.transform.forward;
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        _canvas.transform.rotation = rotation;
+        //_canvas.transform.rotation = rotation;
     }
 
     public int DeltaSecond()
@@ -57,6 +57,6 @@ public class FarmConstruct : MonoBehaviour
     private async UniTask CountToPingTask(int second)
     {
         await UniTask.WaitForSeconds(second);
-        ResourcePing.SetActive(true);
+        //ResourcePing.SetActive(true);
     }
 }

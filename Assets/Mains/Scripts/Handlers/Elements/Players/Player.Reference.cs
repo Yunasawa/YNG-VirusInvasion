@@ -3,6 +3,9 @@ using YNL.Bases;
 
 public static partial class Player
 {
+    public static bool IsMoving { get; set; } = false;
+
+
     public static Transform Transform => Manager.transform;
     public static PlayerManager Manager => PlayerManager.Instance;
     public static CharacterController Character => Manager.Character;

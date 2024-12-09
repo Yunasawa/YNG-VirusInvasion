@@ -16,12 +16,12 @@ MonoBehaviour:
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 508
+      - 1000
       - 0
       - 0
       - 0
       - 0
-      - 60
+      - 100
       - 0
       - 0
       - 0
@@ -139,9 +139,9 @@ MonoBehaviour:
         - Capacity
         - Income
         _values:
-        - Level: 4
+        - Level: 0
           Step: 10
-        - Level: 14
+        - Level: 0
           Step: 0.2
   CapacityStats:
     CurrentCapacity: 4
