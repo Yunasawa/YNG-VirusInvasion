@@ -25,7 +25,7 @@ public class CameraMovementManager : MonoBehaviour
         }
         else
         {
-            _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _nearPosition, _focusingSpeed.Oscillate() * 2);
+            _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _nearPosition, _focusingSpeed.Oscillate());
         }
     }
 
