@@ -34,9 +34,9 @@ public class CapacityFieldUI : MonoBehaviour
     {
         if (_capacityBar != null)
         {
-            float fillAmount = (float)Game.Data.CapacityStats.CurrentCapacity / Mathf.FloorToInt(Game.Data.PlayerStats.Capacity);
+            float fillAmount = (float)Game.Data.CapacityStats.CurrentCapacity / Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity]);
             _capacityBar.fillAmount = fillAmount;
-            _capacityText.text = $"Capacity: {Game.Data.CapacityStats.CurrentCapacity}/{Mathf.FloorToInt(Game.Data.PlayerStats.Capacity)}";
+            _capacityText.text = $"Capacity: {Game.Data.CapacityStats.CurrentCapacity}/{Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity])}";
         }
 
         foreach (var pair in _collectedNodes)

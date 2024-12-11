@@ -20,9 +20,9 @@ namespace YNL.Bases
 
             if (amount > 0) // Adding resources
             { 
-                if (currentTotalCapacity < Game.Data.PlayerStats.Capacity) 
+                if (currentTotalCapacity < Game.Data.PlayerStats.Attributes[AttributeType.Capacity])
                 { 
-                    int maxAddableAmount = Mathf.RoundToInt(Game.Data.PlayerStats.Capacity - currentTotalCapacity); 
+                    int maxAddableAmount = Mathf.RoundToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity] - currentTotalCapacity); 
                     int amountToAdd = Math.Min(maxAddableAmount, amount); 
                     Resources[type] = (uint)(currentResourceAmount + amountToAdd); 
                     CurrentCapacity = (uint)(currentTotalCapacity + amountToAdd);

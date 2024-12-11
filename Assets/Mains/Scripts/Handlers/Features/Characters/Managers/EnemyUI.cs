@@ -1,6 +1,8 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
+using YNL.Bases;
 using YNL.Extensions.Methods;
 
 public class EnemyUI : MonoBehaviour
@@ -39,7 +41,7 @@ public class EnemyUI : MonoBehaviour
     {
         if (start)
         {
-            float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.DPS;
+            float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.Attributes[AttributeType.DPS];
             _healthBarTween = _healthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
             if (!_billboardCanvas.gameObject.activeSelf) _billboardCanvas.gameObject.SetActive(true);
         }

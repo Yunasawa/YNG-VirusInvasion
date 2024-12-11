@@ -1,5 +1,6 @@
 using System.Data;
 using UnityEngine;
+using YNL.Bases;
 using YNL.Extensions.Methods;
 
 public class PlayerMovementManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class PlayerMovementManager : MonoBehaviour
 
     [SerializeField] private bool _enableRotation = true;
 
-    public float CurrentMovingSpeed => 0.1f * (Game.Data.PlayerStats.MS / 16);
+    public float CurrentMovingSpeed => 0.1f * (Game.Data.PlayerStats.Attributes[AttributeType.MS] / 16);
     [SerializeField] private float _currentRotatingSpeed = 0.5f;
 
     public bool EnableGravity = false;

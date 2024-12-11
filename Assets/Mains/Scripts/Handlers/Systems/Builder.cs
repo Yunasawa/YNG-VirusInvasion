@@ -27,4 +27,11 @@ public static class Builder
 
         return $"{formattedNumber.ToString("0.##", CultureInfo.InvariantCulture)}{suffix}";
     }
+
+    public static string UpgradeFieldText()
+    {
+        string text = "";
+
+        return text;
+    }
 }

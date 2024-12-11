@@ -18,19 +18,8 @@ namespace YNL.Bases
 
         public SerializableDictionary<ResourceType, float> Resources = new();
 
-        [FoldoutGroup("Levels")] public uint DPSLevel = 1;
-        [FoldoutGroup("Levels")] public uint MSLevel = 1;
-        [FoldoutGroup("Levels")] public uint CapacityLevel = 1;
-        [FoldoutGroup("Levels")] public uint RadiusLevel = 1;
-        [FoldoutGroup("Levels")] public uint TentacleLevel = 1;
-        [FoldoutGroup("Levels")] public uint HPLevel = 1;
-
-        [FoldoutGroup("Attributes")] public float DPS;
-        [FoldoutGroup("Attributes")] public float MS;
-        [FoldoutGroup("Attributes")] public float Capacity;
-        [FoldoutGroup("Attributes")] public float Radius;
-        [FoldoutGroup("Attributes")] public float Tentacle;
-        [FoldoutGroup("Attributes")] public float HP;
+        public SerializableDictionary<AttributeType, float> Attributes = new();
+        public SerializableDictionary<AttributeType, uint> Levels = new();
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
         public SerializableDictionary<string, SerializableDictionary<string, ExtraStats>> FarmStats = new();
@@ -45,6 +34,15 @@ namespace YNL.Bases
             }
         }
 
+        public void UpdateAttributes(AttributeType type)
+        {
+            Attributes[type] = Formula.Stats.GetAttributeValue(type);
+        }
+
+        public void UpgradeLevels(AttributeType type)
+        {
+            Levels[type]++;
+        }
     }
 
     [System.Serializable]

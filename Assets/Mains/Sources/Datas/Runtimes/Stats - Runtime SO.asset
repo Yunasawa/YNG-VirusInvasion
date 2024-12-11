@@ -16,28 +16,28 @@ MonoBehaviour:
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 1000
+      - 440390
       - 0
       - 0
       - 0
       - 0
-      - 100
       - 0
+      - 95
+      - 78
+      - 90
       - 0
-      - 0
-      - 0
-    DPSLevel: 1
-    MSLevel: 1
-    CapacityLevel: 1
-    RadiusLevel: 1
-    TentacleLevel: 1
-    HPLevel: 1
-    DPS: 16.05
-    MS: 17
-    Capacity: 4.075
-    Radius: 16
-    Tentacle: 2
-    HP: 22.3
+    Attributes:
+      _keys: 000102030405
+      _values:
+      - 18.5
+      - 44
+      - 2.15
+      - 30.5
+      - 12
+      - 29.800001
+    Levels:
+      _keys: 000103040502
+      _values: 010000000100000001000000010000000100000001000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
