@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerStats:
     CurrentLevel: 0
-    CurrentExp: 0
+    CurrentExp: 70
     Resources:
       _keys: 00010203040506070809
       _values:

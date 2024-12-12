@@ -1,10 +1,9 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
 public class CameraMovementManager : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
+    public Transform Target;
 
     [SerializeField] private float _followingSpeed = 0.05f;
 
@@ -31,7 +30,7 @@ public class CameraMovementManager : MonoBehaviour
 
     private void FollowTarget()
     {
-        if (_isSmoothMovement) this.transform.position = Vector3.Lerp(this.transform.position, _target.transform.position, _followingSpeed.Oscillate(60));
-        else this.transform.position = _target.transform.position;
+        if (_isSmoothMovement) this.transform.position = Vector3.Lerp(this.transform.position, Target.transform.position, _followingSpeed.Oscillate(60));
+        else this.transform.position = Target.transform.position;
     }
 }

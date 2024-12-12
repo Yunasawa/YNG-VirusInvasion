@@ -58,6 +58,8 @@ public class PlayerStatsManager : MonoBehaviour
                 int remainExp = _playerStats.CurrentExp - maxExp;
                 _playerStats.CurrentLevel = Mathf.Min(10, _playerStats.CurrentLevel + 1);
                 _playerStats.CurrentExp = remainExp;
+
+                Player.OnLevelUp?.Invoke();
             }
 
             View.OnChangeLevelField?.Invoke();

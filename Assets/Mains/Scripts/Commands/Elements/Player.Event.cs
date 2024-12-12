@@ -3,6 +3,7 @@ using YNL.Bases;
 
 public static partial class Player
 {
+    public static Action OnLevelUp { get; set; }
     public static Action<(ResourceType, uint)[]> OnCollectEnemyDrops { get; set; }
     public static Action<int> OnCollectEnemyExp { get; set; }
     public static Action<bool, ConstructType, ConstructManager> OnInteractWithConstruct { get; set; }
