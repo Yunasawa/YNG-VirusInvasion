@@ -11,7 +11,7 @@ public static class Builder
 
     public static string RoundValue(this int number)
     {
-        if (number < 1000) return number.ToString(CultureInfo.InvariantCulture);
+        if (number < 10000) return number.ToString(CultureInfo.InvariantCulture);
 
         int digitGroups = (int)(Math.Log10(number) / 3);
         double formattedNumber = Math.Floor(number / Math.Pow(1000, digitGroups) * 100) / 100;

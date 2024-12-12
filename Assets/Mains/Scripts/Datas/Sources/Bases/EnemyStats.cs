@@ -17,7 +17,7 @@ namespace YNL.Bases
 [System.Serializable]
 public class MonsterStatsNode
 {
-    public float Exp;
+    public int Exp;
     public uint Capacity;
     public uint HP;
     public uint MS;

@@ -10,6 +10,7 @@ public class PlayerStatsManager : MonoBehaviour
     private void Awake()
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
+        Player.OnCollectEnemyExp += OnCollectEnemyExp;
         Player.OnExchangeResources += OnExchangeResources;
         Player.OnExtraStatsLevelUp += OnExtraStatsLevelUp;
         Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
@@ -21,6 +22,7 @@ public class PlayerStatsManager : MonoBehaviour
     private void OnDestroy()
     {
         Player.OnCollectEnemyDrops -= OnCollectEnemyDrops;
+        Player.OnCollectEnemyExp -= OnCollectEnemyExp;
         Player.OnExchangeResources -= OnExchangeResources;
         Player.OnExtraStatsLevelUp -= OnExtraStatsLevelUp;
         Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
@@ -43,6 +45,23 @@ public class PlayerStatsManager : MonoBehaviour
             _capacityStats.AdjustResources(drop.type, (int)drop.amount);
         }
         Player.OnChangeCapacity?.Invoke();
+    }
+
+    public void OnCollectEnemyExp(int exp)
+    {
+        if (_playerStats.CurrentLevel < 10)
+        {
+            _playerStats.CurrentExp += exp;
+            int maxExp = Formula.Level.GetMaxExp();
+            if (_playerStats.CurrentExp >= maxExp)
+            {
+                int remainExp = _playerStats.CurrentExp - maxExp;
+                _playerStats.CurrentLevel = Mathf.Min(10, _playerStats.CurrentLevel + 1);
+                _playerStats.CurrentExp = remainExp;
+            }
+
+            View.OnChangeLevelField?.Invoke();
+        }
     }
 
     private void OnExtraStatsLevelUp(string key)

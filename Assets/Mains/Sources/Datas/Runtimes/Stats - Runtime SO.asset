@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
+    CurrentLevel: 0
+    CurrentExp: 0
     Resources:
       _keys: 00010203040506070809
       _values:
@@ -29,12 +31,12 @@ MonoBehaviour:
     Attributes:
       _keys: 000102030405
       _values:
-      - 18.5
-      - 44
-      - 2.15
-      - 30.5
-      - 12
-      - 29.800001
+      - 16.05
+      - 17
+      - 4.075
+      - 16
+      - 2
+      - 22.3
     Levels:
       _keys: 000103040502
       _values: 010000000100000001000000010000000100000001000000

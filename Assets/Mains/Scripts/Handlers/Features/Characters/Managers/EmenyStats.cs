@@ -32,5 +32,6 @@ public class EmenyStats : MonoBehaviour
         _manager.OnEnemyKilled?.Invoke();
         _manager.OnEnemyKilled = null;
         Player.OnCollectEnemyDrops?.Invoke(Stats.Drops.Select(pair => (pair.Key, pair.Value)).ToArray());
+        Player.OnCollectEnemyExp?.Invoke(Stats.Exp);
     }
 }

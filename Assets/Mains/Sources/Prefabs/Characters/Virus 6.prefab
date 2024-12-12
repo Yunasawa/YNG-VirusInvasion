@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   Stats:
-    Exp: 0
+    Exp: 10
     Capacity: 0
     HP: 1500
     MS: 0

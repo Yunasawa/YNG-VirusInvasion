@@ -16,6 +16,9 @@ namespace YNL.Bases
             public float NextValue => Step * (Level + 1);
         }
 
+        public int CurrentLevel = 0;
+        public int CurrentExp;
+
         public SerializableDictionary<ResourceType, float> Resources = new();
 
         public SerializableDictionary<AttributeType, float> Attributes = new();
