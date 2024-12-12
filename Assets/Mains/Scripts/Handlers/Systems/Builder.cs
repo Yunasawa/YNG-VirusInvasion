@@ -27,6 +27,7 @@ public static class Builder
 
         return $"{formattedNumber.ToString("0.##", CultureInfo.InvariantCulture)}{suffix}";
     }
+    public static string RoundValue(this uint number) => ((int)number).RoundValue();
 
     public static string UpgradeFieldText()
     {

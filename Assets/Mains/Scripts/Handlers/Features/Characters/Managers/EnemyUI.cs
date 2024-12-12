@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
@@ -53,6 +52,19 @@ public class EnemyUI : MonoBehaviour
             if (_healthBarTween.IsNull()) return;
             _healthBarTween.Kill();
             _healthBarTween = null;
+
+            float recoveryTime = 2 * (1 - remainFillAmount);
+
+            _healthBarTween = _healthBar.DOFillAmount(1, recoveryTime).SetEase(Ease.Linear).OnUpdate(() =>
+            {
+                _manager.Stats.CurrentHealth = (uint)Mathf.FloorToInt(_manager.Stats.Stats.HP * _healthBar.fillAmount);
+            }).OnComplete(() =>
+            {
+                _billboardCanvas.gameObject.SetActive(false);
+
+                _healthBarTween.Kill();
+                _healthBarTween = null;
+            });
         }
     }
 }

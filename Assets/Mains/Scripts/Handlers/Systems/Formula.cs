@@ -235,16 +235,16 @@ public static class Formula
             level = level == 0 ? _stats.Levels[AttributeType.Capacity] : level;
             float baseValue = 4;
 
-            if (level <= 25) return baseValue + level * 0.075f;
+            if (level <= 25) return baseValue + level * 7;
             else if (level > 25 && level <= 50)
             {
                 uint extraLevels = level - 25;
-                return baseValue = 25 * 0.075f + (extraLevels) * 0.055f;
+                return baseValue = 25 * 7 + (extraLevels) * 5;
             }
             else
             {
                 uint extraLevels = level - 50;
-                return baseValue = 25 * (0.075f + 0.055f) + (extraLevels) * 0.035f;
+                return baseValue = 25 * (7 + 5) + (extraLevels) * 3;
             }
         }
         public static float GetRadius(uint level = 0)

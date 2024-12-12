@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    CurrentLevel: 2
-    CurrentExp: 198
+    CurrentLevel: 3
+    CurrentExp: 56
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 422083
+      - 417814
       - 0
       - 0
       - 0
@@ -31,15 +31,15 @@ MonoBehaviour:
     Attributes:
       _keys: 000102030405
       _values:
-      - 18.5
-      - 17
-      - 4.075
+      - 18.6
+      - 25
+      - 4.45
       - 16
       - 2
       - 22.3
     Levels:
       _keys: 000103040502
-      _values: 320000000100000001000000010000000100000001000000
+      _values: 340000000900000001000000010000000100000006000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
@@ -146,10 +146,10 @@ MonoBehaviour:
         - Level: 0
           Step: 0.2
   CapacityStats:
-    CurrentCapacity: 4
+    CurrentCapacity: 0
     Resources:
       _keys: 00010203040506070809
-      _values: 02000000020000000000000000000000000000000000000000000000000000000000000000000000
+      _values: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   QuestRuntime:
     CompletedQuests:
       _keys: 020000000300000004000000

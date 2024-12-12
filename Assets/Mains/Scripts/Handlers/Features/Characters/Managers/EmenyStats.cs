@@ -1,7 +1,5 @@
-using DG.Tweening;
 using System.Linq;
 using UnityEngine;
-using YNL.Extensions.Methods;
 
 public class EmenyStats : MonoBehaviour
 {

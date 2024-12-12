@@ -10,6 +10,8 @@ namespace YNL.Bases
         public uint CurrentCapacity;
         public SerializableDictionary<ResourceType, uint> Resources = new();
 
+        public bool IsFull => CurrentCapacity >= Formula.Stats.GetCapacity();
+
         public void AdjustResources(ResourceType type, int amount)
         {
             if (amount <= 0) return;

@@ -12,7 +12,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
         if (other.tag == "Monster")
         {
             Enemy monster = other.GetComponent<Enemy>();
-            if (monster.IsCaught) return;
+            if (monster.IsCaught || Game.Data.CapacityStats.IsFull) return;
 
             foreach (var tentacle in Tentacles)
             {
