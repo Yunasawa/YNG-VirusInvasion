@@ -330,17 +330,26 @@ MonoBehaviour:
         StepCost: 10
   QuestStats:
     Quests:
-      _keys: 020000000300000004000000
+      _keys:
+      - UpgradeFarm
+      - Collect5Items
+      - Collect10Items
       _values:
-      - Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
+      - RawMessage: Upgrade any farm attribute to level <color=#F3FF00>2</color>
+        Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
+        Title: Upgrade Farm
         Resource:
           Type: 0
           Amount: 300
-      - Message: Collect <color=#F3FF00>@/5</color> special items from monsters
+      - RawMessage: Collect <color=#F3FF00>5</color> special items from monsters
+        Message: Collect <color=#F3FF00>@/5</color> special items from monsters
+        Title: Collect Items
         Resource:
           Type: 0
           Amount: 1000
-      - Message: Collect <color=#F3FF00>@/10</color> special items from monsters
+      - RawMessage: Collect <color=#F3FF00>10</color> special items from monsters
+        Message: Collect <color=#F3FF00>@/10</color> special items from monsters
+        Title: Collect Items
         Resource:
           Type: 0
           Amount: 3000

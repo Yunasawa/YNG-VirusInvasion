@@ -5,18 +5,20 @@ using YNL.Utilities.Addons;
 [System.Serializable]
 public class QuestStats
 {
-    public SerializableDictionary<int, QuestStatsNode> Quests = new();
+    public SerializableDictionary<string, QuestStatsNode> Quests = new();
 }
 
 [System.Serializable]
 public class QuestStatsNode
 {
+    public string RawMessage;
     public string Message;
+    public string Title;
     public ResourcesInfo Resource = new();
 }
 
 [System.Serializable]
 public class QuestRuntime
 {
-    public SerializableDictionary<int, bool> CompletedQuests = new();
+    public SerializableDictionary<string, bool> CurrentQuests = new();
 }

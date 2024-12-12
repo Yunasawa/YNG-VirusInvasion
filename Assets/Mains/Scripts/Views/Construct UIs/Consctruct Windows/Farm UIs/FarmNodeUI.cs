@@ -41,6 +41,9 @@ public class FarmNodeUI : MonoBehaviour
 
     public void UpdateNode()
     {
+        if (this.IsNullOrDestroyed()) return;
+        if (!this.gameObject.activeInHierarchy) return;
+
         PlayerStats.ExtraStats extraStats = _playerStats.FarmStats[Construct.CurrentConstruct][_node.Name];
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
         (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");

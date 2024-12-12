@@ -11,8 +11,7 @@ public class FarmConstruct : MonoBehaviour
 
     private ConstructManager _manager;
 
-    //[SerializeField] private Transform _canvas;
-    //public GameObject ResourcePing;
+    [SerializeField] private GameObject _exclamationMark;
 
     public float CurrentResources;
     public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[_manager.Name]["Capacity"].Value);
@@ -22,6 +21,15 @@ public class FarmConstruct : MonoBehaviour
     private void Awake()
     {
         _manager = GetComponent<ConstructManager>();
+
+        Player.OnAcceptQuest += OnAcceptQuest;
+        Player.OnFinishQuest += OnFinishQuest;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnAcceptQuest -= OnAcceptQuest;
+        Player.OnFinishQuest -= OnFinishQuest;
     }
 
     private void Start()
@@ -35,6 +43,20 @@ public class FarmConstruct : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
 
         //_canvas.transform.rotation = rotation;
+    }
+
+    private void OnAcceptQuest(string name)
+    {
+        if (name != "UpgradeFarm") return;
+
+        _exclamationMark.SetActive(true);
+    }
+
+    private void OnFinishQuest(string name)
+    {
+        if (name != "UpgradeFarm") return;
+
+        _exclamationMark.SetActive(false);
     }
 
     public int DeltaSecond()
