@@ -33,16 +33,24 @@ public class CameraDoorManager : MonoBehaviour
 
     private async UniTaskVoid FocusOnDoor()
     {
+        Ease ease = Ease.OutCubic;
+
         DoorGroup doorGroup = _doors.Find(i => i.Stage == Game.Data.PlayerStats.CurrentLevel);
-        Camera.main.DOFieldOfView(110f, 1);
+        Camera.main.DOFieldOfView(110f, 2).SetEase(ease);
+        _manager.Movement.EnableFollowTarget = false;
 
         foreach (var door in doorGroup.Doors)
         {
-            _manager.Movement.Target = door.transform;
+            this.transform.DOMove(door.transform.position, 2).SetEase(ease);
             await UniTask.WaitForSeconds(5);
         }
 
-        Camera.main.DOFieldOfView(50f, 1);
-        _manager.Movement.Target = Player.Transform;
+        Camera.main.DOFieldOfView(50f, 2).SetEase(ease);
+        this.transform.DOMove(Player.Transform.position, 2).SetEase(ease).OnComplete(OnBackToPlayerCompleted);
+
+        void OnBackToPlayerCompleted()
+        {
+            _manager.Movement.EnableFollowTarget = true;
+        }
     }
 }

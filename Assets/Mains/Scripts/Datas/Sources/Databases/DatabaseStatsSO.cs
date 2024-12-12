@@ -7,4 +7,5 @@ public class DatabaseStatsSO : ScriptableObject
 {
     public EnemyStats EnemyStats = new();
     public ConstructStats ConstructStats = new();
+    public QuestStats QuestStats = new();
 }

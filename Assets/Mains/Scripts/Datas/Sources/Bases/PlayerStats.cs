@@ -9,7 +9,7 @@ namespace YNL.Bases
     {
         [System.Serializable] public class ExtraStats
         {
-            public uint Level;
+            public int Level;
             public float Step;
 
             public float Value => Step * Level;

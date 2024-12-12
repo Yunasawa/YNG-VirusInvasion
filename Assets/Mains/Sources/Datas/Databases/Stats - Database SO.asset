@@ -328,3 +328,19 @@ MonoBehaviour:
           Type: 5
           Amount: 30
         StepCost: 10
+  QuestStats:
+    Quests:
+      _keys: 020000000300000004000000
+      _values:
+      - Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
+        Resource:
+          Type: 0
+          Amount: 300
+      - Message: Collect <color=#F3FF00>@/5</color> special items from monsters
+        Resource:
+          Type: 0
+          Amount: 1000
+      - Message: Collect <color=#F3FF00>@/10</color> special items from monsters
+        Resource:
+          Type: 0
+          Amount: 3000

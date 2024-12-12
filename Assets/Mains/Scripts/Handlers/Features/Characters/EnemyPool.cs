@@ -27,6 +27,7 @@ public class EnemyPool : MonoBehaviour
     private TransformAccessArray _enemyTransforms;
     private NativeArray<float3> _targetPositions;
     private NativeArray<bool> _isPulling;
+    private NativeArray<float> _movingSpeed;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class EnemyPool : MonoBehaviour
         _enemyTransforms = new TransformAccessArray(_enemyCount);
         _targetPositions = new NativeArray<float3>(_enemyCount, Allocator.Persistent);
         _isPulling = new NativeArray<bool>(_enemyCount, Allocator.Persistent);
+        _movingSpeed = new NativeArray<float>(_enemyCount, Allocator.Persistent);
 
         for (int i = 0; i < _enemyCount; i++)
         {
@@ -67,6 +69,7 @@ public class EnemyPool : MonoBehaviour
             }
 
             _isPulling[i] = _enemies[i].Movement.IsPulling;
+            _movingSpeed[i] = _enemies[i].IsCaught ? 5 : 1.5f;
         }
 
         UpdateEnemyMovements();
@@ -81,6 +84,7 @@ public class EnemyPool : MonoBehaviour
         _targetPositions.Dispose();
         _enemyTransforms.Dispose();
         _isPulling.Dispose();
+        _movingSpeed.Dispose();
     }
 
     public void PullObject() => _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);
@@ -98,10 +102,10 @@ public class EnemyPool : MonoBehaviour
         {
             TargetPositions = _targetPositions,
             PullingSpeed = Player.Movement.CurrentMovingSpeed.Oscillate() * Formula.Value.GetEnemyPullingSpeedMultiplier(transform.position),
-            MovingSpeed = 1.5f,
             DeltaTime = Time.deltaTime,
             PlayerPosition = Player.Transform.position,
-            IsPulling = _isPulling
+            IsPulling = _isPulling,
+            MovingSpeed = _movingSpeed
         };
 
         JobHandle handle = job.Schedule(_enemyTransforms);
@@ -135,10 +139,10 @@ public struct EnemyMovementJob : IJobParallelForTransform
 {
     public NativeArray<float3> TargetPositions;
     public float PullingSpeed;
-    public float MovingSpeed;
     public float DeltaTime;
     public float3 PlayerPosition;
     public NativeArray<bool> IsPulling;
+    public NativeArray<float> MovingSpeed;
 
     public void Execute(int index, TransformAccess transform)
     {
@@ -152,9 +156,9 @@ public struct EnemyMovementJob : IJobParallelForTransform
             if (!math.all(direction == float3.zero))
             {
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, MovingSpeed * DeltaTime * 2);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, MovingSpeed[index] * DeltaTime * 2);
 
-                transform.localPosition += transform.rotation * Vector3.forward * MovingSpeed * DeltaTime;
+                transform.localPosition += transform.rotation * Vector3.forward * MovingSpeed[index] * DeltaTime;
             }
         }
     }

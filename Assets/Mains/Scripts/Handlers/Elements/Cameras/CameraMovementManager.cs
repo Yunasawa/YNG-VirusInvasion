@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
@@ -14,9 +15,11 @@ public class CameraMovementManager : MonoBehaviour
     private Vector3 _farPosition = new(0, 50, -26.2f);
     [SerializeField] private float _focusingSpeed = 0.2f;
 
+    public bool EnableFollowTarget = true;
+
     private void Update()
     {
-        FollowTarget();
+        if (EnableFollowTarget) FollowTarget();
 
         if (Player.IsMoving)
         {
