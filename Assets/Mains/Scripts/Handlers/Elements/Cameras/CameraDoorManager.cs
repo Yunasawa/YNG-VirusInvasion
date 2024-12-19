@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class CameraDoorManager : MonoBehaviour
@@ -41,7 +42,7 @@ public class CameraDoorManager : MonoBehaviour
 
         foreach (var door in doorGroup.Doors)
         {
-            this.transform.DOMove(door.transform.position, 2).SetEase(ease);
+            this.transform.DOMove(door.transform.position, 2).SetEase(ease).OnComplete(door.OpenDoor);
             await UniTask.WaitForSeconds(5);
         }
 

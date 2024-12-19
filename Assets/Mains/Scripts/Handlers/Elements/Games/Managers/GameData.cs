@@ -9,6 +9,8 @@ public class GameData : MonoBehaviour
     [SerializeField] private DatabaseStatsSO _databaseStats;
     [SerializeField] private DatabaseEnemySO _databaseEnemy;
 
+    public DatabaseVaultSO Vault;
+
     public SerializableDictionary<StageType, Boundary> BoundaryStages = new();
 
     public PlayerStats PlayerStats => _runtimeStats.PlayerStats;

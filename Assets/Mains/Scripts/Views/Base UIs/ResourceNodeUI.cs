@@ -11,4 +11,6 @@ public class ResourceNodeUI : MonoBehaviour
     {
         _text.text = Mathf.FloorToInt(amount).RoundValue();
     }
+
+    public void UpdateIcon(Sprite icon) => _icon.sprite = icon;
 }

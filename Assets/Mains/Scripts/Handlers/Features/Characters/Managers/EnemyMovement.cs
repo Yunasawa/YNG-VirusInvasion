@@ -42,5 +42,7 @@ public class EnemyMovement : MonoBehaviour
         //this.gameObject.SetActive(false);
         _manager.OnKilled();
         _manager.Stats.OnKilled();
+
+        CameraManager.Instance.Audio.PlayEatingSFX();
     }
 }
