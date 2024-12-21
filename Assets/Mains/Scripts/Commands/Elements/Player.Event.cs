@@ -12,6 +12,7 @@ public static partial class Player
     public static Action<ResourceType, float> OnConsumeResources { get; set; }
     public static Action OnChangeResources { get; set; }
     public static Action OnChangeCapacity { get; set; }
+    public static Action OnChangeStats { get; set; }
 
     public static Action<string> OnExtraStatsUpdate { get; set; }
     public static Action<string> OnFarmStatsUpdate { get; set; }

@@ -43,7 +43,7 @@ public class MarketNodeUI : MonoBehaviour
     {
         PlayerStats.ExtraStats extraStats = _playerStats.ExtraStatsLevel[_node.Key];
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
-        (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");
+        (string from, string to) statsToString = new($"<color=#2B7E22>{stats.from}</color>", $"<color=#2B7E22>{stats.to}</color>");
         _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
 
         _upgradeCost = Formula.Upgrade.GetMarketUpgradeCost(_node, (int)extraStats.Level);

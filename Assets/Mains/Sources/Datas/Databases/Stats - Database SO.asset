@@ -108,6 +108,19 @@ MonoBehaviour:
           Type: 1
           Amount: 3
         StepCost: 1
+      Evolutions:
+      - Evolution: 1
+        Costs:
+        - Type: 0
+          Amount: 50000
+        - Type: 1
+          Amount: 50
+      - Evolution: 2
+        Costs:
+        - Type: 0
+          Amount: 800000
+        - Type: 1
+          Amount: 400
     - Name: Market 2
       Nodes:
       - Name: Catcher
@@ -165,6 +178,7 @@ MonoBehaviour:
           Type: 0
           Amount: 25
         StepCost: 5
+      Evolutions: []
     - Name: Market 3
       Nodes:
       - Name: Power
@@ -200,6 +214,7 @@ MonoBehaviour:
           Type: 3
           Amount: 3
         StepCost: 1
+      Evolutions: []
     Exchangers:
     - Name: Exchanger 1
       Nodes:

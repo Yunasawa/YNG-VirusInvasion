@@ -59,7 +59,7 @@ public class EnemyPool : MonoBehaviour
     {
         for (int i = 0; i < _enemyCount; i++)
         {
-            if (math.length(_targetPositions[i] - (float3)_enemyTransforms[i].localPosition) < 0.1f)
+            if (math.length(_targetPositions[i] - (float3)_enemyTransforms[i].localPosition) < 0.2f)
             {
                 _targetPositions[i] = GetRandomPositionInsideCircle();
             }

@@ -21,7 +21,11 @@ public class ExchangerNodeUI : MonoBehaviour
         _node = node;
 
         _cost1.text = node.From.Amount.ToString();
+        _icon1.sprite = Game.Data.Vault.ResourceIcons[node.From.Type];
+
         _cost2.text = node.To.Amount.ToString();
+        _icon2.sprite = Game.Data.Vault.ResourceIcons[node.To.Type];
+
         _button.onClick.AddListener(OnButtonClicked);
         if (Game.Data.PlayerStats.Resources[node.From.Type] >= node.From.Amount)
         {

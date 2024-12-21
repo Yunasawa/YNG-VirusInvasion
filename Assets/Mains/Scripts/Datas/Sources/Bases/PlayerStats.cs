@@ -22,6 +22,7 @@ namespace YNL.Bases
         public SerializableDictionary<ResourceType, float> Resources = new();
 
         public SerializableDictionary<AttributeType, float> Attributes = new();
+        public SerializableDictionary<AttributeType, float> Bonuses = new();
         public SerializableDictionary<AttributeType, uint> Levels = new();
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();

@@ -13,6 +13,7 @@ namespace YNL.Bases
     {
         public string Name;
         public MarketStatsNode[] Nodes = new MarketStatsNode[0];
+        public MarketEvolutionNode[] Evolutions = new MarketEvolutionNode[0];
     }
 
     [System.Serializable]
@@ -27,6 +28,13 @@ namespace YNL.Bases
         public bool PercentCost;
         public ResourcesInfo BaseCost;
         public float StepCost;
+    }
+
+    [System.Serializable]
+    public class MarketEvolutionNode
+    {
+        public int Evolution;
+        public ResourcesInfo[] Costs = new ResourcesInfo[0];
     }
 
     [System.Serializable]

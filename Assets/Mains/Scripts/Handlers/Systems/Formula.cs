@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
-using static Cinemachine.DocumentationSortingAttribute;
 using BaseStats = YNL.Bases.PlayerStats;
 
 public static class Formula
@@ -216,7 +214,7 @@ public static class Formula
         public static float GetDPS(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.DPS] : level;
-            return 16 + level * 0.05f;
+            return (16 + level * 0.05f) * (1 + Game.Data.PlayerStats.Bonuses[AttributeType.DPS].Percent());
         }
         public static float GetMS(uint level = 0)
         {

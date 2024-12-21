@@ -37,16 +37,17 @@ public class CameraDoorManager : MonoBehaviour
         Ease ease = Ease.OutCubic;
 
         DoorGroup doorGroup = _doors.Find(i => i.Stage == Game.Data.PlayerStats.CurrentLevel);
-        Camera.main.DOFieldOfView(110f, 2).SetEase(ease);
+        Camera.main.transform.DOLocalMove(new Vector3(0, 85, -52), 2).SetEase(ease);//.DOFieldOfView(110f, 2).SetEase(ease);
         _manager.Movement.EnableFollowTarget = false;
 
         foreach (var door in doorGroup.Doors)
         {
+            MDebug.Log("HEHEHE");
             this.transform.DOMove(door.transform.position, 2).SetEase(ease).OnComplete(door.OpenDoor);
             await UniTask.WaitForSeconds(5);
         }
 
-        Camera.main.DOFieldOfView(50f, 2).SetEase(ease);
+        Camera.main.transform.DOLocalMove(new Vector3(0, 30, -20), 2).SetEase(ease); //DOFieldOfView(50f, 2).SetEase(ease);
         this.transform.DOMove(Player.Transform.position, 2).SetEase(ease).OnComplete(OnBackToPlayerCompleted);
 
         void OnBackToPlayerCompleted()

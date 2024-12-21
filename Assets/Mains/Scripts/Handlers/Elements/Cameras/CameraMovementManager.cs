@@ -19,15 +19,18 @@ public class CameraMovementManager : MonoBehaviour
 
     private void Update()
     {
-        if (EnableFollowTarget) FollowTarget();
+        if (EnableFollowTarget)
+        {
+            FollowTarget();
 
-        if (Player.IsMoving)
-        {
-            _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _farPosition, _focusingSpeed.Oscillate());
-        }
-        else
-        {
-            _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _nearPosition, _focusingSpeed.Oscillate());
+            if (Player.IsMoving)
+            {
+                _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _farPosition, _focusingSpeed.Oscillate());
+            }
+            else
+            {
+                _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _nearPosition, _focusingSpeed.Oscillate());
+            }
         }
     }
 

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class CapacityFieldUI : MonoBehaviour
@@ -11,6 +12,8 @@ public class CapacityFieldUI : MonoBehaviour
     [Title("Capacity Bar")]
     [SerializeField] private Image _capacityBar;
     [SerializeField] private TextMeshProUGUI _capacityText;
+
+    private (Color Normal, Color Full) _capacityColor = new("#01BE4D".ToColor(), "#BE3501".ToColor());
 
     [Title("Resource Bar")]
     [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _collectedNodes = new();
@@ -36,7 +39,16 @@ public class CapacityFieldUI : MonoBehaviour
         {
             float fillAmount = (float)Game.Data.CapacityStats.CurrentCapacity / Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity]);
             _capacityBar.fillAmount = fillAmount;
-            _capacityText.text = $"Capacity: {Game.Data.CapacityStats.CurrentCapacity}/{Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity])}";
+            if (fillAmount >= 0.95f)
+            {
+                _capacityText.color = _capacityColor.Full;
+                _capacityText.text = $"Capacity is full";
+            }
+            else
+            {
+                _capacityText.color = _capacityColor.Normal;
+                _capacityText.text = $"Capacity: {Game.Data.CapacityStats.CurrentCapacity}/{Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity])}";
+            }
         }
 
         foreach (var pair in _collectedNodes)

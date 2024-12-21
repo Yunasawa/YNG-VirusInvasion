@@ -17,6 +17,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnCollectFarmResources += OnCollectFarmResources;
         Player.OnConsumeResources += OnConsumeResources;
         Player.OnEnterHomeBase += OnEnterHomeBase;
+        Player.OnChangeStats += OnChangeStats;
     }
 
     private void OnDestroy()
@@ -29,14 +30,18 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnCollectFarmResources -= OnCollectFarmResources;
         Player.OnConsumeResources -= OnConsumeResources;
         Player.OnEnterHomeBase -= OnEnterHomeBase;
+        Player.OnChangeStats -= OnChangeStats;
     }
 
     private void Start()
     {
-        for (byte i = 0; i < 6; i++) Game.Data.PlayerStats.UpdateAttributes((AttributeType)i);
+        OnChangeStats();
     }
 
-
+    private void OnChangeStats()
+    {
+        for (byte i = 0; i < 6; i++) Game.Data.PlayerStats.UpdateAttributes((AttributeType)i);
+    }
 
     public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
     {
