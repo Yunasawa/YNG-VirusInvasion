@@ -81,10 +81,10 @@ public class EnemyPool : MonoBehaviour
 
     private void OnDestroy()
     {
-        _targetPositions.Dispose();
-        _enemyTransforms.Dispose();
-        _isPulling.Dispose();
-        _movingSpeed.Dispose();
+        if (_targetPositions.IsCreated) _targetPositions.Dispose();
+        if (_enemyTransforms.isCreated) _enemyTransforms.Dispose();
+        if (_isPulling.IsCreated) _isPulling.Dispose();
+        if (_movingSpeed.IsCreated) _movingSpeed.Dispose();
     }
 
     public void PullObject() => _enemyPool.PullLocalObject(GetRandomPositionInsideCircle(), Quaternion.identity);

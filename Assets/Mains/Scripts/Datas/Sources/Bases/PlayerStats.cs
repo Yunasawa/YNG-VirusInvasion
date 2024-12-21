@@ -28,6 +28,26 @@ namespace YNL.Bases
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
         public SerializableDictionary<string, SerializableDictionary<string, ExtraStats>> FarmStats = new();
 
+        public void Reset()
+        {
+            CurrentLevel = CurrentExp = 0;
+
+            Resources.Clear();
+            foreach (ResourceType type in Enum.GetValues(typeof(ResourceType))) Resources.Add(type, 0);
+
+            Bonuses.Clear();
+            foreach (AttributeType type in Enum.GetValues(typeof(AttributeType))) Bonuses.Add(type, 0);
+
+            Levels.Clear();
+            foreach (AttributeType type in Enum.GetValues(typeof(AttributeType))) Levels.Add(type, 0);
+
+            foreach (var pair in ExtraStatsLevel) ExtraStatsLevel[pair.Key].Level = 0;
+            foreach (var pair in FarmStats)
+            {
+                foreach (var pair2 in pair.Value) pair.Value[pair2.Key].Level = 0;
+            }
+        }
+
         public void AdjustResources(ResourceType type, int amount)
         {
             if(amount >= 0) Resources[type] += (uint)amount;

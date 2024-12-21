@@ -12,6 +12,13 @@ namespace YNL.Bases
 
         public bool IsFull => CurrentCapacity >= Formula.Stats.GetCapacity();
 
+        public void Reset()
+        {
+            CurrentCapacity = 0;
+            Resources.Clear();
+            foreach (ResourceType type in Enum.GetValues(typeof(ResourceType))) Resources.Add(type, 0);
+        }
+
         public void AdjustResources(ResourceType type, int amount)
         {
             if (amount <= 0) return;
@@ -36,12 +43,6 @@ namespace YNL.Bases
                 Resources[type] = (uint)(currentResourceAmount - amountToRemove); 
                 CurrentCapacity = (uint)(currentTotalCapacity - amountToRemove); 
             }
-        }
-
-        public void ClearCapacity()
-        {
-            CurrentCapacity = 0;
-            for (int i = 0; i < 10; i++) Resources[(ResourceType)i] = 0;
         }
     }
 }

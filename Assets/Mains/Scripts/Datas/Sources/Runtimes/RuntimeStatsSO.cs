@@ -8,4 +8,10 @@ public class RuntimeStatsSO : ScriptableObject
     public PlayerStats PlayerStats = new();
     public CapacityStats CapacityStats = new();
     public QuestRuntime QuestRuntime = new();
+
+    public void Reset()
+    {
+        PlayerStats.Reset();
+        CapacityStats.Reset();
+    }
 }

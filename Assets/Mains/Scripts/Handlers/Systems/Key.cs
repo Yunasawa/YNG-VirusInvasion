@@ -1,5 +1,11 @@
+using UnityEngine;
+
 public static class Key
 {
+    public static class Paths
+    {
+        public static string SaveFile = $"{Application.persistentDataPath}/GameData.json";
+    }
     public static class Stats
     {
         public const string ExtraSpeed = "ExtraSpeed";

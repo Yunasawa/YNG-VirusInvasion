@@ -111,7 +111,7 @@ public class PlayerStatsManager : MonoBehaviour
                 Game.Data.PlayerStats.AdjustResources(resource.Key, (int)resource.Value);
             }
         }
-        Game.Data.CapacityStats.ClearCapacity();
+        Game.Data.CapacityStats.Reset();
         Player.OnChangeResources?.Invoke();
         Player.OnChangeCapacity?.Invoke();
     }

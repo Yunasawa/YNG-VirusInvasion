@@ -22,4 +22,9 @@ public class GameData : MonoBehaviour
 
     public SerializableDictionary<string, EnemySources> EnemySources => _databaseEnemy.EnemySources;
     public SerializableDictionary<StageType, string> EnemyStages => _databaseEnemy.EnemyStages;
+
+    public void MonoAwake()
+    {
+        _runtimeStats.Reset();
+    }
 }
