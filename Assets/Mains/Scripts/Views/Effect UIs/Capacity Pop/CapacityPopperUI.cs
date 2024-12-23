@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Sirenix.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -50,54 +51,36 @@ public class CapacityPopperUI : MonoBehaviour
         int totalAmount = resources.Sum(i => i.amount);
         int maxImages = Mathf.Min(totalAmount, _poppingAmount);
 
+        if (totalAmount <= 0) return;
+
         int index = 0;
         float delay = 0;
 
-        int imagesPerType = 0;
+        var resourceImages = resources.Select(r => new { r.type, imageCount = Mathf.RoundToInt((float)r.amount / totalAmount * maxImages) }).ToList();
 
-        if (totalAmount >= maxImages)
-        {
-            index = 0;
-            delay = 0;
-
-            foreach (var resource in resources)
+        var shuffledImages = new List<(ResourceType type, int order)>(); 
+        foreach (var resource in resourceImages) 
+        { 
+            for (int i = 0; i < resource.imageCount; i++) 
             {
-                imagesPerType = Mathf.Min(maxImages, resource.amount);
-
-                for (int i = 0; i < imagesPerType; i++)
-                {
-                    if (index >= maxImages) break;
-
-                    AnimatePopping(_poppingUIs[index], resource.type);
-
-                    index++;
-                    delay += 0.1f;
-
-                    if (index >= maxImages) break;
-                }
-            }
+                shuffledImages.Add((resource.type, index)); index++; 
+            } 
         }
-        else
-        {
-            index = 0;
-            delay = 0;
+        shuffledImages = shuffledImages.OrderBy(x => Random.value).ToList();
 
-            foreach (var resource in resources)
-            {
-                for (int i = 0; i < resource.amount; i++)
-                {
-                    if (index >= _poppingAmount) break;
+        index = 0;
+        delay = 0;
 
-                    AnimatePopping(_poppingUIs[index], resource.type);
+        foreach (var shuffledImage in shuffledImages) 
+        { 
+            if (index >= _poppingUIs.Count) break; 
+            
+            AnimatePopping(_poppingUIs[index], shuffledImage.type); 
 
-                    index++;
-                    delay += 0.1f;
+            index++; 
+            delay += 0.05f; 
 
-                    if (index >= _poppingAmount) break;
-                }
-
-                if (index >= _poppingAmount) break;
-            }
+            if (index >= _poppingUIs.Count) break; 
         }
 
         void AnimatePopping((Image Image, RectTransform Rect) image, ResourceType type)
