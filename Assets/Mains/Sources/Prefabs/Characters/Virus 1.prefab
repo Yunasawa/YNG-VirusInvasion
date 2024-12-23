@@ -97,8 +97,8 @@ MonoBehaviour:
     MaxInstancePerArea: 0
     SpawningTime: 0
     Drops:
-      _keys: 00
-      _values: 02000000
+      _keys: 000105
+      _values: 020000000200000002000000
     AttackDamage: 0
     ExperimentMultiplier: 0
   CurrentHealth: 0

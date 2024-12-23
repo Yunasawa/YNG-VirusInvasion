@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 985, y: 100}
+  m_SizeDelta: {x: 880, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5763622142881185667
 CanvasRenderer:
@@ -132,8 +132,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: 0}
-  m_SizeDelta: {x: 250, y: 100}
+  m_AnchoredPosition: {x: -126.82187, y: -1.6396}
+  m_SizeDelta: {x: 246.3563, y: 96.7207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1690444842823020362
 CanvasRenderer:
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lvl <color=#A18B00>1</color> -> <color=#0C7B3E>2</color>:</color> <color=#A18B00>10</color>
+  m_text: Lvl <color=#0058AF>1</color> -> <color=#0058AF>2</color>:</color> <color=#A18B00>10</color>
     -> <color=#0C7B3E>20</color> {Type}
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}

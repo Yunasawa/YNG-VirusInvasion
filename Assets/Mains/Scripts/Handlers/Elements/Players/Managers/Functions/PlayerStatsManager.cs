@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -104,15 +106,23 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void OnEnterHomeBase()
     {
+        Dictionary<ResourceType, int> resources = new();
+
         foreach (var resource in Game.Data.CapacityStats.Resources)
         {
             if (resource.Value > 0)
             {
                 Game.Data.PlayerStats.AdjustResources(resource.Key, (int)resource.Value);
+
+                if (!resources.ContainsKey(resource.Key)) resources.Add(resource.Key, (int)resource.Value);
+                else resources[resource.Key] += (int)resource.Value;
             }
         }
         Game.Data.CapacityStats.Reset();
         Player.OnChangeResources?.Invoke();
         Player.OnChangeCapacity?.Invoke();
+
+        (ResourceType type, int amount)[] capacity = resources.Select(kv => (type: kv.Key, amount: kv.Value)).ToArray();
+        Player.OnReturnCapacity?.Invoke(capacity);
     }
 }

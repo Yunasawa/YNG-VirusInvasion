@@ -42,7 +42,6 @@ public class CameraDoorManager : MonoBehaviour
 
         foreach (var door in doorGroup.Doors)
         {
-            MDebug.Log("HEHEHE");
             this.transform.DOMove(door.transform.position, 2).SetEase(ease).OnComplete(door.OpenDoor);
             await UniTask.WaitForSeconds(5);
         }

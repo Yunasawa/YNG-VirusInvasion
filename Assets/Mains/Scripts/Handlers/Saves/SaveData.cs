@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 using YNL.Bases;
 using static YNL.Bases.PlayerStats;
 
@@ -13,4 +14,26 @@ public class SaveData
 
     public Dictionary<string, ExtraStats> ExtraStatsLevel = new();
     public Dictionary<string, Dictionary<string, ExtraStats>> FarmStats = new();
+
+    public SerializableVector3 CurrentPosition;
+
+    public uint CurrentCapacity;
+    public Dictionary<ResourceType, uint> CapacityResources = new();
+}
+
+[Serializable]
+public struct SerializableVector3
+{
+    public float X, Y, Z;
+
+    public SerializableVector3(Vector3 vector)
+    {
+        X = vector.x;
+        Y = vector.y;
+        Z = vector.z;
+    }
+
+    public Vector3 ToVector3() => new Vector3(X, Y, Z);
+
+    public override string ToString() => $"({X}, {Y}, {Z})";
 }

@@ -21,16 +21,23 @@ public class CapacityFieldUI : MonoBehaviour
     private void Awake()
     {
         Player.OnChangeCapacity += UpdateCapacity;
+        Player.OnUpgradeAttribute += OnUpgradeAttribute;
     }
 
     private void OnDestroy()
     {
         Player.OnChangeCapacity -= UpdateCapacity;
+        Player.OnUpgradeAttribute -= OnUpgradeAttribute;
     }
 
     private void Start()
     {
         UpdateCapacity();
+    }
+
+    private void OnUpgradeAttribute(AttributeType type)
+    {
+        if (type == AttributeType.Capacity) UpdateCapacity();
     }
 
     private void UpdateCapacity()

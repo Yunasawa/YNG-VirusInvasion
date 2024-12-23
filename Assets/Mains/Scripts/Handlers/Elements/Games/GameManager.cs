@@ -23,4 +23,8 @@ public class GameManager : Singleton<GameManager>
         Data.MonoAwake();
         Loader.MonoAwake();
     }
+
+    private void Start()
+    {
+    }
 }

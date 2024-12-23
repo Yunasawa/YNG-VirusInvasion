@@ -24,7 +24,7 @@ public class UpgradeFieldUI : MonoBehaviour
     public void UpdateField()
     {
         uint level = Game.Data.PlayerStats.Levels[Type];
-        _text.text = $"Lvl <color=#FFC21F>{level}</color> -> <color=#1FFF64>{level + 1}</color>:</color> <color=#E8FF15>{Formula.Stats.GetAttributeValue(Type, level)}</color> -> <color=#1FFF64>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
+        _text.text = $"Lvl <color=#0058AF>{level}</color> -> <color=#0058AF>{level + 1}</color>:</color> <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> -> <color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
 
         _requirements = Formula.Stats.GetAttributeRequirement(Type);
 
@@ -42,7 +42,7 @@ public class UpgradeFieldUI : MonoBehaviour
 
         if (Type == AttributeType.Tentacle && Game.Data.PlayerStats.Levels[AttributeType.Tentacle] >= 11)
         {
-            _text.text = $"Max lvl <color=#FFC21F>{level}</color>: <color=#E8FF15>{Formula.Stats.GetAttributeValue(Type, level)}</color> {Type}";
+            _text.text = $"Max lvl <color=#0058AF>{level}</color>: <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> {Type}";
             enoughRequirement = false;
         }
 
@@ -66,6 +66,7 @@ public class UpgradeFieldUI : MonoBehaviour
         foreach (var requirement in _requirements) Player.OnConsumeResources?.Invoke(requirement.type, requirement.amount);
 
         Player.OnChangeResources?.Invoke();
+        Player.OnUpgradeAttribute?.Invoke(Type);
 
         UpdateField();
     }
