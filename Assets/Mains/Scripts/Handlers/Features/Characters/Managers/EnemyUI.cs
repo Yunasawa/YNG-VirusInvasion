@@ -47,7 +47,7 @@ public class EnemyUI : MonoBehaviour
         else
         {
             float remainFillAmount = _healthBar.fillAmount;
-            _manager.Stats.CurrentHealth = (uint)Mathf.FloorToInt(_manager.Stats.Stats.HP * remainFillAmount);
+            _manager.Stats.CurrentHealth = Mathf.FloorToInt(_manager.Stats.Stats.HP * remainFillAmount);
 
             if (_healthBarTween.IsNull()) return;
             _healthBarTween.Kill();
@@ -57,7 +57,7 @@ public class EnemyUI : MonoBehaviour
 
             _healthBarTween = _healthBar.DOFillAmount(1, recoveryTime).SetEase(Ease.Linear).OnUpdate(() =>
             {
-                _manager.Stats.CurrentHealth = (uint)Mathf.FloorToInt(_manager.Stats.Stats.HP * _healthBar.fillAmount);
+                _manager.Stats.CurrentHealth = Mathf.FloorToInt(_manager.Stats.Stats.HP * _healthBar.fillAmount);
             }).OnComplete(() =>
             {
                 _billboardCanvas.gameObject.SetActive(false);

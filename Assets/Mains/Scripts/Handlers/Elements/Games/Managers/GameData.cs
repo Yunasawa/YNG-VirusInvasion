@@ -21,7 +21,6 @@ public class GameData : MonoBehaviour
     public QuestStats QuestStats => _databaseStats.QuestStats;
 
     public SerializableDictionary<string, EnemySources> EnemySources => _databaseEnemy.EnemySources;
-    public SerializableDictionary<StageType, string> EnemyStages => _databaseEnemy.EnemyStages;
 
     public void MonoAwake()
     {

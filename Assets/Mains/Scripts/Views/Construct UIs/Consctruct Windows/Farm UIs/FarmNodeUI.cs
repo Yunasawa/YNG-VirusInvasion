@@ -46,14 +46,14 @@ public class FarmNodeUI : MonoBehaviour
 
         PlayerStats.ExtraStats extraStats = _playerStats.FarmStats[Construct.CurrentConstruct][_node.Name];
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
-        (string from, string to) statsToString = new($"<color=#E8FF15><b>{stats.from}</b></color>", $"<color=#E8FF15><b>{stats.to}</b></color>");
+        (string from, string to) statsToString = new($"<color=#00940b><b>{stats.from}</b></color>", $"<color=#00940b><b>{stats.to}</b></color>");
         _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
 
         _upgradeCost = Formula.Upgrade.GetFarmUpgradeCost(_node, (int)extraStats.Level);
 
         _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
 
-        _buttonLabel.text = $"{_upgradeCost.Amount}\n{_upgradeCost.Type}";
+        _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
         _button.interactable = _enoughResource;
     }

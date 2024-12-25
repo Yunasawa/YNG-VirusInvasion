@@ -50,7 +50,7 @@ public class MarketNodeUI : MonoBehaviour
 
         _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
 
-        _buttonLabel.text = $"{_upgradeCost.Amount}\n{_upgradeCost.Type}";
+        _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
         _button.interactable = _enoughResource;
     }

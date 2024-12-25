@@ -323,7 +323,7 @@ public static class Formula
 
             switch (level)
             {
-                case 0: return 80;
+                case 0: return 4;
                 case 1: return 1000;
                 case 2: return 7000;
                 case 3: return 32000;

@@ -9,12 +9,18 @@ public class GameLoader : MonoBehaviour
 
     public void MonoAwake()
     {
-         LoadData();
+        LoadData();
+
+        SaveGameContinuously().Forget();
     }
 
-    private void OnApplicationQuit()
+    private async UniTaskVoid SaveGameContinuously()
     {
-        SaveData();
+        while (true)
+        {
+            await UniTask.WaitForSeconds(30, ignoreTimeScale: true);
+            SaveData();
+        }
     }
 
     private void LoadData()
@@ -47,7 +53,9 @@ public class GameLoader : MonoBehaviour
         await UniTask.WaitForEndOfFrame(this);
 
         CameraManager.Instance.transform.position = _saveData.CurrentPosition.ToVector3();
-        Player.Character.Move(_saveData.CurrentPosition.ToVector3());
+        Player.Character.enabled = false;
+        Player.Transform.position = _saveData.CurrentPosition.ToVector3();
+        Player.Character.enabled = true;
     }
 
     private void SaveData()

@@ -56,7 +56,7 @@ public class MarketWindowUI : ConstructWindowUI
         _construct = Player.Construction.Construct.GetComponent<MarketConstruct>();
         _stats = Array.Find(Game.Data.ConstructStats.Markets, x => x.Name == Player.Construction.Construct.Name);
 
-        _evolution = _stats.Evolutions.First(i => i.Evolution == _construct.Evolution);
+        _evolution = _stats.Evolutions.FirstOrDefault(i => i.Evolution == _construct.Evolution);
 
         _evolutionInfo.text = _evolution.IsNull() ? $"MAX EVOLUTION" : $"Evolution <color=#8E2300>{_construct.Evolution}</color> -> <color=#8E2300>{_construct.Evolution + 1}</color>: DPS + 20%";
         _evolutionButton.gameObject.SetActive(!_evolution.IsNull());
@@ -64,13 +64,17 @@ public class MarketWindowUI : ConstructWindowUI
         _ableToEvolute = true;
 
         _evolutionCost.text = "";
-        foreach (var cost in _evolution.Costs)
+
+        if (!_evolution.IsNull())
         {
-            if (Game.Data.PlayerStats.Resources[cost.Type] >= cost.Amount) _evolutionCost.text += $"{cost.Amount} <sprite name=\"Food1\"> ";
-            else
+            foreach (var cost in _evolution.Costs)
             {
-                _evolutionCost.text += $"<color=#FF0000>{cost.Amount} <sprite name=\"Food1\"></color> ";
-                _ableToEvolute = false;
+                if (Game.Data.PlayerStats.Resources[cost.Type] >= cost.Amount) _evolutionCost.text += $"{cost.Amount} <sprite name=\"Food1\"> ";
+                else
+                {
+                    _evolutionCost.text += $"<color=#FF0000>{cost.Amount} <sprite name=\"Food1\"></color> ";
+                    _ableToEvolute = false;
+                }
             }
         }
 

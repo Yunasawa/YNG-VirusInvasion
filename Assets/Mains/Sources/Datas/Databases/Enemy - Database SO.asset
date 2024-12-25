@@ -12,80 +12,489 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1fec4f1c33a6e4490ae5d5f4560657, type: 3}
   m_Name: Enemy - Database SO
   m_EditorClassIdentifier: 
-  EnemyStages:
-    _keys: 00010203
-    _values:
-    - Virus 1
-    - Virus 1, Virus 2
-    - Virus 3, Virus 4, Virus 5
-    - Virus 6, Virus 7, Virus 8, Virus 9, Virus 10
+  CurrentStage: 7
+  CurrentEnemy: 39
   EnemySources:
     _keys:
-    - Virus 1
-    - Virus 2
-    - Virus 3
-    - Virus 4
-    - Virus 5
-    - Virus 6
-    - Virus 7
-    - Virus 8
-    - Virus 9
-    - Virus 10
+    - Virus 1 - 1
+    - Virus 1 - 2
+    - Virus 2 - 3
+    - Virus 2 - 4
+    - Virus 2 - 5
+    - Virus 3 - 6
+    - Virus 3 - 7
+    - Virus 3 - 8
+    - Virus 3 - 9
+    - Virus 3 - 10
+    - Virus 4 - 11
+    - Virus 4 - 12
+    - Virus 4 - 13
+    - Virus 4 - 14
+    - Virus 4 - 15
+    - Virus 4 - 16
+    - Virus 4 - 17
+    - Virus 5 - 18
+    - Virus 5 - 19
+    - Virus 5 - 20
+    - Virus 5 - 21
+    - Virus 5 - 22
+    - Virus 6 - 23
+    - Virus 6 - 24
+    - Virus 6 - 25
+    - Virus 6 - 26
+    - Virus 6 - 27
+    - Virus 6 - 28
+    - Virus 6 - 29
+    - Virus 6 - 30
+    - Virus 7 - 31
+    - Virus 7 - 32
+    - Virus 7 - 33
+    - Virus 7 - 34
+    - Virus 7 - 35
+    - Virus 7 - 36
+    - Virus 7 - 37
     _values:
-    - MaxEnemyInAnArea:
+    - Enemy: {fileID: 5163663866331831904, guid: f90ba971bceba33469f3e09f6f745f69, type: 3}
+      MaxEnemyInAnArea:
         Min: 5
         Max: 8
       RespawnTime: 10
-      Enemy: {fileID: 5163663866331831904, guid: f90ba971bceba33469f3e09f6f745f69, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 2
+      HP: 20
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 02000000
+      AttackDamage: 0
+    - Enemy: {fileID: 4758558177196294860, guid: 4c2c71873ee73ac46a87ffa58a936ab8, type: 3}
+      MaxEnemyInAnArea:
         Min: 2
         Max: 4
       RespawnTime: 120
-      Enemy: {fileID: 4758558177196294860, guid: 4c2c71873ee73ac46a87ffa58a936ab8, type: 3}
-    - MaxEnemyInAnArea:
-        Min: 5
-        Max: 8
+      Exp: 3
+      HP: 68
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 07000000
+      AttackDamage: 0
+    - Enemy: {fileID: 9155034543960756367, guid: 115c3eee0f7bc214e943120d8791a6b7, type: 3}
+      MaxEnemyInAnArea:
+        Min: 7
+        Max: 10
       RespawnTime: 10
-      Enemy: {fileID: 9155034543960756367, guid: 115c3eee0f7bc214e943120d8791a6b7, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 4
+      HP: 136
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 0c000000
+      AttackDamage: 0
+    - Enemy: {fileID: 1764052030875925221, guid: 76f2abae87944fd43b207c5308d1302d, type: 3}
+      MaxEnemyInAnArea:
         Min: 5
         Max: 8
       RespawnTime: 120
-      Enemy: {fileID: 1764052030875925221, guid: 76f2abae87944fd43b207c5308d1302d, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 8
+      HP: 300
+      MS: 0
+      Drops:
+        _keys: 0001
+        _values: 1600000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 1883257540288213257, guid: ce459f683f88a414492b2c1be227bec7, type: 3}
+      MaxEnemyInAnArea:
+        Min: 7
+        Max: 10
+      RespawnTime: 10
+      Exp: 6
+      HP: 150
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 08000000
+      AttackDamage: 0
+    - Enemy: {fileID: 488256630277288392, guid: ed607443c9014654cbf142f90865031a, type: 3}
+      MaxEnemyInAnArea:
+        Min: 7
+        Max: 10
+      RespawnTime: 10
+      Exp: 10
+      HP: 1500
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 4a000000
+      AttackDamage: 0
+    - Enemy: {fileID: 783425567564231835, guid: 86adef2ce4ffea44a8a972535c3a9219, type: 3}
+      MaxEnemyInAnArea:
         Min: 5
         Max: 8
       RespawnTime: 10
-      Enemy: {fileID: 1883257540288213257, guid: ce459f683f88a414492b2c1be227bec7, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 13
+      HP: 2300
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 00000000
+      AttackDamage: 0
+    - Enemy: {fileID: 2362532024088412432, guid: 536be5b4d8dfc4f45b24486a79cbd58b, type: 3}
+      MaxEnemyInAnArea:
         Min: 5
         Max: 8
       RespawnTime: 10
-      Enemy: {fileID: 488256630277288392, guid: ed607443c9014654cbf142f90865031a, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 15
+      HP: 3200
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: d2000000
+      AttackDamage: 0
+    - Enemy: {fileID: 1794604370137732506, guid: afe3af8c47cb6bb4fb9f413c3affebab, type: 3}
+      MaxEnemyInAnArea:
         Min: 5
         Max: 8
       RespawnTime: 10
-      Enemy: {fileID: 783425567564231835, guid: 86adef2ce4ffea44a8a972535c3a9219, type: 3}
-    - MaxEnemyInAnArea:
-        Min: 5
-        Max: 8
-      RespawnTime: 10
-      Enemy: {fileID: 2362532024088412432, guid: 536be5b4d8dfc4f45b24486a79cbd58b, type: 3}
-    - MaxEnemyInAnArea:
-        Min: 5
-        Max: 8
-      RespawnTime: 10
-      Enemy: {fileID: 1794604370137732506, guid: afe3af8c47cb6bb4fb9f413c3affebab, type: 3}
-    - MaxEnemyInAnArea:
+      Exp: 18
+      HP: 4200
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 9a010000
+      AttackDamage: 0
+    - Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
+      MaxEnemyInAnArea:
         Min: 2
         Max: 4
+      RespawnTime: 300
+      Exp: 20
+      HP: 2200
+      MS: 0
+      Drops:
+        _keys: 0005
+        _values: 1e02000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 2564994270448957986, guid: 0ec828e4fbbecf742933396d901a608d, type: 3}
+      MaxEnemyInAnArea:
+        Min: 3
+        Max: 5
+      RespawnTime: 10
+      Exp: 30
+      HP: 5200
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: d4030000
+      AttackDamage: 0
+    - Enemy: {fileID: 4758558177196294860, guid: 1377562386f06b046b5f48ee6fd07499, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 33
+      HP: 4500
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b2010000
+      AttackDamage: 0
+    - Enemy: {fileID: 5808613509095558134, guid: 5dad260893ea5564e9c4e91e3ee4c502, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 36
+      HP: 1600
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 80000000
+      AttackDamage: 0
+    - Enemy: {fileID: 6882111770048336054, guid: 3c54343a2e0d3cf43bc2d44671980254, type: 3}
+      MaxEnemyInAnArea:
+        Min: 5
+        Max: 8
+      RespawnTime: 10
+      Exp: 40
+      HP: 7000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: e4030000
+      AttackDamage: 0
+    - Enemy: {fileID: 2718400319846952156, guid: fec1f76de13c00b438942083b4b5c060, type: 3}
+      MaxEnemyInAnArea:
+        Min: 5
+        Max: 8
+      RespawnTime: 10
+      Exp: 45
+      HP: 2100
+      MS: 0
+      Drops:
+        _keys: 0001
+        _values: 3c00000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 1965726411929751786, guid: 13e5498e591a11848b4fc0c14310a2ea, type: 3}
+      MaxEnemyInAnArea:
+        Min: 1
+        Max: 2
+      RespawnTime: 300
+      Exp: 50
+      HP: 2800
+      MS: 0
+      Drops:
+        _keys: 0006
+        _values: d504000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 8260301479492178723, guid: 98f2a245c1befcb43a5b6b83a83a2fe0, type: 3}
+      MaxEnemyInAnArea:
+        Min: 5
+        Max: 8
+      RespawnTime: 10
+      Exp: 48
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 72040000
+      AttackDamage: 0
+    - Enemy: {fileID: 2013049700419611087, guid: 04b6abf0695a8a24881b48e0f65a7a61, type: 3}
+      MaxEnemyInAnArea:
+        Min: 3
+        Max: 5
+      RespawnTime: 120
+      Exp: 80
+      HP: 6500
+      MS: 0
+      Drops:
+        _keys: 0004
+        _values: 7204000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 5434381001778839887, guid: f03815666b64b5041b60cf10c49a8da0, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 85
+      HP: 6500
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 81090000
+      AttackDamage: 0
+    - Enemy: {fileID: 5826538606663706560, guid: f7ecad15af4a090459cfc36898b014a4, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
       RespawnTime: 240
-      Enemy: {fileID: 1032614413467580936, guid: f2a219500f3499243ad99c033d7b752e, type: 3}
-  BoundaryStages:
-    _keys: 00010203
-    _values:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+      Exp: 90
+      HP: 6500
+      MS: 0
+      Drops:
+        _keys: 0007
+        _values: 8109000001000000
+      AttackDamage: 0
+    - Enemy: {fileID: 5184402322275723620, guid: 67c8e6d0e1728fe4ca2623b8b62113c4, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 95
+      HP: 6500
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 70160000
+      AttackDamage: 0
+    - Enemy: {fileID: 4133709558877009187, guid: f54c53581bc8b7f4e81c1602d719a0df, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 100
+      HP: 6500
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: 70160000
+      AttackDamage: 0
+    - Enemy: {fileID: 4259605689577157431, guid: b3eb9a8fcf846fa45bdd73e97c3d662d, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 527614400251700455, guid: eb6d51738f355fd4bb242535c40c312f, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 5462455911971707334, guid: 95d3d67b48a6bf546a5954b6f34dabc1, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 1182410275117943714, guid: 8e244dbb07e528943b436c19acb7f4aa, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 5085148707084039927, guid: 597e56bdf2e46594c84e9bc38bd76280, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 5871339100654224433, guid: 2383f19b403bda04491b99321ce2c9d6, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 7072004227273696462, guid: cbc3a7b589f084a4998fd229e0a569ec, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 1540429576224886009, guid: 0eb08894a08f53d4585ddf1aea3d690b, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 2973494880819082110, guid: e659d2e9703dbed4c9a2ecfae9a91373, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 3840062996632054218, guid: cdddd543d70765d4784ffbb7d9412f9b, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 8560245007069787627, guid: 3616121842c8fd64786f619729529962, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 1833505095041689357, guid: 67ef3f7a48785bf4290f4e55adbd460c, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 3322750886651859564, guid: 74891b4dce5a3194aa2b68c10bc5aae6, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 1502496351122396452, guid: 1b1672f3fac3aca458dc430edc56d2cb, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0
+    - Enemy: {fileID: 8550466542100645101, guid: 6c5a67a3bae7e224d9df8aabe5bf8c6e, type: 3}
+      MaxEnemyInAnArea:
+        Min: 8
+        Max: 12
+      RespawnTime: 10
+      Exp: 200
+      HP: 10000
+      MS: 0
+      Drops:
+        _keys: 00
+        _values: b80b0000
+      AttackDamage: 0

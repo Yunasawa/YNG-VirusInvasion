@@ -34,7 +34,7 @@ public class UpgradeFieldUI : MonoBehaviour
 
         foreach (var requirement in _requirements)
         {
-            _cost.text += $"{requirement.amount} {requirement.type}";
+            _cost.text += $"{requirement.amount} <sprite name={requirement.type}>";
             if (!_requirements.IsLast(requirement)) _cost.text += "\n";
 
             if (Game.Data.PlayerStats.Resources[requirement.type] < requirement.amount) enoughRequirement = false;

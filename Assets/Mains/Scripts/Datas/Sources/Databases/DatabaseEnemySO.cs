@@ -1,16 +1,12 @@
-﻿using Sirenix.OdinInspector;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using YNL.Bases;
-using YNL.Extensions.Addons;
-using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 [CreateAssetMenu(fileName = "Enemy - Database SO", menuName = "Virus Invasion/💫 Sources/🚧 Database/🎬 Enemy SO", order = 1)]
 public class DatabaseEnemySO : ScriptableObject
 {
-    public SerializableDictionary<StageType, string> EnemyStages = new();
+    public string CurrentStage = "6";
+    public int CurrentEnemy = 23;
     public SerializableDictionary<string, EnemySources> EnemySources = new();
 
 #if false
