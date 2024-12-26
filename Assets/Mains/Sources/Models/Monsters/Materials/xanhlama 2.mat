@@ -17,7 +17,6 @@ Material:
   - _GRADIENTSPACE_WORLD
   - _OUTLINESPACE_SCREEN
   - _TEXTUREBLENDINGMODE_MULTIPLY
-  - _UNITYSHADOW_OCCLUSION
   m_InvalidKeywords:
   - _CELPRIMARYMODE_NONE
   - _UNITYSHADOWMODE_NONE
@@ -172,7 +171,7 @@ Material:
     - _TextureImpact: 1
     - _UVSec: 0
     - _UnityShadowMode: 0
-    - _UnityShadowOcclusion: 1
+    - _UnityShadowOcclusion: 0
     - _UnityShadowPower: 0.2
     - _UnityShadowSharpness: 1
     - _VertexColorsEnabled: 0
@@ -180,7 +179,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.2946724, g: 0.5245282, b: 0.022762487, a: 1}
+    - _BaseColor: {r: 0.5984318, g: 0.8962264, b: 0.3931559, a: 1}
     - _Color: {r: 0.5707166, g: 0.9811321, b: 0.2915628, a: 1}
     - _ColorDim: {r: 0.9161542, g: 0.98743266, b: 0.30920494, a: 1}
     - _ColorDimCurve: {r: 0.85023, g: 0.85034, b: 0.8504499, a: 0.85056}

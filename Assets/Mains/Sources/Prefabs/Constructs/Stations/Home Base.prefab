@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Base
   Type: 0
-  Evolution: 1
 --- !u!135 &-3631398082346230057
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81,15 +80,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 74adbd1188d84cc49b73bc8a8f1fa21f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74adbd1188d84cc49b73bc8a8f1fa21f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74adbd1188d84cc49b73bc8a8f1fa21f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74adbd1188d84cc49b73bc8a8f1fa21f, type: 3}
       propertyPath: m_LocalPosition.x

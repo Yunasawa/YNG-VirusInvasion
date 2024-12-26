@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 9786a2b477b746f4bb2108c48eb0113d
+guid: d27c1f27b0636ad4d8fb462fcebdac85
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Blue
-    second: {fileID: 2100000, guid: 114f9a70127bdf04c99379a34ec2b9cb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Lam_nhat
-    second: {fileID: 2100000, guid: 428ceaeb2055fa247ae7b98b484b1f93, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

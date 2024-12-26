@@ -3,7 +3,12 @@ guid: 36000560b762fec448ec1617b01b3f98
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vang.004
+    second: {fileID: 2100000, guid: bb631ac7a234abf46bbbb1b033d6f56e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
