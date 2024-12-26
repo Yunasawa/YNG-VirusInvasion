@@ -29,6 +29,11 @@ public class EnemyPool : MonoBehaviour
     private NativeArray<bool> _isPulling;
     private NativeArray<float> _movingSpeed;
 
+    private void OnValidate()
+    {
+        this.gameObject.name = _enemyName;
+    }
+
     private void Start()
     {
         _enemySources = Game.Data.EnemySources[_enemyName];
@@ -165,8 +170,16 @@ public struct EnemyMovementJob : IJobParallelForTransform
 }
 
 [System.Serializable]
-public struct Bound
+public class Bound
 {
     public Vector3 TopFrontLeft;
     public Vector3 BottomBackRight;
+    public bool isEditing;
+
+    public Bound(Vector3 topFrontLeft, Vector3 bottomBackRight, bool isEditing = false)
+    {
+        TopFrontLeft = topFrontLeft;
+        BottomBackRight = bottomBackRight;
+        this.isEditing = isEditing;
+    }
 }
