@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 8370515293104595239}
   _healthBar: {fileID: 4632852895062132589}
+  _healthText: {fileID: 3957022720404330447}
 --- !u!1001 &2620519704566914921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +127,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 180299236168813218}
     m_Modifications:
+    - target: {fileID: 132564969577949062, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 729657807352812017, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4675806765533292234, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_Name
       value: Character UIs
@@ -210,11 +219,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5912336248522461739, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624869570085321045, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+--- !u!114 &3957022720404330447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 2620519704566914921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4632852895062132589 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7212171618289637380, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
@@ -295,6 +323,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6505546603028525042, guid: f5b8efe1a5a7d2346bcf382e4a59cbde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8bf21e0fe9f40e4c88a21bd85775e88, type: 2}
     - target: {fileID: 919132149155446097, guid: f5b8efe1a5a7d2346bcf382e4a59cbde, type: 3}
       propertyPath: m_Name
       value: Enemy1.1

@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 249089673938748456}
   _healthBar: {fileID: 3969300593175863906}
+  _healthText: {fileID: 4734639733084697280}
 --- !u!1001 &4032552604077019095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5160507907910461478}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -165,6 +178,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4e5dc840ebf12354aa151d8c8d1f3e87, type: 3}
       propertyPath: m_Name
@@ -226,11 +243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -299,5 +316,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4734639733084697280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 5981640380698884710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

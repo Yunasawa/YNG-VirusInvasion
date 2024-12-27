@@ -2,7 +2,11 @@ using UnityEngine;
 
 public static class Key
 {
-    public static class Paths
+    public static class Config
+    {
+        public const int FarmCountdown = 10;
+    }
+    public static class Path
     {
         public static string SaveFile = $"{Application.persistentDataPath}/GameData.json";
     }

@@ -22,9 +22,16 @@ public class EnemyPoolManager : MonoBehaviour
 
     private void Start()
     {
-        if (_stageType != Player.Stage.CurrentStage)
+        StartAsync().Forget();
+
+        async UniTaskVoid StartAsync()
         {
-            foreach (var pool in _enemyPools) pool.gameObject.SetActive(false);
+            await UniTask.NextFrame();
+
+            if (_stageType != Player.Stage.CurrentStage)
+            {
+                foreach (var pool in _enemyPools) pool.gameObject.SetActive(false);
+            }
         }
     }
 

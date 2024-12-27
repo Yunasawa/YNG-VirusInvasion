@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 3544228333776653013}
   _healthBar: {fileID: 382410706228161695}
+  _healthText: {fileID: 8354037231299673149}
 --- !u!1001 &7014461297769575579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,11 +157,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -231,6 +232,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
   m_PrefabInstance: {fileID: 7014461297769575579}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8354037231299673149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 7014461297769575579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8762119302309656387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,6 +251,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3782145358595394937}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -279,10 +303,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3305134664413842112, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 428ceaeb2055fa247ae7b98b484b1f93, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b3060ea49de4d44881685a5b3af7d96, type: 2}
     - target: {fileID: 919132149155446097, guid: 17150515f541ee34382d0b560dd227b0, type: 3}
       propertyPath: m_Name
       value: monster3

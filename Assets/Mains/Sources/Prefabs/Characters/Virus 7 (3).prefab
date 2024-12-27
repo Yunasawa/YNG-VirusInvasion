@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 2851548562467470007}
   _healthBar: {fileID: 1437638021432139005}
+  _healthText: {fileID: 7301069687369419871}
 --- !u!1001 &3082872843837291323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +183,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2388370454112892971, guid: f19642596c1c94e4186dcf85bd12afdf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae9c1df63ee2ee64bb5e8a5b17945d17, type: 2}
     - target: {fileID: 919132149155446097, guid: f19642596c1c94e4186dcf85bd12afdf, type: 3}
       propertyPath: m_Name
       value: Enemy3.1
@@ -204,6 +209,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2635407407444621543}
     m_Modifications:
+    - target: {fileID: 132564969577949062, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 729657807352812017, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4675806765533292234, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_Name
       value: Character UIs
@@ -288,6 +301,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5912336248522461739, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624869570085321045, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+      propertyPath: m_fontSize
+      value: 38.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -309,3 +330,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
   m_PrefabInstance: {fileID: 8639385994375726329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7301069687369419871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 8639385994375726329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

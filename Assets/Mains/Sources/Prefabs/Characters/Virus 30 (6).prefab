@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 2447189857380508260}
   _healthBar: {fileID: 1555732345207800878}
+  _healthText: {fileID: 7148912763836454028}
 --- !u!1001 &6153442998376116359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 965487057275891724}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -166,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
       propertyPath: m_Name
       value: monster11
@@ -173,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 3794744334725749031, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 479e33abccf66674587f49c2232563a9, type: 2}
+      objectReference: {fileID: 2100000, guid: 7339bc6d4ffecfc46976dd1568636fcc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -222,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 500
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,3 +314,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
   m_PrefabInstance: {fileID: 8179053364382571562}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7148912763836454028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 8179053364382571562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

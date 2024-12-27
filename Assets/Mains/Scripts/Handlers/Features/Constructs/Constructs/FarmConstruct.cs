@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 
 public class FarmConstruct : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class FarmConstruct : MonoBehaviour
     private ConstructManager _manager;
 
     [SerializeField] private GameObject _exclamationMark;
+    [SerializeField] private FarmBillboardUI _ui; 
 
     public float CurrentResources;
     public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[_manager.Name]["Capacity"].Value);
 
     public ResourceType GeneratedResource;
+    public bool IsWindowOpening = false;
 
     private void Awake()
     {
@@ -35,14 +38,14 @@ public class FarmConstruct : MonoBehaviour
     private void Start()
     {
         _previousTime = DateTime.Now;
+
+        _ui.Initialize(_manager.Name, GeneratedResource);
     }
 
     private void Update()
     {
         Vector3 direction = Camera.main.transform.forward;
         Quaternion rotation = Quaternion.LookRotation(direction);
-
-        //_canvas.transform.rotation = rotation;
     }
 
     private void OnAcceptQuest(string name)
@@ -71,14 +74,22 @@ public class FarmConstruct : MonoBehaviour
         _previousTime = DateTime.Now;
     }
 
-    public void StartCountToPing(int second)
-    {
-        CountToPingTask(second).Forget();
-    }
-
-    private async UniTask CountToPingTask(int second)
+    public async UniTask CountToPingTask(int second)
     {
         await UniTask.WaitForSeconds(second);
-        //ResourcePing.SetActive(true);
+        StartGenerateResource().Forget();
+    }
+
+    private async UniTask StartGenerateResource()
+    {
+        while (!IsWindowOpening)
+        {
+            await UniTask.WaitForSeconds(Key.Config.FarmCountdown);
+
+            if (CurrentResources >= Capacity) continue;
+
+            CurrentResources += Game.Data.PlayerStats.FarmStats[_manager.Name]["Income"].Value;
+            _ui.UpdateUI(CurrentResources, Capacity);
+        }
     }
 }

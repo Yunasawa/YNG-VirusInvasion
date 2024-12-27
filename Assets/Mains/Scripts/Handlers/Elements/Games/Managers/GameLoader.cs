@@ -25,13 +25,13 @@ public class GameLoader : MonoBehaviour
 
     private void LoadData()
     {
-        _saveData = MJson.LoadNewtonJson<SaveData>(Key.Paths.SaveFile);
+        _saveData = MJson.LoadNewtonJson<SaveData>(Key.Path.SaveFile);
 
         if (_saveData.IsNull())
         {
             Game.Data.PlayerStats.Reset();
             SaveData();
-            _saveData = MJson.LoadNewtonJson<SaveData>(Key.Paths.SaveFile);
+            _saveData = MJson.LoadNewtonJson<SaveData>(Key.Path.SaveFile);
         }
 
         Game.Data.PlayerStats.CurrentLevel = _saveData.Level.CurrentLevel;
@@ -56,6 +56,8 @@ public class GameLoader : MonoBehaviour
         Player.Character.enabled = false;
         Player.Transform.position = _saveData.CurrentPosition.ToVector3();
         Player.Character.enabled = true;
+
+        Player.Stage.CurrentStage = _saveData.CurrentStage;
     }
 
     private void SaveData()
@@ -74,6 +76,8 @@ public class GameLoader : MonoBehaviour
         _saveData.CurrentCapacity = Game.Data.CapacityStats.CurrentCapacity;
         _saveData.CapacityResources = Game.Data.CapacityStats.Resources.Clone();
 
-        _saveData.SaveNewtonJson(Key.Paths.SaveFile);
+        _saveData.CurrentStage = Player.Stage.CurrentStage;
+
+        _saveData.SaveNewtonJson(Key.Path.SaveFile);
     }
 }

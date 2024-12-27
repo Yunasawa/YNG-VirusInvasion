@@ -60,7 +60,7 @@ MonoBehaviour:
         Max: 8
       RespawnTime: 10
       Exp: 2
-      HP: 20
+      HP: 40
       MS: 0
       Drops:
         _keys: 00
@@ -120,7 +120,7 @@ MonoBehaviour:
         Max: 10
       RespawnTime: 10
       Exp: 10
-      HP: 1500
+      HP: 500
       MS: 0
       Drops:
         _keys: 00
@@ -132,11 +132,11 @@ MonoBehaviour:
         Max: 8
       RespawnTime: 10
       Exp: 13
-      HP: 2300
+      HP: 600
       MS: 0
       Drops:
         _keys: 00
-        _values: 00000000
+        _values: 6e000000
       AttackDamage: 0
     - Enemy: {fileID: 2362532024088412432, guid: 536be5b4d8dfc4f45b24486a79cbd58b, type: 3}
       MaxEnemyInAnArea:
@@ -144,7 +144,7 @@ MonoBehaviour:
         Max: 8
       RespawnTime: 10
       Exp: 15
-      HP: 3200
+      HP: 700
       MS: 0
       Drops:
         _keys: 00
@@ -156,7 +156,7 @@ MonoBehaviour:
         Max: 8
       RespawnTime: 10
       Exp: 18
-      HP: 4200
+      HP: 1500
       MS: 0
       Drops:
         _keys: 00

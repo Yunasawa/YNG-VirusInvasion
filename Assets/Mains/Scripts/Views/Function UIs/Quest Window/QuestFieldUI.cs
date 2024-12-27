@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YNL.Extensions.Methods;
 
 public class QuestFieldUI : MonoBehaviour
 {
@@ -38,8 +39,10 @@ public class QuestFieldUI : MonoBehaviour
 
     public void UpdateQuest(params object[] values)
     {
+        if (!Game.Data.QuestRuntime.CurrentQuests.ContainsKey(_questName)) return;
+
         _questText.text = Game.Data.QuestStats.Quests[_questName].Message.Replace("@", values[0].ToString());
-        _ui.SetProgressText($"{values[0]}/2");
+        if (!_ui.IsNull() && !values.IsNullOrEmpty()) _ui.SetProgressText($"{values[0]}/2");
     }
 
     public void ShowReward()

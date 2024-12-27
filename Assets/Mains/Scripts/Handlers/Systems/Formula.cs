@@ -214,7 +214,14 @@ public static class Formula
         public static float GetDPS(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.DPS] : level;
-            return (16 + level * 0.05f) * (1 + Game.Data.PlayerStats.Bonuses[AttributeType.DPS].Percent());
+            int dps = 16;
+            uint a = level / 10;
+            uint b = level % 10;
+
+            for (int i = 1; i <= a; i++) dps += i * 10;
+            dps += (int)(b * (a + 1));
+
+            return dps * (1 + Game.Data.PlayerStats.Bonuses[AttributeType.DPS].Percent());
         }
         public static float GetMS(uint level = 0)
         {

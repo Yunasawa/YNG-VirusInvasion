@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _billboardCanvas: {fileID: 3712610375081756233}
   _healthBar: {fileID: 568842312176984067}
+  _healthText: {fileID: 8162201525717659809}
 --- !u!1001 &664593105466508747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,3 +310,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
   m_PrefabInstance: {fileID: 7201863772519774215}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8162201525717659809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1348792884501334182, guid: 00807b4ee9d445444b8c47300981c6a7, type: 3}
+  m_PrefabInstance: {fileID: 7201863772519774215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

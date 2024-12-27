@@ -19,6 +19,8 @@ public class SaveData
 
     public uint CurrentCapacity;
     public Dictionary<ResourceType, uint> CapacityResources = new();
+
+    public StageType CurrentStage;
 }
 
 [Serializable]

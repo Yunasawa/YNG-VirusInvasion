@@ -28,7 +28,7 @@ public class FarmWindowUI : ConstructWindowUI
 
     private float _statsValue => Game.Data.PlayerStats.FarmStats[Construct.CurrentConstruct]["Income"].Value;
 
-    private int _timeCounter = 10;
+    private int _timeCounter = Key.Config.FarmCountdown;
     private bool _isWindowStillOpen = false;
     private bool _isTaskDone = true;
     private CancellationTokenSource _tokenSource;
@@ -36,7 +36,7 @@ public class FarmWindowUI : ConstructWindowUI
     private (float ResourceAmount, int RemainTime) _resourceDelta;
     private FarmConstruct _farm;
 
-    private int _timePoint = 10;
+    private int _timePoint = Key.Config.FarmCountdown;
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class FarmWindowUI : ConstructWindowUI
     public override void OnCloseWindow()
     {
         _farm.OnWindowClose();
-        _farm.StartCountToPing(_timeCounter);
+        _farm.CountToPingTask(_timeCounter).Forget();
         StartCountingDown(false);
     }
     private void CreateNodes()

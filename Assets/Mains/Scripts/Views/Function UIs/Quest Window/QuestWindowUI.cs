@@ -102,7 +102,7 @@ public class QuestWindowUI : MonoBehaviour
         }
     }
 
-        private void ExpandPanel()
+    private void ExpandPanel()
     {
         _isExpanded = !_isExpanded;
         _questPanel.SetActive(_isExpanded);

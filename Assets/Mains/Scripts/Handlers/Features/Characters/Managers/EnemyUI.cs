@@ -1,4 +1,8 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Sirenix.OdinInspector;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
@@ -11,6 +15,16 @@ public class EnemyUI : MonoBehaviour
 
     [SerializeField] private Transform _billboardCanvas;
     [SerializeField] private Image _healthBar;
+    [SerializeField] private TextMeshProUGUI _healthText;
+
+    private UniTaskVoid _textCounting;
+    private CancellationTokenSource _tokenSource = new();
+
+    [Button]
+    public void GetText()
+    {
+        _healthText = _healthBar.transform.parent.GetComponentInChildren<TextMeshProUGUI>();
+    }
 
     private void Awake()
     {
@@ -43,6 +57,9 @@ public class EnemyUI : MonoBehaviour
             float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.Attributes[AttributeType.DPS];
             _healthBarTween = _healthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
             if (!_billboardCanvas.gameObject.activeSelf) _billboardCanvas.gameObject.SetActive(true);
+
+            _tokenSource = new();
+            TextCounting(_healthBar.fillAmount * 100, 0, time).Forget();
         }
         else
         {
@@ -65,6 +82,36 @@ public class EnemyUI : MonoBehaviour
                 _healthBarTween.Kill();
                 _healthBarTween = null;
             });
+
+            if (!_tokenSource.IsNull())
+            {
+                _tokenSource.Cancel();
+                _tokenSource.Dispose();
+                _tokenSource = new();
+
+                TextCounting(_healthBar.fillAmount * 100, 100, recoveryTime).Forget();
+            }
+        }
+    }
+
+    private async UniTaskVoid TextCounting(float start, float end, float time)
+    {
+        float elapsedTime = 0;
+        int currentValue = Mathf.RoundToInt(start);
+
+        while (elapsedTime < time)
+        {
+            if (_tokenSource.Token.IsCancellationRequested) break;
+
+            currentValue = Mathf.RoundToInt(Mathf.Lerp(start, end, elapsedTime / time));
+            _healthText.text = $"{currentValue}%";
+            elapsedTime += Time.deltaTime;
+            await UniTask.Yield(PlayerLoopTiming.Update, _tokenSource.Token);
+        }
+
+        if (!_tokenSource.Token.IsCancellationRequested)
+        {
+            _healthText.text = $"{end}%";
         }
     }
 }

@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
-using YNL.Extensions.Methods;
 
 public class QuestBillboardUI : MonoBehaviour
 {

@@ -41,6 +41,7 @@ Material:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _Glossiness: 0.5
+    - _OutlineEnabled: 0
     - _Smoothness: 0.5
     - _SrcBlend: 5
     - _Surface: 1
