@@ -30,7 +30,7 @@ namespace YNL.Bases
 
         public void Reset()
         {
-            CurrentLevel = CurrentExp = 7;
+            CurrentLevel = CurrentExp = 0;
 
             Resources.Clear();
             foreach (ResourceType type in Enum.GetValues(typeof(ResourceType))) Resources.Add(type, 0);

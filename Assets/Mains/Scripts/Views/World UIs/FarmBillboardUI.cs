@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class FarmBillboardUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _amount;
 
     [SerializeField] private Image _icon;
+
+    public Action OnCollectResource;
 
     public void Initialize(string name, ResourceType type)
     {

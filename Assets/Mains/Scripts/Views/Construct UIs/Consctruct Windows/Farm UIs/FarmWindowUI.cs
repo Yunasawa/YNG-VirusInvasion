@@ -12,6 +12,7 @@ using YNL.Utilities.Addons;
 public class FarmWindowUI : ConstructWindowUI
 {
     private FarmStats _stats;
+    private FarmConstruct _farm;
 
     [SerializeField] private FarmNodeUI _nodePrefab;
     [SerializeField] private Transform _nodeContainer;
@@ -25,24 +26,16 @@ public class FarmWindowUI : ConstructWindowUI
     [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
 
     private Dictionary<string, FarmNodeUI> _nodes = new();
-
-    private float _statsValue => Game.Data.PlayerStats.FarmStats[Construct.CurrentConstruct]["Income"].Value;
-
-    private int _timeCounter = Key.Config.FarmCountdown;
-    private bool _isWindowStillOpen = false;
-    private bool _isTaskDone = true;
-    private CancellationTokenSource _tokenSource;
-
-    private (float ResourceAmount, int RemainTime) _resourceDelta;
-    private FarmConstruct _farm;
-
-    private int _timePoint = Key.Config.FarmCountdown;
+    private bool _isWindowOpening = false;
 
     private void Awake()
     {
         Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
         Player.OnChangeResources += UpdateResourceNodes;
         Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
+
+        Construct.OnFarmGenerateResource += OnFarmGenerateResource;
+        Construct.OnFarmCountdown += OnFarmCountdown;
     }
 
     private void OnDestroy()
@@ -50,6 +43,9 @@ public class FarmWindowUI : ConstructWindowUI
         Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
         Player.OnChangeResources -= UpdateResourceNodes;
         Player.OnFarmStatsLevelUp -= OnFarmStatsLevelUp;
+
+        Construct.OnFarmGenerateResource -= OnFarmGenerateResource;
+        Construct.OnFarmCountdown -= OnFarmCountdown;
     }
 
     private void Start()
@@ -62,20 +58,15 @@ public class FarmWindowUI : ConstructWindowUI
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
         CreateNodes();
 
-        _resourceDelta = CalculateResourceDelta();
-        GenerateResource(_resourceDelta.ResourceAmount);
-        _timeCounter -= _resourceDelta.RemainTime;
-        StartCountingDown(true);
-
         UpdateResourceNodes();
         UpdateCapacityStatus();
+
+        _isWindowOpening = true;
     }
 
     public override void OnCloseWindow()
     {
-        _farm.OnWindowClose();
-        _farm.CountToPingTask(_timeCounter).Forget();
-        StartCountingDown(false);
+        _isWindowOpening = false;
     }
     private void CreateNodes()
     {
@@ -100,66 +91,12 @@ public class FarmWindowUI : ConstructWindowUI
         if (_nodes.ContainsKey(key))
         {
             UpdateCapacityStatus();
+            UpdateResourceNodes();
+            OnFarmStatsUpdate(key);
         }
-    }
-    private void StartCountingDown(bool isStart)
-    {
-        _isWindowStillOpen = isStart;
-        if (isStart)
-        {
-            if (_isTaskDone) _timeCounter -= _resourceDelta.RemainTime;
-            _timerText.text = $"{_timeCounter}s";
-            if (_isTaskDone)
-            {
-                CountDownTask().Forget();
-                _isTaskDone = false;
-            }
-        }
-    }
-    private async UniTaskVoid CountDownTask()
-    {
-        while (true)
-        {
-            try
-            {
-                _timerText.text = $"{_timeCounter}s";
-                await UniTask.WaitForSeconds(1);
-                _timeCounter--;
-                if (_timeCounter < 0)
-                {
-                    _timeCounter = _timePoint - 1;
-                    GenerateResource(1);
-                    if (!_isWindowStillOpen)
-                    {
-                        _farm.OnWindowClose();
-                        _isTaskDone = true;
-                        break;
-                    }
-                }
-            }
-            catch (OperationCanceledException) { break; }
-        }
-    }
-    private (float, int) CalculateResourceDelta()
-    {
-        int deltaSecond = _farm.DeltaSecond();
-        float resourceAmount = deltaSecond / _timePoint;
-        int remainSecond = deltaSecond % _timePoint;
-        return new(resourceAmount, remainSecond);
-    }
-    private void GenerateResource(float amount)
-    {
-        if (_farm.CurrentResources >= _farm.Capacity) return;
-
-        _farm.CurrentResources += amount * _statsValue;
-        _farm.CurrentResources.RefLimit(0, _farm.Capacity);
-
-        UpdateCapacityStatus();
     }
     private void CollectResouce()
     {
-        //if (_farm.CurrentResources > 0) _farm.ResourcePing.SetActive(false);
-
         Player.OnCollectFarmResources?.Invoke(_farm.GeneratedResource, _farm.CurrentResources);
 
         _farm.CurrentResources = 0;
@@ -182,5 +119,19 @@ public class FarmWindowUI : ConstructWindowUI
             _capacityBar.fillAmount = 0;
             _capacityText.text = $"No capacity";
         }
+    }
+
+    private void OnFarmGenerateResource(FarmConstruct farm)
+    {
+        if (farm != _farm || !_isWindowOpening) return;
+
+        UpdateCapacityStatus();
+    }
+
+    private void OnFarmCountdown(FarmConstruct farm, int time)
+    {
+        if (farm != _farm || !_isWindowOpening) return;
+
+        _timerText.text = $"{time}s";
     }
 }
