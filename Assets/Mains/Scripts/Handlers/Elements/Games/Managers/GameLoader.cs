@@ -29,21 +29,14 @@ public class GameLoader : MonoBehaviour
 
         if (_saveData.IsNull())
         {
-            Game.Data.PlayerStats.Reset();
+            Game.Data.RuntimeStats.Reset();
             SaveData();
             _saveData = MJson.LoadNewtonJson<SaveData>(Key.Path.SaveFile);
         }
 
-        Game.Data.PlayerStats.CurrentLevel = _saveData.Level.CurrentLevel;
-        Game.Data.PlayerStats.CurrentExp = _saveData.Level.CurrentExp;
-        Game.Data.PlayerStats.Resources = _saveData.Resources.Clone();
-        Game.Data.PlayerStats.Bonuses = _saveData.Bonuses.Clone();
-        Game.Data.PlayerStats.Levels = _saveData.Levels.Clone();
-        Game.Data.PlayerStats.ExtraStatsLevel = _saveData.ExtraStatsLevel.Clone();
-        Game.Data.PlayerStats.FarmStats = _saveData.FarmStats.Clone();
-
-        Game.Data.CapacityStats.CurrentCapacity = _saveData.CurrentCapacity;
-        Game.Data.CapacityStats.Resources = _saveData.CapacityResources.Clone();
+        Game.Data.PlayerStats = _saveData.PlayerStats;
+        Game.Data.CapacityStats = _saveData.CapacityStats;
+        Game.Data.RuntimeStats.ConstructStats = _saveData.RuntimeConstructStats;
 
         LoadDataDelay().Forget();
     }
@@ -64,17 +57,11 @@ public class GameLoader : MonoBehaviour
     {
         _saveData = new SaveData();
 
-        _saveData.Level = new(Game.Data.PlayerStats.CurrentLevel, Game.Data.PlayerStats.CurrentExp);
-        _saveData.Resources = Game.Data.PlayerStats.Resources.Clone();
-        _saveData.Bonuses = Game.Data.PlayerStats.Bonuses.Clone();
-        _saveData.Levels = Game.Data.PlayerStats.Levels.Clone();
-        _saveData.ExtraStatsLevel = Game.Data.PlayerStats.ExtraStatsLevel.Clone();
-        _saveData.FarmStats = Game.Data.PlayerStats.FarmStats.Clone();
+        _saveData.PlayerStats = Game.Data.PlayerStats;
+        _saveData.CapacityStats = Game.Data.CapacityStats;
+        _saveData.RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
 
         _saveData.CurrentPosition = new SerializableVector3(Player.Transform.position);
-
-        _saveData.CurrentCapacity = Game.Data.CapacityStats.CurrentCapacity;
-        _saveData.CapacityResources = Game.Data.CapacityStats.Resources.Clone();
 
         _saveData.CurrentStage = Player.Stage.CurrentStage;
 

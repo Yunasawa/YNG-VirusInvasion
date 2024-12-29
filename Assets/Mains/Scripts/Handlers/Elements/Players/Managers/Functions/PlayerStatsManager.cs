@@ -8,6 +8,7 @@ public class PlayerStatsManager : MonoBehaviour
 {
     private PlayerStats _playerStats => Game.Data.PlayerStats;
     private CapacityStats _capacityStats => Game.Data.CapacityStats;
+    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
 
     private void Awake()
     {
@@ -81,7 +82,7 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void OnFarmStatsLevelUp(string key)
     {
-        _playerStats.FarmStats[Construct.CurrentConstruct][key].Level++;
+        _runtimeConstructStats.Farms[Construct.CurrentConstruct].Attributes[key].Level++;
         Player.OnFarmStatsUpdate?.Invoke(key);
     }
 

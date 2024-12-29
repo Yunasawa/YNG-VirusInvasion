@@ -26,7 +26,7 @@ namespace YNL.Bases
         public SerializableDictionary<AttributeType, uint> Levels = new();
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
-        public SerializableDictionary<string, SerializableDictionary<string, ExtraStats>> FarmStats = new();
+        //public SerializableDictionary<string, SerializableDictionary<string, ExtraStats>> FarmStats = new();
 
         public void Reset()
         {
@@ -42,10 +42,6 @@ namespace YNL.Bases
             foreach (AttributeType type in Enum.GetValues(typeof(AttributeType))) Levels.Add(type, 0);
 
             foreach (var pair in ExtraStatsLevel) ExtraStatsLevel[pair.Key].Level = 0;
-            foreach (var pair in FarmStats)
-            {
-                foreach (var pair2 in pair.Value) pair.Value[pair2.Key].Level = 0;
-            }
         }
 
         public void AdjustResources(ResourceType type, int amount)

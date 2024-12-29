@@ -22,6 +22,8 @@ public class FarmBillboardUI : MonoBehaviour
     {
         _title.text = name;
         _icon.sprite = Game.Data.Vault.ResourceIcons[type];
+
+        _button.onClick.AddListener(() => OnCollectResource?.Invoke());
     }
 
     public void UpdateUI(float current, int max)

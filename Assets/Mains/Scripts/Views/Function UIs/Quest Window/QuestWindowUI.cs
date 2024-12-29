@@ -7,6 +7,8 @@ using YNL.Utilities.Addons;
 
 public class QuestWindowUI : MonoBehaviour
 {
+    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
+
     [Title("Quest Field")]
     [SerializeField] private SerializableDictionary<string, QuestFieldUI> _questFields = new();
 
@@ -65,7 +67,7 @@ public class QuestWindowUI : MonoBehaviour
 
         _questWindow.SetActive(true);
 
-        int higher = Mathf.Max(Game.Data.PlayerStats.FarmStats["Farm1.5"]["Capacity"].Level, Game.Data.PlayerStats.FarmStats["Farm1.5"]["Income"].Level);
+        int higher = Mathf.Max(_runtimeConstructStats.Farms["Farm1.5"].Attributes["Capacity"].Level, _runtimeConstructStats.Farms["Farm1.5"].Attributes["Income"].Level);
 
         _windowTitle.text = Game.Data.QuestStats.Quests[name].Title;
         _questMessage.text = Game.Data.QuestStats.Quests[name].RawMessage;
@@ -110,7 +112,7 @@ public class QuestWindowUI : MonoBehaviour
 
     private void OnUpgradeFarmAttribute(string key = "")
     {
-        int higher = Mathf.Max(Game.Data.PlayerStats.FarmStats["Farm1.5"]["Capacity"].Level, Game.Data.PlayerStats.FarmStats["Farm1.5"]["Income"].Level);
+        int higher = Mathf.Max(_runtimeConstructStats.Farms["Farm1.5"].Attributes["Capacity"].Level, _runtimeConstructStats.Farms["Farm1.5"].Attributes["Income"].Level);
         _questFields["UpgradeFarm"].UpdateQuest(higher);
      
         if (higher >= 2) _questFields["UpgradeFarm"].ShowReward();

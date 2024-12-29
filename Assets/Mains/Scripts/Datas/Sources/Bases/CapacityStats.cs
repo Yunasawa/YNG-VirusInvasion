@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using UnityEngine;
 using YNL.Utilities.Addons;
@@ -10,7 +11,7 @@ namespace YNL.Bases
         public uint CurrentCapacity;
         public SerializableDictionary<ResourceType, uint> Resources = new();
 
-        public bool IsFull => CurrentCapacity >= Formula.Stats.GetCapacity();
+        [JsonIgnore] public bool IsFull => CurrentCapacity >= Formula.Stats.GetCapacity();
 
         public void Reset()
         {

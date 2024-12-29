@@ -5,7 +5,7 @@ using YNL.Utilities.Addons;
 
 public class GameData : MonoBehaviour
 {
-    [SerializeField] private RuntimeStatsSO _runtimeStats;
+    public RuntimeStatsSO RuntimeStats;
     [SerializeField] private DatabaseStatsSO _databaseStats;
     [SerializeField] private DatabaseEnemySO _databaseEnemy;
 
@@ -13,9 +13,9 @@ public class GameData : MonoBehaviour
 
     public SerializableDictionary<StageType, Boundary> BoundaryStages = new();
 
-    public PlayerStats PlayerStats => _runtimeStats.PlayerStats;
-    public CapacityStats CapacityStats => _runtimeStats.CapacityStats;
-    public QuestRuntime QuestRuntime => _runtimeStats.QuestRuntime;
+    public PlayerStats PlayerStats { get => RuntimeStats.PlayerStats; set => RuntimeStats.PlayerStats = value; }
+    public CapacityStats CapacityStats {get => RuntimeStats.CapacityStats; set => RuntimeStats.CapacityStats = value; }
+    public QuestRuntime QuestRuntime => RuntimeStats.QuestRuntime;
 
     public ConstructStats ConstructStats => _databaseStats.ConstructStats;
     public QuestStats QuestStats => _databaseStats.QuestStats;
@@ -24,6 +24,6 @@ public class GameData : MonoBehaviour
 
     public void MonoAwake()
     {
-        _runtimeStats.Reset();
+        RuntimeStats.Reset();
     }
 }

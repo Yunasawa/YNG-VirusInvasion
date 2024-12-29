@@ -11,6 +11,9 @@ using YNL.Utilities.Addons;
 
 public class FarmWindowUI : ConstructWindowUI
 {
+    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
+    private RuntimeFarmStats _farmStats => _runtimeConstructStats.Farms[Construct.CurrentConstruct];
+
     private FarmStats _stats;
     private FarmConstruct _farm;
 
@@ -30,6 +33,8 @@ public class FarmWindowUI : ConstructWindowUI
 
     private void Awake()
     {
+        _collectButton.onClick.AddListener(CollectResouce);
+
         Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
         Player.OnChangeResources += UpdateResourceNodes;
         Player.OnFarmStatsLevelUp += OnFarmStatsLevelUp;
@@ -48,16 +53,12 @@ public class FarmWindowUI : ConstructWindowUI
         Construct.OnFarmCountdown -= OnFarmCountdown;
     }
 
-    private void Start()
-    {
-        _collectButton.onClick.AddListener(CollectResouce);
-    }
-
     public override void OnOpenWindow()
     {
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
         CreateNodes();
 
+        Construct.OnFarmCountdown?.Invoke(_farm, _farm.TimeCounter);
         UpdateResourceNodes();
         UpdateCapacityStatus();
 
@@ -97,9 +98,7 @@ public class FarmWindowUI : ConstructWindowUI
     }
     private void CollectResouce()
     {
-        Player.OnCollectFarmResources?.Invoke(_farm.GeneratedResource, _farm.CurrentResources);
-
-        _farm.CurrentResources = 0;
+        _farm.CollectResource();
 
         UpdateCapacityStatus();
     }
@@ -111,8 +110,8 @@ public class FarmWindowUI : ConstructWindowUI
     {
         if (_farm.Capacity != 0)
         {
-            _capacityBar.fillAmount = _farm.CurrentResources / _farm.Capacity;
-            _capacityText.text = $"{_farm.CurrentResources.RoundToDigit(1)}/{_farm.Capacity}";
+            _capacityBar.fillAmount = _farmStats.Current / _farm.Capacity;
+            _capacityText.text = $"{_farmStats.Current.RoundToDigit(1)}/{_farm.Capacity}";
         }
         else
         {
@@ -130,8 +129,6 @@ public class FarmWindowUI : ConstructWindowUI
 
     private void OnFarmCountdown(FarmConstruct farm, int time)
     {
-        if (farm != _farm || !_isWindowOpening) return;
-
         _timerText.text = $"{time}s";
     }
 }

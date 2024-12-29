@@ -1,25 +1,30 @@
 using Cysharp.Threading.Tasks;
 using System;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 
 public class FarmConstruct : MonoBehaviour
 {
+    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
+    private RuntimeFarmStats _farmStats => _runtimeConstructStats.Farms[Manager.Name];
+
     public ConstructManager Manager;
 
     [SerializeField] private GameObject _exclamationMark;
     [SerializeField] private FarmBillboardUI _ui; 
 
-    public float CurrentResources;
-    public int Capacity => Mathf.RoundToInt(Game.Data.PlayerStats.FarmStats[Manager.Name]["Capacity"].Value);
+    public int Capacity => Mathf.RoundToInt(_runtimeConstructStats.Farms[Manager.Name].Attributes["Capacity"].Value);
 
     public ResourceType GeneratedResource;
-    private int _timeCounter = Key.Config.FarmCountdown;
+    public int TimeCounter = Key.Config.FarmCountdown;
 
     private void Awake()
     {
         Manager = GetComponent<ConstructManager>();
+
+        _ui.OnCollectResource = CollectResource;
 
         Player.OnAcceptQuest += OnAcceptQuest;
         Player.OnFinishQuest += OnFinishQuest;
@@ -34,7 +39,7 @@ public class FarmConstruct : MonoBehaviour
     private void Start()
     {
         _ui.Initialize(Manager.Name, GeneratedResource);
-        _ui.UpdateUI(CurrentResources, Capacity);
+        _ui.UpdateUI(_farmStats.Current, Capacity);
 
         GenerateResource().Forget();
     }
@@ -53,26 +58,40 @@ public class FarmConstruct : MonoBehaviour
         _exclamationMark.SetActive(false);
     }
 
+    public void CollectResource()
+    {
+        Player.OnCollectFarmResources?.Invoke(GeneratedResource, _farmStats.Current);
+        _farmStats.Current = 0;
+
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        _ui.UpdateUI(_farmStats.Current, Capacity);
+    }
+
     private async UniTask GenerateResource()
     {
         while (true)
         {
             await UniTask.WaitForSeconds(1);
-            _timeCounter--;
+            TimeCounter--;
 
-            if (_timeCounter < 0)
+            if (TimeCounter < 0)
             {
-                _timeCounter = Key.Config.FarmCountdown;
+                TimeCounter = Key.Config.FarmCountdown;
 
-                if (CurrentResources >= Capacity) return;
+                if (_farmStats.Current >= Capacity) continue;
 
-                CurrentResources += Game.Data.PlayerStats.FarmStats[Manager.Name]["Income"].Value;
-                _ui.UpdateUI(CurrentResources, Capacity);
+                _farmStats.Current += _farmStats.Attributes["Income"].Value;
+                _farmStats.Current = Mathf.Min(_farmStats.Current, Capacity);
+                UpdateUI();
 
                 Construct.OnFarmGenerateResource?.Invoke(this);
             }
 
-            Construct.OnFarmCountdown?.Invoke(this, _timeCounter);
+            Construct.OnFarmCountdown?.Invoke(this, TimeCounter);
         }
     }
 }
