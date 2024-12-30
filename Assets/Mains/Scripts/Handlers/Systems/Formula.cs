@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 using BaseStats = YNL.Bases.PlayerStats;
 
 public static class Formula
 {
     private static BaseStats _stats => Game.Data.PlayerStats;
+    private static SerializableDictionary<AttributeType, float> _bonus => Game.Data.PlayerStats.Bonuses;
+    private static SerializableDictionary<string, BaseStats.ExtraStats> _extras => Game.Data.PlayerStats.ExtraStatsLevel;
 
     public static class Stats
     {
@@ -221,18 +224,18 @@ public static class Formula
             for (int i = 1; i <= a; i++) dps += i * 10;
             dps += (int)(b * (a + 1));
 
-            return dps * (1 + Game.Data.PlayerStats.Bonuses[AttributeType.DPS].Percent());
+            return dps * (1 + _bonus[AttributeType.DPS].Percent()) + _extras[Key.Stats.ExtraDPS].Value;
         }
         public static float GetMS(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.MS] : level;
             float baseValue = 16;
 
-            if (level <= 20) return baseValue + level;
+            if (level <= 20) return baseValue + level + _extras[Key.Stats.ExtraSpeed].Value;
             else
             {
                 uint extraLevels = level - 20;
-                return baseValue + 20 + extraLevels * 0.5f;
+                return baseValue + 20 + extraLevels * 0.5f + _extras[Key.Stats.ExtraSpeed].Value;
             }
         }
         public static float GetCapacity(uint level = 0)
@@ -244,12 +247,12 @@ public static class Formula
             else if (level > 25 && level <= 50)
             {
                 uint extraLevels = level - 25;
-                return baseValue = 25 * 7 + (extraLevels) * 5;
+                return baseValue = 25 * 7 + (extraLevels) * 5 + _extras[Key.Stats.ExtraCapacity].Value;
             }
             else
             {
                 uint extraLevels = level - 50;
-                return baseValue = 25 * (7 + 5) + (extraLevels) * 3;
+                return baseValue = 25 * (7 + 5) + (extraLevels) * 3 + _extras[Key.Stats.ExtraCapacity].Value;
             }
         }
         public static float GetRadius(uint level = 0)
@@ -273,7 +276,7 @@ public static class Formula
         {
             level = level == 0 ? _stats.Levels[AttributeType.HP] : level;
             float baseValue = 22;
-            return baseValue + (level / 2) * 0.2f + ((level + 1) / 2) * 0.3f;
+            return baseValue + (level / 2) * 0.2f + ((level + 1) / 2) * 0.3f + _extras[Key.Stats.ExtraHP].Value;
         }
     
         public static float GetAttributeValue(AttributeType type, uint level = 0)
@@ -285,6 +288,16 @@ public static class Formula
             else if (type == AttributeType.Tentacle) return GetTentacle(level); 
             else if (type == AttributeType.HP) return GetHP(level);
             return 0;
+        }
+
+
+        public static float GetDamage(float damage)
+        {
+            return damage - _extras[Key.Stats.ExtraDefence].Value;
+        }
+        public static float GetResource(float amount)
+        {
+            return amount * (1 + _extras[Key.Stats.ExtraResources].Value.Percent());
         }
     }
     public static class Value

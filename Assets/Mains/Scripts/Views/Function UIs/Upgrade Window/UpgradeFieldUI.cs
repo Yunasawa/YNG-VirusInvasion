@@ -27,8 +27,12 @@ public class UpgradeFieldUI : MonoBehaviour
         _text.text = $"Level <color=#0058AF>{level}</color> -> <color=#0058AF>{level + 1}</color>\nIncrease <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> -> <color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
 
         _requirements = Formula.Stats.GetAttributeRequirement(Type);
-
         _cost.text = "";
+
+        if (Game.Data.Vault.UpgradeIcons.TryGetValue(Type, out Sprite icon))
+        {
+            _icon.sprite = icon;
+        }
 
         bool enoughRequirement = true;
 

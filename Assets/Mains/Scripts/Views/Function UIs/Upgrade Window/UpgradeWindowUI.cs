@@ -36,7 +36,6 @@ public class UpgradeWindowUI : MonoBehaviour
     private void OnEnable()
     {
         UpdateUpgradeFields();
-
         UpdateResourceNodes();
     }
 

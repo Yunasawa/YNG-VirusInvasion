@@ -53,6 +53,11 @@ public class MarketNodeUI : MonoBehaviour
         _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
         _button.interactable = _enoughResource;
+
+        if (Game.Data.Vault.MarketIcons.TryGetValue(_node.Key, out Sprite icon))
+        {
+            _icon.sprite = icon;
+        }
     }
 
     private void OnButtonClicked()

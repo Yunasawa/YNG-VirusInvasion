@@ -25,3 +25,33 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 0f792d19841dfa94da8947232e4e0317, type: 3}
     - {fileID: 21300000, guid: b4ca6794d5419e446a53de91bcd7b1cd, type: 3}
     - {fileID: 21300000, guid: d1ba30a8db78c824299dbbcd56f90ddd, type: 3}
+  UpgradeIcons:
+    _keys: 000102030405
+    _values:
+    - {fileID: 21300000, guid: a9ea5a22e236a3c47b64385f0a480dc3, type: 3}
+    - {fileID: 21300000, guid: 87e0edb1752e80a409fea721705b67a9, type: 3}
+    - {fileID: 21300000, guid: b7d4880f9864a91448035475759b6f72, type: 3}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: eeb795e205dddbc4e9bc7baae57b8538, type: 3}
+    - {fileID: 21300000, guid: 779c9a5cca92ee7438281ccfae6a991f, type: 3}
+  MarketIcons:
+    _keys:
+    - ExtraSpeed
+    - ExtraCapacity
+    - ExtraHP
+    - ExtraDPS
+    - ExtraResources
+    - ExtraDefence
+    - ExtraSlowdown
+    - HunterCellAmount
+    - DeliveryCellAmount
+    _values:
+    - {fileID: 21300000, guid: ffff1c37ac2145c4db05e24982f4d99d, type: 3}
+    - {fileID: 21300000, guid: b7d4880f9864a91448035475759b6f72, type: 3}
+    - {fileID: 21300000, guid: 779c9a5cca92ee7438281ccfae6a991f, type: 3}
+    - {fileID: 21300000, guid: 39239bb249beb724d86343b920993801, type: 3}
+    - {fileID: 21300000, guid: f4e961f967b8d2e4aa50748fcfa1f16d, type: 3}
+    - {fileID: 21300000, guid: 03141fecff60e794fbea06553d997e60, type: 3}
+    - {fileID: 21300000, guid: 0b684ff3d15b80741a8c68092dd68f91, type: 3}
+    - {fileID: 21300000, guid: 5ddcb83232a985546b37f7a122a84e06, type: 3}
+    - {fileID: 21300000, guid: 99266f9468c2906449cb8348b37fa6dc, type: 3}
