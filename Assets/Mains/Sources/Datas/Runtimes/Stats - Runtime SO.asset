@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    CurrentLevel: 6
-    CurrentExp: 399
+    CurrentLevel: 1
+    CurrentExp: 16
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 223
-      - 3
+      - 11946
       - 0
       - 0
       - 0
-      - 20.199997
+      - 0
+      - 618.4
       - 0
       - 0
       - 0
@@ -31,16 +31,16 @@ MonoBehaviour:
     Attributes:
       _keys: 000102030405
       _values:
-      - 105.6
-      - 29
-      - 60
+      - 16
+      - 16
+      - 4
       - 15.5
       - 1
       - 22
     Bonuses:
       _keys: 000102030405
       _values:
-      - 20
+      - 0
       - 0
       - 0
       - 0
@@ -48,7 +48,7 @@ MonoBehaviour:
       - 0
     Levels:
       _keys: 000102030405
-      _values: 210000000d00000008000000000000000000000000000000
+      _values: 000000000000000000000000000000000000000000000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
@@ -67,15 +67,15 @@ MonoBehaviour:
       - ExtraHPBoost
       - ExtraRegenBoost
       _values:
-      - Level: 12
+      - Level: 0
         Step: 0.4
-      - Level: 5
+      - Level: 0
         Step: 5
-      - Level: 5
+      - Level: 0
         Step: 1
-      - Level: 6
+      - Level: 0
         Step: 5
-      - Level: 4
+      - Level: 0
         Step: 2
       - Level: 0
         Step: 0.5
@@ -97,68 +97,81 @@ MonoBehaviour:
         Step: 10
       - Level: 0
         Step: 0.1
-    FarmStats:
+  CapacityStats:
+    CurrentCapacity: 4
+    Resources:
+      _keys: 00010203040506070809
+      _values: 04000000000000000000000000000000000000000000000000000000000000000000000000000000
+  ConstructStats:
+    Farms:
       _keys:
       - Farm1.1
       - Farm1.2
+      - Farm1.5
       - Farm2.3
       - Farm2.4
-      - Farm1.5
       - Farm2.6
       _values:
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 5
-          Step: 20
-        - Level: 5
-          Step: 10
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 0
-          Step: 20
-        - Level: 0
-          Step: 10
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 0
-          Step: 10
-        - Level: 0
-          Step: 0.2
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 0
-          Step: 10
-        - Level: 0
-          Step: 0.2
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 11
-          Step: 20
-        - Level: 2
-          Step: 10
-      - _keys:
-        - Capacity
-        - Income
-        _values:
-        - Level: 4
-          Step: 10
-        - Level: 4
-          Step: 0.2
-  CapacityStats:
-    CurrentCapacity: 60
-    Resources:
-      _keys: 00010203040506070809
-      _values: 3c000000000000000000000000000000000000000000000000000000000000000000000000000000
+      - Current: 0
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 0
+            Step: 10
+          - Level: 0
+            Step: 20
+      - Current: 0
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 0
+            Step: 10
+          - Level: 0
+            Step: 20
+      - Current: 140
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 14
+            Step: 10
+          - Level: 10
+            Step: 20
+      - Current: 0
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 0
+            Step: 0.2
+          - Level: 0
+            Step: 10
+      - Current: 0
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 0
+            Step: 0.2
+          - Level: 0
+            Step: 10
+      - Current: 18
+        Attributes:
+          _keys:
+          - Income
+          - Capacity
+          _values:
+          - Level: 6
+            Step: 0.2
+          - Level: 5
+            Step: 10
   QuestRuntime:
     CurrentQuests:
       _keys:
