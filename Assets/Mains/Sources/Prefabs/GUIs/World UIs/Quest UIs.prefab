@@ -894,8 +894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0132cafedcc26844b8664a04b42776cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questName: UpgradeFarm
   _questButton: {fileID: 2636870145961693007}
+  _questTitle: {fileID: 0}
   _questAccept: {fileID: 4933263459597257804}
   _progressArea: {fileID: 4556233232778003484}
   _progressText: {fileID: 1923714365673551896}

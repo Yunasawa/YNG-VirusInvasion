@@ -1,18 +1,21 @@
 using Sirenix.OdinInspector;
+using System;
+using System.Security.Claims;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using YNL.Bases;
 using YNL.Utilities.Addons;
 
 public class QuestWindowUI : MonoBehaviour
 {
-    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
-
     [Title("Quest Field")]
     [SerializeField] private SerializableDictionary<string, QuestFieldUI> _questFields = new();
+    [SerializeField] private QuestFieldUI _questFieldPrefab;
 
     [SerializeField] private Button _expandingButton;
+    [SerializeField] private Image _expandingArrow;
     [SerializeField] private GameObject _questPanel;
 
     private bool _isExpanded = false;
@@ -31,12 +34,6 @@ public class QuestWindowUI : MonoBehaviour
 
     private void Awake()
     {
-        Player.OnLevelUp += Start;
-
-        Player.OnFarmStatsUpdate += OnUpgradeFarmAttribute;
-        Player.OnAcceptQuest += OnAcceptQuest;
-        Player.OnCompleteQuest += OnCompleteQuest;
-
         Player.OnOpenQuestWindow += OnOpenQuestWindow;
 
         _expandingButton.onClick.AddListener(ExpandPanel);
@@ -45,19 +42,11 @@ public class QuestWindowUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        Player.OnLevelUp -= Start;
-
-        Player.OnFarmStatsUpdate -= OnUpgradeFarmAttribute;
-        Player.OnAcceptQuest -= OnAcceptQuest;
-        Player.OnCompleteQuest -= OnCompleteQuest;
-
         Player.OnOpenQuestWindow -= OnOpenQuestWindow;
     }
 
     private void Start()
     {
-        foreach (var quest in _questFields) quest.Value.Initialize(0);
-
         _questPanel.SetActive(false);
     }
 
@@ -67,40 +56,68 @@ public class QuestWindowUI : MonoBehaviour
 
         _questWindow.SetActive(true);
 
-        int higher = Mathf.Max(_runtimeConstructStats.Farms["Farm1.5"].Attributes["Capacity"].Level, _runtimeConstructStats.Farms["Farm1.5"].Attributes["Income"].Level);
-
-        _windowTitle.text = Game.Data.QuestStats.Quests[name].Title;
+        _windowTitle.text = Game.Data.QuestStats.Quests[name].Title.ToUpper();
         _questMessage.text = Game.Data.QuestStats.Quests[name].RawMessage;
-        _questProgress.text = $"{higher}/2";
 
         ResourcesInfo info = Game.Data.QuestStats.Quests[name].Resource;
-        _questReward.text = $"{info.Amount}";
+        _questReward.text = $"{info.Amount} <sprite name={info.Type}>";
 
-        if (!Game.Data.QuestRuntime.CurrentQuests.ContainsKey(name))
-        {
-            _questButton.gameObject.SetActive(true);
-            _buttonText.text = "ACCEPT";
-            _questButton.onClick.RemoveAllListeners();
-            _questButton.onClick.AddListener(OnAccept);
-        }
-        else if (Game.Data.QuestRuntime.CurrentQuests[name])
-        {
-            _questButton.gameObject.SetActive(true);
-            _buttonText.text = "CLAIM";
-            _questButton.onClick.RemoveAllListeners();
-            _questButton.onClick.AddListener(OnClaim);
-        }
+        UpdateQuest(name);
+        UpdateButton(name, OnAccept, OnClaim);  
 
         void OnAccept()
         {
             _ui.AcceptQuest();
             _questButton.gameObject.SetActive(false);
+
+            _isExpanded = false;
+            ExpandPanel();
+
+            QuestFieldUI field = Instantiate(_questFieldPrefab, _questPanel.transform);
+            field.Initialize(name);
+            _questFields.Add(name, field);
+
+            BaseQuest quest = Quest.GetQuest(name);
+            Game.Data.RuntimeQuestStats.Quests.Add(name, quest);
+            quest.OnAcceptQuest();
+
+            UpdateQuest(name);
+            UpdateButton(name, OnAccept, OnClaim);
         }
 
         void OnClaim()
         {
             _ui.ClaimReward();
             _questWindow.SetActive(false);
+
+            Destroy(_questFields[name].gameObject);
+            _questFields.Remove(name);
+        }
+    }
+
+    private void UpdateQuest(string name)
+    {
+        if (Game.Data.RuntimeQuestStats.Quests.TryGetValue(name, out BaseQuest quest))
+        {
+            _questProgress.text = quest.GetProgress();
+        }
+    }
+
+    private void UpdateButton(string name, UnityAction onAccept, UnityAction onClaim)
+    {
+        if (!Game.Data.RuntimeQuestStats.Quests.ContainsKey(name))
+        {
+            _questButton.gameObject.SetActive(true);
+            _buttonText.text = "ACCEPT";
+            _questButton.onClick.RemoveAllListeners();
+            _questButton.onClick.AddListener(onAccept);
+        }
+        else if (Game.Data.RuntimeQuestStats.Quests[name].IsCompleted)
+        {
+            _questButton.gameObject.SetActive(true);
+            _buttonText.text = "CLAIM";
+            _questButton.onClick.RemoveAllListeners();
+            _questButton.onClick.AddListener(onClaim);
         }
     }
 
@@ -108,24 +125,7 @@ public class QuestWindowUI : MonoBehaviour
     {
         _isExpanded = !_isExpanded;
         _questPanel.SetActive(_isExpanded);
-    }
 
-    private void OnUpgradeFarmAttribute(string key = "")
-    {
-        int higher = Mathf.Max(_runtimeConstructStats.Farms["Farm1.5"].Attributes["Capacity"].Level, _runtimeConstructStats.Farms["Farm1.5"].Attributes["Income"].Level);
-        _questFields["UpgradeFarm"].UpdateQuest(higher);
-     
-        if (higher >= 2) _questFields["UpgradeFarm"].ShowReward();
-    }
-
-    private void OnAcceptQuest(string name)
-    {
-        _questFields[name].gameObject.SetActive(true);
-        OnUpgradeFarmAttribute();
-    }
-
-    private void OnCompleteQuest(string name)
-    {
-        _questFields[name].gameObject.SetActive(false);
+        _expandingArrow.transform.localRotation = Quaternion.Euler(0, 0, _isExpanded ? 0 : 180);
     }
 }

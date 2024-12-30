@@ -18,7 +18,7 @@ public class QuestStatsNode
 }
 
 [System.Serializable]
-public class QuestRuntime
+public class RuntimeQuestStats
 {
-    public SerializableDictionary<string, bool> CurrentQuests = new();
+    public Dictionary<string, BaseQuest> Quests = new();
 }

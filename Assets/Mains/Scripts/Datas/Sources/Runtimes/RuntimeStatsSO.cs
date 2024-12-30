@@ -9,7 +9,7 @@ public class RuntimeStatsSO : ScriptableObject
     public PlayerStats PlayerStats = new();
     public CapacityStats CapacityStats = new();
     public RuntimeConstructStats ConstructStats = new();
-    public QuestRuntime QuestRuntime = new();
+    public RuntimeQuestStats RuntimeQuestStats = new();
 
     public void Reset()
     {

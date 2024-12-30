@@ -26,14 +26,14 @@ public class FarmConstruct : MonoBehaviour
 
         _ui.OnCollectResource = CollectResource;
 
-        Player.OnAcceptQuest += OnAcceptQuest;
-        Player.OnFinishQuest += OnFinishQuest;
+        //Player.OnAcceptQuest += OnAcceptQuest;
+        //Player.OnFinishQuest += OnFinishQuest;
     }
 
     private void OnDestroy()
     {
-        Player.OnAcceptQuest -= OnAcceptQuest;
-        Player.OnFinishQuest -= OnFinishQuest;
+        //Player.OnAcceptQuest -= OnAcceptQuest;
+        //Player.OnFinishQuest -= OnFinishQuest;
     }
 
     private void Start()

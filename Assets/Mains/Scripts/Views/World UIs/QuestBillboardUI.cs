@@ -2,13 +2,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 
 public class QuestBillboardUI : MonoBehaviour
 {
-    [SerializeField] private string _questName;
+    private QuestConstruct _questConstruct;
+    private BaseQuest _quest => Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName];
 
     [SerializeField] private Button _questButton;
 
+    [SerializeField] private TextMeshProUGUI _questTitle;
     [SerializeField] private GameObject _questAccept;
     [SerializeField] private GameObject _progressArea;
     [SerializeField] private TextMeshProUGUI _progressText;
@@ -18,60 +21,56 @@ public class QuestBillboardUI : MonoBehaviour
 
     private void Awake()
     {
+        _questConstruct = GetComponentInParent<QuestConstruct>();
+
         _questButton.onClick.AddListener(OpenQuestWindow);
 
-        Player.OnFinishQuest += OnFinishQuest;
+        Quest.OnUpdateQuestStatus += OnUpdateQuestStatus;
     }
 
     private void OnDestroy()
     {
-        Player.OnFinishQuest -= OnFinishQuest;
-        
+        Quest.OnUpdateQuestStatus += OnUpdateQuestStatus;
+    }
+
+    private void Start()
+    {
+        _questTitle.text = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Title.ToUpper();
     }
 
     private void OpenQuestWindow()
     {
-        Player.OnOpenQuestWindow?.Invoke(_questName, this);
+        Player.OnOpenQuestWindow?.Invoke(_questConstruct.QuestName, this);
     }
     
     public void AcceptQuest()
     {
-        _questButton.onClick.RemoveListener(AcceptQuest);
-
-        Game.Data.QuestRuntime.CurrentQuests.Add(_questName, false);
-        Player.OnSendQuestUI?.Invoke(_questName, this);
-        Player.OnAcceptQuest?.Invoke(_questName);
-
         _questAccept.SetActive(false);
-
         _progressArea.SetActive(true);
         _progressText.gameObject.SetActive(true);
     }
 
     public void ClaimReward()
     {
-        ResourcesInfo info = Game.Data.QuestStats.Quests[_questName].Resource;
+        ResourcesInfo info = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Resource;
         Game.Data.PlayerStats.AdjustResources(info.Type, (int)info.Amount);
         Player.OnChangeResources?.Invoke();
 
-        Player.OnCompleteQuest?.Invoke(_questName);
-        Game.Data.QuestRuntime.CurrentQuests.Remove(_questName);
+        Game.Data.RuntimeQuestStats.Quests.Remove(_questConstruct.QuestName);
 
-        this.gameObject.SetActive(false);
+        _questConstruct.gameObject.SetActive(false);
     }
 
-    private void OnFinishQuest(string name)
+    public void OnUpdateQuestStatus(string name, string value)
     {
-        if (name != _questName) return;
+        if (name != _questConstruct.QuestName) return;
 
-        _exclamationMark.gameObject.SetActive(false);
-        _checkMark.gameObject.SetActive(true);
+        _progressText.text = _quest.GetProgress();
 
-        _questButton.onClick.AddListener(ClaimReward);
-    }
-
-    public void SetProgressText(string text)
-    {
-        _progressText.text = text;
+        if (_quest.IsCompleted)
+        {
+            _exclamationMark.gameObject.SetActive(false);
+            _checkMark.gameObject.SetActive(true);
+        }
     }
 }

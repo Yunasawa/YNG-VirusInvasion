@@ -15,7 +15,7 @@ public class GameData : MonoBehaviour
 
     public PlayerStats PlayerStats { get => RuntimeStats.PlayerStats; set => RuntimeStats.PlayerStats = value; }
     public CapacityStats CapacityStats {get => RuntimeStats.CapacityStats; set => RuntimeStats.CapacityStats = value; }
-    public QuestRuntime QuestRuntime => RuntimeStats.QuestRuntime;
+    public RuntimeQuestStats RuntimeQuestStats => RuntimeStats.RuntimeQuestStats;
 
     public ConstructStats ConstructStats => _databaseStats.ConstructStats;
     public QuestStats QuestStats => _databaseStats.QuestStats;

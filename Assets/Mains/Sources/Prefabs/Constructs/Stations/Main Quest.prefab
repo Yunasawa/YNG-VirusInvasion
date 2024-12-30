@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2761592181356708998}
   - component: {fileID: 2528687287371123982}
   - component: {fileID: 3260311518354650420}
+  - component: {fileID: 6765109531413065276}
   m_Layer: 0
   m_Name: Main Quest
   m_TagString: Quest
@@ -160,6 +161,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6765109531413065276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426473821849368765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b340568a1e0324c99557c2dc132872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestName: 
 --- !u!1001 &6141346558146420949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,6 +256,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2761592181356708998}
     m_Modifications:
+    - target: {fileID: 39933441544098220, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 577081149017724073, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
+      propertyPath: _questTitle
+      value: 
+      objectReference: {fileID: 7056222077056511970}
     - target: {fileID: 4675806765533292234, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
       propertyPath: m_Name
       value: Quest UIs
@@ -336,3 +358,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
   m_PrefabInstance: {fileID: 7009463812635137983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7056222077056511970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 47888837521340509, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
+  m_PrefabInstance: {fileID: 7009463812635137983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,59 +1,36 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using YNL.Extensions.Methods;
 
 public class QuestFieldUI : MonoBehaviour
 {
     [SerializeField] private string _questName;
 
     [SerializeField] private TextMeshProUGUI _questText;
-    [SerializeField] private TextMeshProUGUI _rewardText;
 
-    private QuestBillboardUI _ui;
+    private QuestStatsNode _node;
 
     private void Awake()
     {
-        Player.OnSendQuestUI += OnSendQuestUI;
+        Quest.OnUpdateQuestStatus += UpdateQuest;
     }
 
     private void OnDestroy()
     {
-        Player.OnSendQuestUI -= OnSendQuestUI;
+        Quest.OnUpdateQuestStatus -= UpdateQuest;
     }
 
-    public void Initialize(params object[] values)
+    public void Initialize(string name)
     {
-        _questText.text = Game.Data.QuestStats.Quests[_questName].Message.Replace("@", values[0].ToString());
-        _rewardText.text = $"{Game.Data.QuestStats.Quests[_questName].Resource.Type}\n{Game.Data.QuestStats.Quests[_questName].Resource.Amount}";
+        _questName = name;
+        _node = Game.Data.QuestStats.Quests[name];
 
-        if (!Game.Data.QuestRuntime.CurrentQuests.ContainsKey(_questName)) this.gameObject.SetActive(false);
-        else this.gameObject.SetActive(true);
+        _questText.text = _node.Message.Replace("@", "0");
     }
 
-    private void OnSendQuestUI(string name, QuestBillboardUI ui)
+    public void UpdateQuest(string name, string value)
     {
         if (name != _questName) return;
-        _ui = ui;
-    }
 
-    public void UpdateQuest(params object[] values)
-    {
-        if (!Game.Data.QuestRuntime.CurrentQuests.ContainsKey(_questName)) return;
-
-        _questText.text = Game.Data.QuestStats.Quests[_questName].Message.Replace("@", values[0].ToString());
-        if (!_ui.IsNull() && !values.IsNullOrEmpty()) _ui.SetProgressText($"{values[0]}/2");
-    }
-
-    public void ShowReward()
-    {
-        Game.Data.QuestRuntime.CurrentQuests[_questName] = true;
-        Player.OnFinishQuest?.Invoke(_questName);
-    }
-
-    private void GetReward()
-    {
-        Game.Data.PlayerStats.AdjustResources(Game.Data.QuestStats.Quests[_questName].Resource.Type, (int)Game.Data.QuestStats.Quests[_questName].Resource.Amount);
-        this.gameObject.SetActive(false);
+        _questText.text = _node.Message.Replace("@", value);
     }
 }

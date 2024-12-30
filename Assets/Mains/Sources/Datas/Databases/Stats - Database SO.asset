@@ -12,21 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc5f367a61d9d540a9a376d57140ded, type: 3}
   m_Name: Stats - Database SO
   m_EditorClassIdentifier: 
-  EnemyStats:
-    Stats:
-      _keys: 00000000
-      _values:
-      - Exp: 0
-        Capacity: 10
-        HP: 100
-        MS: 1
-        MaxInstancePerArea: 0
-        SpawningTime: 1
-        Drops:
-          _keys: 0005
-          _values: 0a00000001000000
-        AttackDamage: 0
-        ExperimentMultiplier: 0
   ConstructStats:
     Markets:
     - Name: Market 1
@@ -358,13 +343,13 @@ MonoBehaviour:
           Amount: 300
       - RawMessage: Collect <color=#F3FF00>5</color> special items from monsters
         Message: Collect <color=#F3FF00>@/5</color> special items from monsters
-        Title: Collect Items
+        Title: Collect 5 Items
         Resource:
           Type: 0
           Amount: 1000
       - RawMessage: Collect <color=#F3FF00>10</color> special items from monsters
         Message: Collect <color=#F3FF00>@/10</color> special items from monsters
-        Title: Collect Items
+        Title: Collect 10 Items
         Resource:
           Type: 0
           Amount: 3000
