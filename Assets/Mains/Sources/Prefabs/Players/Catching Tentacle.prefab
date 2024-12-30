@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1602465098043351170}
   - component: {fileID: 8424804705439462632}
   - component: {fileID: 5138039199177822966}
+  - component: {fileID: 3398644706225541722}
   m_Layer: 0
   m_Name: Catching Tentacle
   m_TagString: Untagged
@@ -192,6 +193,21 @@ MonoBehaviour:
   solvers:
   - {fileID: 8424804705439462632}
   substeps: 4
+--- !u!114 &3398644706225541722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8045077606518902015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27015b56755219d4ca28428c28060c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetPivot: {fileID: 1415511235267826485}
+  Target: {fileID: 0}
+  HasTarget: 0
 --- !u!1 &9121585245439356733
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actor: {fileID: 6399608925827683530}
-  m_Target: {fileID: 1602465098043351170}
+  m_Target: {fileID: 0}
   m_ParticleGroup: {fileID: 1743580949022859890, guid: 0766ba1411dec0149b40e99e6a860444, type: 2}
   m_AttachmentType: 0
   m_ConstrainOrientation: 0

@@ -7,6 +7,8 @@ public class Tentacle : MonoBehaviour
     [SerializeField] private Transform _targetPivot;
     public Enemy Target;
 
+    public bool IsEnabled = false;
+
     public bool HasTarget = false;
 
     private void LateUpdate()

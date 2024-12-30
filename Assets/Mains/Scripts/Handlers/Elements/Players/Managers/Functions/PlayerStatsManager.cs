@@ -50,7 +50,7 @@ public class PlayerStatsManager : MonoBehaviour
     {
         foreach (var drop in drops)
         {
-            _capacityStats.AdjustResources(drop.type, (int)drop.amount);
+            _capacityStats.AdjustResources(drop.type, Formula.Stats.GetResource(drop.amount));
         }
         Player.OnChangeCapacity?.Invoke();
     }

@@ -124,45 +124,45 @@ public static class Formula
 
             switch (_stats.Levels[AttributeType.Tentacle])
             {
-                case 1:
+                case 0:
                     requirements.Add(new(ResourceType.Food1, 250));
                     break;
-                case 2:
+                case 1:
                     requirements.Add(new(ResourceType.Food1, 1000));
                     break;
-                case 3:
+                case 2:
                     requirements.Add(new(ResourceType.Food1, 2500));
                     requirements.Add(new(ResourceType.Gen1, 2));
                     break;
-                case 4:
+                case 3:
                     requirements.Add(new(ResourceType.Food1, 8000));
                     requirements.Add(new(ResourceType.Gen1, 3));
                     break;
-                case 5:
+                case 4:
                     requirements.Add(new(ResourceType.Food1, 22000));
                     requirements.Add(new(ResourceType.Gen1, 4));
                     break;
-                case 6:
+                case 5:
                     requirements.Add(new(ResourceType.Food1, 66000));
                     requirements.Add(new(ResourceType.Gen1, 4));
                     requirements.Add(new(ResourceType.Gen2, 2));
                     break;
-                case 7:
+                case 6:
                     requirements.Add(new(ResourceType.Food1, 198000));
                     requirements.Add(new(ResourceType.Gen1, 5));
                     requirements.Add(new(ResourceType.Gen4, 2));
                     break;
-                case 8:
+                case 7:
                     requirements.Add(new(ResourceType.Food1, 594000));
                     requirements.Add(new(ResourceType.Gen1, 6));
                     requirements.Add(new(ResourceType.Gen4, 2));
                     break;
-                case 9:
+                case 8:
                     requirements.Add(new(ResourceType.Food1, 1780000));
                     requirements.Add(new(ResourceType.Gen1, 4));
                     requirements.Add(new(ResourceType.Gen3, 7));
                     break;
-                case 10:
+                case 9:
                     requirements.Add(new(ResourceType.Food1, 5300000));
                     requirements.Add(new(ResourceType.Gen1, 5));
                     requirements.Add(new(ResourceType.Gen3, 8));
@@ -258,7 +258,7 @@ public static class Formula
         public static float GetRadius(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.Radius] : level;
-            float baseValue = 15.5f;
+            float baseValue = 15f;
 
             if (level <= 20) return baseValue + level * 0.5f;
             else
@@ -295,9 +295,9 @@ public static class Formula
         {
             return damage - _extras[Key.Stats.ExtraDefence].Value;
         }
-        public static float GetResource(float amount)
+        public static int GetResource(float amount)
         {
-            return amount * (1 + _extras[Key.Stats.ExtraResources].Value.Percent());
+            return Mathf.RoundToInt(amount * (1 + _extras[Key.Stats.ExtraResources].Value.Percent()));
         }
     }
     public static class Value
