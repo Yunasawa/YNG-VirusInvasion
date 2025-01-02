@@ -11,8 +11,8 @@ public class CameraMovementManager : MonoBehaviour
     [SerializeField] private bool _isSmoothMovement = true;
 
     [SerializeField] private Transform _mainCamera;
-    private Vector3 _nearPosition = new(0, 30, -16.9f);
-    private Vector3 _farPosition = new(0, 50, -26.2f);
+    private Vector3 _nearPosition = new(0, 30, -20f);
+    private Vector3 _farPosition = new(0, 50, -31.5f);
     [SerializeField] private float _focusingSpeed = 0.2f;
 
     public bool EnableFollowTarget = true;

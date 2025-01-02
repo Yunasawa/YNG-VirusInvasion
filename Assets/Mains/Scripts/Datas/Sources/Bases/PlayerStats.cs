@@ -19,6 +19,9 @@ namespace YNL.Bases
         public int CurrentLevel = 0;
         public int CurrentExp;
 
+        public int CurrentHP;
+        public int MaxHP;
+
         public SerializableDictionary<ResourceType, float> Resources = new();
 
         public SerializableDictionary<AttributeType, float> Attributes = new();
@@ -26,11 +29,11 @@ namespace YNL.Bases
         public SerializableDictionary<AttributeType, uint> Levels = new();
 
         public SerializableDictionary<string, ExtraStats> ExtraStatsLevel = new();
-        //public SerializableDictionary<string, SerializableDictionary<string, ExtraStats>> FarmStats = new();
 
         public void Reset()
         {
             CurrentLevel = CurrentExp = 0;
+            CurrentHP = MaxHP = Formula.Stats.GetHP();
 
             Resources.Clear();
             foreach (ResourceType type in Enum.GetValues(typeof(ResourceType))) Resources.Add(type, 0);

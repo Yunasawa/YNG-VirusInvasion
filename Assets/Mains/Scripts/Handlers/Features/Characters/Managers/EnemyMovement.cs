@@ -26,10 +26,6 @@ public class EnemyMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, Player.Transform.position) <= 0.1f) OnPullingDone();
     }
 
-    public void Slowdown(bool enable)
-    {
-        //_moveSpeed = enable ? 0.5f : 1.5f;
-    }
     public void MoveTowardPlayer()
     {
         if (!_manager.IsCaught) return;
@@ -39,9 +35,10 @@ public class EnemyMovement : MonoBehaviour
     public void OnPullingDone()
     {
         IsPulling = false;
-        //this.gameObject.SetActive(false);
         _manager.OnKilled();
         _manager.Stats.OnKilled();
+
+        Player.Enemy.Enemies.TryRemove(_manager);
 
         CameraManager.Instance.Audio.PlayEatingSFX();
     }

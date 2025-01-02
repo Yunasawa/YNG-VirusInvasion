@@ -48,6 +48,8 @@ public class EnemyUI : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
 
         _billboardCanvas.transform.rotation = rotation;
+
+        _billboardCanvas.localScale = Vector3.one * 0.002f * Camera.main.transform.localPosition.magnitude / 36;
     }
 
     public void UpdateHealthBar(bool start)

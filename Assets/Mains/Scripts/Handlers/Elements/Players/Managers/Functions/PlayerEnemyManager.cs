@@ -8,9 +8,12 @@ public class PlayerEnemyManager : ColliderTriggerListener
     [SerializeField] private Tentacle _tentaclePrefab;
     [SerializeField] private Transform _tentacleContainer;
     public List<Tentacle> Tentacles = new();
+    public List<Enemy> Enemies = new();
 
     [SerializeField] private SphereCollider _collider;
     [SerializeField] private Transform _radius;
+
+    private float _timer;
 
     private void Awake()
     {
@@ -41,9 +44,10 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 tentacle.SetTarget(monster);
 
-                monster.Movement.Slowdown(true);
                 monster.IsCaught = true;
                 monster.UI.UpdateHealthBar(true);
+
+                if (!Enemies.Contains(monster)) Enemies.Add(monster);
 
                 break;
             }
@@ -68,9 +72,10 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 tentacle.RemoveTarget();
 
-                monster.Movement.Slowdown(false);
                 monster.IsCaught = false;
                 monster.UI.UpdateHealthBar(false);
+
+                Enemies.TryRemove(monster);
 
                 break;
             }

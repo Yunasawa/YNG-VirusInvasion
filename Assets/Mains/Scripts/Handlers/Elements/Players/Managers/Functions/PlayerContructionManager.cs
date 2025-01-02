@@ -1,10 +1,35 @@
 using System;
+using TMPro;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
 public class PlayerConstructionManager : ColliderTriggerListener
 {
     public ConstructManager Construct;
+
+    [SerializeField] private Transform _homeBase;
+    [SerializeField] private Transform _homeBasePointer;
+    [SerializeField] private TextMeshPro _homeDistance;
+
+    private void Update()
+    {
+        PointToHomeBase();
+    }
+
+    private void PointToHomeBase()
+    {
+        Vector3 direction = _homeBase.position - transform.position;
+
+        _homeBasePointer.rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        _homeDistance.text = $"{Mathf.RoundToInt(direction.magnitude) - 10}m";
+        _homeDistance.transform.localRotation = Quaternion.Euler(0, 0, _homeBasePointer.rotation.eulerAngles.y);
+        float zRotation = _homeDistance.transform.eulerAngles.z;
+        float zRotationRadians = Mathf.Deg2Rad * zRotation;
+        float xPosition = -Mathf.Sin(zRotationRadians);
+        float yPosition = Mathf.Cos(zRotationRadians);
+        _homeDistance.transform.localPosition = new Vector3(xPosition, yPosition, 0) * 2.5f;
+    }
 
     public override void OnColliderTriggerEnter(Collider other)
     {

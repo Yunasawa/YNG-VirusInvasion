@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 200}
+  m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9097956095684346477
 CanvasRenderer:
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 175
+  m_fontSizeBase: 175
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -515,7 +515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60904542188866624, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_fontSize
-      value: 38.25
+      value: 65.6
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_Pivot.x
@@ -551,15 +551,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -617,6 +617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Resource Node UI (Outline) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6397294021401182663, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -637,7 +641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60904542188866624, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_fontSize
-      value: 38.25
+      value: 65.6
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_Pivot.x
@@ -673,15 +677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -739,6 +743,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Resource Node UI (Outline) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6397294021401182663, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -757,10 +765,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8448678611483222066}
     m_Modifications:
-    - target: {fileID: 60904542188866624, guid: d884e52319d83184999940ee247faec8, type: 3}
-      propertyPath: m_fontSize
-      value: 38.25
-      objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -792,6 +796,18 @@ PrefabInstance:
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -865,7 +881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60904542188866624, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_fontSize
-      value: 38.25
+      value: 65.6
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_Pivot.x
@@ -901,15 +917,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 817242827338043480, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -966,6 +982,10 @@ PrefabInstance:
     - target: {fileID: 6397294021401182663, guid: d884e52319d83184999940ee247faec8, type: 3}
       propertyPath: m_Name
       value: Resource Node UI (Outline) (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397294021401182663, guid: d884e52319d83184999940ee247faec8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

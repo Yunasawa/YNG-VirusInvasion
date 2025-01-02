@@ -19,7 +19,7 @@ namespace YNL.Bases
         public int HP = 10000;
         public int MS;
         public SerializableDictionary<ResourceType, uint> Drops = new() { { ResourceType.Food1, 3000 } };
-        public float AttackDamage;
+        public int AttackDamage;
 
         public int EnemyAmount => Mathf.RoundToInt(Random.Range(MaxEnemyInAnArea.Min, MaxEnemyInAnArea.Max));
     }

@@ -272,11 +272,11 @@ public static class Formula
             level = level == 0 ? _stats.Levels[AttributeType.Tentacle] : level;
             return 1 + level;
         }
-        public static float GetHP(uint level = 0)
+        public static int GetHP(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.HP] : level;
-            float baseValue = 22;
-            return baseValue + (level / 2) * 0.2f + ((level + 1) / 2) * 0.3f + _extras[Key.Stats.ExtraHP].Value;
+            int baseValue = 22;
+            return Mathf.RoundToInt(baseValue + (level / 2) * 0.2f + ((level + 1) / 2) * 0.3f + _extras[Key.Stats.ExtraHP].Value);
         }
     
         public static float GetAttributeValue(AttributeType type, uint level = 0)

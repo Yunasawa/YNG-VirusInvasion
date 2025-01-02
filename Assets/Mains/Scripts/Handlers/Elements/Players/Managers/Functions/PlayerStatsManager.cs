@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class PlayerStatsManager : MonoBehaviour
     private CapacityStats _capacityStats => Game.Data.CapacityStats;
     private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
 
+    [SerializeField] private HealthFieldUI _healthField;
+
     private void Awake()
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
@@ -21,6 +24,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnConsumeResources += OnConsumeResources;
         Player.OnEnterHomeBase += OnEnterHomeBase;
         Player.OnChangeStats += OnChangeStats;
+        Player.OnUpgradeAttribute += OnUpgradeAttribute;
     }
 
     private void OnDestroy()
@@ -34,16 +38,21 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnConsumeResources -= OnConsumeResources;
         Player.OnEnterHomeBase -= OnEnterHomeBase;
         Player.OnChangeStats -= OnChangeStats;
+        Player.OnUpgradeAttribute -= OnUpgradeAttribute;
     }
 
     private void Start()
     {
         OnChangeStats();
+
+        OnUpgradeAttribute(AttributeType.HP);
+
+        ReceiveDamage().Forget();
     }
 
     private void OnChangeStats()
     {
-        for (byte i = 0; i < 6; i++) Game.Data.PlayerStats.UpdateAttributes((AttributeType)i);
+        for (byte i = 0; i < 6; i++) _playerStats.UpdateAttributes((AttributeType)i);
     }
 
     public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
@@ -88,20 +97,20 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void OnExchangeResources(ResourcesInfo from, ResourcesInfo to)
     {
-        Game.Data.PlayerStats.Resources[from.Type] -= from.Amount;
-        Game.Data.PlayerStats.Resources[to.Type] += to.Amount;
+        _playerStats.Resources[from.Type] -= from.Amount;
+        _playerStats.Resources[to.Type] += to.Amount;
         Player.OnChangeResources?.Invoke();
     }
 
     private void OnCollectFarmResources(ResourceType type, float amount)
     {
-        Game.Data.PlayerStats.Resources[type] += amount;
+        _playerStats.Resources[type] += amount;
         Player.OnChangeResources?.Invoke();
     }
 
     private void OnConsumeResources(ResourceType type, float amount)
     {
-        Game.Data.PlayerStats.Resources[type] -= amount;
+        _playerStats.Resources[type] -= amount;
         Player.OnChangeResources?.Invoke();
     }
 
@@ -113,7 +122,7 @@ public class PlayerStatsManager : MonoBehaviour
         {
             if (resource.Value > 0)
             {
-                Game.Data.PlayerStats.AdjustResources(resource.Key, (int)resource.Value);
+                _playerStats.AdjustResources(resource.Key, (int)resource.Value);
 
                 if (!resources.ContainsKey(resource.Key)) resources.Add(resource.Key, (int)resource.Value);
                 else resources[resource.Key] += (int)resource.Value;
@@ -125,5 +134,42 @@ public class PlayerStatsManager : MonoBehaviour
 
         (ResourceType type, int amount)[] capacity = resources.Select(kv => (type: kv.Key, amount: kv.Value)).ToArray();
         Player.OnReturnCapacity?.Invoke(capacity);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _playerStats.CurrentHP -= damage;
+        if (_playerStats.CurrentHP <= 0)
+        {
+
+        }
+
+        _healthField.UpdateHealth();
+    }
+
+    private async UniTaskVoid ReceiveDamage()
+    {
+        while (true)
+        {
+            await UniTask.WaitForSeconds(1);
+
+            int totalDamage = 0;
+
+            foreach (var enemy in Player.Enemy.Enemies)
+            {
+                totalDamage += Game.Data.EnemySources[enemy.Stats.ID].AttackDamage;
+            }
+
+            TakeDamage(totalDamage);
+        }
+    }
+
+    private void OnUpgradeAttribute(AttributeType type)
+    {
+        if (type == AttributeType.HP)
+        {
+            _playerStats.MaxHP = Formula.Stats.GetHP();
+            _healthField.UpdateHealth();
+        }
     }
 }
