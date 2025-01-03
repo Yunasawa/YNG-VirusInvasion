@@ -28,7 +28,7 @@ public class PlayerConstructionManager : ColliderTriggerListener
         float zRotationRadians = Mathf.Deg2Rad * zRotation;
         float xPosition = -Mathf.Sin(zRotationRadians);
         float yPosition = Mathf.Cos(zRotationRadians);
-        _homeDistance.transform.localPosition = new Vector3(xPosition, yPosition, 0) * 2.5f;
+        _homeDistance.transform.localPosition = new Vector3(xPosition, yPosition, 0) * 3.25f;
     }
 
     public override void OnColliderTriggerEnter(Collider other)
