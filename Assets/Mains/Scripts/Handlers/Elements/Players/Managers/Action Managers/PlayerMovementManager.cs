@@ -66,13 +66,12 @@ public class PlayerMovementManager : MonoBehaviour
             Player.IsMoving = true;
 
             Player.Character.Move(Player.Transform.forward * speed);
-            //Player.Animator?.ImmediatePlay("Walk", 0.1f);
+        
+            Game.Input.TutorialPanelUI.StartGameTutorial.ShowTutorial();
         }
         else
         {
             Player.IsMoving = false;
-
-            //Player.Animator?.ImmediatePlay("Idle", 0.1f);
         }
     }
 

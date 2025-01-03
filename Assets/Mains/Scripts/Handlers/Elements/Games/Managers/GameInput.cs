@@ -4,4 +4,6 @@ using UnityEngine;
 public class GameInput : MonoBehaviour
 {
     public Joystick MovementJoystick;
+
+    public TutorialPanelUI TutorialPanelUI;
 }

@@ -46,10 +46,12 @@ public class CapacityFieldUI : MonoBehaviour
         {
             float fillAmount = (float)Game.Data.CapacityStats.CurrentCapacity / Mathf.FloorToInt(Game.Data.PlayerStats.Attributes[AttributeType.Capacity]);
             _capacityBar.fillAmount = fillAmount;
-            if (fillAmount >= 0.95f)
+            if (fillAmount >= 0.98f)
             {
                 _capacityBar.color = _capacityColor.Full;
                 _capacityText.text = $"Capacity is full";
+
+                Game.Input.TutorialPanelUI.ReturnToBaseTutorial.ShowTutorial();
             }
             else
             {

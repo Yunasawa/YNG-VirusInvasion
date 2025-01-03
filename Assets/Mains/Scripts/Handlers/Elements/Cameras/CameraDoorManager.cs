@@ -2,8 +2,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using YNL.Extensions.Methods;
-using YNL.Utilities.Addons;
 
 public class CameraDoorManager : MonoBehaviour
 {
@@ -53,5 +51,13 @@ public class CameraDoorManager : MonoBehaviour
         {
             _manager.Movement.EnableFollowTarget = true;
         }
+    }
+    public async UniTaskVoid FocusOnTarget(Vector3 target, float time, float wait = 1)
+    {
+        Ease ease = Ease.OutCubic;
+
+        Camera.main.transform.DOLocalMove(target, time).SetEase(ease);
+        await UniTask.WaitForSeconds(wait);
+        Camera.main.transform.DOLocalMove(new Vector3(0, 30, -20), time).SetEase(ease);
     }
 }

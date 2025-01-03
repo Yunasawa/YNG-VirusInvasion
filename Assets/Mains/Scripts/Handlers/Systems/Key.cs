@@ -5,6 +5,8 @@ public static class Key
     public static class Config
     {
         public const int FarmCountdown = 10;
+        public const float TypeWriterSpeed = 0.05f;
+        public static int TypeWritterDelay = Mathf.RoundToInt(TypeWriterSpeed * 1000);
     }
     public static class Path
     {
