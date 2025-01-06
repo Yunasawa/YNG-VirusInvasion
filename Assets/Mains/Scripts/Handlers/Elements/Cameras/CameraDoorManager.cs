@@ -56,8 +56,8 @@ public class CameraDoorManager : MonoBehaviour
     {
         Ease ease = Ease.OutCubic;
 
-        Camera.main.transform.DOLocalMove(target, time).SetEase(ease);
+        this.transform.DOLocalMove(target, time).SetEase(ease);
         await UniTask.WaitForSeconds(wait);
-        Camera.main.transform.DOLocalMove(new Vector3(0, 30, -20), time).SetEase(ease);
+        this.transform.DOLocalMove(Player.Transform.position, time).SetEase(ease);
     }
 }
