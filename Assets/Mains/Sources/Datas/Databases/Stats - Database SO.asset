@@ -331,28 +331,36 @@ MonoBehaviour:
   QuestStats:
     Quests:
       _keys:
-      - UpgradeFarm
-      - Collect5Items
-      - Collect10Items
+      - MainQuest1
+      - MiniQuest1
+      - MiniQuest2
       _values:
       - RawMessage: Upgrade any farm attribute to level <color=#F3FF00>2</color>
         Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
-        Title: Upgrade Farm
+        Title: Upgrade farm
         Resource:
-          Type: 0
+        - Type: 0
           Amount: 300
-      - RawMessage: Collect <color=#F3FF00>5</color> special items from monsters
-        Message: Collect <color=#F3FF00>@/5</color> special items from monsters
-        Title: Collect 5 Items
+      - RawMessage: Defeat <color=#F3FF00>50</color> viruses of any kind.
+        Message: Defeat <color=#F3FF00>@/50</color> viruses of any kind.
+        Title: Defeat viruses
         Resource:
-          Type: 0
-          Amount: 1000
-      - RawMessage: Collect <color=#F3FF00>10</color> special items from monsters
-        Message: Collect <color=#F3FF00>@/10</color> special items from monsters
-        Title: Collect 10 Items
+        - Type: 0
+          Amount: 500
+        - Type: 1
+          Amount: 10
+        - Type: 5
+          Amount: 5
+      - RawMessage: Upgrade any attribute <color=#F3FF00>20</color> times.
+        Message: Upgrade any attribute <color=#F3FF00>@/20</color> times.
+        Title: Upgrade attribute
         Resource:
-          Type: 0
-          Amount: 3000
+        - Type: 0
+          Amount: 200
+        - Type: 1
+          Amount: 5
+        - Type: 6
+          Amount: 1
   AttributeStats:
     UpgradeNames:
       _keys: 000102030405

@@ -14,11 +14,11 @@ public class QuestStatsNode
     public string RawMessage;
     public string Message;
     public string Title;
-    public ResourcesInfo Resource = new();
+    public List<ResourcesInfo> Resource = new();
 }
 
 [System.Serializable]
 public class RuntimeQuestStats
 {
-    public Dictionary<string, BaseQuest> Quests = new();
+    public SerializableDictionary<string, BaseQuest> Quests = new();
 }

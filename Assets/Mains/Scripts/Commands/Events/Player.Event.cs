@@ -25,4 +25,6 @@ public static partial class Player
     public static Action<StageType, StageType> OnEnterStage { get; set; }
 
     public static Action<string, QuestBillboardUI> OnOpenQuestWindow { get; set; }
+
+    public static Action<string> OnDefeatEnemy { get; set; }
 }

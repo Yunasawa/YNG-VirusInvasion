@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
         ReturnToPool();
         Pool.NotifyOnRespawn();
         this.gameObject.SetActive(false);
+
+        Player.OnDefeatEnemy?.Invoke(Stats.ID);
     }
 
     public void Initialize(Action<Enemy> returnAction)

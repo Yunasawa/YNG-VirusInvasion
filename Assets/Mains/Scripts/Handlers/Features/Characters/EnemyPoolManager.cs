@@ -35,6 +35,17 @@ public class EnemyPoolManager : MonoBehaviour
         }
     }
 
+    [Button]
+    public void RefreshPools()
+    {
+        _enemyPools.Clear();
+
+        foreach (var pool in this.transform.Cast<Transform>())
+        {
+            _enemyPools.Add(pool.GetComponent<EnemyPool>());
+        }
+    }
+
     private void OnEnterStage(StageType previous, StageType current)
     {
         foreach (var pool in _enemyPools)

@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class Collect5Items : BaseQuest
+public class MainQuest1 : BaseQuest
 {
     private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
 
     private int _highestLevel = 0;
+
+    public override string GetProgress() => $"{_highestLevel}/2";
 
     public override void OnAcceptQuest()
     {
@@ -12,8 +14,6 @@ public class Collect5Items : BaseQuest
 
         if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
     }
-
-    public override string GetProgress() => $"{_highestLevel}/2";
 
     public override void OnCompleteQuest()
     {
@@ -32,7 +32,8 @@ public class Collect5Items : BaseQuest
         if (_highestLevel >= 2)
         {
             OnCompleteQuest();
-            Quest.OnUpdateQuestStatus?.Invoke("UpgradeFarm", $"{_highestLevel}");
         }
+        
+        Quest.OnUpdateQuestStatus?.Invoke("MainQuest1", $"{_highestLevel}");
     }
 }

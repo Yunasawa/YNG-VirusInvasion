@@ -16,6 +16,19 @@ public class ResourceViewUI : ToggleViewUI
         View.OnOpenResourceView -= OnOpenResourceView;
     }
 
+    private void Start()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        foreach (var pair in _resourceBars)
+        {
+            pair.Value.Initialize(Game.Data.Vault.ResourceIcons[pair.Key]);
+        }
+    }
+
     private void OnOpenResourceView()
     {
         foreach (var pair in _resourceBars)
@@ -23,20 +36,4 @@ public class ResourceViewUI : ToggleViewUI
             pair.Value.UpdateResource(Game.Data.PlayerStats.Resources[pair.Key]);
         }
     }
-
-#if false
-    [Button]
-    public void GetAll()
-    {
-        _resourceBars.Clear();
-
-        List<ResourceBarUI> list = gameObject.transform.Cast<Transform>().Select(i => i.GetComponent<ResourceBarUI>()).ToList();
-
-        for (int i = 0; i < list.Count; i++)
-        {
-            _resourceBars.Add((ResourceType)i, list[i]);
-            list[i].Type = (ResourceType)i;
-        }
-    }
-#endif
 }

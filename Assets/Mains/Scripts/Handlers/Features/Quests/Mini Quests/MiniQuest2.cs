@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UpgradeFarmQuest : BaseQuest
+public class MiniQuest2: BaseQuest
 {
     private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
 

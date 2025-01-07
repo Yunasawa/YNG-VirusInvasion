@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,12 +49,13 @@ public class QuestBillboardUI : MonoBehaviour
         _questAccept.SetActive(false);
         _progressArea.SetActive(true);
         _progressText.gameObject.SetActive(true);
+        _progressText.text = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetProgress();
     }
 
     public void ClaimReward()
     {
-        ResourcesInfo info = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Resource;
-        Game.Data.PlayerStats.AdjustResources(info.Type, (int)info.Amount);
+        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Resource;
+        foreach (var info in infos) Game.Data.PlayerStats.AdjustResources(info.Type, (int)info.Amount);
         Player.OnChangeResources?.Invoke();
 
         Game.Data.RuntimeQuestStats.Quests.Remove(_questConstruct.QuestName);

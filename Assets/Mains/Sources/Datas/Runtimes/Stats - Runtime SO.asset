@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    CurrentLevel: 0
+    CurrentLevel: 2
     CurrentExp: 2
     CurrentHP: 1000
     MaxHP: 1000

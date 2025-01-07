@@ -1,11 +1,13 @@
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class QuestWindowUI : MonoBehaviour
@@ -26,6 +28,7 @@ public class QuestWindowUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _windowTitle;
     [SerializeField] private TextMeshProUGUI _questMessage;
     [SerializeField] private TextMeshProUGUI _questProgress;
+    [SerializeField] private GameObject _progressBox;
     [SerializeField] private TextMeshProUGUI _questReward;
     [SerializeField] private Button _questButton;
     [SerializeField] private TextMeshProUGUI _buttonText;
@@ -48,6 +51,7 @@ public class QuestWindowUI : MonoBehaviour
     private void Start()
     {
         _questPanel.SetActive(false);
+        _progressBox.SetActive(false);
     }
 
     private void OnOpenQuestWindow(string name, QuestBillboardUI ui)
@@ -59,15 +63,20 @@ public class QuestWindowUI : MonoBehaviour
         _windowTitle.text = Game.Data.QuestStats.Quests[name].Title.ToUpper();
         _questMessage.text = Game.Data.QuestStats.Quests[name].RawMessage;
 
-        ResourcesInfo info = Game.Data.QuestStats.Quests[name].Resource;
-        _questReward.text = $"{info.Amount} <sprite name={info.Type}>";
+        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[name].Resource;
+        string reward = "";
+        foreach (var info in infos)
+        {
+            reward += $"{info.Amount} <sprite name={info.Type}>";
+            if (!infos.IsLast(info)) reward += "    ";
+        }
+        _questReward.text = reward;
 
         UpdateQuest(name);
         UpdateButton(name, OnAccept, OnClaim);  
 
         void OnAccept()
         {
-            _ui.AcceptQuest();
             _questButton.gameObject.SetActive(false);
 
             _isExpanded = false;
@@ -80,6 +89,8 @@ public class QuestWindowUI : MonoBehaviour
             BaseQuest quest = Quest.GetQuest(name);
             Game.Data.RuntimeQuestStats.Quests.Add(name, quest);
             quest.OnAcceptQuest();
+
+            _ui.AcceptQuest();
 
             UpdateQuest(name);
             UpdateButton(name, OnAccept, OnClaim);
@@ -99,6 +110,7 @@ public class QuestWindowUI : MonoBehaviour
     {
         if (Game.Data.RuntimeQuestStats.Quests.TryGetValue(name, out BaseQuest quest))
         {
+            _progressBox.SetActive(true);
             _questProgress.text = quest.GetProgress();
         }
     }

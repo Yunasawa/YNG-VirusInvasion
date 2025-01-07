@@ -43,6 +43,11 @@ public class PlayerConstructionManager : ColliderTriggerListener
 
                 Game.IsReturnToBaseTutorialActivated = true;
             }
+            else if (manager.Type == ConstructType.Quest)
+            {
+                QuestConstruct questConstruct = manager.GetComponent<QuestConstruct>();
+                questConstruct?.QuestUI.SetActive(true);
+            }
 
             InteractWith(true, manager.Type, manager);
         }
@@ -54,6 +59,12 @@ public class PlayerConstructionManager : ColliderTriggerListener
         {
             ConstructManager manager = other.GetComponent<ConstructManager>();
             InteractWith(false, manager.Type, manager);
+
+            if (manager.Type == ConstructType.Quest)
+            {
+                QuestConstruct questConstruct = manager.GetComponent<QuestConstruct>();
+                questConstruct?.QuestUI.SetActive(false);
+            }
         }
     }
 
