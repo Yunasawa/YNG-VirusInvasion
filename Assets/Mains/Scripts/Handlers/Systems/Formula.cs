@@ -241,7 +241,7 @@ public static class Formula
         public static float GetCapacity(uint level = 0)
         {
             level = level == 0 ? _stats.Levels[AttributeType.Capacity] : level;
-            float baseValue = 4;
+            float baseValue = 8;
 
             if (level <= 25) return baseValue + level * 7;
             else if (level > 25 && level <= 50)

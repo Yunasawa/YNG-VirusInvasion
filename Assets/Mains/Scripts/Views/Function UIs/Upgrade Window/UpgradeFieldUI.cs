@@ -24,7 +24,7 @@ public class UpgradeFieldUI : MonoBehaviour
     public void UpdateField()
     {
         uint level = Game.Data.PlayerStats.Levels[Type];
-        _text.text = $"Level <color=#0058AF>{level}</color> -> <color=#0058AF>{level + 1}</color>\nIncrease <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> -> <color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
+        _text.text = $"<color=#D9393E>{Game.Data.AttributeStats.UpgradeNames[Type]}</color> level: <color=#0058AF>{level}</color> -> <color=#0058AF>{level + 1}</color>\nIncrease <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> -> <color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
 
         _requirements = Formula.Stats.GetAttributeRequirement(Type);
         _cost.text = "";

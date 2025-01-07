@@ -17,7 +17,11 @@ public class UpgradeWindowUI : MonoBehaviour
 
     private void Awake()
     {
-        _closeButton.onClick.AddListener(() => this.gameObject.SetActive(false));
+        _closeButton.onClick.AddListener(() =>
+        {
+            this.gameObject.SetActive(false);
+            View.OnCloseUpgradeWindow?.Invoke();
+        });
 
         Player.OnChangeResources += UpdateResourceNodes;
     }

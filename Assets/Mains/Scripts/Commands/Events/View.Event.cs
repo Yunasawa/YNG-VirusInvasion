@@ -6,6 +6,8 @@ public static partial class View
 
     public static Action OnOpenResourceView { get; set; }
     public static Action OnChangeLevelField { get; set; }
+
+    public static Action OnCloseUpgradeWindow { get; set; }
 }
 
 public enum ConstructType : byte { Base, Market, Exchanger, Farm, Quest }

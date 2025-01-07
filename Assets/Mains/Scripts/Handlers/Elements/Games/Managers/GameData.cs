@@ -19,6 +19,7 @@ public class GameData : MonoBehaviour
 
     public ConstructStats ConstructStats => _databaseStats.ConstructStats;
     public QuestStats QuestStats => _databaseStats.QuestStats;
+    public AttributeStats AttributeStats => _databaseStats.AttributeStats;
 
     public SerializableDictionary<string, EnemySources> EnemySources => _databaseEnemy.EnemySources;
 

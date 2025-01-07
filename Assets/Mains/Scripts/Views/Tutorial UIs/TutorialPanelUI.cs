@@ -8,11 +8,10 @@ public class TutorialPanelUI : MonoBehaviour
 {
     public TutorialWindowUI StartGameTutorial;
     public TutorialWindowUI ReturnToBaseTutorial;
+    public TutorialWindowUI UpgradeAttributeTutorial;
 }
 
 public abstract class TutorialWindowUI : MonoBehaviour
 {
-    protected bool _isTutorialActivated = false;
-
     public abstract void ShowTutorial();
 }

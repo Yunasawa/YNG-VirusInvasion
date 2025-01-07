@@ -40,6 +40,8 @@ public class PlayerConstructionManager : ColliderTriggerListener
             if (manager.Type == ConstructType.Base)
             {
                 Player.OnEnterHomeBase?.Invoke();
+
+                Game.IsReturnToBaseTutorialActivated = true;
             }
 
             InteractWith(true, manager.Type, manager);

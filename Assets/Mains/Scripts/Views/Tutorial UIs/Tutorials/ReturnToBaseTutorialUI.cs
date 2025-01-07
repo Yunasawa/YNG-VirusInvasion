@@ -14,9 +14,8 @@ public class ReturnToBaseTutorialUI : TutorialWindowUI
 
     public override void ShowTutorial()
     {
-        if (_isTutorialActivated) return;
-
-        _isTutorialActivated = true;
+        if (Game.IsReturnToBaseTutorialActivated) return;
+        Game.IsReturnToBaseTutorialActivated = true;
 
         _tutorialPanel.gameObject.SetActive(true);
         _tutorialPanel.DOScale(Vector3.one, 1).SetEase(Ease.OutCubic);
@@ -25,7 +24,7 @@ public class ReturnToBaseTutorialUI : TutorialWindowUI
         _currentVisibleCharacterIndex = 0;
 
         TypeWriter().Forget();
-        CameraManager.Instance.Door.FocusOnTarget(_homeBase.position, 1, 3).Forget();
+        CameraManager.Instance.Door.FocusOnTarget(_homeBase.position, 2, 5).Forget();
     }
 
     private async UniTaskVoid TypeWriter()

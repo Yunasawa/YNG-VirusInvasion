@@ -134,6 +134,11 @@ public class PlayerStatsManager : MonoBehaviour
 
         (ResourceType type, int amount)[] capacity = resources.Select(kv => (type: kv.Key, amount: kv.Value)).ToArray();
         Player.OnReturnCapacity?.Invoke(capacity);
+
+        if (Game.Data.PlayerStats.Resources[ResourceType.Food1] >= 23)
+        {
+            Game.Input.TutorialPanelUI.UpgradeAttributeTutorial.ShowTutorial();
+        }
     }
 
     public void TakeDamage(int damage)

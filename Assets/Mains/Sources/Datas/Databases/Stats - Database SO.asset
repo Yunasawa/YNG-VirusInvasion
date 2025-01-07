@@ -353,3 +353,13 @@ MonoBehaviour:
         Resource:
           Type: 0
           Amount: 3000
+  AttributeStats:
+    UpgradeNames:
+      _keys: 000102030405
+      _values:
+      - Strength
+      - Speed
+      - Capacity
+      - Range
+      - Tentacle
+      - Health

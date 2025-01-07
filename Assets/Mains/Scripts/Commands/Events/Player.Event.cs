@@ -25,10 +25,4 @@ public static partial class Player
     public static Action<StageType, StageType> OnEnterStage { get; set; }
 
     public static Action<string, QuestBillboardUI> OnOpenQuestWindow { get; set; }
-    /*
-    public static Action<string> OnAcceptQuest { get; set; }
-    public static Action<string> OnFinishQuest { get; set; }
-    public static Action<string> OnCompleteQuest { get; set; }
-    public static Action<string, QuestBillboardUI> OnSendQuestUI { get; set; }
-    */
 }

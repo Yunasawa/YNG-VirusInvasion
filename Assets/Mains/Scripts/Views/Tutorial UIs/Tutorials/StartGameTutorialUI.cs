@@ -11,9 +11,8 @@ public class StartGameTutorialUI : TutorialWindowUI
 
     public override void ShowTutorial()
     {
-        if (_isTutorialActivated) return;
-
-        _isTutorialActivated = true;
+        if (Game.IsStartGameTutorialActivated) return;
+        Game.IsStartGameTutorialActivated = true;
 
         _tutorialPanel.gameObject.SetActive(true);
         _tutorialPanel.DOScale(Vector3.one, 1).SetEase(Ease.OutCubic);
