@@ -237,7 +237,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7218121114915853818}
   m_Father: {fileID: 20927996695160651}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c819ae6ee555e9947bd25aaa2ae47b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1569257626385959099}
+  _icon: {fileID: 2263182051569239943}
   _text: {fileID: 3039969373526049204}
   _button: {fileID: 5255457224210018707}
   Type: 0

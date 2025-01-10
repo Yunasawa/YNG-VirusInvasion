@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 427ff06b35722004fbf68eb661a18f3f
+guid: 5779d71499044f24092f3130fd4ebae6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 302
-        width: 170
-        height: 210
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad489fd91f629f64087438709328f4b3
-      internalID: 207842914
+      spriteID: a0f268f0f64b5844db57efd79dbe91d0
+      internalID: -188951683
       vertices: []
       indices: 
       edges: []
@@ -134,10 +134,10 @@ TextureImporter:
       name: Energy2
       rect:
         serializedVersion: 2
-        x: 170
-        y: 302
-        width: 170
-        height: 210
+        x: 128
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a30acd33040be3146ab2efc7c8e76350
-      internalID: 2138438192
+      spriteID: fb8b33fb36d80eb45bb2f83f6f7e1ce4
+      internalID: 914280983
       vertices: []
       indices: 
       edges: []
@@ -155,10 +155,10 @@ TextureImporter:
       name: Energy3
       rect:
         serializedVersion: 2
-        x: 340
-        y: 302
-        width: 170
-        height: 210
+        x: 256
+        y: 384
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fe0be6f4d5912f498bca37abe92d5c8
-      internalID: 610461775
+      spriteID: dd80b83a5b77d5c4c933ef44401e036a
+      internalID: -1902344956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Food1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8daf01dfaf296b4abeaea04f27b4e37
+      internalID: 1323502113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Material1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad889c9361255d84d9316bebaaa5436e
+      internalID: -1377540673
       vertices: []
       indices: 
       edges: []
@@ -177,9 +219,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 150
-        width: 170
-        height: 150
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,29 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfe7ca42f243a864e8610f007389e8a7
-      internalID: 1889692551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gen4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 172
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 473142a86f787ed439719fc5497d1757
-      internalID: -709442255
+      spriteID: a269acc884481374a9db93eeb06cb2f1
+      internalID: 1186865299
       vertices: []
       indices: 
       edges: []
@@ -218,10 +239,10 @@ TextureImporter:
       name: Gen2
       rect:
         serializedVersion: 2
-        x: 170
-        y: 150
-        width: 171
-        height: 150
+        x: 128
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15d51e3c5d85e864d91d3cb8ed75c130
-      internalID: 1745732079
+      spriteID: 31d311b459db1a341b3b0585023a3fef
+      internalID: -988929041
       vertices: []
       indices: 
       edges: []
@@ -239,10 +260,10 @@ TextureImporter:
       name: Gen3
       rect:
         serializedVersion: 2
-        x: 341
-        y: 150
-        width: 171
-        height: 150
+        x: 256
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd8350d88bdad784a802cf07ef037bb6
-      internalID: 1785866591
+      spriteID: 192815ca9bf491c4083fafd54a3b832d
+      internalID: -2138821856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Food1
+      name: Gen4
       rect:
         serializedVersion: 2
-        x: 172
-        y: 1
-        width: 177
-        height: 149
+        x: 384
+        y: 256
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +292,104 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 620e5f73f06b93f40ab7de326e661f96
-      internalID: -863102833
+      spriteID: cc2521a4f1b723844b7f6109d079ef2c
+      internalID: -1770046278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Material1
+      name: MiniQuest1
       rect:
         serializedVersion: 2
-        x: 349
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf8a35919c686149a8082a365db2e89
+      internalID: 1273897126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d6dc0b389ed26449c670be640ea445
+      internalID: -830500603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e5945269c88af41bf94169a69a4750
+      internalID: 1278129264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7c5690e0bf3d646aa38f8d560987cf
+      internalID: 895818369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 161
-        height: 145
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,8 +397,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd1a95aaf354f6b4e94bf0665052c0cb
-      internalID: -393631069
+      spriteID: b31d0e200aa3dcc4b9e69404afb9cb7b
+      internalID: -1334529198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5eed1960c30e34b90c7eebc60cb9f5
+      internalID: 785280718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a91e917bc15dd54b8cff8f41cc05f79
+      internalID: -500490759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniQuest8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 309d609c30a9383459f2190a56029fc3
+      internalID: -375153368
       vertices: []
       indices: 
       edges: []
@@ -301,7 +469,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a8a111f78e6ecb2429003757c6420cda
+    spriteID: 87baf995e33818740b74da17855b8e79
     internalID: 0
     vertices: []
     indices: 
@@ -309,15 +477,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Energy1: 207842914
-      Energy2: 2138438192
-      Energy3: 610461775
-      Food1: -863102833
-      Gen1: 1889692551
-      Gen2: 1745732079
-      Gen3: 1785866591
-      Gen4: -709442255
-      Material1: -393631069
+      Energy1: -188951683
+      Energy2: 914280983
+      Energy3: -1902344956
+      Food1: 1323502113
+      Gen1: 1186865299
+      Gen2: -988929041
+      Gen3: -2138821856
+      Gen4: -1770046278
+      Icons_14: -2135828168
+      Icons_19: -126008955
+      Icons_9: 830082279
+      Material1: -1377540673
+      MiniQuest1: 1273897126
+      MiniQuest2: -830500603
+      MiniQuest3: 1278129264
+      MiniQuest4: 895818369
+      MiniQuest5: -1334529198
+      MiniQuest6: 785280718
+      MiniQuest7: -500490759
+      MiniQuest8: -375153368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

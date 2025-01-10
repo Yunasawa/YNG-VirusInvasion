@@ -71,8 +71,8 @@ public class QuestWindowUI : MonoBehaviour
         string reward = "";
         foreach (var info in infos)
         {
-            reward += $"{info.Amount} <sprite name={info.Type}>";
-            if (!infos.IsLast(info)) reward += "    ";
+            reward += $"{info.Amount.RoundValue()}<sprite name={info.Type}>    ";
+            if (infos.IsLast(info)) reward += $"1<sprite name={name}>";
         }
         _questReward.text = reward;
 
