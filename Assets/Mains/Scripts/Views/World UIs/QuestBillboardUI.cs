@@ -1,10 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
-using YNL.Extensions.Methods;
 
 public class QuestBillboardUI : MonoBehaviour
 {
@@ -14,9 +12,10 @@ public class QuestBillboardUI : MonoBehaviour
     [SerializeField] private Button _questButton;
 
     [SerializeField] private TextMeshProUGUI _questTitle;
-    [SerializeField] private GameObject _questAccept;
+    [SerializeField] private TextMeshProUGUI _questAccept;
     [SerializeField] private GameObject _progressArea;
     [SerializeField] private TextMeshProUGUI _progressText;
+    [SerializeField] private Image _progressFiller;
 
     [SerializeField] private GameObject _exclamationMark;
     [SerializeField] private GameObject _checkMark;
@@ -52,10 +51,15 @@ public class QuestBillboardUI : MonoBehaviour
     
     public void AcceptQuest()
     {
-        _questAccept.SetActive(false);
-        _progressArea.SetActive(true);
-        _progressText.gameObject.SetActive(true);
+        _questAccept.gameObject.SetActive(_quest.IsCompleted);
+        _questAccept.text = _quest.IsCompleted ? "CLAIM" : "ACCEPT";
+
+        _progressArea.SetActive(!_quest.IsCompleted);
+        _progressText.gameObject.SetActive(!_quest.IsCompleted);
         _progressText.text = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetProgress();
+
+        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetSerializeProgress();
+        _progressFiller.fillAmount = (float)progress.Current / progress.Target;
     }
 
     public void ClaimReward()
@@ -69,7 +73,7 @@ public class QuestBillboardUI : MonoBehaviour
         _questConstruct.gameObject.SetActive(false);
     }
 
-    public void OnUpdateQuestStatus(string name, string value)
+    public void OnUpdateQuestStatus(string name, string value = "")
     {
         if (name != _questConstruct.QuestName) return;
 
@@ -80,5 +84,14 @@ public class QuestBillboardUI : MonoBehaviour
             _exclamationMark.gameObject.SetActive(false);
             _checkMark.gameObject.SetActive(true);
         }
+
+        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetSerializeProgress();
+        _progressFiller.fillAmount = (float)progress.Current / progress.Target;
+
+        _progressArea.SetActive(!_quest.IsCompleted);
+        _progressText.gameObject.SetActive(!_quest.IsCompleted);
+
+        _questAccept.gameObject.SetActive(_quest.IsCompleted);
+        _questAccept.text = _quest.IsCompleted ? "CLAIM" : "ACCEPT";
     }
 }

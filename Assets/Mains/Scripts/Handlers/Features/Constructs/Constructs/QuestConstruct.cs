@@ -3,7 +3,7 @@ using UnityEngine;
 public class QuestConstruct : MonoBehaviour
 {
     public string QuestName;
-    public GameObject QuestUI;
+    public QuestBillboardUI QuestUI;
 
     private void Awake()
     {

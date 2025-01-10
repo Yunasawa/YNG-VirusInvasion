@@ -19,4 +19,19 @@ public class PlayerStageManager : ColliderTriggerListener
             Player.OnEnterStage?.Invoke(previousStage, CurrentStage);
         }
     }
+
+    public override void OnColliderTriggerStay(Collider other)
+    {
+        if (other.tag == "Border")
+        {
+            StageType stage = (StageType)int.Parse(other.name);
+
+            if (CurrentStage != stage)
+            {
+                StageType previousStage = CurrentStage;
+                CurrentStage = stage;
+                Player.OnEnterStage?.Invoke(previousStage, CurrentStage);
+            }
+        }
+    }
 }

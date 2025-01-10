@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuestName: 
-  QuestUI: {fileID: 7673145850434412462}
+  QuestUI: {fileID: 2494295156377497037}
 --- !u!1001 &3071367010255190372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,11 +275,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
---- !u!1 &7673145850434412462 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4675806765533292234, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
+--- !u!114 &2494295156377497037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 577081149017724073, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}
   m_PrefabInstance: {fileID: 3071367010255190372}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0132cafedcc26844b8664a04b42776cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8856416091434059562 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5798384000244792910, guid: 397f0c66a0d67dc4d9fab8aacf9a389a, type: 3}

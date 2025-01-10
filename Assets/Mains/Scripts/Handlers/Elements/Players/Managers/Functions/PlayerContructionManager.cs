@@ -46,7 +46,8 @@ public class PlayerConstructionManager : ColliderTriggerListener
             else if (manager.Type == ConstructType.Quest)
             {
                 QuestConstruct questConstruct = manager.GetComponent<QuestConstruct>();
-                questConstruct?.QuestUI.SetActive(true);
+                questConstruct?.QuestUI.gameObject.SetActive(true);
+                questConstruct?.QuestUI.OnUpdateQuestStatus(questConstruct.QuestName);
             }
 
             InteractWith(true, manager.Type, manager);
@@ -63,7 +64,7 @@ public class PlayerConstructionManager : ColliderTriggerListener
             if (manager.Type == ConstructType.Quest)
             {
                 QuestConstruct questConstruct = manager.GetComponent<QuestConstruct>();
-                questConstruct?.QuestUI.SetActive(false);
+                questConstruct?.QuestUI.gameObject.SetActive(false);
             }
         }
     }

@@ -34,8 +34,6 @@ public class QuestFieldUI : MonoBehaviour
     {
         if (name != _questName) return;
 
-        MDebug.Log("HMMM");
-
         _questText.text = _node.Message.Replace("@", value);
     }
 }

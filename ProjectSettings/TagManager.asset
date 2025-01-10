@@ -12,6 +12,7 @@ TagManager:
   - Exchanger
   - Farm
   - Quest
+  - Border
   layers:
   - Default
   - TransparentFX
