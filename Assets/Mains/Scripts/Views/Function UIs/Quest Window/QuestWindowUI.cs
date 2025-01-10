@@ -1,4 +1,4 @@
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -38,14 +38,18 @@ public class QuestWindowUI : MonoBehaviour
     private void Awake()
     {
         Player.OnOpenQuestWindow += OnOpenQuestWindow;
+        View.OnCloseQuestWindow += CloseWindow;
+        Quest.OnDeserializeQuest += CreateQuestNodeUI;
 
         _expandingButton.onClick.AddListener(ExpandPanel);
-        _closeButton.onClick.AddListener(() => _questWindow.SetActive(false));
+        _closeButton.onClick.AddListener(CloseWindow);
     }
 
     private void OnDestroy()
     {
         Player.OnOpenQuestWindow -= OnOpenQuestWindow;
+        View.OnCloseQuestWindow -= CloseWindow;
+        Quest.OnDeserializeQuest -= CreateQuestNodeUI;
     }
 
     private void Start()
@@ -82,14 +86,12 @@ public class QuestWindowUI : MonoBehaviour
             _isExpanded = false;
             ExpandPanel();
 
-            QuestFieldUI field = Instantiate(_questFieldPrefab, _questPanel.transform);
-            field.Initialize(name);
-            _questFields.Add(name, field);
-
             BaseQuest quest = Quest.GetQuest(name);
             Game.Data.RuntimeQuestStats.Quests.Add(name, quest);
             quest.OnAcceptQuest();
 
+            CreateQuestNodeUI(name);
+            
             _ui.AcceptQuest();
 
             UpdateQuest(name);
@@ -103,7 +105,16 @@ public class QuestWindowUI : MonoBehaviour
 
             Destroy(_questFields[name].gameObject);
             _questFields.Remove(name);
+
+            Game.Data.RuntimeQuestStats.CompletedQuests.Add(name);
         }
+    }
+
+    private void CreateQuestNodeUI(string name)
+    {
+        QuestFieldUI field = Instantiate(_questFieldPrefab, _questPanel.transform);
+        field.Initialize(name);
+        _questFields.Add(name, field);
     }
 
     private void UpdateQuest(string name)
@@ -131,6 +142,10 @@ public class QuestWindowUI : MonoBehaviour
             _questButton.onClick.RemoveAllListeners();
             _questButton.onClick.AddListener(onClaim);
         }
+        else
+        {
+            _questButton.gameObject.SetActive(false);
+        }
     }
 
     private void ExpandPanel()
@@ -139,5 +154,10 @@ public class QuestWindowUI : MonoBehaviour
         _questPanel.SetActive(_isExpanded);
 
         _expandingArrow.transform.localRotation = Quaternion.Euler(0, 0, _isExpanded ? 0 : 180);
+    }
+
+    private void CloseWindow()
+    {
+        _questWindow.SetActive(false);
     }
 }

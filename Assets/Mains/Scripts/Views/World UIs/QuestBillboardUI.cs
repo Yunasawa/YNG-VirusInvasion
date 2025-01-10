@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,11 @@ public class QuestBillboardUI : MonoBehaviour
     private void Start()
     {
         _questTitle.text = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Title.ToUpper();
+
+        if (Game.Data.RuntimeQuestStats.Quests.ContainsKey(_questConstruct.QuestName))
+        {
+            AcceptQuest();
+        }
     }
 
     private void OpenQuestWindow()

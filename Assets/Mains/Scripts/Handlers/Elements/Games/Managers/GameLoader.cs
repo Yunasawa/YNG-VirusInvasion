@@ -18,7 +18,7 @@ public class GameLoader : MonoBehaviour
     {
         while (true)
         {
-            await UniTask.WaitForSeconds(30, ignoreTimeScale: true);
+            await UniTask.WaitForSeconds(10, ignoreTimeScale: true);
             SaveData();
         }
     }
@@ -47,11 +47,14 @@ public class GameLoader : MonoBehaviour
 
     private async UniTaskVoid LoadDataDelay()
     {
-        await UniTask.WaitForEndOfFrame(this);
+        await UniTask.NextFrame();
+
+        _saveData.SerializeQuestStats.DeserializeData();
 
         CameraManager.Instance.transform.position = _saveData.CurrentPosition.ToVector3();
         Player.Character.enabled = false;
         Player.Transform.position = _saveData.CurrentPosition.ToVector3();
+        await UniTask.NextFrame();
         Player.Character.enabled = true;
 
         Player.Stage.CurrentStage = _saveData.CurrentStage;
@@ -69,8 +72,15 @@ public class GameLoader : MonoBehaviour
         _saveData.CapacityStats = Game.Data.CapacityStats;
         _saveData.RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
 
-        _saveData.CurrentPosition = new SerializableVector3(Player.Transform.position);
-        _saveData.CurrentStage = Player.Stage.CurrentStage;
+        SerializableVector3 position = new SerializableVector3(Player.Transform.position);
+        if (position.X != 0 && position.Z != 0)
+        {
+            _saveData.CurrentPosition = position;
+            _saveData.CurrentStage = Player.Stage.CurrentStage;
+        }
+        MDebug.Log("SAVE");
+
+        _saveData.SerializeQuestStats.SerializeData();
 
         _saveData.SaveNewtonJson(Key.Path.SaveFile);
     }

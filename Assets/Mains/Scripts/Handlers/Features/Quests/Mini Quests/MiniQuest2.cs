@@ -6,14 +6,21 @@ public class MiniQuest2: BaseQuest
 
     private int _highestLevel = 0;
 
+    public override void Initialize(bool isCompleted, int target, int current)
+    {
+
+    }
+
+    public override string GetProgress() => $"{_highestLevel}/2";
+
+    public override (int, int) GetSerializeProgress() => new(_highestLevel, 2);
+
     public override void OnAcceptQuest()
     {
         OnFarmStatsUpdate();
 
         if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
     }
-
-    public override string GetProgress() => $"{_highestLevel}/2";
 
     public override void OnCompleteQuest()
     {

@@ -4,6 +4,24 @@ public class QuestConstruct : MonoBehaviour
 {
     public string QuestName;
     public GameObject QuestUI;
+
+    private void Awake()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        
+    }
+
+    private void Start()
+    {
+        if (Game.Data.RuntimeQuestStats.CompletedQuests.Contains(QuestName))
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
 }
 
 public static partial class Quest

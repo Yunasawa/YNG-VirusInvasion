@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using YNL.Extensions.Methods;
 
 public class QuestFieldUI : MonoBehaviour
 {
@@ -24,12 +25,16 @@ public class QuestFieldUI : MonoBehaviour
         _questName = name;
         _node = Game.Data.QuestStats.Quests[name];
 
-        _questText.text = _node.Message.Replace("@", "0");
+        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[name].GetSerializeProgress();
+
+        _questText.text = _node.Message.Replace("@", progress.Current.ToString());
     }
 
     public void UpdateQuest(string name, string value)
     {
         if (name != _questName) return;
+
+        MDebug.Log("HMMM");
 
         _questText.text = _node.Message.Replace("@", value);
     }

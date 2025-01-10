@@ -12,6 +12,11 @@ public class ReturnToBaseTutorialUI : TutorialWindowUI
     [SerializeField] private Transform _homeBase;
     [SerializeField] private Transform _locationRing;
 
+    private void Start()
+    {
+        _locationRing.gameObject.SetActive(Game.IsReturnToBaseTutorialActivated);
+    }
+
     public override void ShowTutorial()
     {
         if (Game.IsReturnToBaseTutorialActivated) return;

@@ -6,13 +6,23 @@ public class MainQuest1 : BaseQuest
 
     private int _highestLevel = 0;
 
+    public override void Initialize(bool isCompleted, int target, int current)
+    {
+        
+    }
+
     public override string GetProgress() => $"{_highestLevel}/2";
+
+    public override (int, int) GetSerializeProgress() => new(_highestLevel, 2);
 
     public override void OnAcceptQuest()
     {
         OnFarmStatsUpdate();
 
         if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
+
+        View.OnCloseQuestWindow?.Invoke();
+        CameraManager.Instance.Door.FocusOnTarget(Game.Input.FoodFarm2.transform.position, 2, 5).Forget();
     }
 
     public override void OnCompleteQuest()

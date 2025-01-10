@@ -11,6 +11,8 @@ public class SaveData
     public CapacityStats CapacityStats = new();
     public RuntimeConstructStats RuntimeConstructStats = new();
 
+    public SerializeQuestStats SerializeQuestStats = new();
+
     public SerializableVector3 CurrentPosition;
     public StageType CurrentStage;
 }

@@ -341,8 +341,8 @@ MonoBehaviour:
         Resource:
         - Type: 0
           Amount: 300
-      - RawMessage: Defeat <color=#F3FF00>50</color> viruses of any kind.
-        Message: Defeat <color=#F3FF00>@/50</color> viruses of any kind.
+      - RawMessage: Defeat <color=#F3FF00>5</color> viruses of any kind.
+        Message: Defeat <color=#F3FF00>@/5</color> viruses of any kind.
         Title: Defeat viruses
         Resource:
         - Type: 0
