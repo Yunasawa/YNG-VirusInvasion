@@ -334,6 +334,13 @@ MonoBehaviour:
       - MainQuest1
       - MiniQuest1
       - MiniQuest2
+      - MiniQuest3
+      - MiniQuest4
+      - MiniQuest5
+      - MiniQuest6
+      - MiniQuest7
+      - MiniQuest8
+      - MainQuest2
       _values:
       - RawMessage: Upgrade any farm attribute to level <color=#F3FF00>2</color>
         Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
@@ -361,6 +368,34 @@ MonoBehaviour:
           Amount: 5
         - Type: 6
           Amount: 1
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
+      - RawMessage: 
+        Message: 
+        Title: 
+        Resource: []
   AttributeStats:
     UpgradeNames:
       _keys: 000102030405
