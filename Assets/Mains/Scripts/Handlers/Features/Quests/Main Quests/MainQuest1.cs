@@ -19,14 +19,22 @@ public class MainQuest1 : BaseQuest
 
         if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
 
-        View.OnCloseQuestWindow?.Invoke();
-        CameraManager.Instance.Door.FocusOnTarget(Game.Input.FoodFarm2.transform.position, 2, 5).Forget();
+        if (Game.IsFocusOnMainQuest1FirstTime)
+        {
+            View.OnCloseQuestWindow?.Invoke();
+            CameraManager.Instance.Door.FocusOnTarget(Game.Input.FoodFarm2.transform.position, 2, 5).Forget();
+            Game.IsFocusOnMainQuest1FirstTime = false;
+        }
+
+        Quest.OnProcessMainQuest1?.Invoke(true);
     }
 
     public override void OnCompleteQuest()
     {
         if (!IsCompleted) Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
         IsCompleted = true;
+
+        Quest.OnProcessMainQuest1?.Invoke(false);
     }
 
     private void OnFarmStatsUpdate(string key = "")

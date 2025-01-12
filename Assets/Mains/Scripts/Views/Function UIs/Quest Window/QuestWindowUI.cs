@@ -47,7 +47,8 @@ public class QuestWindowUI : MonoBehaviour
     {
         Player.OnOpenQuestWindow += OnOpenQuestWindow;
         View.OnCloseQuestWindow += CloseWindow;
-        Quest.OnDeserializeQuest += CreateQuestNodeUI;
+        Quest.OnDeserializeQuest += OnDeserializeQuest;
+        Quest.OnUpdateQuestStatus += OnUpdateQuestStatus;
 
         _expandingButton.onClick.AddListener(ExpandPanel);
         _closeButton.onClick.AddListener(CloseWindow);
@@ -57,7 +58,8 @@ public class QuestWindowUI : MonoBehaviour
     {
         Player.OnOpenQuestWindow -= OnOpenQuestWindow;
         View.OnCloseQuestWindow -= CloseWindow;
-        Quest.OnDeserializeQuest -= CreateQuestNodeUI;
+        Quest.OnDeserializeQuest -= OnDeserializeQuest;
+        Quest.OnUpdateQuestStatus += OnUpdateQuestStatus;
     }
 
     private void Start()
@@ -70,6 +72,16 @@ public class QuestWindowUI : MonoBehaviour
             await UniTask.NextFrame();
             _questPanel.SetActive(false);
         }
+    }
+
+    private void OnDeserializeQuest(string name)
+    {
+        CreateQuestNodeUI(name);
+    }
+
+    private void OnUpdateQuestStatus(string name, string value)
+    {
+        if (name != "MainQuest2") UpdateNormalContent(name);
     }
 
     private void OnOpenQuestWindow(string name, QuestBillboardUI ui)

@@ -26,14 +26,12 @@ public class FarmConstruct : MonoBehaviour
 
         _ui.OnCollectResource = CollectResource;
 
-        //Player.OnAcceptQuest += OnAcceptQuest;
-        //Player.OnFinishQuest += OnFinishQuest;
+        Quest.OnProcessMainQuest1 += OnProcessMainQuest1;
     }
 
     private void OnDestroy()
     {
-        //Player.OnAcceptQuest -= OnAcceptQuest;
-        //Player.OnFinishQuest -= OnFinishQuest;
+        Quest.OnProcessMainQuest1 -= OnProcessMainQuest1;
     }
 
     private void Start()
@@ -44,18 +42,9 @@ public class FarmConstruct : MonoBehaviour
         GenerateResource().Forget();
     }
 
-    private void OnAcceptQuest(string name)
+    private void OnProcessMainQuest1(bool isProcess)
     {
-        if (name != "UpgradeFarm") return;
-
-        _exclamationMark.SetActive(true);
-    }
-
-    private void OnFinishQuest(string name)
-    {
-        if (name != "UpgradeFarm") return;
-
-        _exclamationMark.SetActive(false);
+        _exclamationMark.SetActive(isProcess);
     }
 
     public void CollectResource()

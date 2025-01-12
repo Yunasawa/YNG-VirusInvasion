@@ -58,7 +58,7 @@ public class MarketWindowUI : ConstructWindowUI
 
         _evolution = _stats.Evolutions.FirstOrDefault(i => i.Evolution == _construct.Evolution);
 
-        _evolutionInfo.text = _evolution.IsNull() ? $"MAX EVOLUTION" : $"Evolution <color=#8E2300>{_construct.Evolution}</color> -> <color=#8E2300>{_construct.Evolution + 1}</color>: DPS + 20%";
+        _evolutionInfo.text = _evolution.IsNull() ? $"MAX EVOLUTION" : $"Evolution <color=#8E2300>{_construct.Evolution}</color> > <color=#8E2300>{_construct.Evolution + 1}</color>: DPS + 20%";
         _evolutionButton.gameObject.SetActive(!_evolution.IsNull());
 
         _ableToEvolute = true;

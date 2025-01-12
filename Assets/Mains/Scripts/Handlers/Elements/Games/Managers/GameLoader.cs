@@ -37,6 +37,7 @@ public class GameLoader : MonoBehaviour
         Game.IsStartGameTutorialActivated = _saveData.TutorialToggle.StartGameTutorial;
         Game.IsReturnToBaseTutorialActivated = _saveData.TutorialToggle.ReturnToBaseTutorial;
         Game.IsUpgradeAttributeTutorialActivated = _saveData.TutorialToggle.UpgradeAttributeTutorial;
+        Game.IsFocusOnMainQuest1FirstTime = _saveData.TutorialToggle.IsFocusOnMainQuest1FirstTime;
 
         Game.Data.PlayerStats = _saveData.PlayerStats;
         Game.Data.CapacityStats = _saveData.CapacityStats;

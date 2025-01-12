@@ -7,23 +7,26 @@ public class SaveData
 {
     public TutorialToggle TutorialToggle = new();
 
-    public PlayerStats PlayerStats = Game.Data.PlayerStats;
-    public CapacityStats CapacityStats = Game.Data.CapacityStats;
-    public RuntimeConstructStats RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
+    public PlayerStats PlayerStats;
+    public CapacityStats CapacityStats;
+    public RuntimeConstructStats RuntimeConstructStats;
 
     public SerializeQuestStats SerializeQuestStats = new();
 
-    public SerializableVector3 CurrentPosition = new(Player.Transform.position);
-    public StageType CurrentStage = Player.Stage.CurrentStage;
-
-    public SaveData()
-    {
-        Set();
-    }
+    public SerializableVector3 CurrentPosition;
+    public StageType CurrentStage;
 
     public SaveData Set()
     {
+        PlayerStats = Game.Data.PlayerStats;
+        CapacityStats = Game.Data.CapacityStats;
+        RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
+
         SerializeQuestStats.SerializeData();
+
+        CurrentPosition = new(Player.Transform.position);
+        CurrentStage = Player.Stage.CurrentStage;
+
         return this;
     }
 }
@@ -51,4 +54,5 @@ public class TutorialToggle
     public bool StartGameTutorial = Game.IsStartGameTutorialActivated;
     public bool ReturnToBaseTutorial = Game.IsReturnToBaseTutorialActivated;
     public bool UpgradeAttributeTutorial = Game.IsUpgradeAttributeTutorialActivated;
+    public bool IsFocusOnMainQuest1FirstTime = Game.IsFocusOnMainQuest1FirstTime;
 }
