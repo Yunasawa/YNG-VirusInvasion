@@ -30,9 +30,16 @@ public static partial class Quest
     {
         switch (name)
         {
+            case "MainQuest1": return new MainQuest1();
+            case "MainQuest2": return new MainQuest2();
             case "MiniQuest1": return new MiniQuest1();
             case "MiniQuest2": return new MiniQuest2();
-            case "MainQuest1": return new MainQuest1();
+            case "MiniQuest3": return new MiniQuest3();
+            case "MiniQuest4": return new MiniQuest4();
+            case "MiniQuest5": return new MiniQuest5();
+            case "MiniQuest6": return new MiniQuest6();
+            case "MiniQuest7": return new MiniQuest7();
+            case "MiniQuest8": return new MiniQuest8();
             default: return null;
         }
     }

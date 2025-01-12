@@ -58,13 +58,12 @@ public class QuestBillboardUI : MonoBehaviour
         _progressText.gameObject.SetActive(!_quest.IsCompleted);
         _progressText.text = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetProgress();
 
-        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetSerializeProgress();
-        _progressFiller.fillAmount = (float)progress.Current / progress.Target;
+        _progressFiller.fillAmount = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].Ratio;
     }
 
     public void ClaimReward()
     {
-        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Resource;
+        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[_questConstruct.QuestName].Rewards;
         foreach (var info in infos) Game.Data.PlayerStats.AdjustResources(info.Type, (int)info.Amount);
         Player.OnChangeResources?.Invoke();
 
@@ -76,6 +75,7 @@ public class QuestBillboardUI : MonoBehaviour
     public void OnUpdateQuestStatus(string name, string value = "")
     {
         if (name != _questConstruct.QuestName) return;
+        if (!Game.Data.RuntimeQuestStats.Quests.ContainsKey(name)) return;
 
         _progressText.text = _quest.GetProgress();
 
@@ -85,8 +85,7 @@ public class QuestBillboardUI : MonoBehaviour
             _checkMark.gameObject.SetActive(true);
         }
 
-        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].GetSerializeProgress();
-        _progressFiller.fillAmount = (float)progress.Current / progress.Target;
+        _progressFiller.fillAmount = Game.Data.RuntimeQuestStats.Quests[_questConstruct.QuestName].Ratio;
 
         _progressArea.SetActive(!_quest.IsCompleted);
         _progressText.gameObject.SetActive(!_quest.IsCompleted);

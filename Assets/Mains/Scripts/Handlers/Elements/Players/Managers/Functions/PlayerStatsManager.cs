@@ -95,7 +95,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnFarmStatsUpdate?.Invoke(key);
     }
 
-    private void OnExchangeResources(ResourcesInfo from, ResourcesInfo to)
+    private void OnExchangeResources(string name, ResourcesInfo from, ResourcesInfo to)
     {
         _playerStats.Resources[from.Type] -= from.Amount;
         _playerStats.Resources[to.Type] += to.Amount;

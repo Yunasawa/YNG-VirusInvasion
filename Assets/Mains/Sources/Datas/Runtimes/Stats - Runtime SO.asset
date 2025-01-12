@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    CurrentLevel: 2
-    CurrentExp: 200
+    CurrentLevel: 4
+    CurrentExp: 8
     CurrentHP: 22
     MaxHP: 22
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 2283
-      - 43
+      - 8
       - 0
       - 0
       - 0
-      - 20
+      - 0
+      - 0
       - 0
       - 0
       - 0
@@ -100,10 +100,10 @@ MonoBehaviour:
       - Level: 0
         Step: 0.1
   CapacityStats:
-    CurrentCapacity: 4
+    CurrentCapacity: 12
     Resources:
       _keys: 00010203040506070809
-      _values: 04000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _values: 0c000000000000000000000000000000000000000000000000000000000000000000000000000000
   ConstructStats:
     Farms:
       _keys:
@@ -176,5 +176,6 @@ MonoBehaviour:
             Step: 10
   RuntimeQuestStats:
     Quests:
-      _keys: []
+      _keys:
+      - MainQuest2
     CompletedQuests: []

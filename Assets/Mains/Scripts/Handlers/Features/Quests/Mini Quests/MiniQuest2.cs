@@ -1,45 +1,35 @@
-using UnityEngine;
+using YNL.Bases;
 
-public class MiniQuest2: BaseQuest
+public class MiniQuest2 : BaseQuest
 {
-    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
-
-    private int _highestLevel = 0;
-
-    public override void Initialize(bool isCompleted, int target, int current)
+    public override void Initialize(bool isCompleted, float current)
     {
-
+        IsCompleted = isCompleted;
+        Current = current;
+        _target = 30;
     }
 
-    public override string GetProgress() => $"{_highestLevel}/2";
-
-    public override (int, int) GetSerializeProgress() => new(_highestLevel, 2);
+    public override string GetProgress() => $"{Current}/{_target}";
 
     public override void OnAcceptQuest()
     {
-        OnFarmStatsUpdate();
+        Initialize(false, 0);
 
-        if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
+        if (!IsCompleted) Player.OnUpgradeAttribute += OnUpgradeAttribute;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnFarmStatsUpdate -= OnFarmStatsUpdate;
+        if (!IsCompleted) Player.OnUpgradeAttribute -= OnUpgradeAttribute;
         IsCompleted = true;
     }
 
-    private void OnFarmStatsUpdate(string key = "")
+    private void OnUpgradeAttribute(AttributeType type)
     {
-        foreach (var pair in Game.Data.RuntimeStats.ConstructStats.Farms)
-        {
-            _highestLevel = Mathf.Max(_highestLevel, pair.Value.Attributes["Income"].Level);
-            _highestLevel = Mathf.Max(_highestLevel, pair.Value.Attributes["Capacity"].Level);
-        }
+        Current++;
 
-        if (_highestLevel >= 2)
-        {
-            OnCompleteQuest();
-            Quest.OnUpdateQuestStatus?.Invoke("UpgradeFarm", $"{_highestLevel}");
-        }
+        if (Current >= _target) OnCompleteQuest();
+
+        Quest.OnUpdateQuestStatus?.Invoke("MiniQuest2", $"{Current}");
     }
 }

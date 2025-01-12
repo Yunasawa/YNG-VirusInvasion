@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
@@ -12,10 +14,11 @@ public class QuestStats
 [System.Serializable]
 public class QuestStatsNode
 {
-    public string RawMessage;
-    public string Message;
     public string Title;
-    public List<ResourcesInfo> Resource = new();
+    public string Message;
+    public string Target;
+    public string Replacement;
+    public List<ResourcesInfo> Rewards = new();
 }
 
 [System.Serializable]
@@ -36,7 +39,7 @@ public class SerializeQuestStats
         Quests.Clear();
         foreach (var pair in Game.Data.RuntimeQuestStats.Quests)
         {
-            SerializeQuestNode node = new(pair.Value.IsCompleted, pair.Value.GetSerializeProgress());
+            SerializeQuestNode node = new(pair.Value.IsCompleted, pair.Value.Current);
             Quests.Add(pair.Key, node);
         }
 
@@ -49,7 +52,7 @@ public class SerializeQuestStats
         foreach (var pair in Quests)
         {
             var quest = Quest.GetQuest(pair.Key);
-            quest.Initialize(pair.Value.IsCompleted, pair.Value.Target, pair.Value.Current);
+            quest.Initialize(pair.Value.IsCompleted, pair.Value.Current);
             Game.Data.RuntimeQuestStats.Quests.Add(pair.Key, quest);
             quest.OnAcceptQuest();
             
@@ -62,13 +65,11 @@ public class SerializeQuestStats
 public class SerializeQuestNode
 {
     public bool IsCompleted;
-    public int Target;
-    public int Current;
+    public float Current;
 
-    public SerializeQuestNode(bool isCompleted, (int, int) progress)
+    public SerializeQuestNode(bool isCompleted, float current)
     {
         IsCompleted = isCompleted;
-        Current = progress.Item1;
-        Target = progress.Item2;
+        Current = current;
     }
 }

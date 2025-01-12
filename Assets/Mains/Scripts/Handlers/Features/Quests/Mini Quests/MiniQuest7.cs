@@ -1,12 +1,12 @@
-using UnityEngine;
+using YNL.Bases;
 
-public class MiniQuest1 : BaseQuest
+public class MiniQuest7 : BaseQuest
 {
     public override void Initialize(bool isCompleted, float current)
     {
         IsCompleted = isCompleted;
         Current = current;
-        _target = 100;
+        _target = 1000;
     }
 
     public override string GetProgress() => $"{Current}/{_target}";
@@ -15,21 +15,21 @@ public class MiniQuest1 : BaseQuest
     {
         Initialize(false, 0);
 
-        if (!IsCompleted) Player.OnDefeatEnemy += OnDefeatEnemy;
+        if (!IsCompleted) Player.OnCollectFarmResources += OnCollectFarmResources;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnDefeatEnemy -= OnDefeatEnemy;
+        if (!IsCompleted) Player.OnCollectFarmResources -= OnCollectFarmResources;
         IsCompleted = true;
     }
 
-    private void OnDefeatEnemy(string name)
+    private void OnCollectFarmResources(ResourceType type, float amount)
     {
-        Current++;
+        if (type == ResourceType.Gen1) Current += amount;
 
         if (Current >= _target) OnCompleteQuest();
 
-        Quest.OnUpdateQuestStatus?.Invoke("MiniQuest1", $"{Current}");
+        Quest.OnUpdateQuestStatus?.Invoke("MiniQuest7", $"{Current}");
     }
 }

@@ -41,6 +41,6 @@ public class ExchangerNodeUI : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        Player.OnExchangeResources?.Invoke(_node.From, _node.To);
+        Player.OnExchangeResources?.Invoke(Player.Construction.Construct.Name, _node.From, _node.To);
     }
 }

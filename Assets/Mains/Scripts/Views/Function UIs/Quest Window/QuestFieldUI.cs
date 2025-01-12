@@ -25,15 +25,16 @@ public class QuestFieldUI : MonoBehaviour
         _questName = name;
         _node = Game.Data.QuestStats.Quests[name];
 
-        (int Current, int Target) progress = Game.Data.RuntimeQuestStats.Quests[name].GetSerializeProgress();
-
-        _questText.text = _node.Message.Replace("@", progress.Current.ToString());
+        UpdateQuest(name, "");
     }
 
     public void UpdateQuest(string name, string value)
     {
         if (name != _questName) return;
 
-        _questText.text = _node.Message.Replace("@", value);
+        float current = Game.Data.RuntimeQuestStats.Quests[name].Current;
+
+        string questText = _node.Message.Replace("%", _node.Replacement);
+        _questText.text = questText.Replace("@", current.ToString());
     }
 }

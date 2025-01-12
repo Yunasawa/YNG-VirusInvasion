@@ -342,60 +342,118 @@ MonoBehaviour:
       - MiniQuest8
       - MainQuest2
       _values:
-      - RawMessage: Upgrade any farm attribute to level <color=#F3FF00>2</color>
-        Message: Upgrade any farm attribute to level <color=#F3FF00>@/2</color>
-        Title: Upgrade farm
-        Resource:
+      - Title: Upgrade farm
+        Message: Upgrade any farm attribute to level <color=#F3FF00>%</color>
+        Target: 2
+        Replacement: '@/2'
+        Rewards:
         - Type: 0
           Amount: 300
-      - RawMessage: Defeat <color=#F3FF00>5</color> viruses of any kind.
-        Message: Defeat <color=#F3FF00>@/5</color> viruses of any kind.
-        Title: Defeat viruses
-        Resource:
+        - Type: 1
+          Amount: 10
+      - Title: Defeat viruses
+        Message: Defeat <color=#F3FF00>%</color> viruses of any kind.
+        Target: 100
+        Replacement: '@/100'
+        Rewards:
         - Type: 0
           Amount: 500
         - Type: 1
+          Amount: 50
+        - Type: 5
+          Amount: 10
+      - Title: Upgrade attributes
+        Message: Upgrade any attribute <color=#F3FF00>%</color> times.
+        Target: 30
+        Replacement: '@/30'
+        Rewards:
+        - Type: 0
+          Amount: 1000
+        - Type: 2
+          Amount: 20
+        - Type: 6
+          Amount: 10
+      - Title: Exchange materials
+        Message: Exchange in <color=#32FF46>Exchanger 1</color> (Stage 1) <color=#F3FF00>%</color>
+          times
+        Target: 20
+        Replacement: '@/20'
+        Rewards:
+        - Type: 0
+          Amount: 1500
+        - Type: 2
           Amount: 10
         - Type: 5
-          Amount: 5
-      - RawMessage: Upgrade any attribute <color=#F3FF00>20</color> times.
-        Message: Upgrade any attribute <color=#F3FF00>@/20</color> times.
-        Title: Upgrade attribute
-        Resource:
+          Amount: 10
+      - Title: Trade items
+        Message: Trade in <color=#32FF46>Market 2</color>(Stage 3) <color=#F3FF00>%</color>
+          times
+        Target: 20
+        Replacement: '@/20'
+        Rewards:
         - Type: 0
-          Amount: 200
-        - Type: 1
-          Amount: 5
+          Amount: 4000
+        - Type: 2
+          Amount: 20
         - Type: 6
-          Amount: 1
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
-      - RawMessage: 
-        Message: 
-        Title: 
-        Resource: []
+          Amount: 10
+      - Title: Collect food
+        Message: Collect <color=#F3FF00>%</color><sprite name=Food1> in any <color=#32FF46>Food
+          Farm</color>\n(Stage 2 & Stage 6)
+        Target: 10000
+        Replacement: '@/10000'
+        Rewards:
+        - Type: 2
+          Amount: 10
+        - Type: 3
+          Amount: 10
+        - Type: 5
+          Amount: 10
+      - Title: Collect energy
+        Message: Collect <color=#F3FF00>%</color><sprite name=Energy3> from viruses
+          in Stage 6
+        Target: 200
+        Replacement: '@/200'
+        Rewards:
+        - Type: 0
+          Amount: 50000
+        - Type: 7
+          Amount: 100
+      - Title: Collect gen
+        Message: Collect <color=#F3FF00>#</color><sprite name=Gen1> in any <color=#32FF46>Gen
+          Farm</color>\n(Stage 4 & Stage 7)
+        Target: 1000
+        Replacement: '@/1000'
+        Rewards:
+        - Type: 0
+          Amount: 100000
+        - Type: 1
+          Amount: 500
+        - Type: 5
+          Amount: 300
+      - Title: Upgrade mini cells
+        Message: Upgrade any mini cell (Hunter or Deliver) attribute to level <color=#F3FF00>%</color>
+          or higher
+        Target: 30
+        Replacement: '@/30'
+        Rewards:
+        - Type: 0
+          Amount: 300000
+        - Type: 3
+          Amount: 30
+        - Type: 8
+          Amount: 20
+      - Title: Finish all mini quests
+        Message: Finish all <color=#F3FF00>%</color> mini quests scattered on stages
+        Target: 8
+        Replacement: '@/8'
+        Rewards:
+        - Type: 0
+          Amount: 1000000
+        - Type: 2
+          Amount: 200
+        - Type: 6
+          Amount: 100
   AttributeStats:
     UpgradeNames:
       _keys: 000102030405

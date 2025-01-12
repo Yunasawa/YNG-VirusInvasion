@@ -411,8 +411,8 @@ MonoBehaviour:
       HP: 10000
       MS: 0
       Drops:
-        _keys: 00
-        _values: b80b0000
+        _keys: 0003
+        _values: b80b000002000000
       AttackDamage: 0
     - Enemy: {fileID: 2973494880819082110, guid: e659d2e9703dbed4c9a2ecfae9a91373, type: 3}
       MaxEnemyInAnArea:

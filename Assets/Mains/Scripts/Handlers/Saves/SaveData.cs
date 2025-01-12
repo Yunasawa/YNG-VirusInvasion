@@ -7,14 +7,25 @@ public class SaveData
 {
     public TutorialToggle TutorialToggle = new();
 
-    public PlayerStats PlayerStats = new();
-    public CapacityStats CapacityStats = new();
-    public RuntimeConstructStats RuntimeConstructStats = new();
+    public PlayerStats PlayerStats = Game.Data.PlayerStats;
+    public CapacityStats CapacityStats = Game.Data.CapacityStats;
+    public RuntimeConstructStats RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
 
     public SerializeQuestStats SerializeQuestStats = new();
 
-    public SerializableVector3 CurrentPosition;
-    public StageType CurrentStage;
+    public SerializableVector3 CurrentPosition = new(Player.Transform.position);
+    public StageType CurrentStage = Player.Stage.CurrentStage;
+
+    public SaveData()
+    {
+        Set();
+    }
+
+    public SaveData Set()
+    {
+        SerializeQuestStats.SerializeData();
+        return this;
+    }
 }
 
 [Serializable]
@@ -37,7 +48,7 @@ public struct SerializableVector3
 [Serializable]
 public class TutorialToggle
 {
-    public bool StartGameTutorial = false;
-    public bool ReturnToBaseTutorial = false;
-    public bool UpgradeAttributeTutorial = false;
+    public bool StartGameTutorial = Game.IsStartGameTutorialActivated;
+    public bool ReturnToBaseTutorial = Game.IsReturnToBaseTutorialActivated;
+    public bool UpgradeAttributeTutorial = Game.IsUpgradeAttributeTutorialActivated;
 }

@@ -55,3 +55,26 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 0b684ff3d15b80741a8c68092dd68f91, type: 3}
     - {fileID: 21300000, guid: 5ddcb83232a985546b37f7a122a84e06, type: 3}
     - {fileID: 21300000, guid: 99266f9468c2906449cb8348b37fa6dc, type: 3}
+  QuestIcons:
+    _keys:
+    - MiniQuest1
+    - MiniQuest2
+    - MiniQuest3
+    - MiniQuest4
+    - MiniQuest5
+    - MiniQuest6
+    - MiniQuest7
+    - MiniQuest8
+    - MainQuest1
+    - MainQuest2
+    _values:
+    - {fileID: 21300000, guid: 6370b6403ecaaa44cab7e29ae8d4c83e, type: 3}
+    - {fileID: 21300000, guid: 3b401a2e2c5e489459aa4ef375211777, type: 3}
+    - {fileID: 21300000, guid: b52d48104ea43ca4a954ee813a1e344e, type: 3}
+    - {fileID: 21300000, guid: dd74fa7991b8a684c871b32656d32a68, type: 3}
+    - {fileID: 21300000, guid: 5da337dce08c9ff4a8cbf895525b6ada, type: 3}
+    - {fileID: 21300000, guid: 803cb5f7d15e9c748af2522d31fe95f2, type: 3}
+    - {fileID: 21300000, guid: 21edb23d45f55794da1c92c232533091, type: 3}
+    - {fileID: 21300000, guid: b1f6a4fbaa33bfd42acccd3f01a11c84, type: 3}
+    - {fileID: 21300000, guid: 071ff9a93ef99394c8eeec9384360d2f, type: 3}
+    - {fileID: 21300000, guid: 4290f4b0d7f3bd04f8288108c6ebb2db, type: 3}

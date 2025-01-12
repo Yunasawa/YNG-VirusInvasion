@@ -62,26 +62,7 @@ public class GameLoader : MonoBehaviour
 
     private void SaveData()
     {
-        _saveData = new SaveData();
-
-        _saveData.TutorialToggle.StartGameTutorial = Game.IsStartGameTutorialActivated;
-        _saveData.TutorialToggle.ReturnToBaseTutorial = Game.IsReturnToBaseTutorialActivated;
-        _saveData.TutorialToggle.UpgradeAttributeTutorial = Game.IsUpgradeAttributeTutorialActivated;
-
-        _saveData.PlayerStats = Game.Data.PlayerStats;
-        _saveData.CapacityStats = Game.Data.CapacityStats;
-        _saveData.RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
-
-        SerializableVector3 position = new SerializableVector3(Player.Transform.position);
-        if (position.X != 0 && position.Z != 0)
-        {
-            _saveData.CurrentPosition = position;
-            _saveData.CurrentStage = Player.Stage.CurrentStage;
-        }
+        new SaveData().Set().SaveNewtonJson(Key.Path.SaveFile);
         MDebug.Log("SAVE");
-
-        _saveData.SerializeQuestStats.SerializeData();
-
-        _saveData.SaveNewtonJson(Key.Path.SaveFile);
     }
 }

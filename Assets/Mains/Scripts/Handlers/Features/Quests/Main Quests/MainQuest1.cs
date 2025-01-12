@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class MainQuest1 : BaseQuest
 {
-    private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
-
-    private int _highestLevel = 0;
-
-    public override void Initialize(bool isCompleted, int target, int current)
+    public override void Initialize(bool isCompleted, float current)
     {
-        
+        IsCompleted = isCompleted;
+        Current = current;
+        _target = 2;
     }
 
-    public override string GetProgress() => $"{_highestLevel}/2";
-
-    public override (int, int) GetSerializeProgress() => new(_highestLevel, 2);
+    public override string GetProgress() => $"{Current}/{_target}";
 
     public override void OnAcceptQuest()
     {
+        Initialize(false, 0);
+
         OnFarmStatsUpdate();
 
         if (!IsCompleted) Player.OnFarmStatsUpdate += OnFarmStatsUpdate;
@@ -35,15 +33,12 @@ public class MainQuest1 : BaseQuest
     {
         foreach (var pair in Game.Data.RuntimeStats.ConstructStats.Farms)
         {
-            _highestLevel = Mathf.Max(_highestLevel, pair.Value.Attributes["Income"].Level);
-            _highestLevel = Mathf.Max(_highestLevel, pair.Value.Attributes["Capacity"].Level);
+            Current = Mathf.Max(Current, pair.Value.Attributes["Income"].Level);
+            Current = Mathf.Max(Current, pair.Value.Attributes["Capacity"].Level);
         }
 
-        if (_highestLevel >= 2)
-        {
-            OnCompleteQuest();
-        }
-        
-        Quest.OnUpdateQuestStatus?.Invoke("MainQuest1", $"{_highestLevel}");
+        if (Current >= 2) OnCompleteQuest();
+
+        Quest.OnUpdateQuestStatus?.Invoke("MainQuest1", $"{Current}");
     }
 }

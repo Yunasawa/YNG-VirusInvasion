@@ -1,12 +1,12 @@
-using UnityEngine;
+using YNL.Bases;
 
-public class MiniQuest1 : BaseQuest
+public class MiniQuest3 : BaseQuest
 {
     public override void Initialize(bool isCompleted, float current)
     {
         IsCompleted = isCompleted;
         Current = current;
-        _target = 100;
+        _target = 20;
     }
 
     public override string GetProgress() => $"{Current}/{_target}";
@@ -15,21 +15,21 @@ public class MiniQuest1 : BaseQuest
     {
         Initialize(false, 0);
 
-        if (!IsCompleted) Player.OnDefeatEnemy += OnDefeatEnemy;
+        if (!IsCompleted) Player.OnExchangeResources += OnExchangeResources;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnDefeatEnemy -= OnDefeatEnemy;
+        if (!IsCompleted) Player.OnExchangeResources -= OnExchangeResources;
         IsCompleted = true;
     }
 
-    private void OnDefeatEnemy(string name)
+    private void OnExchangeResources(string name, ResourcesInfo from, ResourcesInfo to)
     {
-        Current++;
+        if (name == "Exchanger 1") Current++;
 
         if (Current >= _target) OnCompleteQuest();
 
-        Quest.OnUpdateQuestStatus?.Invoke("MiniQuest1", $"{Current}");
+        Quest.OnUpdateQuestStatus?.Invoke("MiniQuest3", $"{Current}");
     }
 }

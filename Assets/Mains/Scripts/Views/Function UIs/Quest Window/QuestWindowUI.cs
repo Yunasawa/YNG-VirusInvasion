@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -32,6 +33,13 @@ public class QuestWindowUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _questReward;
     [SerializeField] private Button _questButton;
     [SerializeField] private TextMeshProUGUI _buttonText;
+    [SerializeField] private Image _questIcon;
+
+    [Title("Quest Advance")]
+    [SerializeField] private GameObject _normalWindow;
+    [SerializeField] private GameObject _advanceWindow;
+    [SerializeField] private TextMeshProUGUI _advanceMessage;
+    [SerializeField] private SerializableDictionary<string, Image> _advanceIcons = new();
 
     private QuestBillboardUI _ui;
 
@@ -54,8 +62,14 @@ public class QuestWindowUI : MonoBehaviour
 
     private void Start()
     {
-        _questPanel.SetActive(false);
         _progressBox.SetActive(false);
+        DisableQuestPanel().Forget();
+
+        async UniTaskVoid DisableQuestPanel()
+        {
+            await UniTask.NextFrame();
+            _questPanel.SetActive(false);
+        }
     }
 
     private void OnOpenQuestWindow(string name, QuestBillboardUI ui)
@@ -63,18 +77,10 @@ public class QuestWindowUI : MonoBehaviour
         _ui = ui;
 
         _questWindow.SetActive(true);
-
         _windowTitle.text = Game.Data.QuestStats.Quests[name].Title.ToUpper();
-        _questMessage.text = Game.Data.QuestStats.Quests[name].RawMessage;
 
-        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[name].Resource;
-        string reward = "";
-        foreach (var info in infos)
-        {
-            reward += $"{info.Amount.RoundValue()}<sprite name={info.Type}>    ";
-            if (infos.IsLast(info)) reward += $"1<sprite name={name}>";
-        }
-        _questReward.text = reward;
+        if (name != "MainQuest2") UpdateNormalContent(name);
+        else UpdateAdvanceContent(name);
 
         UpdateQuest(name);
         UpdateButton(name, OnAccept, OnClaim);  
@@ -107,7 +113,49 @@ public class QuestWindowUI : MonoBehaviour
             _questFields.Remove(name);
 
             Game.Data.RuntimeQuestStats.CompletedQuests.Add(name);
+            Quest.OnCompleteQuest?.Invoke(name);
         }
+    }
+
+    private void UpdateNormalContent(string name)
+    {
+        _normalWindow.SetActive(true);
+        _advanceWindow.SetActive(false);
+
+        QuestStatsNode quest = Game.Data.QuestStats.Quests[name];
+
+        _questMessage.text = quest.Message.Replace("%", quest.Target);
+        UpdateGeneralContent(name);
+
+        _questIcon.sprite = Game.Data.Vault.QuestIcons[name];
+    }
+    private void UpdateAdvanceContent(string name)
+    {
+        _advanceWindow.SetActive(true);
+        _normalWindow.SetActive(false);
+
+        QuestStatsNode quest = Game.Data.QuestStats.Quests[name];
+
+        _advanceMessage.text = quest.Message.Replace("%", quest.Target);
+        UpdateGeneralContent(name);
+
+        foreach (var pair in _advanceIcons)
+        {
+            bool completed = Game.Data.RuntimeQuestStats.CompletedQuests.Contains(pair.Key);
+
+            pair.Value.color = completed ? "#FFFFFFFF".ToColor() : "#000000C0".ToColor();
+        }
+    }
+    private void UpdateGeneralContent(string name)
+    {
+        List<ResourcesInfo> infos = Game.Data.QuestStats.Quests[name].Rewards;
+        string reward = "";
+        foreach (var info in infos)
+        {
+            reward += $"{info.Amount.RoundValue()}<sprite name={info.Type}>    ";
+            if (infos.IsLast(info) && name.Contains("MiniQuest")) reward += $"1<sprite name={name}>";
+        }
+        _questReward.text = reward;
     }
 
     private void CreateQuestNodeUI(string name)

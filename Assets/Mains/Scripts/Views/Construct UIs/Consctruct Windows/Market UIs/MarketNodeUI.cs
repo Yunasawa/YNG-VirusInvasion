@@ -64,5 +64,6 @@ public class MarketNodeUI : MonoBehaviour
     {
         Player.OnConsumeResources?.Invoke(_upgradeCost.Type, _upgradeCost.Amount);
         Player.OnExtraStatsLevelUp?.Invoke(_node.Key);
+        Player.OnTradeInMarket?.Invoke(Player.Construction.Construct.Name);
     }
 }
