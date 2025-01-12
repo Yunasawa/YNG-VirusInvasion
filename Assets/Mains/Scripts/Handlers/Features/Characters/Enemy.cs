@@ -1,6 +1,8 @@
+using Cysharp.Threading.Tasks;
 using OWS.ObjectPooling;
 using System;
 using UnityEngine;
+using static DG.Tweening.DOTweenCYInstruction;
 
 public class Enemy : MonoBehaviour, IPoolable<Enemy>
 {
@@ -17,11 +19,27 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
 
     public void OnKilled()
     {
-        ReturnToPool();
-        Pool.NotifyOnRespawn();
-        this.gameObject.SetActive(false);
+        Stats.Model.SetActive(false);
+        UI.UI.gameObject.SetActive(false);
+        Stats.Particle.gameObject.SetActive(true);
+        Stats.Particle.Play();
 
-        Player.OnDefeatEnemy?.Invoke(Stats.ID);
+        WaitToKill().Forget();
+
+        async UniTaskVoid WaitToKill()
+        {
+            await UniTask.WaitForSeconds(1);
+
+            Stats.Model.SetActive(true);
+            UI.UI.gameObject.SetActive(true);
+            Stats.Particle.gameObject.SetActive(false);
+
+            ReturnToPool();
+            Pool.NotifyOnRespawn();
+            this.gameObject.SetActive(false);
+
+            Player.OnDefeatEnemy?.Invoke(Stats.ID);
+        }
     }
 
     public void Initialize(Action<Enemy> returnAction)

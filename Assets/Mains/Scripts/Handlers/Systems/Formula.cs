@@ -299,6 +299,9 @@ public static class Formula
         {
             return Mathf.RoundToInt(amount * (1 + _extras[Key.Stats.ExtraResources].Value.Percent()));
         }
+
+
+        public static float EnemyRadius => GetRadius() / 5;
     }
     public static class Value
     {
@@ -344,15 +347,16 @@ public static class Formula
             switch (level)
             {
                 case 0: return 4;
-                case 1: return 1000;
-                case 2: return 7000;
-                case 3: return 32000;
-                case 4: return 90000;
-                case 5: return 380000;
-                case 6: return 1500000;
-                case 7: return 6000000;
-                case 8: return 25000000;
-                case 9: return 100000000;
+                case 1: return 80;
+                case 2: return 1000;
+                case 3: return 7000;
+                case 4: return 32000;
+                case 5: return 90000;
+                case 6: return 380000;
+                case 7: return 1500000;
+                case 8: return 6000000;
+                case 9: return 25000000;
+                case 10: return 100000000;
                 default: return int.MaxValue;
             }
         }

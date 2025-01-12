@@ -1,8 +1,4 @@
-using Cysharp.Threading.Tasks;
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Jobs;
-using Unity.Mathematics;
+using System.Linq;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
@@ -34,11 +30,16 @@ public class EnemyMovement : MonoBehaviour
     }
     public void OnPullingDone()
     {
+        TentaclePair group = Player.Enemy.Tentacles.FirstOrDefault(i => i.Enemy = _manager);
+        if (!group.IsNull())
+        {
+            group.Tentacle.RemoveTarget();
+            group.Enemy = null;
+        }
+
         IsPulling = false;
         _manager.OnKilled();
         _manager.Stats.OnKilled();
-
-        Player.Enemy.Enemies.TryRemove(_manager);
 
         CameraManager.Instance.Audio.PlayEatingSFX();
     }

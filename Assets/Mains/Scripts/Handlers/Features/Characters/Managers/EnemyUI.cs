@@ -14,6 +14,7 @@ public class EnemyUI : MonoBehaviour
     private Tweener _healthBarTween;
 
     [SerializeField] private Transform _billboardCanvas;
+    public Transform UI => _billboardCanvas;
     [SerializeField] private Image _healthBar;
     [SerializeField] private TextMeshProUGUI _healthText;
 

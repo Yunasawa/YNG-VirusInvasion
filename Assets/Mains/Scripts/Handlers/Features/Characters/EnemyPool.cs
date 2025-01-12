@@ -74,7 +74,7 @@ public class EnemyPool : MonoBehaviour
             }
 
             _isPulling[i] = _enemies[i].Movement.IsPulling;
-            _movingSpeed[i] = _enemies[i].IsCaught ? 5 : 1.5f;
+            _movingSpeed[i] = _enemies[i].IsCaught ? 3 : 1.5f;
         }
 
         UpdateEnemyMovements();

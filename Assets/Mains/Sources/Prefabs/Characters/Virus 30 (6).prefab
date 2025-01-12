@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 2447189857380508260}
   - {fileID: 5976226886071605100}
+  - {fileID: 2215005177639496182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7338378831259104290
@@ -90,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: Virus 6 - 30
   CurrentHealth: 0
+  Model: {fileID: 6459290085306109398}
+  Particle: {fileID: 2215005177657844450}
 --- !u!114 &6273015012280251382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +122,73 @@ MonoBehaviour:
   _billboardCanvas: {fileID: 2447189857380508260}
   _healthBar: {fileID: 1555732345207800878}
   _healthText: {fileID: 7148912763836454028}
+--- !u!1001 &2215005177639683342
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 965487057275891724}
+    m_Modifications:
+    - target: {fileID: 193062, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_Name
+      value: BloodExplosionRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+--- !u!4 &2215005177639496182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 470264, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  m_PrefabInstance: {fileID: 2215005177639683342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2215005177657844450 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19867628, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
+  m_PrefabInstance: {fileID: 2215005177639683342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6153442998376116359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,6 +269,11 @@ PrefabInstance:
 --- !u!4 &5976226886071605100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
+  m_PrefabInstance: {fileID: 6153442998376116359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6459290085306109398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
   m_PrefabInstance: {fileID: 6153442998376116359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8179053364382571562

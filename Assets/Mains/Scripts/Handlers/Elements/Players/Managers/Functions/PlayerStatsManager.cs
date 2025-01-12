@@ -160,9 +160,10 @@ public class PlayerStatsManager : MonoBehaviour
 
             int totalDamage = 0;
 
-            foreach (var enemy in Player.Enemy.Enemies)
+            foreach (var group in Player.Enemy.Tentacles)
             {
-                totalDamage += Game.Data.EnemySources[enemy.Stats.ID].AttackDamage;
+                if (group.Enemy.IsNull()) continue;
+                totalDamage += Game.Data.EnemySources[group.Enemy.Stats.ID].AttackDamage;
             }
 
             TakeDamage(totalDamage);

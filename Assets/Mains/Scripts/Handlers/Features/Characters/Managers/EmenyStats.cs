@@ -1,10 +1,8 @@
 using Sirenix.OdinInspector;
-using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using YNL.Bases;
-using YNL.Extensions.Methods;
 
 public class EmenyStats : MonoBehaviour
 {
@@ -13,8 +11,9 @@ public class EmenyStats : MonoBehaviour
     private Enemy _manager;
 
     public string ID;
-
     public int CurrentHealth;
+    public GameObject Model;
+    public ParticleSystem Particle;
 
     private void Awake()
     {
@@ -24,23 +23,8 @@ public class EmenyStats : MonoBehaviour
     private void Start()
     {
         Initialization();
-    }
 
-    [Button]
-    public void Assign()
-    {
-        string name = this.gameObject.name;
-        string pattern = @"(\d+)\s\((\d+)\)";
-
-        Match match = Regex.Match(name, pattern);
-
-        if (match.Success)
-        {
-            string number = match.Groups[1].Value;
-            string stage = match.Groups[2].Value;
-
-            ID = $"Virus {stage} - {number}";
-        }
+        Particle.gameObject.SetActive(false);
     }
 
     public void Initialization()
@@ -54,5 +38,15 @@ public class EmenyStats : MonoBehaviour
         _manager.OnEnemyKilled = null;
         Player.OnCollectEnemyDrops?.Invoke(Stats.Drops.Select(pair => (pair.Key, pair.Value)).ToArray());
         Player.OnCollectEnemyExp?.Invoke(Stats.Exp);
+    }
+
+    [Button]
+    public void Assign()
+    {
+        foreach (var child in transform.Cast<Transform>())
+        {
+            if (child.name.Contains("Enemy") || child.name.Contains("monster")) Model = child.gameObject;
+            else if (child.name.Contains("BloodExplosionRound")) Particle = child.GetComponent<ParticleSystem>();
+        }
     }
 }

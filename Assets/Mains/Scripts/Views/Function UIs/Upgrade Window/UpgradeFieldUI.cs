@@ -19,6 +19,13 @@ public class UpgradeFieldUI : MonoBehaviour
     private void Awake()
     {
         _upgradeButton.onClick.AddListener(UpgradeAttribute);
+
+        Player.OnChangeResources += UpdateField;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnChangeResources -= UpdateField;
     }
 
     public void UpdateField()

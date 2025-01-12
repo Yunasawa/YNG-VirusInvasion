@@ -64,6 +64,5 @@ public class GameLoader : MonoBehaviour
     private void SaveData()
     {
         new SaveData().Set().SaveNewtonJson(Key.Path.SaveFile);
-        MDebug.Log("SAVE");
     }
 }
