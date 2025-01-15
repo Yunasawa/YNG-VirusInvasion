@@ -30,17 +30,25 @@ public class EnemyMovement : MonoBehaviour
     }
     public void OnPullingDone()
     {
+        if (!IsPulling) return;
+
+        MDebug.Log($"Taihen");
+
         TentaclePair group = Player.Enemy.Tentacles.FirstOrDefault(i => i.Enemy = _manager);
         if (!group.IsNull())
         {
             group.Tentacle.RemoveTarget();
             group.Enemy = null;
+
+            IsPulling = false;
+            Enabled = false;
+            _manager.IsEnable = false;
+            _manager.OnKilled();
+            _manager.Stats.OnKilled();
+
+            CameraManager.Instance.Audio.PlayEatingSFX();
+
+            MDebug.Log($"Catch: {_manager.GetInstanceID()}");
         }
-
-        IsPulling = false;
-        _manager.OnKilled();
-        _manager.Stats.OnKilled();
-
-        CameraManager.Instance.Audio.PlayEatingSFX();
     }
 }

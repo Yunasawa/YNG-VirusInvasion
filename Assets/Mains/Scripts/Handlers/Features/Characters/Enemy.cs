@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     public EnemyMovement Movement;
     public EnemyUI UI;
 
+    public bool IsEnable = true;
     public bool IsCaught = false;
 
     private Action<Enemy> returnToPool;
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
         UI.UI.gameObject.SetActive(false);
         Stats.Particle.gameObject.SetActive(true);
         Stats.Particle.Play();
+
+        IsCaught = false;
 
         WaitToKill().Forget();
 
@@ -46,6 +49,8 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
     {
         this.returnToPool = returnAction;
 
+        Movement.Enabled = true;
+        IsEnable = true;
         IsCaught = false;
         Stats.Initialization();
         UI.Initialization();

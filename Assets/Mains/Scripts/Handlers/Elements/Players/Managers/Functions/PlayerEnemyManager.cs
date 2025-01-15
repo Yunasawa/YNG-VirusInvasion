@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
@@ -12,7 +11,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
     [SerializeField] private SphereCollider _collider;
     [SerializeField] private Transform _radius;
 
-    private float _timer;
+    [SerializeField] private LayerMask _layerMask;
+    private Collider[] _colliders = new Collider[10];
 
     private void Awake()
     {
@@ -30,13 +30,14 @@ public class PlayerEnemyManager : ColliderTriggerListener
         OnUpgradeAttribute(AttributeType.Radius);
     }
 
+#if false
     public override void OnColliderTriggerEnter(Collider other)
     {
         if (other.tag == "Monster")
         {
             Enemy monster = other.GetComponent<Enemy>();
             if (monster.IsCaught || Game.Data.CapacityStats.IsFull) return;
-
+#if false
             foreach (var group in Tentacles)
             {
                 CheckForOutboundEnemy(group);
@@ -70,6 +71,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 break;
             }
+#endif
         }
     }
 
@@ -85,6 +87,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
             Enemy monster = other.GetComponent<Enemy>();
             if (!monster.IsCaught) return;
 
+#if false
             foreach (var group in Tentacles)
             {
                 CheckForOutboundEnemy(group);
@@ -101,13 +104,87 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                 break;
             }
+#endif
         }
     }
+#endif
 
     private void Update()
     {
-        
+        int hitAmount = Physics.OverlapSphereNonAlloc(Player.Transform.position, Formula.Stats.EnemyRadius, _colliders, _layerMask);
+
+        if (Game.Data.CapacityStats.IsFull) return;
+
+        Enemies.Clear();
+        for (int i = 0; i < hitAmount; i++) Enemies.Add(_colliders[i].GetComponent<Enemy>());
+        foreach (var pair in Tentacles)
+        {
+            if (!pair.Tentacle.IsEnabled) break;
+            if (pair.Tentacle.HasTarget)
+            {
+                if (pair.Tentacle.Target == pair.Enemy)
+                {
+                    if (!Enemies.Contains(pair.Enemy))
+                    {
+                        pair.Enemy.IsCaught = false;
+                        pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
+                        pair.Tentacle.RemoveTarget();
+                        pair.Enemy = null;
+                    }
+                }
+                else
+                {
+                    if (pair.Tentacle.Target.IsCaught)
+                    {
+                        pair.Tentacle.Target.IsCaught = false;
+                        pair.Tentacle.Target.UI.UpdateHealthBar(pair.Tentacle.Target.IsCaught);
+                        pair.Tentacle.RemoveTarget();
+                    }
+                    if (!Enemies.Contains(pair.Enemy))
+                    {
+                        pair.Enemy.IsCaught = false;
+                        pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
+                        pair.Tentacle.RemoveTarget();
+                        pair.Enemy = null;
+                    }
+                    else
+                    {
+                        pair.Enemy.IsCaught = true;
+                        pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
+                        pair.Tentacle.SetTarget(pair.Enemy);
+
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                if (!pair.Enemy.IsNull())
+                {
+                    pair.Enemy.IsCaught = false;
+                    pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
+                    pair.Tentacle.RemoveTarget();
+                    pair.Enemy = null;
+                }
+            }
+            if (!pair.Enemy.IsNull()) continue;
+
+            foreach (var enemy in Enemies)
+            {
+                if (!enemy.IsCaught && enemy.IsEnable)
+                {
+                    enemy.IsCaught = true;
+                    enemy.UI.UpdateHealthBar(enemy.IsCaught);
+
+                    pair.Tentacle.SetTarget(enemy);
+                    pair.Enemy = enemy;
+
+                    break;
+                }
+            }
+        }
     }
+
 
     private void CheckForOutboundEnemy(TentaclePair pair)
     {

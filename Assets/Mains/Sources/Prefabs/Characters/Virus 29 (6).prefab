@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1129037637481446721}
   - component: {fileID: 2068066935020813159}
   - component: {fileID: 5761567586301134139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Virus 29 (6)
   m_TagString: Monster
   m_Icon: {fileID: 0}
