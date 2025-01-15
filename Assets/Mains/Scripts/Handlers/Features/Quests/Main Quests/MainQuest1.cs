@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class MainQuest1 : BaseQuest
 {
-    public override void Initialize(float current = 0)
-    {
-        Current = current;
-        _target = 2;
-    }
+    public override void Initialize() => _target = 2;
+    public override void Refresh(float current = 0) => Current = current;
 
     public override string GetProgress() => $"{Current}/{_target}";
 

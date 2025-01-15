@@ -7,7 +7,8 @@ public abstract class BaseQuest
     public float Current;
     public float Ratio => Current / _target;
 
-    public abstract void Initialize(float current);
+    public abstract void Initialize();
+    public abstract void Refresh(float current);
 
     public abstract void OnAcceptQuest();
     public abstract void OnCompleteQuest();

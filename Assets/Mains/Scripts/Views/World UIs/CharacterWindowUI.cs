@@ -26,6 +26,7 @@ public class CharacterWindowUI : MonoBehaviour
         {
             ResourceNodeUI node = Instantiate(_resourceNode, _resourceContainer);
             node.UpdateNode(drop.Value);
+            node.UpdateIcon(Game.Data.Vault.ResourceIcons[drop.Key]);
         }
     }
 }

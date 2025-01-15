@@ -58,6 +58,7 @@ public class EnemyUI : MonoBehaviour
         if (start)
         {
             float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.Attributes[AttributeType.DPS];
+            _healthBarTween.Kill();
             _healthBarTween = _healthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
             if (!_billboardCanvas.gameObject.activeSelf) _billboardCanvas.gameObject.SetActive(true);
 

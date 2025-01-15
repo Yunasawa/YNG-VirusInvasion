@@ -2,11 +2,8 @@ using YNL.Bases;
 
 public class MiniQuest5 : BaseQuest
 {
-    public override void Initialize(float current = 0)
-    {
-        Current = current;
-        _target = 10000;
-    }
+    public override void Initialize() => _target = 10000;
+    public override void Refresh(float current = 0) => Current = current;
 
     public override string GetProgress() => $"{Current}/{_target}";
 

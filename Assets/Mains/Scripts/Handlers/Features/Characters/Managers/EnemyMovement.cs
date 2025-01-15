@@ -32,8 +32,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!IsPulling) return;
 
-        MDebug.Log($"Taihen");
-
         TentaclePair group = Player.Enemy.Tentacles.FirstOrDefault(i => i.Enemy = _manager);
         if (!group.IsNull())
         {
@@ -47,8 +45,6 @@ public class EnemyMovement : MonoBehaviour
             _manager.Stats.OnKilled();
 
             CameraManager.Instance.Audio.PlayEatingSFX();
-
-            MDebug.Log($"Catch: {_manager.GetInstanceID()}");
         }
     }
 }

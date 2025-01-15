@@ -51,7 +51,7 @@ public class SerializeQuestStats
         foreach (var pair in Quests)
         {
             var quest = Quest.GetQuest(pair.Key);
-            quest.Initialize(pair.Value);
+            quest.Refresh(pair.Value);
             Game.Data.RuntimeQuestStats.Quests.Add(pair.Key, quest);
             quest.OnAcceptQuest();
             
