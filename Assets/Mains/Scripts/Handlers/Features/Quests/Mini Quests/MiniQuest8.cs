@@ -2,9 +2,8 @@ using YNL.Bases;
 
 public class MiniQuest8 : BaseQuest
 {
-    public override void Initialize(bool isCompleted, float current)
+    public override void Initialize(float current = 0)
     {
-        IsCompleted = isCompleted;
         Current = current;
         _target = 30;
     }
@@ -13,7 +12,7 @@ public class MiniQuest8 : BaseQuest
 
     public override void OnAcceptQuest()
     {
-        Initialize(false, 0);
+        Initialize();
 
         //if (!IsCompleted) Player.OnTradeInMarket += OnTradeInMarket;
     }
@@ -21,14 +20,13 @@ public class MiniQuest8 : BaseQuest
     public override void OnCompleteQuest()
     {
         //if (!IsCompleted) Player.OnTradeInMarket -= OnTradeInMarket;
-        IsCompleted = true;
     }
 
     private void OnTradeInMarket(string name)
     {
         if (name == "Market 2") Current++;
 
-        if (Current >= _target) OnCompleteQuest();
+        if (IsCompleted) OnCompleteQuest();
 
         Quest.OnUpdateQuestStatus?.Invoke("MiniQuest8", $"{Current}");
     }

@@ -2,9 +2,8 @@ using YNL.Bases;
 
 public class MiniQuest2 : BaseQuest
 {
-    public override void Initialize(bool isCompleted, float current)
+    public override void Initialize(float current = 0)
     {
-        IsCompleted = isCompleted;
         Current = current;
         _target = 30;
     }
@@ -13,22 +12,21 @@ public class MiniQuest2 : BaseQuest
 
     public override void OnAcceptQuest()
     {
-        Initialize(false, 0);
+        Initialize();
 
         if (!IsCompleted) Player.OnUpgradeAttribute += OnUpgradeAttribute;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnUpgradeAttribute -= OnUpgradeAttribute;
-        IsCompleted = true;
+        Player.OnUpgradeAttribute -= OnUpgradeAttribute;
     }
 
     private void OnUpgradeAttribute(AttributeType type)
     {
         Current++;
 
-        if (Current >= _target) OnCompleteQuest();
+        if (IsCompleted) OnCompleteQuest();
 
         Quest.OnUpdateQuestStatus?.Invoke("MiniQuest2", $"{Current}");
     }

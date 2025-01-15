@@ -2,9 +2,8 @@ using YNL.Bases;
 
 public class MiniQuest7 : BaseQuest
 {
-    public override void Initialize(bool isCompleted, float current)
+    public override void Initialize(float current = 0)
     {
-        IsCompleted = isCompleted;
         Current = current;
         _target = 1000;
     }
@@ -13,22 +12,21 @@ public class MiniQuest7 : BaseQuest
 
     public override void OnAcceptQuest()
     {
-        Initialize(false, 0);
+        Initialize();
 
         if (!IsCompleted) Player.OnCollectFarmResources += OnCollectFarmResources;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnCollectFarmResources -= OnCollectFarmResources;
-        IsCompleted = true;
+        Player.OnCollectFarmResources -= OnCollectFarmResources;
     }
 
     private void OnCollectFarmResources(ResourceType type, float amount)
     {
         if (type == ResourceType.Gen1) Current += amount;
 
-        if (Current >= _target) OnCompleteQuest();
+        if (IsCompleted) OnCompleteQuest();
 
         Quest.OnUpdateQuestStatus?.Invoke("MiniQuest7", $"{Current}");
     }

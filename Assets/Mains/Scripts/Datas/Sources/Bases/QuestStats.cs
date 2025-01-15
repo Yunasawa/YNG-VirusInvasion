@@ -31,7 +31,7 @@ public class RuntimeQuestStats
 [System.Serializable]
 public class SerializeQuestStats
 {
-    public Dictionary<string, SerializeQuestNode> Quests = new();
+    public Dictionary<string, float> Quests = new();
     public List<string> CompletedQuests = new();
 
     public void SerializeData()
@@ -39,8 +39,7 @@ public class SerializeQuestStats
         Quests.Clear();
         foreach (var pair in Game.Data.RuntimeQuestStats.Quests)
         {
-            SerializeQuestNode node = new(pair.Value.IsCompleted, pair.Value.Current);
-            Quests.Add(pair.Key, node);
+            Quests.Add(pair.Key, pair.Value.Current);
         }
 
         CompletedQuests = Game.Data.RuntimeQuestStats.CompletedQuests;
@@ -52,24 +51,11 @@ public class SerializeQuestStats
         foreach (var pair in Quests)
         {
             var quest = Quest.GetQuest(pair.Key);
-            quest.Initialize(pair.Value.IsCompleted, pair.Value.Current);
+            quest.Initialize(pair.Value);
             Game.Data.RuntimeQuestStats.Quests.Add(pair.Key, quest);
             quest.OnAcceptQuest();
             
             Quest.OnDeserializeQuest.Invoke(pair.Key);
         }
-    }
-}
-
-[System.Serializable]
-public class SerializeQuestNode
-{
-    public bool IsCompleted;
-    public float Current;
-
-    public SerializeQuestNode(bool isCompleted, float current)
-    {
-        IsCompleted = isCompleted;
-        Current = current;
     }
 }

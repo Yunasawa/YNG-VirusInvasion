@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class MainQuest2 : BaseQuest
 {
-    public override void Initialize(bool isCompleted, float current)
+    public override void Initialize(float current = 0)
     {
-        IsCompleted = isCompleted;
         Current = current;
         _target = 8;
     }
@@ -13,7 +12,7 @@ public class MainQuest2 : BaseQuest
 
     public override void OnAcceptQuest()
     {
-        Initialize(false, 0);
+        Initialize();
 
         OnCompleteQuest();
 
@@ -22,8 +21,7 @@ public class MainQuest2 : BaseQuest
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Quest.OnCompleteQuest -= OnCompleteQuest;
-        IsCompleted = true;
+        Quest.OnCompleteQuest -= OnCompleteQuest;
     }
 
     private void OnCompleteQuest(string key = "")
@@ -34,7 +32,7 @@ public class MainQuest2 : BaseQuest
             if (Game.Data.RuntimeQuestStats.CompletedQuests.Contains($"MiniQuest{i}")) Current++;
         }
 
-        if (Current >= 8) OnCompleteQuest();
+        if (IsCompleted) OnCompleteQuest();
 
         Quest.OnUpdateQuestStatus?.Invoke("MainQuest2", $"{Current}");
     }

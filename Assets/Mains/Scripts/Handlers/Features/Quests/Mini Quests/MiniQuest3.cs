@@ -2,9 +2,8 @@ using YNL.Bases;
 
 public class MiniQuest3 : BaseQuest
 {
-    public override void Initialize(bool isCompleted, float current)
+    public override void Initialize(float current = 0)
     {
-        IsCompleted = isCompleted;
         Current = current;
         _target = 20;
     }
@@ -13,22 +12,21 @@ public class MiniQuest3 : BaseQuest
 
     public override void OnAcceptQuest()
     {
-        Initialize(false, 0);
+        Initialize();
 
         if (!IsCompleted) Player.OnExchangeResources += OnExchangeResources;
     }
 
     public override void OnCompleteQuest()
     {
-        if (!IsCompleted) Player.OnExchangeResources -= OnExchangeResources;
-        IsCompleted = true;
+        Player.OnExchangeResources -= OnExchangeResources;
     }
 
     private void OnExchangeResources(string name, ResourcesInfo from, ResourcesInfo to)
     {
         if (name == "Exchanger 1") Current++;
 
-        if (Current >= _target) OnCompleteQuest();
+        if (IsCompleted) OnCompleteQuest();
 
         Quest.OnUpdateQuestStatus?.Invoke("MiniQuest3", $"{Current}");
     }
