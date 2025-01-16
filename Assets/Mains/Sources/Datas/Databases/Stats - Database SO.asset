@@ -224,46 +224,46 @@ MonoBehaviour:
           Amount: 1
         To:
           Type: 5
-          Amount: 1
+          Amount: 2
       - From:
           Type: 7
           Amount: 1
         To:
           Type: 5
-          Amount: 1
+          Amount: 3
       - From:
           Type: 8
           Amount: 1
         To:
           Type: 5
-          Amount: 1
+          Amount: 4
       - From:
           Type: 1
-          Amount: 1
+          Amount: 10
         To:
           Type: 5
           Amount: 1
       - From:
           Type: 0
-          Amount: 1
+          Amount: 1000
         To:
           Type: 5
           Amount: 1
       - From:
           Type: 5
-          Amount: 1
+          Amount: 2
         To:
           Type: 6
           Amount: 1
       - From:
           Type: 5
-          Amount: 1
+          Amount: 3
         To:
           Type: 7
           Amount: 1
       - From:
           Type: 5
-          Amount: 1
+          Amount: 4
         To:
           Type: 8
           Amount: 1

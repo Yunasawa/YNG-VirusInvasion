@@ -14,6 +14,7 @@ namespace YNL.Bases
     {
         public Enemy Enemy;
         public MRange MaxEnemyInAnArea = new(8, 12);
+        public int Capacity = 3;
         public uint RespawnTime = 10;
         public int Exp = 200;
         public int HP = 10000;
