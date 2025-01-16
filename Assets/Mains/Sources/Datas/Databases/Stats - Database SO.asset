@@ -348,9 +348,9 @@ MonoBehaviour:
         Replacement: '@/2'
         Rewards:
         - Type: 0
-          Amount: 300
+          Amount: 200
         - Type: 1
-          Amount: 10
+          Amount: 5
       - Title: Defeat viruses
         Message: Defeat <color=#F3FF00>%</color> viruses of any kind.
         Target: 100
@@ -359,9 +359,9 @@ MonoBehaviour:
         - Type: 0
           Amount: 500
         - Type: 1
-          Amount: 50
+          Amount: 20
         - Type: 5
-          Amount: 10
+          Amount: 2
       - Title: Upgrade attributes
         Message: Upgrade any attribute <color=#F3FF00>%</color> times.
         Target: 30
@@ -380,11 +380,11 @@ MonoBehaviour:
         Replacement: '@/20'
         Rewards:
         - Type: 0
-          Amount: 1500
+          Amount: 1000
         - Type: 2
           Amount: 10
         - Type: 5
-          Amount: 10
+          Amount: 5
       - Title: Trade items
         Message: Trade in <color=#32FF46>Market 2</color>(Stage 3) <color=#F3FF00>%</color>
           times
@@ -416,21 +416,21 @@ MonoBehaviour:
         Replacement: '@/200'
         Rewards:
         - Type: 0
-          Amount: 50000
+          Amount: 10000
         - Type: 7
-          Amount: 100
+          Amount: 20
       - Title: Collect gen
         Message: Collect <color=#F3FF00>#</color><sprite name=Gen1> in any <color=#32FF46>Gen
           Farm</color>\n(Stage 4 & Stage 7)
-        Target: 1000
+        Target: 500
         Replacement: '@/1000'
         Rewards:
         - Type: 0
-          Amount: 100000
+          Amount: 50000
         - Type: 1
-          Amount: 500
+          Amount: 200
         - Type: 5
-          Amount: 300
+          Amount: 50
       - Title: Upgrade mini cells
         Message: Upgrade any mini cell (Hunter or Deliver) attribute to level <color=#F3FF00>%</color>
           or higher
@@ -438,11 +438,11 @@ MonoBehaviour:
         Replacement: '@/30'
         Rewards:
         - Type: 0
-          Amount: 300000
+          Amount: 100000
         - Type: 3
           Amount: 30
         - Type: 8
-          Amount: 20
+          Amount: 5
       - Title: Finish all mini quests
         Message: Finish all <color=#F3FF00>%</color> mini quests scattered on stages
         Target: 8

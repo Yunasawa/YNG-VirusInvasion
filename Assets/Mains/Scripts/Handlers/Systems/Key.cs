@@ -4,6 +4,9 @@ public static class Key
 {
     public static class Config
     {
+        public static bool EnableSound = true;
+        public static bool EnableMusic = true;
+
         public const int FarmCountdown = 10;
         public const float TypeWriterSpeed = 0.02f;
         public static int TypeWritterDelay = Mathf.RoundToInt(TypeWriterSpeed * 1000);

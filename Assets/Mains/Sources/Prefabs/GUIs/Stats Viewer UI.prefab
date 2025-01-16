@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8758942907108085852}
+  - component: {fileID: 4254950623917409885}
   m_Layer: 5
   m_Name: Title Bar
   m_TagString: Untagged
@@ -38,6 +39,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 976, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4254950623917409885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2501566025527837587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3663293099065257564
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.98823535, g: 0.9450981, b: 0.8862746, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 0.9688679, b: 0.9264151, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -147,7 +192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -27.649, y: -5}
+  m_AnchoredPosition: {x: -27.648987, y: -5}
   m_SizeDelta: {x: -175.3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2947989077384688869
@@ -281,7 +326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -140.3, y: -4.5}
+  m_AnchoredPosition: {x: -140.29999, y: -4.5}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3732823919557339954
@@ -371,6 +416,7 @@ GameObject:
   - component: {fileID: 9021670560066814607}
   - component: {fileID: 2544080327653077789}
   - component: {fileID: 6326356006815497865}
+  - component: {fileID: 8858531117095363888}
   m_Layer: 5
   m_Name: Stats Viewer UI
   m_TagString: Untagged
@@ -421,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.98823535, g: 0.9450981, b: 0.8862746, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -450,6 +496,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &8858531117095363888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7324892101734621720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837f591a50ea7a644984f287f9793252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arrowUI: {fileID: 564515861032268551}
+  _viewButtonUI: {fileID: 4254950623917409885}
+  _expandedHeight: 500
 --- !u!1 &7754494911447255872
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,6 +662,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 Health Point: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 5143471678820244085, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_text
       value: 'Health Point: 100'
@@ -707,9 +776,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 CatchingTentacle Amount: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 5143471678820244085, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_text
-      value: 'Tentacle: 100'
+      value: "\u2022 CatchingTentacle Amount: 100"
       objectReference: {fileID: 0}
     - target: {fileID: 6329129530366393795, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_Pivot.x
@@ -813,6 +890,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 Moving Speed: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 5143471678820244085, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_text
       value: 'Moving Speed: 15'
@@ -919,6 +1004,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 Capacity: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 5143471678820244085, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_text
       value: 'Capacity: 100'
@@ -1025,6 +1118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 Damage per second: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 6329129530366393795, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1127,6 +1224,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2937136369274856146}
     m_Modifications:
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631065360999663789, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
+      propertyPath: _content
+      value: "\u2022 Catching Range: @"
+      objectReference: {fileID: 0}
     - target: {fileID: 5143471678820244085, guid: 03b1de8e2d49cd24bba6c96b720381f3, type: 3}
       propertyPath: m_text
       value: 'Radius: 100'

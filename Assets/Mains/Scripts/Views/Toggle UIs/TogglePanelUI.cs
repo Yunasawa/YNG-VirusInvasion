@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using YNL.Extensions.Methods;
 
 public class TogglePanelUI : MonoBehaviour
 {
@@ -13,7 +12,8 @@ public class TogglePanelUI : MonoBehaviour
     private bool _isSettingsViewOpened = false;
 
     [SerializeField] private ResourceViewUI _resourceViewUI;
-    [SerializeField] private StatsViewUI _statsViewUI;
+    [SerializeField] private StatsWindowUI _statsViewUI;
+    [SerializeField] private SettingsWindowUI _settingsViewUI;
 
     private void Awake()
     {
@@ -26,6 +26,7 @@ public class TogglePanelUI : MonoBehaviour
     {
         _resourceViewUI.Initialize(this);
         _statsViewUI.Initialize(this);
+        _settingsViewUI.Initialize(this);
     }
 
     public void ToggleView(byte type)
@@ -45,6 +46,7 @@ public class TogglePanelUI : MonoBehaviour
         else if (type == 2)
         {
             _isSettingsViewOpened = !_isSettingsViewOpened;
+            _settingsViewUI.gameObject.SetActive(_isSettingsViewOpened);
         }
     }
 }

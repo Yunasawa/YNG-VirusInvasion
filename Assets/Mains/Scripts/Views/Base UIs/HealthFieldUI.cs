@@ -13,6 +13,6 @@ public class HealthFieldUI : MonoBehaviour
     public void UpdateHealth()
     {
         _healthFill.fillAmount = (float)_playerStats.CurrentHP / _playerStats.MaxHP;
-        _healthText.text = $"{_playerStats.CurrentHP}/{_playerStats.MaxHP}";
+        _healthText.text = $"HP ({_playerStats.CurrentHP}/{_playerStats.MaxHP})";
     }
 }
