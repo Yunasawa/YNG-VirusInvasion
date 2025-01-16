@@ -58,6 +58,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 2
       RespawnTime: 10
       Exp: 2
       HP: 40
@@ -70,6 +71,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 2
         Max: 4
+      Capacity: 2
       RespawnTime: 120
       Exp: 3
       HP: 68
@@ -82,6 +84,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 7
         Max: 10
+      Capacity: 4
       RespawnTime: 10
       Exp: 4
       HP: 136
@@ -94,6 +97,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 4
       RespawnTime: 120
       Exp: 8
       HP: 300
@@ -106,6 +110,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 7
         Max: 10
+      Capacity: 4
       RespawnTime: 10
       Exp: 6
       HP: 150
@@ -118,6 +123,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 7
         Max: 10
+      Capacity: 5
       RespawnTime: 10
       Exp: 10
       HP: 500
@@ -130,6 +136,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 5
       RespawnTime: 10
       Exp: 13
       HP: 600
@@ -142,6 +149,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 5
       RespawnTime: 10
       Exp: 15
       HP: 700
@@ -154,6 +162,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 5
       RespawnTime: 10
       Exp: 18
       HP: 1500
@@ -166,6 +175,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 2
         Max: 4
+      Capacity: 5
       RespawnTime: 300
       Exp: 20
       HP: 2200
@@ -178,6 +188,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 3
         Max: 5
+      Capacity: 7
       RespawnTime: 10
       Exp: 30
       HP: 5200
@@ -190,6 +201,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 7
       RespawnTime: 10
       Exp: 33
       HP: 4500
@@ -202,6 +214,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 7
       RespawnTime: 10
       Exp: 36
       HP: 1600
@@ -214,6 +227,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 7
       RespawnTime: 10
       Exp: 40
       HP: 7000
@@ -226,6 +240,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 7
       RespawnTime: 10
       Exp: 45
       HP: 2100
@@ -238,6 +253,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 1
         Max: 2
+      Capacity: 7
       RespawnTime: 300
       Exp: 50
       HP: 2800
@@ -250,6 +266,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 5
         Max: 8
+      Capacity: 7
       RespawnTime: 10
       Exp: 48
       HP: 10000
@@ -262,6 +279,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 3
         Max: 5
+      Capacity: 9
       RespawnTime: 120
       Exp: 80
       HP: 6500
@@ -274,6 +292,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 9
       RespawnTime: 10
       Exp: 85
       HP: 6500
@@ -286,6 +305,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 8
       RespawnTime: 240
       Exp: 90
       HP: 6500
@@ -298,6 +318,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 8
       RespawnTime: 10
       Exp: 95
       HP: 6500
@@ -310,6 +331,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 8
       RespawnTime: 10
       Exp: 100
       HP: 6500
@@ -322,6 +344,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -334,6 +357,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -346,6 +370,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 10
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -358,6 +383,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -370,6 +396,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -382,6 +409,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -394,6 +422,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 10
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -406,6 +435,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -418,6 +448,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 12
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -430,6 +461,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 11
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -442,6 +474,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 13
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -454,6 +487,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 12
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -466,6 +500,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 13
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -478,6 +513,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 12
       RespawnTime: 10
       Exp: 200
       HP: 10000
@@ -490,6 +526,7 @@ MonoBehaviour:
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
+      Capacity: 12
       RespawnTime: 10
       Exp: 200
       HP: 10000

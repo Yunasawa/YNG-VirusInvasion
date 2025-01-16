@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 using YNL.Bases;
 using YNL.Utilities.Addons;
 
@@ -9,26 +10,15 @@ public class DatabaseEnemySO : ScriptableObject
     public int CurrentEnemy = 23;
     public SerializableDictionary<string, EnemySources> EnemySources = new();
 
-#if false
-    public DefaultAsset _folder;
-
     [Button]
-    public void GetAllEnemy()
+    public void Assign()
     {
-        EnemySources.Clear();
-
-        string path = AssetDatabase.GetAssetPath(_folder);
-
-        string[] guids = AssetDatabase.FindAssets("t:prefab", new[] { path });
-        foreach (string guid in guids)
+        foreach (var enemy in EnemySources)
         {
-            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
-
-            EnemySources.Add(prefab.name.RemoveWord("Monster "), new EnemySources(prefab.GetComponent<Enemy>()));
+            int stage = int.Parse(enemy.Key.Substring(6, 1));
+            enemy.Value.Capacity = stage + Random.Range(stage / 2 + 1, stage);
         }
     }
-#endif
 }
 
 public enum StageType : byte { StageTutorial, Stage1, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7 }

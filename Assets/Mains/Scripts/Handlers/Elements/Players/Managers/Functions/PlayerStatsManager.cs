@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -55,12 +56,9 @@ public class PlayerStatsManager : MonoBehaviour
         for (byte i = 0; i < 6; i++) _playerStats.UpdateAttributes((AttributeType)i);
     }
 
-    public void OnCollectEnemyDrops((ResourceType type, uint amount)[] drops)
+    public void OnCollectEnemyDrops(int capacity, SerializableDictionary<ResourceType, uint> drops)
     {
-        foreach (var drop in drops)
-        {
-            _capacityStats.AdjustResources(drop.type, Formula.Stats.GetResource(drop.amount));
-        }
+        _capacityStats.CollectDrops(capacity, drops);
         Player.OnChangeCapacity?.Invoke();
     }
 

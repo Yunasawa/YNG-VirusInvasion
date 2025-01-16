@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using YNL.Bases;
 using YNL.Extensions.Methods;
 
 public class CameraMovementManager : MonoBehaviour
@@ -13,9 +14,25 @@ public class CameraMovementManager : MonoBehaviour
     [SerializeField] private Transform _mainCamera;
     private Vector3 _nearPosition = new(0, 30, -20f);
     private Vector3 _farPosition = new(0, 50, -31.5f);
+    private Vector3 _truePosition;
     [SerializeField] private float _focusingSpeed = 0.2f;
 
     public bool EnableFollowTarget = true;
+
+    private void Awake()
+    {
+        Player.OnUpgradeAttribute += OnUpgradeAttribute;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnUpgradeAttribute -= OnUpgradeAttribute;
+    }
+
+    private void Start()
+    {
+        OnUpgradeAttribute(AttributeType.Radius);
+    }
 
     private void Update()
     {
@@ -25,13 +42,22 @@ public class CameraMovementManager : MonoBehaviour
 
             if (Player.IsMoving)
             {
-                _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _farPosition, _focusingSpeed.Oscillate());
+                
+                _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _truePosition, _focusingSpeed.Oscillate());
             }
             else
             {
                 _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _nearPosition, _focusingSpeed.Oscillate());
             }
         }
+    }
+
+    private void OnUpgradeAttribute(AttributeType type)
+    {
+        if (type != AttributeType.Radius) return;
+
+        float t = (Formula.Stats.GetRadius() - 15) / 30f;
+        _truePosition = Vector3.Lerp(_nearPosition, _farPosition, t);
     }
 
     private void FollowTarget()
