@@ -311,6 +311,12 @@ public static class Formula
             if (distance >= 5) return distance / 3.33f;
             else return 1.5f;
         }
+        public static Vector2 GetRandom2DPosition(float xRange, float yRange)
+        {
+            float x = UnityEngine.Random.Range(-xRange, xRange);
+            float y = UnityEngine.Random.Range(-yRange, yRange);
+            return new(x, y);
+        }
     }
     public static class Upgrade
     {
