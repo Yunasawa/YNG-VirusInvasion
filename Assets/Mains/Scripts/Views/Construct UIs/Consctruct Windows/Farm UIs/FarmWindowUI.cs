@@ -20,6 +20,7 @@ public class FarmWindowUI : ConstructWindowUI
     [SerializeField] private FarmNodeUI _nodePrefab;
     [SerializeField] private Transform _nodeContainer;
 
+    [SerializeField] private TextMeshProUGUI _title;
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _capacityText;
@@ -56,6 +57,9 @@ public class FarmWindowUI : ConstructWindowUI
     public override void OnOpenWindow()
     {
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
+
+        _title.text = Game.Data.ConstructStats.Farms[Construct.CurrentConstruct.Substring(0, 5)].Name;
+        _icon.sprite = Game.Data.Vault.ResourceIcons[_farm.GeneratedResource];
         CreateNodes();
 
         Construct.OnFarmCountdown?.Invoke(_farm, _farm.TimeCounter);
@@ -71,7 +75,7 @@ public class FarmWindowUI : ConstructWindowUI
     }
     private void CreateNodes()
     {
-        _stats = Array.Find(Game.Data.ConstructStats.Farms, x => x.Name == Construct.CurrentConstruct.Substring(0, 5));
+        _stats = Game.Data.ConstructStats.Farms[Construct.CurrentConstruct.Substring(0, 5)];
 
         _nodeContainer.DestroyAllChildren();
 

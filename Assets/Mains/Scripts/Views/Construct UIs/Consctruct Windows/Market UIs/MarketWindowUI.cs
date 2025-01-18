@@ -21,6 +21,7 @@ public class MarketWindowUI : ConstructWindowUI
 
     private Dictionary<string, MarketNodeUI> _nodes = new();
 
+    [SerializeField] private TextMeshProUGUI _title;
     [SerializeField] private TextMeshProUGUI _evolutionInfo; 
     [SerializeField] private Button _evolutionButton; 
     [SerializeField] private TextMeshProUGUI _evolutionCost;
@@ -54,7 +55,9 @@ public class MarketWindowUI : ConstructWindowUI
     private void Initialize()
     {
         _construct = Player.Construction.Construct.GetComponent<MarketConstruct>();
-        _stats = Array.Find(Game.Data.ConstructStats.Markets, x => x.Name == Player.Construction.Construct.Name);
+        _stats = Game.Data.ConstructStats.Markets[Player.Construction.Construct.Name];
+
+        _title.text = _stats.Name;
 
         _evolution = _stats.Evolutions.FirstOrDefault(i => i.Evolution == _construct.Evolution);
 

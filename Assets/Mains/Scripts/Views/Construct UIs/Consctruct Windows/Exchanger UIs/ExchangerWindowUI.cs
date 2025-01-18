@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -15,6 +16,7 @@ public class ExchangerWindowUI : ConstructWindowUI
     [SerializeField] private SerializableDictionary<ResourceType, ResourceNodeUI> _resourceNodes = new();
     [SerializeField] private ResourceNodeUI _resourceNode;
     [SerializeField] private Transform _resourceContainer;
+    [SerializeField] private TextMeshProUGUI _title;
     private List<ResourceType> _resourceTypes = new();
     private bool _isCreate = false;
 
@@ -37,7 +39,8 @@ public class ExchangerWindowUI : ConstructWindowUI
 
     private void CreateNodes()
     {
-        _stats = Array.Find(Game.Data.ConstructStats.Exchangers, x => x.Name == Player.Construction.Construct.Name);
+        _stats = Game.Data.ConstructStats.Exchangers[Player.Construction.Construct.Name];
+        _title.text = _stats.Name;
 
         _resourceTypes.Clear();
         _nodeContainer.DestroyAllChildren();

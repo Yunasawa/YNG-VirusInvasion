@@ -1,11 +1,14 @@
+using Sirenix.OdinInspector;
+using YNL.Utilities.Addons;
+
 namespace YNL.Bases
 {
     [System.Serializable]
     public class ConstructStats
     {
-        public MarketStats[] Markets = new MarketStats[0];
-        public ExchangerStats[] Exchangers = new ExchangerStats[0];
-        public FarmStats[] Farms = new FarmStats[0];
+        public SerializableDictionary<string, MarketStats> Markets = new();
+        public SerializableDictionary<string, ExchangerStats> Exchangers = new();
+        public SerializableDictionary<string, FarmStats> Farms = new();
     }
 
     [System.Serializable]
