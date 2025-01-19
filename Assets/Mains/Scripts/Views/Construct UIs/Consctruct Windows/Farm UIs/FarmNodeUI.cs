@@ -6,15 +6,13 @@ using YNL.Extensions.Methods;
 
 public class FarmNodeUI : MonoBehaviour
 {
-    private PlayerStats _playerStats => Game.Data.PlayerStats;
-    private ConstructStats _constructionStat => Game.Data.ConstructStats;
     private RuntimeConstructStats _runtimeConstructStats => Game.Data.RuntimeStats.ConstructStats;
 
     private FarmStatsNode _node;
 
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _text;
-    [SerializeField] private Button _button;
+    [SerializeField] private SwitchButton _button;
     [SerializeField] private TextMeshProUGUI _buttonLabel;
 
     private (ResourceType Type, int Amount) _upgradeCost = new();
@@ -32,7 +30,7 @@ public class FarmNodeUI : MonoBehaviour
 
     private void Start()
     {
-        _button.onClick.AddListener(OnButtonClicked);
+        _button.OnClick.AddListener(OnButtonClicked);
     }
 
     public void Initialize(FarmStatsNode node)
@@ -47,17 +45,30 @@ public class FarmNodeUI : MonoBehaviour
         if (!this.gameObject.activeInHierarchy) return;
 
         RuntimeFarmStats.Attribute extraStats = _runtimeConstructStats.Farms[Construct.CurrentConstruct].Attributes[_node.Name];
+
+        _icon.sprite = Game.Data.Vault.FarmIcons[_node.Name];
+
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
-        (string from, string to) statsToString = new($"<color=#00940b><b>{stats.from}</b></color>", $"<color=#00940b><b>{stats.to}</b></color>");
-        _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
+        (string from, string to) statsToString = new($"<color=#7D6C00><b>{stats.from}</b></color>", $"<color=#0C7B3E><b>{stats.to}</b></color>");
+
+        string content = $"<size=45><color=#D9393E>{_node.Name}</color></size>: Level <color=#0058AF>{extraStats.Level}</color> > <color=#0058AF>{extraStats.Level + 1}</color>\n";
+        content += $"{_node.Description.Replace("$1", statsToString.from).Replace("$2", statsToString.to)}";
+
+        _text.text = content;
 
         _upgradeCost = Formula.Upgrade.GetFarmUpgradeCost(_node, (int)extraStats.Level);
 
         _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
 
         _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
+
+        EnableInteraction();
+    }
+
+    private void EnableInteraction()
+    {
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
-        _button.interactable = _enoughResource;
+        _button.Button.targetGraphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
     }
 
     private void OnButtonClicked()

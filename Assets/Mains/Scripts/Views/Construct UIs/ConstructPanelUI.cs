@@ -9,7 +9,6 @@ public class ConstructPanelUI : MonoBehaviour
     public SerializableDictionary<ConstructType, ConstructWindowUI> Windows = new();
     public ConstructType CurrentWindow;
     [SerializeField] private Button _closeButton;
-    [SerializeField] private TextMeshProUGUI _panelTitle;
 
     private void Awake()
     {
@@ -46,7 +45,6 @@ public class ConstructPanelUI : MonoBehaviour
         if (isOpen)
         {
             CurrentWindow = type;
-            _panelTitle.text = manager.Name;
         }
     }
 }

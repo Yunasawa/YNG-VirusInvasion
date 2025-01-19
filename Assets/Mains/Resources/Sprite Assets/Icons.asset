@@ -183,6 +183,12 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: MiniQuest8
     m_HashCode: -794670147
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 17
+    m_Scale: 1
+    m_Name: Currency3
+    m_HashCode: 1237156372
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -208,7 +214,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 80
       m_HorizontalAdvance: 120
     m_GlyphRect:
-      m_X: 100
+      m_X: 102
       m_Y: 307
       m_Width: 102
       m_Height: 102
@@ -224,7 +230,7 @@ MonoBehaviour:
       m_HorizontalBearingY: 80
       m_HorizontalAdvance: 120
     m_GlyphRect:
-      m_X: 200
+      m_X: 204
       m_Y: 307
       m_Width: 102
       m_Height: 102
@@ -456,5 +462,21 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: -375153368, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
+  - m_Index: 17
+    m_Metrics:
+      m_Width: 100
+      m_Height: 100
+      m_HorizontalBearingX: 20
+      m_HorizontalBearingY: 80
+      m_HorizontalAdvance: 140
+    m_GlyphRect:
+      m_X: 409
+      m_Y: 0
+      m_Width: 102
+      m_Height: 102
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -870823626, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []

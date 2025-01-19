@@ -57,7 +57,8 @@ public class MarketWindowUI : ConstructWindowUI
         _construct = Player.Construction.Construct.GetComponent<MarketConstruct>();
         _stats = Game.Data.ConstructStats.Markets[Player.Construction.Construct.Name];
 
-        _title.text = _stats.Name;
+       // _title.text = _stats.Name;
+        //MDebug.Log($"{_title.text} - {_stats.Name}");
 
         _evolution = _stats.Evolutions.FirstOrDefault(i => i.Evolution == _construct.Evolution);
 

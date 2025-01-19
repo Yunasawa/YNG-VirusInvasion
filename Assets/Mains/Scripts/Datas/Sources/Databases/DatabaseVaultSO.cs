@@ -11,4 +11,5 @@ public class DatabaseVaultSO : ScriptableObject
     public SerializableDictionary<AttributeType, Sprite> UpgradeIcons = new();
     public SerializableDictionary<string, Sprite> MarketIcons = new();
     public SerializableDictionary<string, Sprite> QuestIcons = new();
+    public SerializableDictionary<string, Sprite> FarmIcons = new();
 }

@@ -13,10 +13,12 @@ public class MarketNodeUI : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private TextMeshProUGUI _buttonLabel;
-    [SerializeField] private Button _button;
+    [SerializeField] private SwitchButton _button;
 
     private (ResourceType Type, int Amount) _upgradeCost = new();
     private bool _enoughResource = false;
+
+    private bool _interactable;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class MarketNodeUI : MonoBehaviour
 
     private void Start()
     {
-        _button.onClick.AddListener(OnButtonClicked);
+        _button.OnClick.AddListener(OnButtonClicked);
     }
 
     public void Initialize(MarketStatsNode node)
@@ -43,16 +45,19 @@ public class MarketNodeUI : MonoBehaviour
     {
         PlayerStats.ExtraStats extraStats = _playerStats.ExtraStatsLevel[_node.Key];
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
-        (string from, string to) statsToString = new($"<color=#2B7E22>{stats.from}</color>", $"<color=#2B7E22>{stats.to}</color>");
-        _text.text = $"{_node.Description.ReplaceStats(statsToString.from, statsToString.to)}\nLevel: {extraStats.Level}";
+        (string from, string to) statsToString = new($"<color=#7D6C00>{stats.from}</color>", $"<color=#0C7B3E>{stats.to}</color>");
+
+        string content = $"<size=45><color=#D9393E>{_node.Key.AddSpaces()}</color></size>: Level <color=#0058AF>{extraStats.Level}</color> > <color=#0058AF>{extraStats.Level + 1}</color>\n";
+        content += $"{_node.Description.Replace("$1", statsToString.from).Replace("$2", statsToString.to)}";
+
+        _text.text = content;
 
         _upgradeCost = Formula.Upgrade.GetMarketUpgradeCost(_node, (int)extraStats.Level);
 
         _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
 
         _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
-        _buttonLabel.color = _enoughResource ? Color.white : Color.red;
-        _button.interactable = _enoughResource;
+        EnableInteraction();
 
         if (Game.Data.Vault.MarketIcons.TryGetValue(_node.Key, out Sprite icon))
         {
@@ -60,8 +65,16 @@ public class MarketNodeUI : MonoBehaviour
         }
     }
 
+    private void EnableInteraction()
+    {
+        _buttonLabel.color = _enoughResource ? Color.white : Color.red;
+        _button.Button.targetGraphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
+    }
+
     private void OnButtonClicked()
     {
+        if (!_enoughResource) return;
+
         Player.OnConsumeResources?.Invoke(_upgradeCost.Type, _upgradeCost.Amount);
         Player.OnExtraStatsLevelUp?.Invoke(_node.Key);
         Player.OnTradeInMarket?.Invoke(Player.Construction.Construct.Name);

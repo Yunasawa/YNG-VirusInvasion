@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 7802245023747173317}
   _text: {fileID: 7326362149230578824}
-  _button: {fileID: 9086138621805305305}
+  _button: {fileID: 3460981075838321899}
   _buttonLabel: {fileID: 489598986852303992}
 --- !u!1 &3138999155589655606
 GameObject:
@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 854096880042597851}
   - component: {fileID: 7817961308198284094}
   - component: {fileID: 9086138621805305305}
+  - component: {fileID: 3460981075838321899}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -352,6 +353,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3460981075838321899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4475741450650396304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06025e340ec94249bb13106ff34c25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: {fileID: 0}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5358868746232937261
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,9 +434,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Extra capacity from $1 to $2 Extra capacity from $1 to $2
+  m_text: '<size=45><color=#D9393E>Income</color></size>: Level <color=#0058AF>0</color>
+    > <color=#0058AF>1</color>
 
-    Level'
+    Increase income per minute from <color=#7D6C00>0</color>%
+    > <color=#0C7B3E>2</color>%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
   m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
@@ -460,7 +479,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: -5
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 30
+  m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
@@ -622,14 +641,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6666667, g: 0.41960785, b: 0.3019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d408b05cbe5b4454eb163a524ccbd022, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4e961f967b8d2e4aa50748fcfa1f16d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

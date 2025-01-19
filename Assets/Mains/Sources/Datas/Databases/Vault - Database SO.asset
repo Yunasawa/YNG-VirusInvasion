@@ -24,7 +24,7 @@ MonoBehaviour:
     - {fileID: -988929041, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
     - {fileID: -2138821856, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
     - {fileID: -1770046278, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
-    - {fileID: 21300000, guid: e780540ef5425974c8d004a9872b2b6d, type: 3}
+    - {fileID: -870823626, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
   UpgradeIcons:
     _keys: 000102030405
     _values:
@@ -78,3 +78,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: b1f6a4fbaa33bfd42acccd3f01a11c84, type: 3}
     - {fileID: 21300000, guid: 071ff9a93ef99394c8eeec9384360d2f, type: 3}
     - {fileID: 21300000, guid: 4290f4b0d7f3bd04f8288108c6ebb2db, type: 3}
+  FarmIcons:
+    _keys:
+    - Income
+    - Capacity
+    _values:
+    - {fileID: 21300000, guid: f4e961f967b8d2e4aa50748fcfa1f16d, type: 3}
+    - {fileID: 21300000, guid: b7d4880f9864a91448035475759b6f72, type: 3}
