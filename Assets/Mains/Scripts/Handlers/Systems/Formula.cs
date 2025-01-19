@@ -276,7 +276,7 @@ public static class Formula
         {
             level = level == 0 ? _stats.Levels[AttributeType.HP] : level;
             int baseValue = 22;
-            return Mathf.RoundToInt(baseValue + (level / 2) * 0.2f + ((level + 1) / 2) * 0.3f + _extras[Key.Stats.ExtraHP].Value);
+            return Mathf.RoundToInt(baseValue + (level / 2) * 2 + ((level + 1) / 2) * 3 + _extras[Key.Stats.ExtraHP].Value);
         }
     
         public static float GetAttributeValue(AttributeType type, uint level = 0)
