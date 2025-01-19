@@ -301,6 +301,11 @@ public static class Formula
         }
 
 
+        public static int GetHeal()
+        {
+            return Mathf.FloorToInt(Game.Data.PlayerStats.ExtraStatsLevel[Key.Stats.ExtraRegenBoost].Value);
+        }
+
         public static float EnemyRadius => GetRadius() / 5;
     }
     public static class Value

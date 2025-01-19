@@ -1,6 +1,6 @@
 using OWS.ObjectPooling;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
@@ -17,6 +17,7 @@ public class EnemyPool : MonoBehaviour
     private EnemySources _enemySources;
     [SerializeField] private float _boundaryRadius = 10;
     private int _enemyCount = 0;
+    [SerializeField] private bool _moveWhenClear = true;
 
     private Boundary _boundary => Game.Data.BoundaryStages[_stageType];
 
@@ -28,6 +29,8 @@ public class EnemyPool : MonoBehaviour
     private NativeArray<float3> _targetPositions;
     private NativeArray<bool> _isPulling;
     private NativeArray<float> _movingSpeed;
+
+    public Action<uint> OnWaitToRespawn;
 
     private void OnValidate()
     {
@@ -121,7 +124,9 @@ public class EnemyPool : MonoBehaviour
     {
         _respawnCounter.Add(_enemySources.RespawnTime);
 
-        if (_enemyPool.activeObjects.Count <= 0) this.transform.position = _boundary.GetRandomPositionInRandomBoundary();
+        OnWaitToRespawn?.Invoke(_enemySources.RespawnTime);
+
+        if (_enemyPool.activeObjects.Count <= 0 && _moveWhenClear) this.transform.position = _boundary.GetRandomPositionInRandomBoundary();
     }
 
     private void SpawnOnCountingEnd()

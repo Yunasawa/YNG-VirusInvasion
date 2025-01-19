@@ -53,6 +53,8 @@ MonoBehaviour:
     - Virus 7 - 35
     - Virus 7 - 36
     - Virus 7 - 37
+    - SM 2 - 1
+    - SM 3 - 2
     _values:
     - Enemy: {fileID: 5163663866331831904, guid: f90ba971bceba33469f3e09f6f745f69, type: 3}
       MaxEnemyInAnArea:
@@ -535,3 +537,29 @@ MonoBehaviour:
       Drops:
         _keys: 00
         _values: b80b0000
+    - Enemy: {fileID: 1540429576224886009, guid: fa44d5e20713cb647b21baceb4b5c6d2, type: 3}
+      MaxEnemyInAnArea:
+        Min: 1
+        Max: 1
+      Capacity: 10
+      RespawnTime: 10
+      Exp: 20
+      HP: 500
+      MS: 0
+      AttackDamage: 3
+      Drops:
+        _keys: 0002
+        _values: f401000004000000
+    - Enemy: {fileID: 1540429576224886009, guid: fa22459b27525a145a762ebc176ab1c9, type: 3}
+      MaxEnemyInAnArea:
+        Min: 1
+        Max: 1
+      Capacity: 15
+      RespawnTime: 300
+      Exp: 50
+      HP: 2200
+      MS: 0
+      AttackDamage: 5
+      Drops:
+        _keys: 000205
+        _values: e80300000a00000005000000

@@ -14,6 +14,8 @@ public class PlayerStatsManager : MonoBehaviour
 
     [SerializeField] private HealthFieldUI _healthField;
 
+    private int _totalDamage = 0;
+
     private void Awake()
     {
         Player.OnCollectEnemyDrops += OnCollectEnemyDrops;
@@ -48,7 +50,7 @@ public class PlayerStatsManager : MonoBehaviour
 
         OnUpgradeAttribute(AttributeType.HP);
 
-        ReceiveDamage().Forget();
+        HandleHealth().Forget();
     }
 
     private void OnChangeStats()
@@ -150,21 +152,37 @@ public class PlayerStatsManager : MonoBehaviour
         _healthField.UpdateHealth();
     }
 
-    private async UniTaskVoid ReceiveDamage()
+    private async UniTaskVoid HandleHealth()
     {
         while (true)
         {
             await UniTask.WaitForSeconds(1);
 
-            int totalDamage = 0;
+            Damage();
+            Heal();
+        }
+
+        void Heal()
+        {
+            if (_playerStats.CurrentHP >= _playerStats.MaxHP) return;
+
+            _playerStats.CurrentHP += Formula.Stats.GetHeal();
+            if (_playerStats.CurrentHP > _playerStats.MaxHP) _playerStats.CurrentHP = _playerStats.MaxHP;
+
+            _healthField.UpdateHealth();
+        }
+
+        void Damage()
+        {
+            _totalDamage = 0;
 
             foreach (var group in Player.Enemy.Tentacles)
             {
                 if (group.Enemy.IsNull()) continue;
-                totalDamage += Game.Data.EnemySources[group.Enemy.Stats.ID].AttackDamage;
+                _totalDamage += Game.Data.EnemySources[group.Enemy.Stats.ID].AttackDamage;
             }
 
-            TakeDamage(totalDamage);
+            TakeDamage(_totalDamage);
         }
     }
 
