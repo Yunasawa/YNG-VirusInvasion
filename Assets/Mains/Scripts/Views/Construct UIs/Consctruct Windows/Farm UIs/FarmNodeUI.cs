@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ public class FarmNodeUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private SwitchButton _button;
     [SerializeField] private TextMeshProUGUI _buttonLabel;
+
+    private string _constructKey;
+    private string _nodeName;
 
     private (ResourceType Type, int Amount) _upgradeCost = new();
     private bool _enoughResource = false;
@@ -33,8 +37,10 @@ public class FarmNodeUI : MonoBehaviour
         _button.OnClick.AddListener(OnButtonClicked);
     }
 
-    public void Initialize(FarmStatsNode node)
+    public void Initialize(string key, string nodeName, FarmStatsNode node)
     {
+        _constructKey = key;
+        _nodeName = nodeName;
         _node = node;
         UpdateNode();
     }
@@ -43,6 +49,8 @@ public class FarmNodeUI : MonoBehaviour
     {
         if (this.IsNullOrDestroyed()) return;
         if (!this.gameObject.activeInHierarchy) return;
+
+        if (_node == null) _node = Game.Data.ConstructStats.Farms[_constructKey].Nodes.First(i => i.Name == _nodeName);
 
         RuntimeFarmStats.Attribute extraStats = _runtimeConstructStats.Farms[Construct.CurrentConstruct].Attributes[_node.Name];
 

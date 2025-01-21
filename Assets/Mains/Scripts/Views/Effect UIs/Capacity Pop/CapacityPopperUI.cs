@@ -90,7 +90,7 @@ public class CapacityPopperUI : MonoBehaviour
             image.Rect.anchoredPosition = new Vector2(Random.Range(-75f, 75f), Random.Range(-75f, 75f));
 
             image.Rect.DOScale(1, 0.3f).SetDelay(delay).SetEase(Ease.OutCubic);
-            image.Rect.DOAnchorPos(_poppingDestinations[type].anchoredPosition.AddY(400), 1).SetDelay(delay + 0.5f).SetEase(Ease.InBack);
+            image.Rect.DOMove(_poppingDestinations[type].position, 1).SetDelay(delay + 0.5f).SetEase(Ease.OutExpo);
             image.Rect.DOScale(0, 0.3f).SetDelay(delay + 1.5f).SetEase(Ease.OutCubic);
         }
     }

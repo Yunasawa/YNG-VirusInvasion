@@ -221,7 +221,7 @@ MonoBehaviour:
           To:
             Type: 0
             Amount: 100
-      - Name: Enzyme-Energize Exchanger
+      - Name: Enzy-Ener Exchanger
         Nodes:
         - From:
             Type: 4
@@ -279,7 +279,7 @@ MonoBehaviour:
           To:
             Type: 8
             Amount: 1
-      - Name: Enzy-Ener Exchanger
+      - Name: Enzy-Ener Exchanger 2
         Nodes:
         - From:
             Type: 4

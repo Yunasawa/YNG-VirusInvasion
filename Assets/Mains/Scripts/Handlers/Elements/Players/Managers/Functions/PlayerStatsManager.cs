@@ -148,6 +148,7 @@ public class PlayerStatsManager : MonoBehaviour
         _playerStats.CurrentHP -= damage;
         if (_playerStats.CurrentHP <= 0)
         {
+            _playerStats.CurrentHP = 0;
             Player.OnDeath?.Invoke();
         }
 

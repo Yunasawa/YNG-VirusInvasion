@@ -36,6 +36,7 @@ public class PlayerConstructionManager : ColliderTriggerListener
         if (other.tag.IsStringEqualToEnum(out ConstructType type))
         {
             ConstructManager manager = other.GetComponent<ConstructManager>();
+            if (manager.Type != ConstructType.Base) manager.UI.SetActive(true);
 
             if (manager.Type == ConstructType.Base)
             {
@@ -59,13 +60,9 @@ public class PlayerConstructionManager : ColliderTriggerListener
         if (other.tag.IsStringEqualToEnum(out ConstructType type))
         {
             ConstructManager manager = other.GetComponent<ConstructManager>();
-            InteractWith(false, manager.Type, manager);
+            if (manager.Type != ConstructType.Base) manager.UI.SetActive(false);
 
-            if (manager.Type == ConstructType.Quest)
-            {
-                QuestConstruct questConstruct = manager.GetComponent<QuestConstruct>();
-                questConstruct?.QuestUI.gameObject.SetActive(false);
-            }
+            InteractWith(false, manager.Type, manager);
         }
     }
 

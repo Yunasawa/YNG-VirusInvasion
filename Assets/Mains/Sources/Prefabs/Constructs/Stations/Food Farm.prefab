@@ -61,11 +61,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d33859bcf1bfb794086b1d3e31f5ca74, type: 2}
-  - {fileID: 2100000, guid: 89cdcc3867911ce4c84457528d1022cf, type: 2}
-  - {fileID: 2100000, guid: c9089684efcd8aa46888ace6c5147961, type: 2}
-  - {fileID: 2100000, guid: 01c438336b4453a44b2a8823068ed57f, type: 2}
-  - {fileID: 2100000, guid: 1361d8c58a3b92644a2004f50ed73315, type: 2}
+  - {fileID: 2100000, guid: 4f182a9b1107eec42b454ae374640a3c, type: 2}
+  - {fileID: 2100000, guid: 8cae05052956bd747a0722215c13a8f4, type: 2}
+  - {fileID: 2100000, guid: 2b82926d544ac8f4a81a5c9061f280fd, type: 2}
+  - {fileID: 2100000, guid: 703a8276176b8d5418df1cb839f7d485, type: 2}
+  - {fileID: 2100000, guid: 3ea87c40042a5dc4dbc990956aa4d348, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Farm1.1
   Type: 3
+  UI: {fileID: 4484943429810943156}
+  _button: {fileID: 6505025654017334577}
 --- !u!135 &2381329703575903749
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -346,6 +348,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750439431077545343}
     m_Modifications:
+    - target: {fileID: 1602070282746859559, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+      propertyPath: m_text
+      value: Protein Synthesis
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602070282746859559, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602070282746859559, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425160813944346584, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 656.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4675806765533292234, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
       propertyPath: m_Name
       value: Farm UIs
@@ -420,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 7.49
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 5798384000244792910, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -449,9 +467,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4831468882329365864, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
   m_PrefabInstance: {fileID: 9141873156894528126}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4484943429810943156}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8360ea2a1a735aa4fba8acfc22302ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4484943429810943156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4675806765533292234, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+  m_PrefabInstance: {fileID: 9141873156894528126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6505025654017334577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2636870145961693007, guid: 9b5b90fdad52b8e43838fee6cd8f6c8d, type: 3}
+  m_PrefabInstance: {fileID: 9141873156894528126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

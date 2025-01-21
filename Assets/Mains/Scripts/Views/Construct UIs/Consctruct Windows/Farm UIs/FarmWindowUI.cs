@@ -75,14 +75,16 @@ public class FarmWindowUI : ConstructWindowUI
     }
     private void CreateNodes()
     {
-        _stats = Game.Data.ConstructStats.Farms[Construct.CurrentConstruct.Substring(0, 5)];
+        string key = Construct.CurrentConstruct.Substring(0, 5);
+
+        _stats = Game.Data.ConstructStats.Farms[key];
 
         _nodeContainer.DestroyAllChildren();
 
         foreach (var stat in _stats.Nodes)
         {
             var node = Instantiate(_nodePrefab, _nodeContainer);
-            node.Initialize(stat);
+            node.Initialize(key, stat.Name, stat);
 
             if (!_nodes.ContainsKey(stat.Name)) _nodes.Add(stat.Name, node);
         }

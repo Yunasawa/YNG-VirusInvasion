@@ -20,7 +20,7 @@ public class FarmBillboardUI : MonoBehaviour
 
     public void Initialize(string name, ResourceType type)
     {
-        _title.text = name;
+        //_title.text = name;
         _icon.sprite = Game.Data.Vault.ResourceIcons[type];
 
         _button.onClick.AddListener(() => OnCollectResource?.Invoke());

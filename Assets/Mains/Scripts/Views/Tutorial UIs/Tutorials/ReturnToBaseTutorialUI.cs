@@ -30,6 +30,8 @@ public class ReturnToBaseTutorialUI : TutorialWindowUI
 
         TypeWriter().Forget();
         CameraManager.Instance.Door.FocusOnTarget(_homeBase.position, 2, 5).Forget();
+
+        _locationRing.gameObject.SetActive(Game.IsReturnToBaseTutorialActivated);
     }
 
     private async UniTaskVoid TypeWriter()
