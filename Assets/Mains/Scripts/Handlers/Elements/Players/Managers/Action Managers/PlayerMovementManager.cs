@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Data;
 using UnityEngine;
 using YNL.Bases;
@@ -20,6 +21,16 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private float _distance = 0.1f;
     [SerializeField] private float _height = 1;
     [SerializeField] private LayerMask _gravityMask;
+
+    private void Awake()
+    {
+        Player.OnRespawn += OnRespawn;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnRespawn -= OnRespawn;
+    }
 
     private void Start()
     {
@@ -98,5 +109,18 @@ public class PlayerMovementManager : MonoBehaviour
     {
         _playerStack.position = Player.Transform.position.SetY(0.5f);
         Player.Transform.localPosition = Vector3.zero;
+    }
+
+    private void OnRespawn()
+    {
+        ResetPosition().Forget();
+
+        async UniTaskVoid ResetPosition()
+        {
+            Player.Character.enabled = false;
+            Player.Transform.position = new Vector3(40, 0.5f, 60);
+            await UniTask.NextFrame();
+            Player.Character.enabled = true;
+        }
     }
 }

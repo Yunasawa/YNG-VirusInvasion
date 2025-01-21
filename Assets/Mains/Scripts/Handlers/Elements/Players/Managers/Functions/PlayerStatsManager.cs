@@ -28,6 +28,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnEnterHomeBase += OnEnterHomeBase;
         Player.OnChangeStats += OnChangeStats;
         Player.OnUpgradeAttribute += OnUpgradeAttribute;
+        Player.OnRespawn += OnRespawn;
     }
 
     private void OnDestroy()
@@ -42,6 +43,7 @@ public class PlayerStatsManager : MonoBehaviour
         Player.OnEnterHomeBase -= OnEnterHomeBase;
         Player.OnChangeStats -= OnChangeStats;
         Player.OnUpgradeAttribute -= OnUpgradeAttribute;
+        Player.OnRespawn -= OnRespawn;
     }
 
     private void Start()
@@ -193,5 +195,12 @@ public class PlayerStatsManager : MonoBehaviour
             _playerStats.MaxHP = Formula.Stats.GetHP();
             _healthField.UpdateHealth();
         }
+    }
+
+    private void OnRespawn()
+    {
+        Game.Data.CapacityStats.Reset();
+        Game.Data.PlayerStats.CurrentHP = Game.Data.PlayerStats.MaxHP;
+        _healthField.UpdateHealth();
     }
 }

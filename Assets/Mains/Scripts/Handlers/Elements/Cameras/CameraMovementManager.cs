@@ -23,11 +23,13 @@ public class CameraMovementManager : MonoBehaviour
     private void Awake()
     {
         Player.OnUpgradeAttribute += OnUpgradeAttribute;
+        Player.OnRespawn += OnRespawn;
     }
 
     private void OnDestroy()
     {
         Player.OnUpgradeAttribute -= OnUpgradeAttribute;
+        Player.OnRespawn -= OnRespawn;
     }
 
     private void Start()
@@ -47,7 +49,6 @@ public class CameraMovementManager : MonoBehaviour
 
             if (Player.IsMoving)
             {
-                
                 _mainCamera.localPosition = Vector3.Lerp(_mainCamera.localPosition, _truePosition, _focusingSpeed.Oscillate());
             }
             else
@@ -69,5 +70,10 @@ public class CameraMovementManager : MonoBehaviour
     {
         if (_isSmoothMovement) this.transform.position = Vector3.Lerp(this.transform.position, Target.transform.position, _followingSpeed.Oscillate(60));
         else this.transform.position = Target.transform.position;
+    }
+
+    private void OnRespawn()
+    {
+        this.transform.position = new Vector3(40, 0.5f, 60);
     }
 }
