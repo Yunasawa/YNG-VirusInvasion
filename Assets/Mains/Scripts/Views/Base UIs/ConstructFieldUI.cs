@@ -45,8 +45,6 @@ public class ConstructFieldUI : MonoBehaviour
         {
             ConstructButton.gameObject.SetActive(false);
 
-            //Construct.CurrentConstruct = "";
-
             View.OnOpenConstructWindow?.Invoke(_currentConstructType, false, _currentConstructManager);
         }
     }

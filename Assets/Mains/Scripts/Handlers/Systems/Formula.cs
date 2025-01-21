@@ -66,7 +66,7 @@ public static class Formula
         public static List<(ResourceType, int)> GetCapacityRequirement()
         {
             List<(ResourceType, int)> requirements = new();
-            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(25 * Mathf.Pow(1 + 0.25f, _stats.Levels[AttributeType.Capacity]))));
+            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(25 * Mathf.Pow(1 + 0.16f, _stats.Levels[AttributeType.Capacity]))));
 
             if (_stats.Levels[AttributeType.Capacity] >= 30 && _stats.Levels[AttributeType.Capacity] < 40)
             {

@@ -37,6 +37,7 @@ Transform:
   - {fileID: 2447189857380508260}
   - {fileID: 5976226886071605100}
   - {fileID: 2215005177639496182}
+  - {fileID: 906269397752722205}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7338378831259104290
@@ -190,6 +191,80 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19867628, guid: 01949c12a89de284792dc4b7b7128404, type: 3}
   m_PrefabInstance: {fileID: 2215005177639683342}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3364479565020971387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 965487057275891724}
+    m_Modifications:
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566144600743549853, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566144600743549853, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566144600743549853, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295318237720374536, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+      propertyPath: m_Name
+      value: Shining Star
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+--- !u!4 &906269397752722205 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2459738772464038502, guid: b1f5ed91d5ff6ac469caff048f2ce676, type: 3}
+  m_PrefabInstance: {fileID: 3364479565020971387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6153442998376116359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,7 +336,7 @@ PrefabInstance:
     - target: {fileID: 3794744334725749031, guid: 16f6a3e2cadbe5d48818a044d8407228, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7339bc6d4ffecfc46976dd1568636fcc, type: 2}
+      objectReference: {fileID: 2100000, guid: 5faa88ff1cc65b7408411992acf6c233, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

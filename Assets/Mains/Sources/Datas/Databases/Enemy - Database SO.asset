@@ -65,7 +65,7 @@ MonoBehaviour:
       Exp: 2
       HP: 40
       MS: 0
-      AttackDamage: 3
+      AttackDamage: 0
       Drops:
         _keys: 00
         _values: 02000000
@@ -182,7 +182,7 @@ MonoBehaviour:
       Exp: 20
       HP: 2200
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 7
       Drops:
         _keys: 0005
         _values: 1e02000001000000
@@ -247,7 +247,7 @@ MonoBehaviour:
       Exp: 45
       HP: 2100
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 2
       Drops:
         _keys: 0001
         _values: 3c00000001000000
@@ -260,7 +260,7 @@ MonoBehaviour:
       Exp: 50
       HP: 2800
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 13
       Drops:
         _keys: 0006
         _values: d504000001000000
@@ -286,7 +286,7 @@ MonoBehaviour:
       Exp: 80
       HP: 6500
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 17
       Drops:
         _keys: 0004
         _values: 7204000001000000
@@ -312,7 +312,7 @@ MonoBehaviour:
       Exp: 90
       HP: 6500
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 20
       Drops:
         _keys: 0007
         _values: 8109000001000000
@@ -442,7 +442,7 @@ MonoBehaviour:
       Exp: 200
       HP: 10000
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 30
       Drops:
         _keys: 0003
         _values: b80b000002000000
@@ -542,7 +542,7 @@ MonoBehaviour:
         Min: 1
         Max: 1
       Capacity: 10
-      RespawnTime: 10
+      RespawnTime: 1800
       Exp: 20
       HP: 500
       MS: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
         Min: 1
         Max: 1
       Capacity: 15
-      RespawnTime: 300
+      RespawnTime: 3600
       Exp: 50
       HP: 2200
       MS: 0

@@ -13,7 +13,8 @@ public class CameraMovementManager : MonoBehaviour
 
     [SerializeField] private Transform _mainCamera;
     private Vector3 _nearPosition = new(0, 30, -20f);
-    private Vector3 _farPosition = new(0, 50, -31.5f);
+    private Vector3 _middlePosition = new(0, 40, -25f);
+    private Vector3 _farPosition = new(0, 55, -35f);
     private Vector3 _truePosition;
     [SerializeField] private float _focusingSpeed = 0.2f;
 
@@ -31,6 +32,10 @@ public class CameraMovementManager : MonoBehaviour
 
     private void Start()
     {
+        _nearPosition = new(0, 30, -20f);
+        _middlePosition = new(0, 40, -25f);
+        _farPosition = new(0, 55, -35f);
+
         OnUpgradeAttribute(AttributeType.Radius);
     }
 
@@ -57,7 +62,7 @@ public class CameraMovementManager : MonoBehaviour
         if (type != AttributeType.Radius) return;
 
         float t = (Formula.Stats.GetRadius() - 15) / 30f;
-        _truePosition = Vector3.Lerp(_nearPosition, _farPosition, t);
+        _truePosition = Vector3.Lerp(_middlePosition, _farPosition, t);
     }
 
     private void FollowTarget()

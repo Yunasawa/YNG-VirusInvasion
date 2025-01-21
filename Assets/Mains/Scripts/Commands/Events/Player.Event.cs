@@ -29,4 +29,6 @@ public static partial class Player
     public static Action<string, QuestBillboardUI> OnOpenQuestWindow { get; set; }
 
     public static Action<string> OnDefeatEnemy { get; set; }
+    public static Action OnDeath { get; set; }
+    public static Action OnRespawn { get; set; }
 }
