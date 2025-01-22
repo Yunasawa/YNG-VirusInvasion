@@ -23,7 +23,7 @@ public class ConstructFieldUI : MonoBehaviour
 
     private void Start()
     {
-        ConstructButton.gameObject.SetActive(false);
+        //ConstructButton.gameObject.SetActive(false);
         ConstructButton.onClick.AddListener(OnOpenConstructWindow);
     }
 
@@ -36,14 +36,14 @@ public class ConstructFieldUI : MonoBehaviour
         {
             _currentConstructType = type;
             _currentConstructManager = manager;
-            ConstructButton.gameObject.SetActive(true);
+            //ConstructButton.gameObject.SetActive(true);
             ConstructTitle.text = type.ToString();
 
             Construct.CurrentConstruct = manager.Name;
         }
         else
         {
-            ConstructButton.gameObject.SetActive(false);
+            //ConstructButton.gameObject.SetActive(false);
 
             View.OnOpenConstructWindow?.Invoke(_currentConstructType, false, _currentConstructManager);
         }

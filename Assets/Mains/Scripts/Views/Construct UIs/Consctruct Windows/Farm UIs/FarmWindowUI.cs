@@ -58,6 +58,7 @@ public class FarmWindowUI : ConstructWindowUI
     {
         _farm = Player.Construction.Construct.GetComponent<FarmConstruct>();
 
+        MDebug.Log(Construct.CurrentConstruct);
         _title.text = Game.Data.ConstructStats.Farms[Construct.CurrentConstruct.Substring(0, 5)].Name;
         _icon.sprite = Game.Data.Vault.ResourceIcons[_farm.GeneratedResource];
         CreateNodes();

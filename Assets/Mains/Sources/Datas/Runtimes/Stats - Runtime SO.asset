@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
-    CurrentLevel: 2
-    CurrentExp: 62
+    CurrentLevel: 1
+    CurrentExp: 32
     CurrentHP: 22
     MaxHP: 22
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 1003
+      - 101010110
       - 0
-      - 8
+      - 0
       - 0
       - 0
       - 0
@@ -33,8 +33,8 @@ MonoBehaviour:
     Attributes:
       _keys: 000102030405
       _values:
-      - 166
       - 17
+      - 16
       - 8
       - 15
       - 1
@@ -50,7 +50,7 @@ MonoBehaviour:
       - 0
     Levels:
       _keys: 000102030405
-      _values: 320000000100000000000000000000000000000000000000
+      _values: 010000000000000000000000000000000000000000000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed

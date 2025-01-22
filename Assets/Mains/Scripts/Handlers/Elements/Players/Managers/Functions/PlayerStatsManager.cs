@@ -204,4 +204,9 @@ public class PlayerStatsManager : MonoBehaviour
         Game.Data.PlayerStats.CurrentHP = Game.Data.PlayerStats.MaxHP;
         _healthField.UpdateHealth();
     }
+
+    public void UpdateHealthBar()
+    {
+        _healthField.UpdateHealth();
+    }
 }
