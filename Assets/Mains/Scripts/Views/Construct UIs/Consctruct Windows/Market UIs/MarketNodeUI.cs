@@ -68,7 +68,7 @@ public class MarketNodeUI : MonoBehaviour
     private void EnableInteraction()
     {
         _buttonLabel.color = _enoughResource ? Color.white : Color.red;
-        _button.Button.targetGraphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
+        _button.Graphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
     }
 
     private void OnButtonClicked()

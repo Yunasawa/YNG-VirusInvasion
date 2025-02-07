@@ -6,6 +6,8 @@ using YNL.Utilities.Addons;
 public class GameData : MonoBehaviour
 {
     public RuntimeStatsSO RuntimeStats;
+    public RuntimeEnemySO RuntimeEnemy;
+
     [SerializeField] private DatabaseStatsSO _databaseStats;
     [SerializeField] private DatabaseEnemySO _databaseEnemy;
 

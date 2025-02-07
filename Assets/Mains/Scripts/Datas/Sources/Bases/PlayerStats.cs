@@ -20,6 +20,7 @@ namespace YNL.Bases
 
         public int CurrentHP;
         public int MaxHP;
+        public float RatioHP => (float)CurrentHP / MaxHP;
 
         public SerializableDictionary<ResourceType, float> Resources = new();
 

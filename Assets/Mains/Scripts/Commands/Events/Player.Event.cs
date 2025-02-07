@@ -16,6 +16,7 @@ public static partial class Player
     public static Action OnChangeStats { get; set; }
     public static Action<(ResourceType, int)[]> OnReturnCapacity { get; set; }
     public static Action<AttributeType> OnUpgradeAttribute { get; set; }
+    public static Action<bool, int> OnChangeHP { get; set; }
 
     public static Action<string> OnExtraStatsUpdate { get; set; }
     public static Action<string> OnFarmStatsUpdate { get; set; }

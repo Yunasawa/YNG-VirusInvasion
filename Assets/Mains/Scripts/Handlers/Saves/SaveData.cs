@@ -13,6 +13,8 @@ public class SaveData
 
     public SerializeQuestStats SerializeQuestStats = new();
 
+    public RuntimeEnemyStats RuntimeEnemyStats;
+
     public SerializableVector3 CurrentPosition;
     public StageType CurrentStage;
 
@@ -23,6 +25,8 @@ public class SaveData
         RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
 
         SerializeQuestStats.SerializeData();
+
+        RuntimeEnemyStats = Game.Data.RuntimeEnemy.EnemyStats;
 
         CurrentPosition = new(Player.Transform.position);
         CurrentStage = Player.Stage.CurrentStage;

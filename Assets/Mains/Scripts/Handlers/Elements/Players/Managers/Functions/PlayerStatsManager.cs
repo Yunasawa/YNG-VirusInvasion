@@ -152,6 +152,8 @@ public class PlayerStatsManager : MonoBehaviour
             Player.OnDeath?.Invoke();
         }
 
+        Player.OnChangeHP?.Invoke(true, damage);
+
         _healthField.UpdateHealth();
     }
 
@@ -169,10 +171,14 @@ public class PlayerStatsManager : MonoBehaviour
         {
             if (_playerStats.CurrentHP >= _playerStats.MaxHP) return;
 
-            _playerStats.CurrentHP += Formula.Stats.GetHeal();
+            int heal = Formula.Stats.GetHeal();
+
+            _playerStats.CurrentHP += heal;
             if (_playerStats.CurrentHP > _playerStats.MaxHP) _playerStats.CurrentHP = _playerStats.MaxHP;
 
             _healthField.UpdateHealth();
+
+            Player.OnChangeHP?.Invoke(false, heal);
         }
 
         void Damage()

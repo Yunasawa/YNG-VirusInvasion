@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using OWS.ObjectPooling;
 using System;
 using System.Collections.Generic;
@@ -141,6 +142,15 @@ public class EnemyPool : MonoBehaviour
                 _respawnCounter.RemoveAt(i);
             }
         }
+    }
+
+    public async UniTaskVoid UpdateForSMVirus(int time)
+    {
+        await UniTask.DelayFrame(2);
+
+        _enemies[0].ReturnToPool();
+        if (_respawnCounter.IsEmpty()) _respawnCounter.Add(time);
+        else _respawnCounter[0] = time;
     }
 }
 

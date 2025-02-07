@@ -6,15 +6,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using YNL.Extensions.Methods;
 
-public class ExpPopperUI : MonoBehaviour
+public class HPPopperUI : MonoBehaviour
 {
-    private class ExpGroup
+    private class HPGroup
     {
         public TextMeshProUGUI Text;
         public RectTransform Rect;
         public bool Enable = false;
 
-        public ExpGroup(TextMeshProUGUI text, RectTransform rect)
+        public HPGroup(TextMeshProUGUI text, RectTransform rect)
         {
             Text = text;
             Rect = rect;
@@ -22,18 +22,22 @@ public class ExpPopperUI : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI _poppingPrefab;
-    [SerializeField] private int _maxPoppingAmount = 30;
+    [SerializeField] private int _maxPoppingAmount = 20;
 
-    private List<ExpGroup> _poppingUIs = new();
+    private List<HPGroup> _poppingUIs = new();
+
+    private (Color Red, Color Green) _textColor;
 
     private void Awake()
     {
-        Player.OnCollectEnemyExp += OnCollectEnemyExp;
+        _textColor = new("#FF2A2A".ToColor(), "#2AFF74".ToColor());
+
+        Player.OnChangeHP += OnChangeHP;
     }
 
     private void OnDestroy()
     {
-        Player.OnCollectEnemyExp -= OnCollectEnemyExp;
+        Player.OnChangeHP -= OnChangeHP;
     }
 
     private void Start()
@@ -53,8 +57,10 @@ public class ExpPopperUI : MonoBehaviour
         }
     }
 
-    private void OnCollectEnemyExp(int exp)
+    private void OnChangeHP(bool isDamaged, int amount)
     {
+        if (amount <= 0) return;
+
         foreach (var popping in _poppingUIs)
         {
             if (popping.Enable) continue;
@@ -63,21 +69,23 @@ public class ExpPopperUI : MonoBehaviour
             break;
         }
 
-        async UniTaskVoid AnimatePopping(ExpGroup popping)
+        async UniTaskVoid AnimatePopping(HPGroup popping)
         {
             popping.Enable = true;
 
-            Vector2 position = Formula.Value.GetRandom2DPosition(200, 250);
+            Vector2 position = Formula.Value.GetRandom2DPosition(100, 50);
 
             popping.Rect.anchoredPosition = position.AddY(-50);
             popping.Rect.DOAnchorPos(position, 2).SetEase(Ease.Linear);
 
-            popping.Text.text = $"+ {exp} EXP";
-            popping.Text.DOColor(Color.white, 1).SetEase(Ease.Linear);
+            string symbol = isDamaged ? "-" : "+";
+            popping.Text.text = $"{symbol} {amount} HP";
+            popping.Text.color = Color.clear;
+            popping.Text.DOColor(isDamaged ? _textColor.Red : _textColor.Green, 0.5f).SetEase(Ease.Linear);
 
             await UniTask.WaitForSeconds(2);
 
-            popping.Text.DOColor(Color.clear, 1).SetEase(Ease.Linear);
+            popping.Text.DOColor(Color.clear, 0.5f).SetEase(Ease.Linear);
             popping.Enable = false;
         }
     }

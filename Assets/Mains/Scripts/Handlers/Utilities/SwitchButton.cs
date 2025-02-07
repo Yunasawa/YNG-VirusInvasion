@@ -6,12 +6,12 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class SwitchButton : MonoBehaviour, IPointerDownHandler
 {
-    [HideInInspector] public Button Button;
+    [HideInInspector] public Image Graphic;
     public UnityEvent OnClick;
 
     private void Awake()
     {
-        Button = GetComponent<Button>();
+        Graphic = GetComponent<Image>();
     }
 
     public void OnPointerDown(PointerEventData eventData)

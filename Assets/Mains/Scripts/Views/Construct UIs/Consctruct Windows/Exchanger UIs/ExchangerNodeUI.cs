@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -19,6 +20,8 @@ public class ExchangerNodeUI : MonoBehaviour
 
     private void Awake()
     {
+        _button.OnClick.AddListener(OnButtonClicked);
+
         Player.OnChangeResources += UpdateNode;
     }
 
@@ -42,7 +45,6 @@ public class ExchangerNodeUI : MonoBehaviour
 
     private void UpdateNode()
     {
-        _button.OnClick.AddListener(OnButtonClicked);
         _enoughResource = Game.Data.PlayerStats.Resources[_node.From.Type] >= _node.From.Amount;
 
         EnableInteraction();
@@ -51,7 +53,7 @@ public class ExchangerNodeUI : MonoBehaviour
     private void EnableInteraction()
     {
         _buttonText.color = _enoughResource ? Color.white : Color.red;
-        _button.Button.targetGraphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
+        _button.Graphic.color = _enoughResource ? Color.white : "#FFFFFF80".ToColor();
     }
 
     private void OnButtonClicked()

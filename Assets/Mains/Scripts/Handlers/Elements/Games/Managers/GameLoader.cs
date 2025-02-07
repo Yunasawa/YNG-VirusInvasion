@@ -47,6 +47,8 @@ public class GameLoader : MonoBehaviour
         Game.Data.CapacityStats = _saveData.CapacityStats;
         Game.Data.RuntimeStats.ConstructStats = _saveData.RuntimeConstructStats;
 
+        Game.Data.RuntimeEnemy.EnemyStats = _saveData.RuntimeEnemyStats == null ? new() : _saveData.RuntimeEnemyStats;
+
         LoadDataDelay().Forget();
     }
 
