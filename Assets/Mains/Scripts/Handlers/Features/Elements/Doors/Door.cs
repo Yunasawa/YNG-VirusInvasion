@@ -13,14 +13,16 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        if (Game.Data.PlayerStats.CurrentLevel >= (int)Stage2 && this.GetComponent<Lock>().IsNull())
-        {
-            _doorBarrier.localPosition = _doorBarrier.localPosition.SetY(-11);
-        }
+        if (Game.Data.PlayerStats.CurrentLevel >= (int)Stage2 && this.GetComponent<Lock>().IsNull()) LowDoor();
     }
 
     public void OpenDoor()
     {
         _doorBarrier.DOLocalMove(_doorBarrier.localPosition.SetY(-11), 2).SetEase(Ease.Linear);
+    }
+
+    public void LowDoor()
+    {
+        _doorBarrier.localPosition = _doorBarrier.localPosition.SetY(-11);
     }
 }

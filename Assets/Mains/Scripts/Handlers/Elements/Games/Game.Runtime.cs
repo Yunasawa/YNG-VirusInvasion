@@ -5,4 +5,5 @@ public static partial class Game
     public static bool IsUpgradeAttributeTutorialActivated = false;
 
     public static bool IsFocusOnMainQuest1FirstTime = true;
+    public static bool IsUnlockedDoorStage6 = false;
 }

@@ -42,6 +42,7 @@ public class GameLoader : MonoBehaviour
         Game.IsReturnToBaseTutorialActivated = _saveData.TutorialToggle.ReturnToBaseTutorial;
         Game.IsUpgradeAttributeTutorialActivated = _saveData.TutorialToggle.UpgradeAttributeTutorial;
         Game.IsFocusOnMainQuest1FirstTime = _saveData.TutorialToggle.IsFocusOnMainQuest1FirstTime;
+        Game.IsUnlockedDoorStage6 = _saveData.TutorialToggle.IsUnlockedDoorStage6;
 
         Game.Data.PlayerStats = _saveData.PlayerStats;
         Game.Data.CapacityStats = _saveData.CapacityStats;

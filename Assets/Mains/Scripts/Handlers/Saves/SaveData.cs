@@ -5,7 +5,7 @@ using YNL.Bases;
 [System.Serializable]
 public class SaveData
 {
-    public TutorialToggle TutorialToggle = new();
+    public ConfigToggle TutorialToggle = new();
 
     public PlayerStats PlayerStats;
     public CapacityStats CapacityStats;
@@ -53,10 +53,11 @@ public struct SerializableVector3
 }
 
 [Serializable]
-public class TutorialToggle
+public class ConfigToggle
 {
     public bool StartGameTutorial = Game.IsStartGameTutorialActivated;
     public bool ReturnToBaseTutorial = Game.IsReturnToBaseTutorialActivated;
     public bool UpgradeAttributeTutorial = Game.IsUpgradeAttributeTutorialActivated;
     public bool IsFocusOnMainQuest1FirstTime = Game.IsFocusOnMainQuest1FirstTime;
+    public bool IsUnlockedDoorStage6 = Game.IsUnlockedDoorStage6;
 }

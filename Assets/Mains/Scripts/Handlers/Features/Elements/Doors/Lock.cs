@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 
 public class Lock : MonoBehaviour
 {
@@ -17,8 +18,14 @@ public class Lock : MonoBehaviour
     {
         _door = GetComponent<Door>();
 
-        _button.onClick.AddListener(Unlock);
+        _button.onClick.AddListener(TryToUnlock);
         _text.text = GetRequirementText();
+    }
+
+    private void Start()
+    {
+        if (Game.IsUnlockedDoorStage6) Unlock(true);
+        MDebug.Log(Game.IsUnlockedDoorStage6);
     }
 
     private string GetRequirementText()
@@ -33,7 +40,7 @@ public class Lock : MonoBehaviour
         return text;
     }
 
-    private void Unlock()
+    private void TryToUnlock()
     {
         bool meetRequirement = true;
 
@@ -53,7 +60,16 @@ public class Lock : MonoBehaviour
             Player.OnConsumeResources?.Invoke(requirement.Type, requirement.Amount);
         }
 
-        _door.OpenDoor();
+        Game.IsUnlockedDoorStage6 = true;
+
+        Unlock(false);
+    }
+
+    private void Unlock(bool force = false)
+    {
+        if (!force) _door.OpenDoor();
+        else _door.LowDoor();
+
         _lockUI.SetActive(false);
     }
 }

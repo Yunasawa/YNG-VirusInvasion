@@ -25,11 +25,11 @@ public static class Key
         public const string ExtraDefence = "ExtraDefence";
         public const string ExtraSlowdown = "ExtraSlowdown";
 
-        public const string HunterCellAmount = "HunterCellAmount";
-        public const string HunterCellDPS = "HunterCellDPS";
-        public const string HunterCellCapacity = "HunterCellCapacity";
-        public const string DeliveryCellAmount = "DeliveryCellAmount";
-        public const string DeliveryCellCapacity = "DeliveryCellCapacity";
+        public const string HunterCellAmount = "HunterAmount";
+        public const string HunterCellDPS = "HunterDPS";
+        public const string HunterCellCapacity = "HunterCapacity";
+        public const string DeliveryCellAmount = "DeliveryAmount";
+        public const string DeliveryCellCapacity = "DeliveryCapacity";
 
         public const string ExtraDPSBoost = "ExtraDPSBoost";
         public const string ExtraHPBoost = "ExtraHPBoost";
