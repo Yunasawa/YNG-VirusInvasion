@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyStats:
     SMVirusRespawnTimes:
-      _keys: []
-      _values: []
+      _keys:
+      - SM 2 - 1
+      - SM 3 - 2
+      _values:
+      - Time: 1554
+      - Time: -145

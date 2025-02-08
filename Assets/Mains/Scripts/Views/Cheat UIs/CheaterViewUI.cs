@@ -22,8 +22,6 @@ public abstract class CheaterViewUI : MonoBehaviour
     {
         _isExpanded = !_isExpanded;
 
-        MDebug.Log("ASSD");
-
         Rect.DOSizeDelta(new Vector2(Rect.sizeDelta.x, _isExpanded ? ExpandedHeight : 75), 1).SetEase(Ease.OutExpo);
 
         OnOpenView();

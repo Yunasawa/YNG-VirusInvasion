@@ -15,6 +15,6 @@ public class RuntimeEnemyStats
 [System.Serializable]
 public class EnemyRespawnTimeSpan
 {
-    public int Time;
+    public int Time = 0;
     public DateTime DateTime;
 }

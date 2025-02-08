@@ -546,7 +546,7 @@ MonoBehaviour:
       Exp: 20
       HP: 500
       MS: 0
-      AttackDamage: 3
+      AttackDamage: 0
       Drops:
         _keys: 0002
         _values: f401000004000000
@@ -559,7 +559,7 @@ MonoBehaviour:
       Exp: 50
       HP: 2200
       MS: 0
-      AttackDamage: 5
+      AttackDamage: 0
       Drops:
         _keys: 000205
         _values: e80300000a00000005000000

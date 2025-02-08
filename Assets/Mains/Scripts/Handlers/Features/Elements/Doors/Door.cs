@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
 
     private void Start()
     {
-        if (Game.Data.PlayerStats.CurrentLevel >= (int)Stage2)
+        if (Game.Data.PlayerStats.CurrentLevel >= (int)Stage2 && this.GetComponent<Lock>().IsNull())
         {
             _doorBarrier.localPosition = _doorBarrier.localPosition.SetY(-11);
         }
