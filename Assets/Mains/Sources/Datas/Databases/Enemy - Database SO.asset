@@ -232,7 +232,7 @@ MonoBehaviour:
       Capacity: 7
       RespawnTime: 10
       Exp: 40
-      HP: 7000
+      HP: 3000
       MS: 0
       AttackDamage: 0
       Drops:
@@ -263,7 +263,7 @@ MonoBehaviour:
       AttackDamage: 13
       Drops:
         _keys: 0006
-        _values: d504000001000000
+        _values: d504000002000000
     - Enemy: {fileID: 8260301479492178723, guid: 98f2a245c1befcb43a5b6b83a83a2fe0, type: 3}
       MaxEnemyInAnArea:
         Min: 5
@@ -271,7 +271,7 @@ MonoBehaviour:
       Capacity: 7
       RespawnTime: 10
       Exp: 48
-      HP: 10000
+      HP: 4200
       MS: 0
       AttackDamage: 0
       Drops:
@@ -284,7 +284,7 @@ MonoBehaviour:
       Capacity: 9
       RespawnTime: 120
       Exp: 80
-      HP: 6500
+      HP: 5500
       MS: 0
       AttackDamage: 17
       Drops:
@@ -297,7 +297,7 @@ MonoBehaviour:
       Capacity: 9
       RespawnTime: 10
       Exp: 85
-      HP: 6500
+      HP: 5500
       MS: 0
       AttackDamage: 0
       Drops:
@@ -310,7 +310,7 @@ MonoBehaviour:
       Capacity: 8
       RespawnTime: 240
       Exp: 90
-      HP: 6500
+      HP: 5700
       MS: 0
       AttackDamage: 20
       Drops:
@@ -323,7 +323,7 @@ MonoBehaviour:
       Capacity: 8
       RespawnTime: 10
       Exp: 95
-      HP: 6500
+      HP: 6200
       MS: 0
       AttackDamage: 0
       Drops:
@@ -348,195 +348,195 @@ MonoBehaviour:
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 130
+      HP: 6000
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: f9100000
     - Enemy: {fileID: 527614400251700455, guid: eb6d51738f355fd4bb242535c40c312f, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 130
+      HP: 6400
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 93120000
     - Enemy: {fileID: 5462455911971707334, guid: 95d3d67b48a6bf546a5954b6f34dabc1, type: 3}
       MaxEnemyInAnArea:
-        Min: 8
-        Max: 12
+        Min: 2
+        Max: 3
       Capacity: 10
-      RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      RespawnTime: 600
+      Exp: 150
+      HP: 8000
       MS: 0
       AttackDamage: 0
       Drops:
-        _keys: 00
-        _values: b80b0000
+        _keys: 000702
+        _values: ac0d00000300000006000000
     - Enemy: {fileID: 1182410275117943714, guid: 8e244dbb07e528943b436c19acb7f4aa, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 150
+      HP: 7200
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: cb140000
     - Enemy: {fileID: 5085148707084039927, guid: 597e56bdf2e46594c84e9bc38bd76280, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 150
+      HP: 7500
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 12170000
     - Enemy: {fileID: 5871339100654224433, guid: 2383f19b403bda04491b99321ce2c9d6, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 160
+      HP: 8200
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 71180000
     - Enemy: {fileID: 7072004227273696462, guid: cbc3a7b589f084a4998fd229e0a569ec, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 10
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 160
+      HP: 8500
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: a5190000
     - Enemy: {fileID: 1540429576224886009, guid: 0eb08894a08f53d4585ddf1aea3d690b, type: 3}
       MaxEnemyInAnArea:
-        Min: 8
-        Max: 12
+        Min: 2
+        Max: 3
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 170
+      HP: 8000
       MS: 0
       AttackDamage: 30
       Drops:
         _keys: 0003
-        _values: b80b000002000000
+        _values: 0d16000005000000
     - Enemy: {fileID: 2973494880819082110, guid: e659d2e9703dbed4c9a2ecfae9a91373, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 12
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 210
+      HP: 9200
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 1c1b0000
     - Enemy: {fileID: 3840062996632054218, guid: cdddd543d70765d4784ffbb7d9412f9b, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 11
       RespawnTime: 10
-      Exp: 200
+      Exp: 215
       HP: 10000
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 741d0000
     - Enemy: {fileID: 8560245007069787627, guid: 3616121842c8fd64786f619729529962, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 13
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 230
+      HP: 11203
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 5b200000
     - Enemy: {fileID: 1833505095041689357, guid: 67ef3f7a48785bf4290f4e55adbd460c, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 12
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 230
+      HP: 12324
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: 55230000
     - Enemy: {fileID: 3322750886651859564, guid: 74891b4dce5a3194aa2b68c10bc5aae6, type: 3}
       MaxEnemyInAnArea:
-        Min: 8
-        Max: 12
+        Min: 1
+        Max: 2
       Capacity: 13
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 900
+      HP: 15000
       MS: 0
       AttackDamage: 0
       Drops:
-        _keys: 00
-        _values: b80b0000
+        _keys: 00060402
+        _values: d0210000040000000a00000009000000
     - Enemy: {fileID: 1502496351122396452, guid: 1b1672f3fac3aca458dc430edc56d2cb, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 12
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 235
+      HP: 13234
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: fa270000
     - Enemy: {fileID: 8550466542100645101, guid: 6c5a67a3bae7e224d9df8aabe5bf8c6e, type: 3}
       MaxEnemyInAnArea:
         Min: 8
         Max: 12
       Capacity: 12
       RespawnTime: 10
-      Exp: 200
-      HP: 10000
+      Exp: 250
+      HP: 14234
       MS: 0
       AttackDamage: 0
       Drops:
         _keys: 00
-        _values: b80b0000
+        _values: df2b0000
     - Enemy: {fileID: 1540429576224886009, guid: fa44d5e20713cb647b21baceb4b5c6d2, type: 3}
       MaxEnemyInAnArea:
         Min: 1

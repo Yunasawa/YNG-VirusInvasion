@@ -76,6 +76,7 @@ MonoBehaviour:
   Stats: {fileID: 325564017804580481}
   Movement: {fileID: 8560116923855392910}
   UI: {fileID: 253643236229599682}
+  IsEnable: 1
   IsCaught: 0
 --- !u!114 &325564017804580481
 MonoBehaviour:
@@ -196,7 +197,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5b8efe1a5a7d2346bcf382e4a59cbde, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 423682111496243127}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b8efe1a5a7d2346bcf382e4a59cbde, type: 3}
 --- !u!4 &1597620380072701759 stripped
@@ -208,6 +212,68 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f5b8efe1a5a7d2346bcf382e4a59cbde, type: 3}
   m_PrefabInstance: {fileID: 1270395766838724820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2865283060156511697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1597620380072701759}
+    m_Modifications:
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295318237720374536, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+      propertyPath: m_Name
+      value: Virus Shining
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+--- !u!4 &423682111496243127 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2459738772464038502, guid: 91bdeac43a56a554aaf62904a4089997, type: 3}
+  m_PrefabInstance: {fileID: 2865283060156511697}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4072654119309506353
 PrefabInstance:
