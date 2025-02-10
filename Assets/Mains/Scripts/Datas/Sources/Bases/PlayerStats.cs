@@ -76,5 +76,5 @@ namespace YNL.Bases
     }
 
     public enum ResourceType : byte { Food1, Energy1, Energy2, Energy3, Material1, Gen1, Gen2, Gen3, Gen4, Currency3 }
-    public enum AttributeType : byte { DPS, MS, Capacity, Radius, Tentacle, HP }
+    public enum AttributeType : byte { DPS, MS, Capacity, Radius, Tentacle, HP, GroupAttack }
 }

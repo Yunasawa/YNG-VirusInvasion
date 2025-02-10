@@ -201,6 +201,59 @@ public static class Formula
             }
             return requirements;
         }
+        public static List<(ResourceType, int)> GetGroupAttackRequirement()
+        {
+            List<(ResourceType, int)> requirements = new();
+
+            switch (_stats.Levels[AttributeType.GroupAttack])
+            {
+                case 0:
+                    requirements.Add(new(ResourceType.Food1, 250));
+                    break;
+                case 1:
+                    requirements.Add(new(ResourceType.Food1, 1000));
+                    break;
+                case 2:
+                    requirements.Add(new(ResourceType.Food1, 2500));
+                    requirements.Add(new(ResourceType.Gen1, 2));
+                    break;
+                case 3:
+                    requirements.Add(new(ResourceType.Food1, 8000));
+                    requirements.Add(new(ResourceType.Gen1, 3));
+                    break;
+                case 4:
+                    requirements.Add(new(ResourceType.Food1, 22000));
+                    requirements.Add(new(ResourceType.Gen1, 4));
+                    break;
+                case 5:
+                    requirements.Add(new(ResourceType.Food1, 66000));
+                    requirements.Add(new(ResourceType.Gen1, 4));
+                    requirements.Add(new(ResourceType.Gen2, 2));
+                    break;
+                case 6:
+                    requirements.Add(new(ResourceType.Food1, 198000));
+                    requirements.Add(new(ResourceType.Gen1, 5));
+                    requirements.Add(new(ResourceType.Gen4, 2));
+                    break;
+                case 7:
+                    requirements.Add(new(ResourceType.Food1, 594000));
+                    requirements.Add(new(ResourceType.Gen1, 6));
+                    requirements.Add(new(ResourceType.Gen4, 2));
+                    break;
+                case 8:
+                    requirements.Add(new(ResourceType.Food1, 1780000));
+                    requirements.Add(new(ResourceType.Gen1, 4));
+                    requirements.Add(new(ResourceType.Gen3, 7));
+                    break;
+                case 9:
+                    requirements.Add(new(ResourceType.Food1, 5300000));
+                    requirements.Add(new(ResourceType.Gen1, 5));
+                    requirements.Add(new(ResourceType.Gen3, 8));
+                    break;
+            }
+
+            return requirements;
+        }
 
         public static List<(ResourceType, int)> GetAttributeRequirement(AttributeType type)
         {
@@ -210,6 +263,7 @@ public static class Formula
             else if (type == AttributeType.Radius) return GetRadiusRequirement();
             else if (type == AttributeType.Tentacle) return GetTentacleRequirement();
             else if (type == AttributeType.HP) return GetHPRequirement();
+            else if (type == AttributeType.GroupAttack) return GetGroupAttackRequirement();
             return null;
         }
 

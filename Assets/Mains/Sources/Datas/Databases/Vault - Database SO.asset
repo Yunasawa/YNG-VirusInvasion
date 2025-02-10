@@ -26,7 +26,7 @@ MonoBehaviour:
     - {fileID: -1770046278, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
     - {fileID: -870823626, guid: 5779d71499044f24092f3130fd4ebae6, type: 3}
   UpgradeIcons:
-    _keys: 000102030405
+    _keys: 00010203040506
     _values:
     - {fileID: 21300000, guid: a9ea5a22e236a3c47b64385f0a480dc3, type: 3}
     - {fileID: 21300000, guid: 87e0edb1752e80a409fea721705b67a9, type: 3}
@@ -34,6 +34,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: bf5620b5a734fc847844407bd2ee3103, type: 3}
     - {fileID: 21300000, guid: eeb795e205dddbc4e9bc7baae57b8538, type: 3}
     - {fileID: 21300000, guid: 779c9a5cca92ee7438281ccfae6a991f, type: 3}
+    - {fileID: 21300000, guid: eeb795e205dddbc4e9bc7baae57b8538, type: 3}
   MarketIcons:
     _keys:
     - ExtraSpeed

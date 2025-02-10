@@ -31,7 +31,7 @@ MonoBehaviour:
       - 100
       - 0
     Attributes:
-      _keys: 000102030405
+      _keys: 00010203040506
       _values:
       - 166
       - 39.5
@@ -39,6 +39,7 @@ MonoBehaviour:
       - 32.5
       - 2
       - 22
+      - 0
     Bonuses:
       _keys: 000102030405
       _values:
@@ -49,8 +50,8 @@ MonoBehaviour:
       - 0
       - 0
     Levels:
-      _keys: 000102030405
-      _values: 320000001b00000016000000320000000100000000000000
+      _keys: 00010203040506
+      _values: 320000001b0000001600000032000000010000000000000000000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed

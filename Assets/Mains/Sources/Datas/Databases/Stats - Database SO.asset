@@ -472,7 +472,7 @@ MonoBehaviour:
           Amount: 100
   AttributeStats:
     UpgradeNames:
-      _keys: 000102030405
+      _keys: 00010203040506
       _values:
       - Strength
       - Speed
@@ -480,3 +480,4 @@ MonoBehaviour:
       - Range
       - Tentacle
       - Health
+      - Group Attack
