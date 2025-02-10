@@ -305,8 +305,8 @@ MonoBehaviour:
         _values: 81090000
     - Enemy: {fileID: 5826538606663706560, guid: f7ecad15af4a090459cfc36898b014a4, type: 3}
       MaxEnemyInAnArea:
-        Min: 8
-        Max: 12
+        Min: 2
+        Max: 3
       Capacity: 8
       RespawnTime: 240
       Exp: 90
@@ -377,7 +377,7 @@ MonoBehaviour:
       Exp: 150
       HP: 8000
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 30
       Drops:
         _keys: 000702
         _values: ac0d00000300000006000000
@@ -500,14 +500,14 @@ MonoBehaviour:
         _values: 55230000
     - Enemy: {fileID: 3322750886651859564, guid: 74891b4dce5a3194aa2b68c10bc5aae6, type: 3}
       MaxEnemyInAnArea:
-        Min: 1
-        Max: 2
+        Min: 2
+        Max: 3
       Capacity: 13
       RespawnTime: 10
       Exp: 900
       HP: 15000
       MS: 0
-      AttackDamage: 0
+      AttackDamage: 40
       Drops:
         _keys: 00060402
         _values: d0210000040000000a00000009000000

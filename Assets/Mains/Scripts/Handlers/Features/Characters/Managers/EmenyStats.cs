@@ -1,8 +1,8 @@
 using Sirenix.OdinInspector;
 using System.Linq;
-using System.Text.RegularExpressions;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 
 public class EmenyStats : MonoBehaviour
 {
@@ -14,6 +14,9 @@ public class EmenyStats : MonoBehaviour
     public int CurrentHealth;
     public GameObject Model;
     public ParticleSystem Particle;
+
+    public float TimePassed;
+    private float _timeToDeath;
 
     private void Awake()
     {
@@ -38,6 +41,26 @@ public class EmenyStats : MonoBehaviour
         _manager.OnEnemyKilled = null;
         Player.OnCollectEnemyDrops?.Invoke(Stats.Capacity, Stats.Drops);
         Player.OnCollectEnemyExp?.Invoke(Stats.Exp);
+    }
+
+    public void GetHit()
+    {
+        if (!_manager.IsCaught) return;
+
+        float currentDamage = Game.Data.PlayerStats.Attributes[AttributeType.DPS] * 1;
+        _timeToDeath = _manager.Stats.CurrentHealth / currentDamage;
+
+        TimePassed += Time.deltaTime;
+
+        if (TimePassed < _timeToDeath)
+        {
+            float percent = 1 - (TimePassed / _timeToDeath);
+            _manager.UI.UpdateHealth(percent);
+        }
+        else
+        {
+            _manager.Movement.MoveTowardPlayer();
+        }
     }
 
     [Button]

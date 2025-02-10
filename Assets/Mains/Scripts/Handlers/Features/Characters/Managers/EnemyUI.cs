@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+using System;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -57,21 +58,23 @@ public class EnemyUI : MonoBehaviour
     {
         if (start)
         {
-            float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.Attributes[AttributeType.DPS];
-            _healthBarTween.Kill();
-            _healthBarTween = _healthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
+            _manager.Stats.TimePassed = 0;
+            //float time = _manager.Stats.CurrentHealth / Game.Data.PlayerStats.Attributes[AttributeType.DPS];
+            
+            //_healthBarTween = _healthBar.DOFillAmount(0, time).SetEase(Ease.Linear).OnComplete(_manager.Movement.MoveTowardPlayer);
             if (!_billboardCanvas.gameObject.activeSelf) _billboardCanvas.gameObject.SetActive(true);
 
             _tokenSource = new();
-            TextCounting(_healthBar.fillAmount * 100, 0, time).Forget();
+            //TextCounting(_healthBar.fillAmount * 100, 0, time).Forget();
         }
         else
         {
             float remainFillAmount = _healthBar.fillAmount;
+
             _manager.Stats.CurrentHealth = Mathf.FloorToInt(_manager.Stats.Stats.HP * remainFillAmount);
 
-            if (_healthBarTween.IsNull()) return;
-            _healthBarTween.Kill();
+            //if (_healthBarTween.IsNull()) return;
+            _healthBarTween?.Kill();
             _healthBarTween = null;
 
             float recoveryTime = 2 * (1 - remainFillAmount);
@@ -117,5 +120,14 @@ public class EnemyUI : MonoBehaviour
         {
             _healthText.text = $"{end}%";
         }
+    }
+
+    public void UpdateHealth(float percent)
+    {
+        _healthBarTween.Kill();
+        _tokenSource = new();
+
+        _healthBar.fillAmount = percent;
+        _healthText.text = $"{Mathf.RoundToInt(percent * 100)}%"; 
     }
 }

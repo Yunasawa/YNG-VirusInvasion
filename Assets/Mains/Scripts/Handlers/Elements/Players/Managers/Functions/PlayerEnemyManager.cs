@@ -105,6 +105,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
                 }
             }
         }
+
+        foreach (var enemy in Enemies) enemy.Stats.GetHit();
     }
 
 
