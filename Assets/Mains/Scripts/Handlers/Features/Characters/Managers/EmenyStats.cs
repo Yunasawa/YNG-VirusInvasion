@@ -47,6 +47,8 @@ public class EmenyStats : MonoBehaviour
     {
         if (!_manager.IsCaught) return;
 
+        if (!_manager.UI.UI.gameObject.activeSelf && _manager.IsEnable) _manager.UI.UI.gameObject.SetActive(true);
+
         float currentDamage = Game.Data.PlayerStats.Attributes[AttributeType.DPS] * 1;
         _timeToDeath = _manager.Stats.CurrentHealth / currentDamage;
 

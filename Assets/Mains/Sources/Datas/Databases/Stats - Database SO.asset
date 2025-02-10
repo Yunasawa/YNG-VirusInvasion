@@ -471,13 +471,20 @@ MonoBehaviour:
         - Type: 6
           Amount: 100
   AttributeStats:
-    UpgradeNames:
+    UpgradeInfos:
       _keys: 00010203040506
       _values:
-      - Strength
-      - Speed
-      - Capacity
-      - Range
-      - Tentacle
-      - Health
-      - Group Attack
+      - Name: STRENGTH
+        Description: Increase @1 > @2 damage per second
+      - Name: SPEED
+        Description: Increase @1 > @2 moving speed
+      - Name: CAPACITY
+        Description: 'Increase @1 > @2 capacity '
+      - Name: RANGE
+        Description: Increase @1 > @2 attacking range
+      - Name: TENTACLE
+        Description: Increase @1 > @2 tentacles
+      - Name: HEATH
+        Description: Increase @1 > @2 health point
+      - Name: MULTI ATTACK
+        Description: Allow @1 > @2 tentacles to catch the same target

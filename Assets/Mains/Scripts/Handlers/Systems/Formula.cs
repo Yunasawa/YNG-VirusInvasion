@@ -205,7 +205,7 @@ public static class Formula
         {
             List<(ResourceType, int)> requirements = new();
 
-            switch (_stats.Levels[AttributeType.GroupAttack])
+            switch (_stats.Levels[AttributeType.MultiAttack])
             {
                 case 0:
                     requirements.Add(new(ResourceType.Food1, 250));
@@ -263,7 +263,7 @@ public static class Formula
             else if (type == AttributeType.Radius) return GetRadiusRequirement();
             else if (type == AttributeType.Tentacle) return GetTentacleRequirement();
             else if (type == AttributeType.HP) return GetHPRequirement();
-            else if (type == AttributeType.GroupAttack) return GetGroupAttackRequirement();
+            else if (type == AttributeType.MultiAttack) return GetGroupAttackRequirement();
             return null;
         }
 
@@ -332,7 +332,12 @@ public static class Formula
             int baseValue = 22;
             return Mathf.RoundToInt(baseValue + (level / 2) * 2 + ((level + 1) / 2) * 3 + _extras[Key.Stats.ExtraHP].Value);
         }
-    
+        public static float GetGroupAttack(uint level = 0)
+        {
+            level = level == 0 ? _stats.Levels[AttributeType.MultiAttack] : level;
+            return 1 + level;
+        }
+
         public static float GetAttributeValue(AttributeType type, uint level = 0)
         {
             if (type == AttributeType.DPS) return GetDPS(level);
@@ -341,6 +346,7 @@ public static class Formula
             else if (type == AttributeType.Radius) return GetRadius(level);
             else if (type == AttributeType.Tentacle) return GetTentacle(level); 
             else if (type == AttributeType.HP) return GetHP(level);
+            else if (type == AttributeType.MultiAttack) return GetGroupAttack(level);
             return 0;
         }
 

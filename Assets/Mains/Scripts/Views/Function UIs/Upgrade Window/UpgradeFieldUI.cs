@@ -7,6 +7,8 @@ using YNL.Extensions.Methods;
 
 public class UpgradeFieldUI : MonoBehaviour
 {
+    private UpgradeInfo _info => Game.Data.AttributeStats.UpgradeInfos[Type];
+
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private TextMeshProUGUI _cost;
@@ -31,7 +33,12 @@ public class UpgradeFieldUI : MonoBehaviour
     public void UpdateField()
     {
         uint level = Game.Data.PlayerStats.Levels[Type];
-        _text.text = $"<size=45><color=#D9393E>{Game.Data.AttributeStats.UpgradeNames[Type].ToUpper()}</color></size>: Level <color=#0058AF>{level}</color> > <color=#0058AF>{level + 1}</color>\nIncrease <color=#A18B00>{Formula.Stats.GetAttributeValue(Type, level)}</color> > <color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color> {Type}";
+
+        string upgradeTitle = $"<size=40><color=#D9393E>{_info.Name}</color></size><color=#455463>: Level <color=#0058AF>{level}</color> > <color=#0058AF>{level + 1}</color></color>\n";
+        string fromAttributeValue = $"<color=#8f7c06>{Formula.Stats.GetAttributeValue(Type, level)}</color>";
+        string toAttributeValue = $"<color=#0C7B3E>{Formula.Stats.GetAttributeValue(Type, level + 1)}</color>";
+        string upgradeDescription = _info.Description.Replace("@1", fromAttributeValue).Replace("@2", toAttributeValue);
+        _text.text = upgradeTitle + upgradeDescription;
 
         _requirements = Formula.Stats.GetAttributeRequirement(Type);
         _cost.text = "";

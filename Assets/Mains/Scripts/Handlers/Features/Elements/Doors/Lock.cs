@@ -25,7 +25,6 @@ public class Lock : MonoBehaviour
     private void Start()
     {
         if (Game.IsUnlockedDoorStage6) Unlock(true);
-        MDebug.Log(Game.IsUnlockedDoorStage6);
     }
 
     private string GetRequirementText()

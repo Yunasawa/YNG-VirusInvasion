@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,12 +48,12 @@ public class UpgradeWindowUI : MonoBehaviour
     {
         _upgradeContainer.DestroyAllChildren();
 
-        for (byte i = 0; i < 6; i++)
+        foreach (AttributeType type in Enum.GetValues(typeof(AttributeType)))
         {
             UpgradeFieldUI upgradeField = Instantiate(_upgradeField, _upgradeContainer);
             _upgradeFields.Add(upgradeField);
 
-            upgradeField.Type = (AttributeType)i;
+            upgradeField.Type = type;
         }
     }
     private void UpdateUpgradeFields()

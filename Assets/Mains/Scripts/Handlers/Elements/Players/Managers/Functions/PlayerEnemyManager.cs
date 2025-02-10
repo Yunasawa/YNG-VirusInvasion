@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
@@ -14,6 +15,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
     [SerializeField] private LayerMask _layerMask;
     private Collider[] _colliders = new Collider[10];
 
+    private int _groupAmount;
+
     private void Awake()
     {
         Player.OnUpgradeAttribute += OnUpgradeAttribute;
@@ -28,6 +31,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
     {
         OnUpgradeAttribute(AttributeType.Tentacle);
         OnUpgradeAttribute(AttributeType.Radius);
+        OnUpgradeAttribute(AttributeType.MultiAttack);
     }
 
 
@@ -39,6 +43,7 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
         Enemies.Clear();
         for (int i = 0; i < hitAmount; i++) Enemies.Add(_colliders[i].GetComponent<Enemy>());
+
         foreach (var pair in Tentacles)
         {
             if (!pair.Tentacle.IsEnabled) break;
@@ -52,6 +57,24 @@ public class PlayerEnemyManager : ColliderTriggerListener
                         pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
                         pair.Tentacle.RemoveTarget();
                         pair.Enemy = null;
+                    }
+                    else if (Tentacles.Count(i => i.Enemy == pair.Enemy) > 1)
+                    {
+                        foreach (var enemy in Enemies)
+                        {
+                            if (!enemy.IsCaught)
+                            {
+                                enemy.IsCaught = true;
+                                //enemy.UI.UpdateHealthBar(enemy.IsCaught);
+
+                                pair.Tentacle.SetTarget(enemy);
+                                pair.Enemy = enemy;
+
+                                break;
+                            }
+                        }
+
+                        continue;
                     }
                 }
                 else
@@ -93,7 +116,9 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
             foreach (var enemy in Enemies)
             {
-                if (!enemy.IsCaught && enemy.IsEnable)
+                if (!enemy.IsEnable) continue;
+
+                if (!enemy.IsCaught)
                 {
                     enemy.IsCaught = true;
                     enemy.UI.UpdateHealthBar(enemy.IsCaught);
@@ -103,10 +128,17 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
                     break;
                 }
+                else if (Tentacles.Count(i => i.Enemy == enemy) < _groupAmount)
+                {
+                    pair.Tentacle.SetTarget(enemy);
+                    pair.Enemy = enemy;
+
+                    break;
+                }
             }
         }
 
-        foreach (var enemy in Enemies) enemy.Stats.GetHit();
+        foreach (var tentacle in Tentacles) tentacle.Enemy?.Stats.GetHit();
     }
 
 
@@ -139,6 +171,10 @@ public class PlayerEnemyManager : ColliderTriggerListener
         {
             _collider.radius = Formula.Stats.EnemyRadius;
             _radius.localScale = Vector3.one * _collider.radius * 0.385f;
+        }
+        else if (type == AttributeType.MultiAttack)
+        {
+            _groupAmount = (int)Formula.Stats.GetGroupAttack();
         }
     }
 }

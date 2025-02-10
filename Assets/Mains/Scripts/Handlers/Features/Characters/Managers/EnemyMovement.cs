@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YNL.Extensions.Methods;
@@ -32,19 +33,22 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!IsPulling) return;
 
-        TentaclePair group = Player.Enemy.Tentacles.FirstOrDefault(i => i.Enemy = _manager);
-        if (!group.IsNull())
+        List<TentaclePair> groups = Player.Enemy.Tentacles.Where(i => i.Enemy == _manager).ToList();
+
+        foreach (var group in groups)
         {
+            if (IsPulling)
+            {
+                IsPulling = false;
+                Enabled = false;
+                _manager.IsEnable = false;
+                _manager.OnKilled();
+                _manager.Stats.OnKilled();
+
+                CameraManager.Instance.Audio.PlayEatingSFX();
+            }
             group.Tentacle.RemoveTarget();
             group.Enemy = null;
-
-            IsPulling = false;
-            Enabled = false;
-            _manager.IsEnable = false;
-            _manager.OnKilled();
-            _manager.Stats.OnKilled();
-
-            CameraManager.Instance.Audio.PlayEatingSFX();
         }
     }
-}
+ }
