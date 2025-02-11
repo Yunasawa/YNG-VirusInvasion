@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using YNL.Extensions.Methods;
 
 public class CameraDoorManager : MonoBehaviour
 {
@@ -38,10 +39,13 @@ public class CameraDoorManager : MonoBehaviour
         Camera.main.transform.DOLocalMove(new Vector3(0, 85, -52), 2).SetEase(ease);
         _manager.Movement.EnableFollowTarget = false;
 
-        foreach (var door in doorGroup.Doors)
+        if (!doorGroup.IsNull())
         {
-            this.transform.DOMove(door.transform.position, 2).SetEase(ease).OnComplete(door.OpenDoor);
-            await UniTask.WaitForSeconds(5);
+            foreach (var door in doorGroup.Doors)
+            {
+                this.transform.DOMove(door.transform.position, 2).SetEase(ease).OnComplete(door.OpenDoor);
+                await UniTask.WaitForSeconds(5);
+            }
         }
 
         Camera.main.transform.DOLocalMove(new Vector3(0, 30, -20), 2).SetEase(ease);
