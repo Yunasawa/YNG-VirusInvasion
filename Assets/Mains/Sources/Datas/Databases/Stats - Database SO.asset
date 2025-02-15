@@ -123,7 +123,7 @@ MonoBehaviour:
           BaseCost:
             Type: 9
             Amount: 150
-          StepCost: 0
+          StepCost: 150
         - Name: Hunter
           Key: HunterDPS
           Evolution: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
           BaseCost:
             Type: 0
             Amount: 23
-          StepCost: 10
+          StepCost: 100
         - Name: Capacity
           Key: HunterCapacity
           Evolution: 1
@@ -145,7 +145,7 @@ MonoBehaviour:
           BaseCost:
             Type: 0
             Amount: 25
-          StepCost: 25
+          StepCost: 100
         - Name: Shipper
           Key: DeliveryAmount
           Evolution: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
           BaseCost:
             Type: 9
             Amount: 150
-          StepCost: 0
+          StepCost: 150
         - Name: Bring
           Key: DeliveryCapacity
           Evolution: 1
@@ -167,7 +167,7 @@ MonoBehaviour:
           BaseCost:
             Type: 0
             Amount: 25
-          StepCost: 5
+          StepCost: 100
         Evolutions: []
       - Name: Boost Bazaar Market
         Nodes:

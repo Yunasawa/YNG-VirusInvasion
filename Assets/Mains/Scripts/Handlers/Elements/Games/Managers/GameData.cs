@@ -3,6 +3,7 @@ using UnityEngine;
 using YNL.Bases;
 using YNL.Utilities.Addons;
 
+[AddComponentMenu("Game: Data")]
 public class GameData : MonoBehaviour
 {
     public RuntimeStatsSO RuntimeStats;

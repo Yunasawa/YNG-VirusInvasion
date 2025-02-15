@@ -14,26 +14,44 @@ public static class Formula
 
     public static class Stats
     {
+        public static uint GetMaxLevel(AttributeType type)
+        {
+            switch (type)
+            {
+                case AttributeType.DPS: case AttributeType.Capacity: case AttributeType.Radius: case AttributeType.HP:
+                    return 100;
+                case AttributeType.MS:
+                    return 50;
+                case AttributeType.Tentacle: case AttributeType.MultiAttack:
+                    return 10;
+                default: return 0;
+            }
+        }
+
         public static List<(ResourceType, int)> GetDPSRequirement()
         {
-            List<(ResourceType, int)> requirements = new();
-            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(23 * Mathf.Pow(1 + 0.09f, _stats.Levels[AttributeType.DPS]))));
+            uint level = _stats.Levels[AttributeType.DPS];
 
-            if (_stats.Levels[AttributeType.DPS] >= 50 && _stats.Levels[AttributeType.DPS] < 70)
+            List<(ResourceType, int)> requirements = new();
+
+            float multiplier = level > 50 ? 0.15f : 0.2f;
+            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(23 * Mathf.Pow(1 + multiplier, level))));
+
+            if (level >= 50 && level < 70)
             {
-                uint lowLevel = _stats.Levels[AttributeType.DPS] - 50;
-                requirements.Add(new(ResourceType.Energy1, (int)Mathf.Min(14, lowLevel / 2 + 1)));
+                uint lowLevel = level - 50;
+                requirements.Add(new(ResourceType.Energy1, (int)Mathf.Min(14, lowLevel / 2 + 1 + level % 10 * 2)));
             }
-            else if (_stats.Levels[AttributeType.DPS] >= 70 && _stats.Levels[AttributeType.DPS] < 90)
+            else if (level >= 70 && level < 90)
             {
-                uint lowLevel = _stats.Levels[AttributeType.DPS] - 70;
-                requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(6, lowLevel / 2 + 1)));
+                uint lowLevel = level - 70;
+                requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(6, lowLevel / 2 + 1 + level % 10 * 2)));
             }
-            else if (_stats.Levels[AttributeType.DPS] >= 90 && _stats.Levels[AttributeType.DPS] < 100)
+            else if (level >= 90 && level < 100)
             {
-                requirements.Add(new(ResourceType.Gen1, 8));
+                requirements.Add(new(ResourceType.Gen1, 8 + (int)level % 10 * 2));
             }
-            else if (_stats.Levels[AttributeType.DPS] > 100)
+            else if (level > 100)
             {
                 requirements.Add(new(ResourceType.Gen1, 10));
             }
@@ -41,48 +59,54 @@ public static class Formula
         }
         public static List<(ResourceType, int)> GetMSRequirement()
         {
-            List<(ResourceType, int)> requirements = new();
-            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(23 * Mathf.Pow(1 + 0.2f, _stats.Levels[AttributeType.MS]))));
+            uint level = _stats.Levels[AttributeType.MS];
 
-            if (_stats.Levels[AttributeType.MS] >= 35 && _stats.Levels[AttributeType.MS] < 40)
+            List<(ResourceType, int)> requirements = new();
+            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(23 * Mathf.Pow(1 + 0.22f, level))));
+
+            if (level >= 35 && level < 40)
             {
-                uint lowLevel = _stats.Levels[AttributeType.MS] - 35;
+                uint lowLevel = level - 35;
                 requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(4, lowLevel + 1)));
                 requirements.Add(new(ResourceType.Gen2, (int)Mathf.Min(4, lowLevel + 1)));
             }
-            else if (_stats.Levels[AttributeType.MS] >= 40 && _stats.Levels[AttributeType.MS] < 50)
+            else if (level >= 40 && level < 50)
             {
-                uint lowLevel = _stats.Levels[AttributeType.MS] - 40;
+                uint lowLevel = level - 40;
                 requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(8, lowLevel + 4)));
                 requirements.Add(new(ResourceType.Gen4, (int)Mathf.Min(10, lowLevel + 4)));
             }
-            else if (_stats.Levels[AttributeType.MS] > 50)
+            else if (level > 50)
             {
-                uint lowLevel = _stats.Levels[AttributeType.MS] - 50;
+                uint lowLevel = level - 50;
                 requirements.Add(new(ResourceType.Gen4, (int)Mathf.Min(16, lowLevel + 8)));
             }
             return requirements;
         }
         public static List<(ResourceType, int)> GetCapacityRequirement()
         {
-            List<(ResourceType, int)> requirements = new();
-            requirements.Add(new(ResourceType.Food1, Mathf.CeilToInt(25 * Mathf.Pow(1 + 0.16f, _stats.Levels[AttributeType.Capacity]))));
+            uint level = _stats.Levels[AttributeType.Capacity];
 
-            if (_stats.Levels[AttributeType.Capacity] >= 30 && _stats.Levels[AttributeType.Capacity] < 40)
+            List<(ResourceType, int)> requirements = new();
+
+            float multiplier = level > 50 ? 0.15f : 0.2f;
+            requirements.Add(new(ResourceType.Food1, (int)(25 * Math.Pow(1 + multiplier, level))));
+
+            if (level >= 30 && level < 40)
             {
-                uint lowLevel = _stats.Levels[AttributeType.Capacity] - 30;
+                uint lowLevel = level - 30;
                 requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(6, lowLevel + 5)));
                 requirements.Add(new(ResourceType.Gen2, (int)Mathf.Min(10, lowLevel + 8)));
             }
-            else if (_stats.Levels[AttributeType.Capacity] >= 40 && _stats.Levels[AttributeType.Capacity] < 50)
+            else if (level >= 40 && level < 50)
             {
-                uint lowLevel = _stats.Levels[AttributeType.Capacity] - 40;
+                uint lowLevel = level - 40;
                 requirements.Add(new(ResourceType.Gen1, (int)Mathf.Min(6, lowLevel + 2)));
                 requirements.Add(new(ResourceType.Gen3, (int)Mathf.Min(10, lowLevel + 8)));
             }
-            else if (_stats.Levels[AttributeType.Capacity] > 50)
+            else if (level > 50)
             {
-                uint lowLevel = _stats.Levels[AttributeType.Capacity] - 50;
+                uint lowLevel = level - 50;
                 requirements.Add(new(ResourceType.Gen3, (int)Mathf.Min(6, lowLevel + 3)));
                 requirements.Add(new(ResourceType.Gen4, (int)Mathf.Min(10, lowLevel + 3)));
             }
@@ -285,11 +309,11 @@ public static class Formula
             level = level == 0 ? _stats.Levels[AttributeType.MS] : level;
             float baseValue = 16;
 
-            if (level <= 20) return baseValue + level + _extras[Key.Stats.ExtraSpeed].Value;
+            if (level <= 20) return baseValue + level / 2 + _extras[Key.Stats.ExtraSpeed].Value;
             else
             {
                 uint extraLevels = level - 20;
-                return baseValue + 20 + extraLevels * 0.5f + _extras[Key.Stats.ExtraSpeed].Value;
+                return baseValue + 10 + extraLevels * 0.4f + _extras[Key.Stats.ExtraSpeed].Value;
             }
         }
         public static float GetCapacity(uint level = 0)
@@ -297,16 +321,24 @@ public static class Formula
             level = level == 0 ? _stats.Levels[AttributeType.Capacity] : level;
             float baseValue = 8;
 
-            if (level <= 25) return baseValue + level * 7;
-            else if (level > 25 && level <= 50)
+            if (level < 25)
+            {
+                return baseValue + level * 5;
+            }
+            else if (level >= 25 && level < 50)
             {
                 uint extraLevels = level - 25;
-                return baseValue = 25 * 7 + (extraLevels) * 5 + _extras[Key.Stats.ExtraCapacity].Value;
+                return baseValue = 25 * 10 + (extraLevels) * 10 + _extras[Key.Stats.ExtraCapacity].Value;
+            }
+            else if (level >= 50 && level < 75)
+            {
+                uint extraLevels = level - 50;
+                return baseValue = 25 * 20 + (extraLevels) * 20 + _extras[Key.Stats.ExtraCapacity].Value;
             }
             else
             {
-                uint extraLevels = level - 50;
-                return baseValue = 25 * (7 + 5) + (extraLevels) * 3 + _extras[Key.Stats.ExtraCapacity].Value;
+                uint extraLevels = level - 75;
+                return baseValue = 25 * 30 + (extraLevels) * 30 + _extras[Key.Stats.ExtraCapacity].Value;
             }
         }
         public static float GetRadius(uint level = 0)
@@ -359,13 +391,10 @@ public static class Formula
         {
             return Mathf.RoundToInt(amount * (1 + _extras[Key.Stats.ExtraResources].Value.Percent()));
         }
-
-
         public static int GetHeal()
         {
             return Mathf.FloorToInt(Game.Data.PlayerStats.ExtraStatsLevel[Key.Stats.ExtraRegenBoost].Value);
         }
-
         public static float EnemyRadius => GetRadius() / 5;
     }
     public static class Value
@@ -381,6 +410,22 @@ public static class Formula
             float x = UnityEngine.Random.Range(-xRange, xRange);
             float y = UnityEngine.Random.Range(-yRange, yRange);
             return new(x, y);
+        }
+        public static int GetResourceWeight(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.Food1: return 1;
+                case ResourceType.Material1: return 5;
+                case ResourceType.Energy1: return 3;
+                case ResourceType.Energy2: return 4;
+                case ResourceType.Energy3: return 5;
+                case ResourceType.Gen1: return 5;
+                case ResourceType.Gen2: return 6;
+                case ResourceType.Gen3: return 7;
+                case ResourceType.Gen4: return 8;
+                default: return 1;
+            }
         }
     }
     public static class Upgrade

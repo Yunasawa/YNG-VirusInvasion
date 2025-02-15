@@ -585,7 +585,7 @@ MonoBehaviour:
       Capacity: 100
       RespawnTime: 100
       Exp: 500
-      HP: 500000
+      HP: 200000
       MS: 0
       AttackDamage: 50
       Drops:

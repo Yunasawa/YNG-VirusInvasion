@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using YNL.Extensions.Methods;
 
+[AddComponentMenu("Game: Loader")]
 public class GameLoader : MonoBehaviour
 {
     private SaveData _saveData;

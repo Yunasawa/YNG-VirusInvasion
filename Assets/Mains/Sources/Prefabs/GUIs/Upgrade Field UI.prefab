@@ -509,9 +509,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=40><color=#D9393E>MULTI ATTACK</color></size><color=#455463>: Level
-    <color=#0058AF>10</color> > <color=#0058AF>11</color>\r</color>\nAllow <color=#8f7c06>80</color>
-    > <color=#0C7B3E>100</color> tentacles to catch the same target"
+  m_text: '<size=40><color=#D9393E>MULTI ATTACK</color></size><color=#455463>: <color=#0058AF>MAX
+    LEVEL</color></color>
+
+    Allow <color=#8f7c06>80</color> > <color=#0C7B3E>100</color>
+    tentacles to catch the same target'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
   m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}

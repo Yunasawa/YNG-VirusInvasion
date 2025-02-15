@@ -35,4 +35,7 @@ public static class Builder
 
         return text;
     }
+
+    public static string AddComma(this int number) => string.Format("{0:N0}", number);
+    public static string AddComma(this string input) => string.Format("{0:N0}", input);
 }
