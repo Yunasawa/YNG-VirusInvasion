@@ -7,7 +7,6 @@ using YNL.Extensions.Methods;
 public class MarketNodeUI : MonoBehaviour
 {
     private PlayerStats _playerStats => Game.Data.PlayerStats;
-    private ConstructStats _constructionStat => Game.Data.ConstructStats;
     private MarketStatsNode _node;
 
     [SerializeField] private Image _icon;
@@ -17,8 +16,6 @@ public class MarketNodeUI : MonoBehaviour
 
     private (ResourceType Type, int Amount) _upgradeCost = new();
     private bool _enoughResource = false;
-
-    private bool _interactable;
 
     private void Awake()
     {
@@ -43,20 +40,29 @@ public class MarketNodeUI : MonoBehaviour
 
     public void UpdateNode()
     {
+        bool isMaxLevel = _playerStats.ExtraStatsLevel[_node.Key].Level >= Formula.Stats.GetMaxExtraLevel(_node.Key);
+        _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
+
         PlayerStats.ExtraStats extraStats = _playerStats.ExtraStatsLevel[_node.Key];
         (float from, float to) stats = new(extraStats.Value.RoundToDigit(1), extraStats.NextValue.RoundToDigit(1));
         (string from, string to) statsToString = new($"<color=#7D6C00>{stats.from}</color>", $"<color=#0C7B3E>{stats.to}</color>");
 
-        string content = $"<size=45><color=#D9393E>{_node.Key.AddSpaces()}</color></size>: Level <color=#0058AF>{extraStats.Level}</color> > <color=#0058AF>{extraStats.Level + 1}</color>\n";
-        content += $"{_node.Description.Replace("$1", statsToString.from).Replace("$2", statsToString.to)}";
+        string levelTitle = isMaxLevel ? "<color=#0058AF>  MAX LEVEL" : $"<color=#455463>  Level <color=#0058AF>{extraStats.Level}</color> > <color=#0058AF>{extraStats.Level + 1}</color>";
+        string upgradeTitle = $"<size=40><color=#D9393E>{_node.Key.AddSpaces()}</color></size>{levelTitle}</color>\n";
 
-        _text.text = content;
+        _text.text = upgradeTitle + $"{_node.Description.Replace("$1", statsToString.from).Replace("$2", statsToString.to)}";
 
-        _upgradeCost = Formula.Upgrade.GetMarketUpgradeCost(_node, (int)extraStats.Level);
-
-        _enoughResource = Game.Data.PlayerStats.Resources[_upgradeCost.Type] >= _upgradeCost.Amount;
-
-        _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
+        if (isMaxLevel)
+        {
+            _buttonLabel.text = "<size=30>MAX LEVEL</size>";
+            _enoughResource = false;
+        }
+        else
+        {
+            _upgradeCost = Formula.Upgrade.GetMarketUpgradeCost(_node, (int)extraStats.Level);
+            _buttonLabel.text = $"{_upgradeCost.Amount} <sprite name={_upgradeCost.Type}>";
+        }
+        
         EnableInteraction();
 
         if (Game.Data.Vault.MarketIcons.TryGetValue(_node.Key, out Sprite icon))

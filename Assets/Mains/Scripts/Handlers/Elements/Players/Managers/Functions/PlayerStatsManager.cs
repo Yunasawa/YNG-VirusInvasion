@@ -65,6 +65,11 @@ public class PlayerStatsManager : MonoBehaviour
         _capacityStats.CollectDrops(capacity, drops);
         Player.OnChangeCapacity?.Invoke();
     }
+    public void OnRemoveEnemyDrops(int capacity, SerializableDictionary<ResourceType, uint> drops, int amount)
+    {
+        for (int i = 0; i < amount; i++) _capacityStats.RemoveDrops(capacity, drops);
+        Player.OnChangeCapacity?.Invoke();
+    }
 
     public void OnCollectEnemyExp(int exp)
     {

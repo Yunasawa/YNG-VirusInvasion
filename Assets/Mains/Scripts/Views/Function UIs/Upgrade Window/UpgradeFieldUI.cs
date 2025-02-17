@@ -34,7 +34,7 @@ public class UpgradeFieldUI : MonoBehaviour
     {
         uint level = Game.Data.PlayerStats.Levels[Type];
 
-        bool isMaxLevel = level == Formula.Stats.GetMaxLevel(Type);
+        bool isMaxLevel = level == Formula.Stats.GetMaxAttributeLevel(Type);
 
         string levelTitle = isMaxLevel ? "<color=#0058AF>  MAX LEVEL" : $"<color=#455463>  Level <color=#0058AF>{level}</color> > <color=#0058AF>{level + 1}</color>";
         string upgradeTitle = $"<size=40><color=#D9393E>{_info.Name}</color></size>{levelTitle}</color>\n";

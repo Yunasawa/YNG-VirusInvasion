@@ -26,6 +26,11 @@ namespace YNL.Bases
             CurrentCapacity += capacity;
             foreach (var drop in drops) Resources[drop.Key] += drop.Value;
         }
+        public void RemoveDrops(int capacity, SerializableDictionary<ResourceType, uint> drops)
+        {
+            CurrentCapacity -= capacity;
+            foreach (var drop in drops) Resources[drop.Key] -= drop.Value;
+        }
         public void AdjustResources(ResourceType type, int amount)
         {
             if (amount <= 0) return;

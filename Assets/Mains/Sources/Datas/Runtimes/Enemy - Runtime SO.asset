@@ -18,5 +18,8 @@ MonoBehaviour:
       - SM 2 - 1
       - SM 3 - 2
       _values:
-      - Time: -49
-      - Time: -591
+      - Time: 1785
+      - Time: -2783
+    DefeatedEnemies:
+      _keys: []
+      _values: 

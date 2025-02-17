@@ -10,6 +10,7 @@ public class SaveData
     public PlayerStats PlayerStats;
     public CapacityStats CapacityStats;
     public RuntimeConstructStats RuntimeConstructStats;
+    public RuntimeMiniCell RuntimeMiniCell;
 
     public SerializeQuestStats SerializeQuestStats = new();
 
@@ -23,6 +24,7 @@ public class SaveData
         PlayerStats = Game.Data.PlayerStats;
         CapacityStats = Game.Data.CapacityStats;
         RuntimeConstructStats = Game.Data.RuntimeStats.ConstructStats;
+        RuntimeMiniCell = Game.Data.RuntimeStats.RuntimeMiniCell;
 
         SerializeQuestStats.SerializeData();
 

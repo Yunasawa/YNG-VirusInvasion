@@ -5,6 +5,7 @@ using YNL.Utilities.Addons;
 public class RuntimeEnemyStats
 {
     public SerializableDictionary<string, EnemyRespawnTimeSpan> SMVirusRespawnTimes = new();
+    public SerializableDictionary<string, int> DefeatedEnemies = new();
 
     public RuntimeEnemyStats()
     {

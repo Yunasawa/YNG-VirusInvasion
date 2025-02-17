@@ -169,10 +169,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716244880047232280}
-  - component: {fileID: 6472602503867887734}
   - component: {fileID: 1892525100229381960}
   - component: {fileID: 8418144864441812491}
   - component: {fileID: 6072552678013959577}
+  - component: {fileID: 4624425990350002922}
   m_Layer: 0
   m_Name: Hunter Cell
   m_TagString: Player
@@ -198,26 +198,6 @@ Transform:
   - {fileID: 1732453793295156751}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6472602503867887734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7695394759075199505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e411ff96b14174cbacfc28ea9facc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 1
-  Character: {fileID: 1892525100229381960}
-  Animator: {fileID: 0}
-  Movement: {fileID: 0}
-  Stats: {fileID: 0}
-  Enemy: {fileID: 0}
-  Construction: {fileID: 0}
-  Stage: {fileID: 0}
 --- !u!143 &1892525100229381960
 CharacterController:
   m_ObjectHideFlags: 0
@@ -287,6 +267,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4624425990350002922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7695394759075199505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e680d3f9d8a03b46be04a18174cd1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &444657108114384296
 PrefabInstance:
   m_ObjectHideFlags: 0

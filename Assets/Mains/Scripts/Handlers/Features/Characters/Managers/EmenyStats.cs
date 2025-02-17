@@ -39,6 +39,7 @@ public class EmenyStats : MonoBehaviour
     {
         _manager.OnEnemyKilled?.Invoke();
         _manager.OnEnemyKilled = null;
+        Player.Enemy.DefeatEnemy(ID);
         Player.OnCollectEnemyDrops?.Invoke(Stats.Capacity, Stats.Drops);
         Player.OnCollectEnemyExp?.Invoke(Stats.Exp);
     }

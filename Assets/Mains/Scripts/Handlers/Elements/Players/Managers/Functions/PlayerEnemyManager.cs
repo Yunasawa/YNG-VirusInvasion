@@ -1,11 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
+using YNL.Utilities.Addons;
 
 public class PlayerEnemyManager : ColliderTriggerListener
 {
+    private SerializableDictionary<string, int> _defeatedEnemies => Game.Data.RuntimeEnemy.EnemyStats.DefeatedEnemies;
+
     public List<TentaclePair> Tentacles = new();
     public List<Enemy> Enemies = new();
 
@@ -17,14 +21,18 @@ public class PlayerEnemyManager : ColliderTriggerListener
 
     private int _groupAmount;
 
+    private List<Group<string, int>> _validEnemies = new();
+
     private void Awake()
     {
         Player.OnUpgradeAttribute += OnUpgradeAttribute;
+        Player.OnEnterHomeBase += OnEnterHomeBase;
     }
 
     private void OnDestroy()
     {
         Player.OnUpgradeAttribute -= OnUpgradeAttribute;
+        Player.OnEnterHomeBase -= OnEnterHomeBase;
     }
 
     private void Start()
@@ -141,23 +149,6 @@ public class PlayerEnemyManager : ColliderTriggerListener
         foreach (var tentacle in Tentacles) tentacle.Enemy?.Stats.GetHit();
     }
 
-
-    private void CheckForOutboundEnemy(TentaclePair pair)
-    {
-        if (pair.Enemy.IsNull()) return;
-
-        if (Vector3.Distance(pair.Enemy.transform.position, Player.Transform.position) > Formula.Stats.EnemyRadius * 1.25f)
-        {
-            MDebug.Log("HOHO");
-
-            pair.Enemy.IsCaught = false;
-            pair.Enemy.UI.UpdateHealthBar(false);
-            pair.Enemy = null;
-
-            pair.Tentacle.RemoveTarget();
-        }
-    }
-
     private void OnUpgradeAttribute(AttributeType type)
     {
         if (type == AttributeType.Tentacle)
@@ -176,6 +167,53 @@ public class PlayerEnemyManager : ColliderTriggerListener
         {
             _groupAmount = (int)Formula.Stats.GetGroupAttack();
         }
+    }
+
+    private void OnEnterHomeBase()
+    {
+        _validEnemies.Clear();
+        Game.Data.RuntimeEnemy.EnemyStats.DefeatedEnemies.Clear();
+    }
+
+    public void DefeatEnemy(string name)
+    {
+        if (_defeatedEnemies.ContainsKey(name)) _defeatedEnemies[name]++;
+        else _defeatedEnemies.Add(name, 1);
+    }
+    private void TakeEnemyResources(int capacity)
+    {
+        _validEnemies.Clear();
+        int currentCapacity = 0;
+
+        foreach (var enemy in _defeatedEnemies)
+        {
+            int enemyCapacity = Game.Data.EnemySources[enemy.Key].Capacity;
+            int maxEnemyCount = Math.Min(enemy.Value, (capacity - currentCapacity) / enemyCapacity);
+
+            if (maxEnemyCount > 0)
+            {
+                _validEnemies.Add(new(enemy.Key, maxEnemyCount));
+                currentCapacity += enemyCapacity * maxEnemyCount;
+            }
+
+            if (currentCapacity >= capacity) break;
+        }
+    }
+    public List<Group<string, int>> GetValidEnemies(int capacity)
+    {
+        TakeEnemyResources(capacity);
+
+        foreach (var enemy in _validEnemies)
+        {
+            EnemySources source = Game.Data.EnemySources[enemy.E1];
+            
+            Player.Stats.OnRemoveEnemyDrops(source.Capacity, source.Drops, enemy.E2);
+
+            _defeatedEnemies[enemy.E1] -= enemy.E2;
+            if (_defeatedEnemies[enemy.E1] <= 0) _defeatedEnemies.Remove(enemy.E1);
+        }
+
+        return _validEnemies;
     }
 }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
+using static UnityEngine.EventSystems.EventTrigger;
 using BaseStats = YNL.Bases.PlayerStats;
 
 public static class Formula
@@ -14,7 +15,7 @@ public static class Formula
 
     public static class Stats
     {
-        public static uint GetMaxLevel(AttributeType type)
+        public static uint GetMaxAttributeLevel(AttributeType type)
         {
             switch (type)
             {
@@ -27,7 +28,15 @@ public static class Formula
                 default: return 0;
             }
         }
-
+        public static int GetMaxExtraLevel(string extra)
+        {
+            switch (extra)
+            {
+                case Key.Stats.DeliveryCellAmount: case Key.Stats.HunterCellAmount:
+                    return 10;
+                default: return 50;
+            }
+        }
         public static List<(ResourceType, int)> GetDPSRequirement()
         {
             uint level = _stats.Levels[AttributeType.DPS];
@@ -410,22 +419,6 @@ public static class Formula
             float x = UnityEngine.Random.Range(-xRange, xRange);
             float y = UnityEngine.Random.Range(-yRange, yRange);
             return new(x, y);
-        }
-        public static int GetResourceWeight(ResourceType type)
-        {
-            switch (type)
-            {
-                case ResourceType.Food1: return 1;
-                case ResourceType.Material1: return 5;
-                case ResourceType.Energy1: return 3;
-                case ResourceType.Energy2: return 4;
-                case ResourceType.Energy3: return 5;
-                case ResourceType.Gen1: return 5;
-                case ResourceType.Gen2: return 6;
-                case ResourceType.Gen3: return 7;
-                case ResourceType.Gen4: return 8;
-                default: return 1;
-            }
         }
     }
     public static class Upgrade
