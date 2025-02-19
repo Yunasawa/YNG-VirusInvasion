@@ -1,5 +1,9 @@
+using System;
+
 public static partial class Game
 {
+    public static Action OnStart { get; set; }
+
     public static bool IsStartGameTutorialActivated = false;
     public static bool IsReturnToBaseTutorialActivated = false;
     public static bool IsUpgradeAttributeTutorialActivated = false;

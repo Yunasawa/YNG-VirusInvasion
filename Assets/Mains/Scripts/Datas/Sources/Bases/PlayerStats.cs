@@ -45,6 +45,7 @@ namespace YNL.Bases
             foreach (AttributeType type in Enum.GetValues(typeof(AttributeType))) Levels.Add(type, 0);
 
             foreach (var pair in ExtraStatsLevel) ExtraStatsLevel[pair.Key].Level = 0;
+            ExtraStatsLevel[Key.Stats.HunterDPS].Level = 1;
         }
 
         public void AdjustResources(ResourceType type, int amount)

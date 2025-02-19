@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
     public GameInput Input;
     public GameData Data;
     public GameLoader Loader;
+    public GameEnemy Enemy;
 
     public bool IsMobileDevice
     {
@@ -18,10 +19,15 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Awake()
     {
+        base.Awake();
+
         Application.targetFrameRate = 60;
 
         Data.MonoAwake();
         Loader.MonoAwake();
+        Enemy.MonoAwake();
+
+        Game.OnStart?.Invoke();
     }
 
     private void Start()

@@ -15,6 +15,7 @@ public class EnemyPool : MonoBehaviour
 {
     [SerializeField] private StageType _stageType;
     [SerializeField] private string _enemyName;
+    public string EnemyName => _enemyName;
     private EnemySources _enemySources;
     [SerializeField] private float _boundaryRadius = 10;
     private int _enemyCount = 0;
@@ -23,6 +24,7 @@ public class EnemyPool : MonoBehaviour
     private Boundary _boundary => Game.Data.BoundaryStages[_stageType];
 
     private Enemy[] _enemies;
+    public Enemy[] Enemies => _enemies;
     private List<float> _respawnCounter = new();
     private ObjectPool<Enemy> _enemyPool;
 
@@ -40,6 +42,8 @@ public class EnemyPool : MonoBehaviour
 
     private void Start()
     {
+        Game.Enemy.RegisterEnemyPool(this);
+
         _enemySources = Game.Data.EnemySources[_enemyName];
 
         _enemyCount = _enemySources.EnemyAmount;

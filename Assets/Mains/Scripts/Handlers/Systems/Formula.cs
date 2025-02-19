@@ -32,7 +32,7 @@ public static class Formula
         {
             switch (extra)
             {
-                case Key.Stats.DeliveryCellAmount: case Key.Stats.HunterCellAmount:
+                case Key.Stats.DeliveryAmount: case Key.Stats.HunterAmount:
                     return 10;
                 default: return 50;
             }

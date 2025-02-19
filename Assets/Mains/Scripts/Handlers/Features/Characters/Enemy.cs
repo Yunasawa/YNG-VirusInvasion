@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using OWS.ObjectPooling;
 using System;
 using UnityEngine;
-using static DG.Tweening.DOTweenCYInstruction;
 
 public class Enemy : MonoBehaviour, IPoolable<Enemy>
 {
@@ -14,6 +13,7 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
 
     public bool IsEnable = true;
     public bool IsCaught = false;
+    public bool CanAttack => Game.Data.EnemySources[Stats.ID].AttackDamage > 0;
 
     private Action<Enemy> returnToPool;
     public Action OnEnemyKilled;

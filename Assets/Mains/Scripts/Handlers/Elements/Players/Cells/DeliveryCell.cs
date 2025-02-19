@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using YNL.Bases;
-using YNL.Extensions.Methods;
 
 public class DeliveryCell : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class DeliveryCell : MonoBehaviour
     private bool _targetIsHome = false;
     private Vector3 _destination => _targetIsHome ? Game.Input.HomeBase.position : Player.Transform.position;
     private int _distance => _targetIsHome ? 10 : 2;
-    private int _capacity => (int)Game.Data.PlayerStats.ExtraStatsLevel[Key.Stats.DeliveryCellCapacity].Value;
+    private int _capacity => (int)Game.Data.PlayerStats.ExtraStatsLevel[Key.Stats.DeliveryCapacity].Value;
     private List<Group<string, int>> _deliveriedEnemies = new();
     public List<Group<string, int>> DeliveriedEnemies => _deliveriedEnemies;
 

@@ -129,7 +129,7 @@ MonoBehaviour:
           Evolution: 1
           Description: Increase DPS of hunter cell from $1 > $2
           PercentValue: 0
-          Value: 0.4
+          Value: 5
           PercentCost: 1
           BaseCost:
             Type: 0

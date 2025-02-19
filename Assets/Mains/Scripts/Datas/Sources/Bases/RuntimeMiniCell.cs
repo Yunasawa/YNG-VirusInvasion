@@ -5,12 +5,14 @@ using UnityEngine;
 public class RuntimeMiniCell
 {
     public List<DeliveryCellStats> DeliveryCells = new();
+    public List<HunterCellStats> HunterCells = new();
 
     public RuntimeMiniCell()
     {
         for (int i = 0; i < 10; i++)
         {
             DeliveryCells.Add(new());
+            HunterCells.Add(new());
         }
     }
 }

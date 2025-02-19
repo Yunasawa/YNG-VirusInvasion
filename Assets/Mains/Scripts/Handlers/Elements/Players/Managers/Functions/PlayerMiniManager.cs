@@ -25,21 +25,26 @@ public class PlayerMiniManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < _extraStatsLevel[Key.Stats.DeliveryCellAmount].Value; i++)
-        {
-            InitializeCells(i);
-        }
+        for (int i = 0; i < _extraStatsLevel[Key.Stats.DeliveryAmount].Value; i++) CreateDeliveryCell(i);
+        for (int i = 0; i < _extraStatsLevel[Key.Stats.HunterAmount].Value; i++) CreateHunterCell(i);
     }
 
-    private void InitializeCells(int index)
+    private void CreateDeliveryCell(int index)
     {
         DeliveryCell delivery = Instantiate(Game.Input.DeliveryCell, _deliveryContainer);
         delivery.Initialize(Game.Data.RuntimeStats.RuntimeMiniCell.DeliveryCells[index]);
         DeliveryCells.Add(delivery);
     }
+    private void CreateHunterCell(int index)
+    {
+        HunterCell hunter = Instantiate(Game.Input.HunterCell, _hunterContainer);
+        hunter.Initialize(Game.Data.RuntimeStats.RuntimeMiniCell.HunterCells[index]);
+        HunterCells.Add(hunter);
+    }
 
     private void OnUpdateStats(string stats)
     {
-        InitializeCells(DeliveryCells.Count);
+        if (stats == Key.Stats.DeliveryAmount) CreateDeliveryCell(DeliveryCells.Count);
+        if (stats == Key.Stats.HunterAmount) CreateHunterCell(DeliveryCells.Count);
     }
 }

@@ -12,6 +12,8 @@ namespace YNL.Bases
     [System.Serializable]
     public class EnemySources
     {
+        public bool CanAttack => AttackDamage > 0;
+
         public Enemy Enemy;
         public MRange MaxEnemyInAnArea = new(8, 12);
         public int Capacity = 3;
