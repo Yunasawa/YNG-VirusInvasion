@@ -6,6 +6,7 @@ using YNL.Extensions.Methods;
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy _manager;
+    private Transform _damager;
 
     [HideInInspector] public bool Enabled = true;
 
@@ -20,8 +21,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!Enabled) return;
 
-        if (Vector3.Distance(transform.position, Player.Transform.position) <= 0.1f) OnPullingDone();
+        if (!_damager.IsNull())
+        {
+            if (Vector3.Distance(transform.position, _damager.position) <= 0.1f) OnPullingDone();
+        }
     }
+
+    public void SetDamager(Transform damager) => _damager = damager;
 
     public void MoveTowardPlayer()
     {

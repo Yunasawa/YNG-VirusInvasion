@@ -5,6 +5,7 @@ using UnityEngine;
 using YNL.Bases;
 using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerEnemyManager : ColliderTriggerListener
 {
@@ -73,7 +74,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
                             if (!enemy.IsCaught)
                             {
                                 enemy.IsCaught = true;
-                                //enemy.UI.UpdateHealthBar(enemy.IsCaught);
+                                enemy.Movement.SetDamager(Player.Transform);
+                                enemy.Stats.SetDamage(Game.Data.PlayerStats.Attributes[AttributeType.DPS]);
 
                                 pair.Tentacle.SetTarget(enemy);
                                 pair.Enemy = enemy;
@@ -103,6 +105,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
                     else
                     {
                         pair.Enemy.IsCaught = true;
+                        pair.Enemy.Movement.SetDamager(Player.Transform);
+                        pair.Enemy.Stats.SetDamage(Game.Data.PlayerStats.Attributes[AttributeType.DPS]);
                         pair.Enemy.UI.UpdateHealthBar(pair.Enemy.IsCaught);
                         pair.Tentacle.SetTarget(pair.Enemy);
 
@@ -129,6 +133,8 @@ public class PlayerEnemyManager : ColliderTriggerListener
                 if (!enemy.IsCaught)
                 {
                     enemy.IsCaught = true;
+                    enemy.Movement.SetDamager(Player.Transform);
+                    enemy.Stats.SetDamage(Game.Data.PlayerStats.Attributes[AttributeType.DPS]);
                     enemy.UI.UpdateHealthBar(enemy.IsCaught);
 
                     pair.Tentacle.SetTarget(enemy);

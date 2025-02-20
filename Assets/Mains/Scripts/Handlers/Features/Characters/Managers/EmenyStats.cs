@@ -18,6 +18,8 @@ public class EmenyStats : MonoBehaviour
     public float TimePassed;
     private float _timeToDeath;
 
+    private float ReceivedDamage = 0;
+
     private void Awake()
     {
         _manager = GetComponent<Enemy>();
@@ -44,13 +46,18 @@ public class EmenyStats : MonoBehaviour
         Player.OnCollectEnemyExp?.Invoke(Stats.Exp);
     }
 
+    public void SetDamage(float damage)
+    {
+        ReceivedDamage = damage;
+    }
+
     public void GetHit()
     {
         if (!_manager.IsCaught) return;
 
         if (!_manager.UI.UI.gameObject.activeSelf && _manager.IsEnable) _manager.UI.UI.gameObject.SetActive(true);
 
-        float currentDamage = Game.Data.PlayerStats.Attributes[AttributeType.DPS] * 1;
+        float currentDamage = ReceivedDamage;
         _timeToDeath = _manager.Stats.CurrentHealth / currentDamage;
 
         TimePassed += Time.deltaTime;

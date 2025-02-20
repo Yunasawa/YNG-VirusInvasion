@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 [AddComponentMenu("Game: Enemy")]
@@ -28,6 +30,13 @@ public class GameEnemy : MonoBehaviour
 
     private void Start()
     {
+        DelayInitialize().Forget();
+    }
+
+    private async UniTaskVoid DelayInitialize()
+    {
+        await UniTask.NextFrame();
+
         Player.OnExtraStatsUpdate?.Invoke(Key.Stats.HunterDPS);
     }
 
@@ -42,6 +51,6 @@ public class GameEnemy : MonoBehaviour
 
         ValidEnemies.Clear();
         float hunterDPS = _extraStatsLevel[Key.Stats.HunterDPS].Value;
-        ValidEnemies = _enemyPools.Where(i => !_enemySources[i.EnemyName].CanAttack && hunterDPS / _enemySources[i.EnemyName].HP < 10).ToList();
+        ValidEnemies = _enemyPools.Where(i => !_enemySources[i.EnemyName].CanAttack && _enemySources[i.EnemyName].HP / hunterDPS < 10).ToList();
     }
 }

@@ -67,7 +67,6 @@ public class EnemyUI : MonoBehaviour
 
             _manager.Stats.CurrentHealth = Mathf.FloorToInt(_manager.Stats.Stats.HP * remainFillAmount);
 
-            //if (_healthBarTween.IsNull()) return;
             _healthBarTween?.Kill();
             _healthBarTween = null;
 
