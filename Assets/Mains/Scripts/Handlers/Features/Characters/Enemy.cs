@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour, IPoolable<Enemy>
         Stats.Particle.gameObject.SetActive(true);
         Stats.Particle.Play();
 
+        OnEnemyKilled?.Invoke();
+        OnEnemyKilled = null;
+
         IsCaught = false;
 
         WaitToKill().Forget();

@@ -94,6 +94,7 @@ MonoBehaviour:
   CurrentHealth: 0
   Model: {fileID: 3508237984059369032}
   Particle: {fileID: 14422668297971226}
+  TimePassed: 0
 --- !u!114 &4717238934982341656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cf6fd3f46f4746bf385a036bd8f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damager: {fileID: 3268170907149153867}
   Enabled: 1
   IsPulling: 0
 --- !u!114 &1878361346278771096

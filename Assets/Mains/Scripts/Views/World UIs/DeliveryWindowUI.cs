@@ -20,6 +20,7 @@ public class DeliveryWindowUI : MonoBehaviour
         {
             ResourceNodeUI node = Instantiate(_resourceNode, _resourceContainer);
             node.gameObject.SetActive(false);
+            node.UpdateIcon(type);
             _nodes.Add(type, node);
         }
     }

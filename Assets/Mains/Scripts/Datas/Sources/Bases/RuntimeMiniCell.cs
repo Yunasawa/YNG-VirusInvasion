@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using YNL.Bases;
+using YNL.Utilities.Addons;
 
 [System.Serializable]
 public class RuntimeMiniCell
@@ -33,5 +35,6 @@ public class DeliveryCellStats : MiniCellStats
 [System.Serializable]
 public class HunterCellStats : MiniCellStats
 {
-    
+    public int Capacity;
+    public SerializableDictionary<ResourceType, int> Resources = new();
 }

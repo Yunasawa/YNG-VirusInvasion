@@ -63,7 +63,7 @@ public class ExchangerWindowUI : ConstructWindowUI
             {
                 var node = Instantiate(_resourceNode, _resourceContainer);
                 node.UpdateNode(Game.Data.PlayerStats.Resources[type]);
-                node.UpdateIcon(Game.Data.Vault.ResourceIcons[type]);
+                node.UpdateIcon(type);
                 _resourceNodes.Add(type, node);
             }
         }

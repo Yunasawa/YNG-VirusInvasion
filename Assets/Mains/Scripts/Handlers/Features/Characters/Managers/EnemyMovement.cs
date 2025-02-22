@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +7,7 @@ using YNL.Extensions.Methods;
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy _manager;
-    private Transform _damager;
+    public Transform Damager;
 
     [HideInInspector] public bool Enabled = true;
 
@@ -17,17 +18,23 @@ public class EnemyMovement : MonoBehaviour
         _manager = GetComponent<Enemy>();
     }
 
+    [Button]
+    public void AAA()
+    {
+        Damager = this.transform;
+    }
+
     public void MonoUpdate()
     {
         if (!Enabled) return;
 
-        if (!_damager.IsNull())
+        if (!Damager.IsNull())
         {
-            if (Vector3.Distance(transform.position, _damager.position) <= 0.1f) OnPullingDone();
+            if (Vector3.Distance(transform.position, Damager.position) <= 0.1f) OnPullingDone();
         }
     }
 
-    public void SetDamager(Transform damager) => _damager = damager;
+    public void SetDamager(Transform damager) => Damager = damager;
 
     public void MoveTowardPlayer()
     {
@@ -39,22 +46,36 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!IsPulling) return;
 
-        List<TentaclePair> groups = Player.Enemy.Tentacles.Where(i => i.Enemy == _manager).ToList();
-
-        foreach (var group in groups)
+        if (Damager == Player.Transform)
         {
-            if (IsPulling)
-            {
-                IsPulling = false;
-                Enabled = false;
-                _manager.IsEnable = false;
-                _manager.OnKilled();
-                _manager.Stats.OnKilled();
+            List<TentaclePair> groups = Player.Enemy.Tentacles.Where(i => i.Enemy == _manager).ToList();
 
-                CameraManager.Instance.Audio.PlayEatingSFX();
+            foreach (var group in groups)
+            {
+                if (IsPulling)
+                {
+                    IsPulling = false;
+                    Enabled = false;
+                    _manager.IsEnable = false;
+                    _manager.OnKilled();
+                    _manager.Stats.OnKilled();
+
+                    CameraManager.Instance.Audio.PlayEatingSFX();
+                }
+
+                group.Tentacle.RemoveTarget();
+                group.Enemy = null;
             }
-            group.Tentacle.RemoveTarget();
-            group.Enemy = null;
         }
+        else
+        {
+            IsPulling = false;
+            Enabled = false;
+            _manager.IsEnable = false;
+            _manager.OnKilled();
+            _manager.Stats.OnKilled();
+        }
+
+        Damager = transform;
     }
  }

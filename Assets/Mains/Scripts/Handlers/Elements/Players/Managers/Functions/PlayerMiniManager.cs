@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using YNL.Bases;
+using YNL.Extensions.Methods;
 using YNL.Utilities.Addons;
 
 public class PlayerMiniManager : MonoBehaviour
@@ -38,6 +39,7 @@ public class PlayerMiniManager : MonoBehaviour
     private void CreateHunterCell(int index)
     {
         HunterCell hunter = Instantiate(Game.Input.HunterCell, _hunterContainer);
+        HunterCellStats stats = Game.Data.RuntimeStats.RuntimeMiniCell.HunterCells[index];
         hunter.Initialize(Game.Data.RuntimeStats.RuntimeMiniCell.HunterCells[index]);
         HunterCells.Add(hunter);
     }

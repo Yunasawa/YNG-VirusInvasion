@@ -76,6 +76,7 @@ MonoBehaviour:
   Stats: {fileID: 3022080066041185500}
   Movement: {fileID: 7943937559667347246}
   UI: {fileID: 299684255396908803}
+  IsEnable: 1
   IsCaught: 0
 --- !u!114 &3022080066041185500
 MonoBehaviour:
@@ -93,6 +94,7 @@ MonoBehaviour:
   CurrentHealth: 0
   Model: {fileID: 2878469269968249199}
   Particle: {fileID: 6541962244799249207}
+  TimePassed: 0
 --- !u!114 &7943937559667347246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cf6fd3f46f4746bf385a036bd8f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damager: {fileID: 6924787279905434644}
   Enabled: 1
   IsPulling: 0
 --- !u!114 &299684255396908803

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using YNL.Bases;
+using YNL.Utilities.Addons;
 
 public class DeliveryCell : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class DeliveryCell : MonoBehaviour
     private Vector3 _destination => _targetIsHome ? Game.Input.HomeBase.position : Player.Transform.position;
     private int _distance => _targetIsHome ? 10 : 2;
     private int _capacity => (int)Game.Data.PlayerStats.ExtraStatsLevel[Key.Stats.DeliveryCapacity].Value;
-    private List<Group<string, int>> _deliveriedEnemies = new();
+    [SerializeField] private List<Group<string, int>> _deliveriedEnemies = new();
     public List<Group<string, int>> DeliveriedEnemies => _deliveriedEnemies;
 
     private DeliveryCellStats _stats;
 
-    private Dictionary<ResourceType, int> _containedResources = new();
+    [SerializeField] private SerializableDictionary<ResourceType, int> _containedResources = new();
     [SerializeField] private DeliveryWindowUI _ui;
 
     private void Awake()
@@ -45,6 +46,8 @@ public class DeliveryCell : MonoBehaviour
         transform.position = stats.Position.ToVector3();
         _targetIsHome = stats.TargetIsHome;
         _deliveriedEnemies = stats.DeliveriedEnemies;
+
+        UpdateUI();
     }
 
     private void HandleResources()
@@ -53,7 +56,8 @@ public class DeliveryCell : MonoBehaviour
         {
             foreach (var pair in _deliveriedEnemies)
             {
-                foreach (var resource in Game.Data.EnemySources[pair.E1].Drops)
+                EnemySources sources = Game.Data.EnemySources[pair.E1];
+                foreach (var resource in sources.Drops)
                 {
                     Game.Data.PlayerStats.AdjustResources(resource.Key, (int)resource.Value * pair.E2);
                 }
@@ -73,21 +77,26 @@ public class DeliveryCell : MonoBehaviour
 
             if (_deliveriedEnemies.Count <= 0) return;
 
-            _containedResources.Clear();
-            foreach (var enemy in _deliveriedEnemies)
-            {
-                EnemySources sources = Game.Data.EnemySources[enemy.E1];
-                foreach (var resource in sources.Drops)
-                {
-                    if (_containedResources.ContainsKey(resource.Key)) _containedResources[resource.Key] += (int)resource.Value;
-                    else _containedResources.Add(resource.Key, (int)resource.Value);
-                }
-            }
-
-            _ui.UpdateResources(_containedResources);
+            UpdateUI();
         }
         
         _targetIsHome = !_targetIsHome;
         _stats.TargetIsHome = _targetIsHome;
+    }
+
+    private void UpdateUI()
+    {
+        _containedResources.Clear();
+        foreach (var enemy in _deliveriedEnemies)
+        {
+            EnemySources sources = Game.Data.EnemySources[enemy.E1];
+            foreach (var resource in sources.Drops)
+            {
+                if (_containedResources.ContainsKey(resource.Key)) _containedResources[resource.Key] += (int)resource.Value * enemy.E2;
+                else _containedResources.Add(resource.Key, (int)resource.Value * enemy.E2);
+            }
+        }
+
+        _ui.UpdateResources(_containedResources);
     }
 }

@@ -30,6 +30,7 @@ public class EnemyPool : MonoBehaviour
 
     private TransformAccessArray _enemyTransforms;
     private NativeArray<float3> _targetPositions;
+    private NativeArray<float3> _playerPositions;
     private NativeArray<bool> _isPulling;
     private NativeArray<float> _movingSpeed;
 
@@ -53,6 +54,7 @@ public class EnemyPool : MonoBehaviour
 
         _enemyTransforms = new TransformAccessArray(_enemyCount);
         _targetPositions = new NativeArray<float3>(_enemyCount, Allocator.Persistent);
+        _playerPositions = new NativeArray<float3>(_enemyCount, Allocator.Persistent);
         _isPulling = new NativeArray<bool>(_enemyCount, Allocator.Persistent);
         _movingSpeed = new NativeArray<float>(_enemyCount, Allocator.Persistent);
 
@@ -63,6 +65,9 @@ public class EnemyPool : MonoBehaviour
             _enemies[i].Pool = this;
             _enemyTransforms.Add(_enemies[i].transform);
             _targetPositions[i] = GetRandomPositionInsideCircle();
+
+            if (!_enemies[i].Movement.Damager.IsNullOrDestroyed()) _playerPositions[i] = _enemies[i].Movement.Damager.position;
+            else _playerPositions[i] = _enemies[i].transform.position;
 
             _enemies[i].transform.localPosition = spawnPosition;
         }
@@ -81,6 +86,9 @@ public class EnemyPool : MonoBehaviour
                 _targetPositions[i] = GetRandomPositionInsideCircle();
             }
 
+            if (!_enemies[i].Movement.Damager.IsNullOrDestroyed()) _playerPositions[i] = _enemies[i].Movement.Damager.position;
+            else _playerPositions[i] = _enemies[i].transform.position;
+
             _isPulling[i] = _enemies[i].Movement.IsPulling;
             _movingSpeed[i] = _enemies[i].IsCaught ? 3 : 1.5f;
         }
@@ -95,6 +103,7 @@ public class EnemyPool : MonoBehaviour
     private void OnDestroy()
     {
         if (_targetPositions.IsCreated) _targetPositions.Dispose();
+        if (_playerPositions.IsCreated) _playerPositions.Dispose();
         if (_enemyTransforms.isCreated) _enemyTransforms.Dispose();
         if (_isPulling.IsCreated) _isPulling.Dispose();
         if (_movingSpeed.IsCreated) _movingSpeed.Dispose();
@@ -116,7 +125,7 @@ public class EnemyPool : MonoBehaviour
             TargetPositions = _targetPositions,
             PullingSpeed = Player.Movement.CurrentMovingSpeed.Oscillate() * Formula.Value.GetEnemyPullingSpeedMultiplier(transform.position),
             DeltaTime = Time.deltaTime,
-            PlayerPosition = Player.Transform.position,
+            PlayerPositions = _playerPositions,
             IsPulling = _isPulling,
             MovingSpeed = _movingSpeed
         };
@@ -164,7 +173,7 @@ public struct EnemyMovementJob : IJobParallelForTransform
     public NativeArray<float3> TargetPositions;
     public float PullingSpeed;
     public float DeltaTime;
-    public float3 PlayerPosition;
+    public NativeArray<float3> PlayerPositions;
     public NativeArray<bool> IsPulling;
     public NativeArray<float> MovingSpeed;
 
@@ -172,7 +181,7 @@ public struct EnemyMovementJob : IJobParallelForTransform
     {
         if (IsPulling[index])
         {
-            transform.position = Vector3.MoveTowards(transform.position, PlayerPosition, PullingSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, PlayerPositions[index], PullingSpeed);
         }
         else
         {
