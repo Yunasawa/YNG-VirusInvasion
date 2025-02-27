@@ -1,4 +1,5 @@
 using UnityEngine;
+using YNL.Bases;
 
 public static class Key
 {
@@ -15,6 +16,26 @@ public static class Key
     {
         public static string SaveFile = $"{Application.persistentDataPath}/GameData.json";
     }
+    public static class Resource
+    {
+        public static string GetName(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.Food1: return "Protein";
+                case ResourceType.Energy1: return "Plasma";
+                case ResourceType.Energy2: return "Antigen";
+                case ResourceType.Energy3: return "Stem Cell";
+                case ResourceType.Material1: return "Enzyme";
+                case ResourceType.Gen1: return "DNA 1";
+                case ResourceType.Gen2: return "DNA 2";
+                case ResourceType.Gen3: return "DNA 3";
+                case ResourceType.Gen4: return "DNA 4";
+                default: return "Gem";
+            }
+        }
+    }
+
     public static class Stats
     {
         public const string ExtraSpeed = "ExtraSpeed";

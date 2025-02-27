@@ -8,4 +8,5 @@ public class DatabaseStatsSO : ScriptableObject
     public ConstructStats ConstructStats = new();
     public QuestStats QuestStats = new();
     public AttributeStats AttributeStats = new();
+    public ShopStats ShopStats = new();
 }

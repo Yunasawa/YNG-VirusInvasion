@@ -14,26 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerStats:
     CurrentLevel: 7
-    CurrentExp: 1126
+    CurrentExp: 1717
     CurrentHP: 0
     MaxHP: 270
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 7400
-      - 6
+      - 4022
+      - 13
       - 4
       - 0
       - 0
       - 2
+      - 30
+      - 180
       - 0
       - 0
-      - 0
-      - -150
     Attributes:
       _keys: 00010203040506
       _values:
-      - 166
+      - 26
       - 37.6
       - 1470
       - 45
@@ -52,7 +52,7 @@ MonoBehaviour:
       - 0
     Levels:
       _keys: 00010203040506
-      _values: 32000000310000006300000064000000010000006300000001000000
+      _values: 0a000000310000006300000064000000010000006300000001000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
@@ -85,11 +85,11 @@ MonoBehaviour:
         Step: 0.5
       - Level: 0
         Step: 0.65
-      - Level: 0
-        Step: 1
       - Level: 1
+        Step: 1
+      - Level: 9
         Step: 5
-      - Level: 0
+      - Level: 1
         Step: 5
       - Level: 1
         Step: 1
@@ -102,10 +102,10 @@ MonoBehaviour:
       - Level: 0
         Step: 5
   CapacityStats:
-    CurrentCapacity: 16
+    CurrentCapacity: 4
     Resources:
       _keys: 00010203040506070809
-      _values: 10000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _values: 04000000000000000000000000000000000000000000000000000000000000000000000000000000
   ConstructStats:
     Farms:
       _keys:
@@ -183,13 +183,11 @@ MonoBehaviour:
   RuntimeMiniCell:
     DeliveryCells:
     - Position:
-        X: 36.565292
+        X: 9.339568
         Y: -0.20499802
-        Z: 43.37532
-      TargetIsHome: 1
-      DeliveriedEnemies:
-      - E1: Virus 1 - 1
-        E2: 8
+        Z: 6.2467427
+      TargetIsHome: 0
+      DeliveriedEnemies: []
     - Position:
         X: 0
         Y: 0
@@ -246,42 +244,82 @@ MonoBehaviour:
       DeliveriedEnemies: []
     HunterCells:
     - Position:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 56.54409
+        Y: -0.20499802
+        Z: 76.98583
+      Capacity: 6
+      Resources:
+        _keys: 00
+        _values: 06000000
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0
         Z: 0
+      Capacity: 0
+      Resources:
+        _keys: 
+        _values: 

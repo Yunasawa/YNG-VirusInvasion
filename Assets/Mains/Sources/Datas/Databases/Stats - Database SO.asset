@@ -488,3 +488,45 @@ MonoBehaviour:
         Description: Increase @1 > @2 health point
       - Name: MULTI ATTACK
         Description: Allow @1 > @2 tentacles to catch the same target
+  ShopStats:
+    ShopGroups:
+    - Resource: 5
+      FreeItem:
+        Amount: 1
+        Cost: 0
+      LowItem:
+        Amount: 25
+        Cost: 100
+      HighItem:
+        Amount: 150
+        Cost: 450
+    - Resource: 6
+      FreeItem:
+        Amount: 1
+        Cost: 0
+      LowItem:
+        Amount: 15
+        Cost: 100
+      HighItem:
+        Amount: 110
+        Cost: 450
+    - Resource: 7
+      FreeItem:
+        Amount: 1
+        Cost: 0
+      LowItem:
+        Amount: 60
+        Cost: 100
+      HighItem:
+        Amount: 350
+        Cost: 450
+    - Resource: 8
+      FreeItem:
+        Amount: 6
+        Cost: 0
+      LowItem:
+        Amount: 560
+        Cost: 100
+      HighItem:
+        Amount: 3400
+        Cost: 450

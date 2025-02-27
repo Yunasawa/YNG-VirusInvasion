@@ -9,11 +9,13 @@ public class ResourceViewUI : ToggleViewUI
     private void Awake()
     {
         View.OnOpenResourceView += OnOpenResourceView;
+        Player.OnChangeResources += OnOpenResourceView;
     }
 
     private void OnDestroy()
     {
         View.OnOpenResourceView -= OnOpenResourceView;
+        Player.OnChangeResources -= OnOpenResourceView;
     }
 
     private void Start()
