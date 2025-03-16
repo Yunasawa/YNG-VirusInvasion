@@ -111,7 +111,7 @@ public class FarmWindowUI : ConstructWindowUI
     }
     private void UpdateResourceNodes()
     {
-        foreach (var pair in _resourceNodes) pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
+        foreach (var pair in _resourceNodes) pair.Value.UpdateValue(Game.Data.PlayerStats.Resources[pair.Key]);
     }
     private void UpdateCapacityStatus()
     {

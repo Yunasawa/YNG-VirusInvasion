@@ -8,7 +8,7 @@ public class ResourceNodeUI : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _text;
 
-    public void UpdateNode(float amount)
+    public void UpdateValue(float amount)
     {
         _text.text = Mathf.FloorToInt(amount).RoundValue();
     }

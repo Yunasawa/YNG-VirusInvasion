@@ -35,7 +35,9 @@ public class MarketWindowUI : ConstructWindowUI
         Player.OnChangeResources += UpdateResourceNodes;
         Player.OnChangeResources += UpdateResourceNodes;
 
-        _evolutionButton.onClick.AddListener(UpdateEvolution);
+        Cheat.OnEvolution += A;
+
+        _evolutionButton.onClick.AddListener(() => UpdateEvolution(false));
     }
 
     private void OnDestroy()
@@ -43,6 +45,13 @@ public class MarketWindowUI : ConstructWindowUI
         Player.OnExtraStatsUpdate -= OnExtraStatsUpdate;
         Player.OnChangeResources -= UpdateResourceNodes;
         Player.OnChangeResources += UpdateResourceNodes;
+
+        Cheat.OnEvolution -= A;
+    }
+
+    private void Start()
+    {
+        this.gameObject.SetActive(false);   
     }
 
     public override void OnOpenWindow()
@@ -73,10 +82,10 @@ public class MarketWindowUI : ConstructWindowUI
         {
             foreach (var cost in _evolution.Costs)
             {
-                if (Game.Data.PlayerStats.Resources[cost.Type] >= cost.Amount) _evolutionCost.text += $"{cost.Amount} <sprite name=\"Food1\"> ";
+                if (Game.Data.PlayerStats.Resources[cost.Type] >= cost.Amount) _evolutionCost.text += $"{cost.Amount} <sprite name={cost.Type}> ";
                 else
                 {
-                    _evolutionCost.text += $"<color=#FF0000>{cost.Amount} <sprite name=\"Food1\"></color> ";
+                    _evolutionCost.text += $"<color=#FF0000>{cost.Amount} <sprite name={cost.Type}></color> ";
                     _ableToEvolute = false;
                 }
             }
@@ -104,18 +113,22 @@ public class MarketWindowUI : ConstructWindowUI
 
     private void UpdateResourceNodes()
     {
-        foreach (var pair in _resourceNodes) pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
+        foreach (var pair in _resourceNodes) pair.Value.UpdateValue(Game.Data.PlayerStats.Resources[pair.Key]);
     }
 
-    private void UpdateEvolution()
-    {
-        if (!_ableToEvolute) return;
-        
-        foreach (var cost in _evolution.Costs) Player.OnConsumeResources?.Invoke(cost.Type, cost.Amount);
+    private void A() => UpdateEvolution(true);
 
-        _construct.Evolution++;
-        Game.Data.PlayerStats.Bonuses[AttributeType.DPS] += 20;
-        Player.OnChangeStats?.Invoke();
-        Initialize();
+    private void UpdateEvolution(bool force = false)
+    {
+        if (!_ableToEvolute && !force) return;
+        Player.OnUpgradeRevolution?.Invoke();
+
+        if (!force)
+        {
+            foreach (var cost in _evolution.Costs) Player.OnConsumeResources?.Invoke(cost.Type, cost.Amount);
+            Game.Data.PlayerStats.Bonuses[AttributeType.DPS] += 20;
+            Player.OnChangeStats?.Invoke();
+            Initialize();
+        }
     }
 }

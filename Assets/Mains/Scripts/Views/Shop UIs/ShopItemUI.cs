@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using YNL.Bases;
-using YNL.Extensions.Methods;
 
 public class ShopItemUI : MonoBehaviour
 {
@@ -10,7 +9,11 @@ public class ShopItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _itemName;
     [SerializeField] private TextMeshProUGUI _itemCost;
 
+    [SerializeField] private GameObject _coverer;
+
     [SerializeField] private Button _button;
+
+    public bool IsFreeItem;
 
     private ShopItem _shopItem;
     private ResourceType _resourceType;
@@ -44,12 +47,18 @@ public class ShopItemUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        _itemCost.color = _enoughResource ? Color.white : Color.red;
+        if (!IsFreeItem) _itemCost.color = _enoughResource ? Color.white : Color.red;
     }
 
     private void OnClick()
     {
         if (!_enoughResource) return;
+
+        if (IsFreeItem)
+        {
+            _coverer.SetActive(true);
+            _itemCost.color = Color.red;
+        }
 
         Player.OnConsumeResources?.Invoke(ResourceType.Currency3, _shopItem.Cost);
         Game.Data.PlayerStats.AdjustResources(_resourceType, (int)_shopItem.Amount);

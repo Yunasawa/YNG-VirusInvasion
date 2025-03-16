@@ -65,7 +65,7 @@ public class CapacityFieldUI : MonoBehaviour
             if (Game.Data.CapacityStats.Resources.TryGetValue(pair.Key, out uint resourceAmount))
             {
                 pair.Value.gameObject.SetActive(resourceAmount > 0);
-                pair.Value.UpdateNode(resourceAmount);
+                pair.Value.UpdateValue(resourceAmount);
             }
             else pair.Value.gameObject.SetActive(false);
         }

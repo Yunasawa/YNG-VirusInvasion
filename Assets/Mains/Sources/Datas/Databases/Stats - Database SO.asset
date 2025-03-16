@@ -447,18 +447,17 @@ MonoBehaviour:
           Amount: 200
         - Type: 5
           Amount: 50
-      - Title: Upgrade mini cells
-        Message: Upgrade any mini cell (Hunter or Deliver) attribute to level <color=#F3FF00>%</color>
-          or higher
-        Target: 30
-        Replacement: '@/30'
+      - Title: Defeat the boss
+        Message: Defeat the boss in Stage 7
+        Target: 1
+        Replacement: '@/1'
         Rewards:
         - Type: 0
           Amount: 100000
         - Type: 3
           Amount: 30
         - Type: 8
-          Amount: 5
+          Amount: 10
       - Title: Finish all mini quests
         Message: Finish all <color=#F3FF00>%</color> mini quests scattered on stages
         Target: 8

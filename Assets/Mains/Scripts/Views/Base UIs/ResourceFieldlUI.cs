@@ -25,7 +25,7 @@ public class ResourceFieldUI : MonoBehaviour
     {
         foreach (var node in _resourceNodes)
         {
-            node.Value.UpdateNode(Game.Data.PlayerStats.Resources[node.Key]);
+            node.Value.UpdateValue(Game.Data.PlayerStats.Resources[node.Key]);
         }
     }
 }

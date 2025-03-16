@@ -62,7 +62,7 @@ public class ExchangerWindowUI : ConstructWindowUI
             foreach (var type in _resourceTypes)
             {
                 var node = Instantiate(_resourceNode, _resourceContainer);
-                node.UpdateNode(Game.Data.PlayerStats.Resources[type]);
+                node.UpdateValue(Game.Data.PlayerStats.Resources[type]);
                 node.UpdateIcon(type);
                 _resourceNodes.Add(type, node);
             }
@@ -74,7 +74,7 @@ public class ExchangerWindowUI : ConstructWindowUI
     {
         foreach (var pair in _resourceNodes)
         {
-            pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
+            pair.Value.UpdateValue(Game.Data.PlayerStats.Resources[pair.Key]);
         }
     }
 }

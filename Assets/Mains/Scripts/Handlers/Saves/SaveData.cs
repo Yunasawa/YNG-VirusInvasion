@@ -62,4 +62,5 @@ public class ConfigToggle
     public bool UpgradeAttributeTutorial = Game.IsUpgradeAttributeTutorialActivated;
     public bool IsFocusOnMainQuest1FirstTime = Game.IsFocusOnMainQuest1FirstTime;
     public bool IsUnlockedDoorStage6 = Game.IsUnlockedDoorStage6;
+    public bool IsPolicyChecked = Game.IsPolicyChecked;
 }

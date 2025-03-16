@@ -33,7 +33,7 @@ public class DeliveryWindowUI : MonoBehaviour
         {
             ResourceNodeUI node = _nodes[resource.Key];
             node.gameObject.SetActive(true);
-            node.UpdateNode(resource.Value);
+            node.UpdateValue(resource.Value);
         }
     }
 

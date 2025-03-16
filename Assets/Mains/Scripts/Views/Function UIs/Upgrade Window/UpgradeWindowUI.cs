@@ -68,7 +68,7 @@ public class UpgradeWindowUI : MonoBehaviour
     {
         foreach (var pair in _resourceNodes)
         {
-            pair.Value.UpdateNode(Game.Data.PlayerStats.Resources[pair.Key]);
+            pair.Value.UpdateValue(Game.Data.PlayerStats.Resources[pair.Key]);
         }
     }
 }

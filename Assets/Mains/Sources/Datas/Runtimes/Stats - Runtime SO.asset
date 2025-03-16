@@ -13,32 +13,33 @@ MonoBehaviour:
   m_Name: Stats - Runtime SO
   m_EditorClassIdentifier: 
   PlayerStats:
+    CurrentRevolution: 2
     CurrentLevel: 7
-    CurrentExp: 1717
-    CurrentHP: 0
-    MaxHP: 270
+    CurrentExp: 6
+    CurrentHP: 22
+    MaxHP: 22
     Resources:
       _keys: 00010203040506070809
       _values:
-      - 4022
-      - 13
-      - 4
+      - 107933
       - 0
       - 0
-      - 2
-      - 30
-      - 180
       - 0
+      - 0
+      - 98
+      - 1
+      - 1
+      - 96
       - 0
     Attributes:
       _keys: 00010203040506
       _values:
-      - 26
-      - 37.6
-      - 1470
-      - 45
-      - 2
-      - 270
+      - 166
+      - 38
+      - 8
+      - 15
+      - 1
+      - 22
       - 0
     Bonuses:
       _keys: 00010203040506
@@ -52,7 +53,7 @@ MonoBehaviour:
       - 0
     Levels:
       _keys: 00010203040506
-      _values: 0a000000310000006300000064000000010000006300000001000000
+      _values: 32000000320000000000000000000000000000000000000000000000
     ExtraStatsLevel:
       _keys:
       - ExtraSpeed
@@ -85,15 +86,15 @@ MonoBehaviour:
         Step: 0.5
       - Level: 0
         Step: 0.65
-      - Level: 1
+      - Level: 0
         Step: 1
-      - Level: 9
-        Step: 5
       - Level: 1
         Step: 5
-      - Level: 1
+      - Level: 0
+        Step: 5
+      - Level: 0
         Step: 1
-      - Level: 10
+      - Level: 0
         Step: 5
       - Level: 0
         Step: 800
@@ -102,10 +103,10 @@ MonoBehaviour:
       - Level: 0
         Step: 5
   CapacityStats:
-    CurrentCapacity: 4
+    CurrentCapacity: 2
     Resources:
       _keys: 00010203040506070809
-      _values: 04000000000000000000000000000000000000000000000000000000000000000000000000000000
+      _values: 02000000000000000000000000000000000000000000000000000000000000000000000000000000
   ConstructStats:
     Farms:
       _keys:
@@ -183,9 +184,9 @@ MonoBehaviour:
   RuntimeMiniCell:
     DeliveryCells:
     - Position:
-        X: 9.339568
+        X: 23.389141
         Y: -0.20499802
-        Z: 6.2467427
+        Z: 16.998566
       TargetIsHome: 0
       DeliveriedEnemies: []
     - Position:
@@ -244,13 +245,13 @@ MonoBehaviour:
       DeliveriedEnemies: []
     HunterCells:
     - Position:
-        X: 56.54409
+        X: 24.489279
         Y: -0.20499802
-        Z: 76.98583
-      Capacity: 6
+        Z: 78.89335
+      Capacity: 0
       Resources:
-        _keys: 00
-        _values: 06000000
+        _keys: 
+        _values: 
     - Position:
         X: 0
         Y: 0

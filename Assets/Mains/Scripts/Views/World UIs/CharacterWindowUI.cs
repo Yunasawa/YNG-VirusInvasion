@@ -25,7 +25,7 @@ public class CharacterWindowUI : MonoBehaviour
         foreach (var drop in _enemy.Stats.Stats.Drops)
         {
             ResourceNodeUI node = Instantiate(_resourceNode, _resourceContainer);
-            node.UpdateNode(drop.Value);
+            node.UpdateValue(drop.Value);
             node.UpdateIcon(drop.Key);
         }
     }

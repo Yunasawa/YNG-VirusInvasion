@@ -2,7 +2,7 @@ using YNL.Bases;
 
 public class MiniQuest8 : BaseQuest
 {
-    public override void Initialize() => _target = 30;
+    public override void Initialize() => _target = 1;
     public override void Refresh(float current = 0) => Current = current;
 
     public override string GetProgress() => $"{Current}/{_target}";
@@ -11,17 +11,19 @@ public class MiniQuest8 : BaseQuest
     {
         Initialize();
 
-        //if (!IsCompleted) Player.OnTradeInMarket += OnTradeInMarket;
+        if (!IsCompleted) Player.OnDefeatEnemy += OnDefeatEnemy;
     }
 
     public override void OnCompleteQuest()
     {
-        //if (!IsCompleted) Player.OnTradeInMarket -= OnTradeInMarket;
+        if (!IsCompleted) Player.OnDefeatEnemy -= OnDefeatEnemy;
     }
 
-    private void OnTradeInMarket(string name)
+    private void OnDefeatEnemy(string name)
     {
-        if (name == "Market 2") Current++;
+        if (name != "Boss 7 - 2") return;
+
+        Current++;
 
         if (IsCompleted) OnCompleteQuest();
 

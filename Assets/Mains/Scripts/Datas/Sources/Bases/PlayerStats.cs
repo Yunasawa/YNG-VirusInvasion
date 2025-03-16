@@ -15,6 +15,7 @@ namespace YNL.Bases
             public float NextValue => Step * (Level + 1);
         }
 
+        public int CurrentRevolution = 0;
         public int CurrentLevel = 0;
         public int CurrentExp;
 
