@@ -47,6 +47,7 @@ public class GameLoader : MonoBehaviour
         Game.IsPolicyChecked = _saveData.TutorialToggle.IsPolicyChecked;
 
         Game.Data.PlayerStats = _saveData.PlayerStats;
+        Game.Data.PlayerStats.CurrentRevolution = 0;
         Game.Data.CapacityStats = _saveData.CapacityStats;
         Game.Data.RuntimeStats.ConstructStats = _saveData.RuntimeConstructStats;
 

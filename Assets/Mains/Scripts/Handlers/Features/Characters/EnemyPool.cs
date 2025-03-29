@@ -20,6 +20,7 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private float _boundaryRadius = 10;
     private int _enemyCount = 0;
     [SerializeField] private bool _moveWhenClear = true;
+    [SerializeField] private bool _enableMove = true;
 
     private Boundary _boundary => Game.Data.BoundaryStages[_stageType];
 
@@ -113,6 +114,8 @@ public class EnemyPool : MonoBehaviour
 
     private float3 GetRandomPositionInsideCircle()
     {
+        if (!_enableMove) return new float3(0, 0, 0);
+
         float angle = UnityEngine.Random.Range(0f, Mathf.PI * 2);
         float distance = UnityEngine.Random.Range(0f, _boundaryRadius);
         return new float3(math.cos(angle) * distance, 0, math.sin(angle) * distance);
@@ -122,6 +125,7 @@ public class EnemyPool : MonoBehaviour
     {
         var job = new EnemyMovementJob
         {
+            EnableMove = _enableMove,
             TargetPositions = _targetPositions,
             PullingSpeed = Player.Movement.CurrentMovingSpeed.Oscillate() * Formula.Value.GetEnemyPullingSpeedMultiplier(transform.position),
             DeltaTime = Time.deltaTime,
@@ -170,6 +174,7 @@ public class EnemyPool : MonoBehaviour
 [BurstCompile]
 public struct EnemyMovementJob : IJobParallelForTransform
 {
+    public bool EnableMove;
     public NativeArray<float3> TargetPositions;
     public float PullingSpeed;
     public float DeltaTime;
@@ -185,6 +190,8 @@ public struct EnemyMovementJob : IJobParallelForTransform
         }
         else
         {
+            if (!EnableMove) return;
+
             float3 direction = math.normalize(TargetPositions[index] - (float3)transform.localPosition);
             if (!math.all(direction == float3.zero))
             {
