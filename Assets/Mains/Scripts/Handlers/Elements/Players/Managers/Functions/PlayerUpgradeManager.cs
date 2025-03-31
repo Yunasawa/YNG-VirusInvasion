@@ -18,6 +18,7 @@ public class PlayerUpgradeManager : MonoBehaviour
         get => Game.Data.PlayerStats.CurrentRevolution;
         set => Game.Data.PlayerStats.CurrentRevolution = value;
     }
+    private int _previousRevolution = 0;
 
     public SerializableDictionary<int, GameObject> RevolutionUpgrade = new();
 
@@ -34,6 +35,12 @@ public class PlayerUpgradeManager : MonoBehaviour
         Player.OnUpgradeRevolution -= OnUpgradeRevolution;
     }
 
+    private void Start()
+    {
+        _previousRevolution = _currentRevolution = 0;
+        OnUpgradeRevolution();
+    }
+
 
     [Button]
     public void Change()
@@ -47,20 +54,29 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     private void OnUpgradeRevolution()
     {
-        UpdateModel();
-        UpdateColor();
-        if (_currentRevolution < 2) _currentRevolution++;
-        else _currentRevolution = 0;
+        if (_currentRevolution >= 2)
+        {
+            _currentRevolution = 0;
+            _previousRevolution = 2;
+        }
+        else
+        {
+            _previousRevolution = _currentRevolution;
+            _currentRevolution++;
+        }
 
-            void UpdateModel()
-            {
-                RevolutionUpgrade[_currentRevolution].SetActive(false);
-                RevolutionUpgrade[_currentRevolution + 1].SetActive(true);
-            }
+            UpdateModel();
+        UpdateColor();
+
+        void UpdateModel()
+        {
+            RevolutionUpgrade[_previousRevolution].SetActive(false);
+            RevolutionUpgrade[_currentRevolution].SetActive(true);
+        }
 
         void UpdateColor()
         {
-            ApplyColor(RevolutionColors[_currentRevolution + 1]);
+            ApplyColor(RevolutionColors[_currentRevolution]);
 
             void ApplyColor(UpgradeColor color)
             {

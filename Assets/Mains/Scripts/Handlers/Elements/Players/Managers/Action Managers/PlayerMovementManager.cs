@@ -78,7 +78,7 @@ public class PlayerMovementManager : MonoBehaviour
 
             Player.Character.Move(Player.Transform.forward * speed);
         
-            Game.Input.TutorialPanelUI.StartGameTutorial.ShowTutorial();
+            //Game.Input.TutorialPanelUI.StartGameTutorial.ShowTutorial();
         }
         else
         {
