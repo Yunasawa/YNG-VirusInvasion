@@ -1,0 +1,20 @@
+{
+  "name": "SupersonicWisdom",
+  "references": [
+    "AppsFlyer",
+    "GameAnalyticsSDK.Editor",
+    "GameAnalyticsSDK",
+    "Unity.TextMeshPro",
+    "Unity.TextMeshPro.Editor",
+    "AltTester"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

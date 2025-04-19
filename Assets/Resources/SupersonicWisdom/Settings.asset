@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7a0fea8b7741029ab27881275a6955, type: 3}
+  m_Name: Settings
+  m_EditorClassIdentifier: 
+  appName: Viral Rush
+  iosAppId: 
+  iosChinaAppId: 
+  iosGameId: 
+  iosChinaGameId: 
+  androidGameId: c3084027-af76-4176-80bc-7328351bb749
+  ironSourceAndroidAppKey: 
+  ironSourceIosAppKey: 
+  ironSourceIosChinaAppKey: 
+  iosGameAnalyticsGameKey: 
+  iosGameAnalyticsSecretKey: 
+  androidGameAnalyticsGameKey: 06a266acc22fc917ac1fe6e3e0a76a68
+  androidGameAnalyticsSecretKey: 099e6e256433fc46d5ef9793c6279bc6b143473c
+  adMobIosAppId: 
+  adMobIosChinaAppId: 
+  adMobAndroidAppId: 
+  areTextMeshProEssentialsInstalled: 1
+  disableFacebookInit: 0
+  testPrivacyPolicy: -1
+  customInterstitialMinimumInterval: 0
+  interstitialMinimumInterval: 20
+  customInterstitialMinimumLevel: 0
+  interstitialMinimumLevel: 1
+  iosChinaBuildEnabled: 0
+  iapNoAdsAndroid: 
+  iapNoAdsIOS: 
+  iosChinaGameAnalyticsGameKey: 
+  iosChinaGameAnalyticsSecretKey: 
+  unityProjectId: 
+  isTimeBased: 1
+  enableManagedInterstitialAds: 0
+  enableManagedBannerAds: 0
+  enableUnityAnalyticsIntegration: 0
+  enableUnityRemoteConfigIntegration: 0
+  enableManagedRateUsPopup: 0
+  enableNoInternetOnAppOpen: 0
+  graceNoInternetOnAppOpen: 0
+  inGameConsoleSettings:
+    isEnable: 0
+    logDebugLevel: 
+  enableResourceManagement: 0
+  enableDebug: 0
+  debugIronSource: 0
+  testBlockingApiInvocation: 0
+  enableTestAds: 0
+  enableDevtools: 0
+  logViaNetwork: 0
+  iapProductsAndroid: []
+  iapProductsIos: []
+  enableAndroidIap: 0
+  enableIosIap: 0
+  enableIosAutomaticNotificationPermission: 0
+  validateBeforeBuild: 1
+  accountToken: 00ad345ef115339a3dde80a7411008502e966ed14f9f81a7ff7e4ab7b6ff9554
+  selectedGameIndex: 1
+  isTitleSelectedAutomatically: 0
+  wasLoggedIn: 1
