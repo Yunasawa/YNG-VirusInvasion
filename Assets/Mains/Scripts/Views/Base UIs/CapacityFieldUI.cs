@@ -51,7 +51,7 @@ public class CapacityFieldUI : MonoBehaviour
                 _capacityBar.color = _capacityColor.Full;
                 _capacityText.text = $"Capacity is full";
 
-                //Game.Input.TutorialPanelUI.ReturnToBaseTutorial.ShowTutorial();
+                Game.Input.TutorialPanelUI.ReturnToBaseTutorial.ShowTutorial();
             }
             else
             {

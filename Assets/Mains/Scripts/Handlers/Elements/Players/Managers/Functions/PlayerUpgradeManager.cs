@@ -20,6 +20,8 @@ public class PlayerUpgradeManager : MonoBehaviour
     }
     private int _previousRevolution = 0;
 
+    public bool Enabled;
+
     public SerializableDictionary<int, GameObject> RevolutionUpgrade = new();
 
     public Material Material;
@@ -54,6 +56,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     private void OnUpgradeRevolution()
     {
+        if (!Enabled) return;
+
         if (_currentRevolution >= 2)
         {
             _currentRevolution = 0;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YNL.Extensions.Methods;
 
 public class CheaterPanelUI : MonoBehaviour
 {

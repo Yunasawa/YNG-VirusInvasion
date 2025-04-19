@@ -144,7 +144,7 @@ public class PlayerStatsManager : MonoBehaviour
 
         if (Game.Data.PlayerStats.Resources[ResourceType.Food1] >= 23)
         {
-            //Game.Input.TutorialPanelUI.UpgradeAttributeTutorial.ShowTutorial();
+            Game.Input.TutorialPanelUI.UpgradeAttributeTutorial.ShowTutorial();
         }
     }
 
