@@ -53,7 +53,7 @@ MonoBehaviour:
     isEnable: 0
     logDebugLevel: 
   enableResourceManagement: 0
-  enableDebug: 0
+  enableDebug: 1
   debugIronSource: 0
   testBlockingApiInvocation: 0
   enableTestAds: 0
