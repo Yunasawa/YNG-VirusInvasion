@@ -1,4 +1,3 @@
-using SupersonicWisdomSDK;
 using UnityEngine;
 using YNL.Patterns.Singletons;
 
@@ -23,9 +22,6 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
 
         Application.targetFrameRate = 60;
-
-        SupersonicWisdom.Api.AddOnReadyListener(Start);
-        SupersonicWisdom.Api.Initialize();
     }
 
     private void Start()

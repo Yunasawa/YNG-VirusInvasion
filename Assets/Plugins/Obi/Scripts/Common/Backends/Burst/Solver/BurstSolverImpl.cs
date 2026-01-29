@@ -317,7 +317,18 @@ namespace Obi
 
         public void SetSimplices(int[] simplices, SimplexCounts counts)
         {
-            this.simplices.CopyFrom(simplices);
+            int count = math.min(simplices.Length, this.simplices.Length);
+
+            if (!this.simplices.IsCreated || this.simplices.Length < count)
+            {
+                if (this.simplices.IsCreated)
+                    this.simplices.Dispose();
+
+                this.simplices = new NativeList<int>(count, Allocator.Persistent);
+            }
+
+            NativeArray<int>.Copy(simplices, 0, this.simplices.AsArray(), 0, count);
+
             this.simplexCounts = counts;
 
             if (simplexBounds.IsCreated)

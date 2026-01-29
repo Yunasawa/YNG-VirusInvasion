@@ -181,13 +181,7 @@ Varyings StylizedPassVertex(Attributes input)
     output.dynamicLightmapUV = input.dynamicLightmapUV.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 #endif
 
-#if UNITY_VERSION >= 202319
-    OUTPUT_SH4(vertexInput.positionWS, output.normalWS.xyz, GetWorldSpaceNormalizeViewDir(vertexInput.positionWS), output.vertexSH);
-#elif UNITY_VERSION >= 202310
-    OUTPUT_SH(vertexInput.positionWS, output.normalWS.xyz, GetWorldSpaceNormalizeViewDir(vertexInput.positionWS), output.vertexSH);
-#else
     OUTPUT_SH(output.normalWS.xyz, output.vertexSH);
-#endif
 
 #ifdef _ADDITIONAL_LIGHTS_VERTEX
     half3 vertexLight = VertexLighting(vertexInput.positionWS, normalInput.normalWS);
@@ -222,7 +216,9 @@ half4 StylizedPassFragment(Varyings input) : SV_Target
     InputData inputData;
     InitializeInputData(input, surfaceData.normalTS, inputData);
     #if VERSION_GREATER_EQUAL(12, 0)
-    SETUP_DEBUG_TEXTURE_DATA(inputData, input.uv, _BaseMap);
+#if defined(DEBUG_DISPLAY)
+    SetupDebugTextureData(inputData);
+#endif
     #endif
 
 #if defined(DR_VERTEX_COLORS_ON)
